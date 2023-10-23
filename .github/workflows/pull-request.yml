@@ -25,6 +25,7 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
+          cache-dependency-path: ./pnpm-lock.yaml
 
       # package.json에 명시된 의존성을 설치합니다.
       - name: Install Dependencies
@@ -52,7 +53,7 @@ jobs:
       - name: if_fail
         uses: actions/github-script@v4
         with:
-          github-token: ${{ secrets.TOKEN_ACTION_CLIENT }}
+          github-token: ${{ secrets.TOKEN_ACTIONS_CLIENT }}
           script: |
             const ref = "${{github.ref}}"
             const pull_number = Number(ref.split("/")[2])
