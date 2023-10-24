@@ -1,0 +1,18 @@
+{
+  "vitestTemplate": {
+    "prefix": "!test",
+    "description": "vitest 기초 템플릿입니다.",
+    "body": [
+      "import { describe, it } from 'vitest'",
+      "",
+      "describe('테스트 주제', () => {",
+      "  it('테스트 케이스 ex)classname을 적절히 merge합니다', () => {",
+      "    ",
+      "  })",
+      "})",
+      ""
+    ],
+    "description": "testTemplate",
+    "scope": "stories.tsx, typescript, javascript, javascriptreact, typescriptreact"
+  }
+}
