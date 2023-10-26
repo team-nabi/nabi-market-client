@@ -1,0 +1,29 @@
+{
+  "storyTemplate": {
+    "prefix": "!story",
+    "description": "storybook 기초 템플릿입니다.",
+    "body": [
+      "import type { Meta, StoryObj } from '@storybook/react'",
+
+      "",
+      "const meta = {",
+      "  title: 'UI/컴포넌트이름',",
+      "  component: 컴포넌트이름,",
+      "  tags: ['autodocs'],",
+      "  argTypes: {},",
+      "} satisfies Meta<typeof 컴포넌트이름>",
+      "",
+      "export default meta",
+      "type Story = StoryObj<typeof meta>",
+      "",
+      "export const Normal: Story = {",
+      "  args: {}",
+      "}",
+      "",
+      "export const Disabled: Story = {",
+      "  args: {}",
+      "}"
+    ],
+    "scope": "stories.tsx, typescript, javascript, javascriptreact, typescriptreact"
+  }
+}
