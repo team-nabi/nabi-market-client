@@ -121,6 +121,9 @@ devDependencies:
   '@types/tailwindcss':
     specifier: ^3.1.0
     version: 3.1.0
+  chromatic:
+    specifier: ^7.5.4
+    version: 7.5.4
   eslint:
     specifier: ^8
     version: 8.0.0
@@ -5973,6 +5976,11 @@ packages:
   /chownr@2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
+    dev: true
+
+  /chromatic@7.5.4:
+    resolution: {integrity: sha512-DiBwsn8yABN6SFSeEf5gTbwGIqhfP+rjrAQENgeLFDUV3vX3tGdI8oVgseaeCwk8tn08ZukrmB/k3ZG9RPJPTA==}
+    hasBin: true
     dev: true
 
   /chrome-trace-event@1.0.3:
