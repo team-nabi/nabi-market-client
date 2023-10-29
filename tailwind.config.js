@@ -1,4 +1,5 @@
 const { createThemes } = require('tw-colors')
+const { LIGHT_THEMES, DARK_THEMES } = require('./src/styles/colors')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,21 +13,22 @@ module.exports = {
   ],
   darkMode: ['class'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: () => ({
+        'gradient-primary':
+          'linear-gradient(to right, #9867FF 0%, #6C64F8 100%)',
+        'gradient-secondary':
+          'linear-gradient(to right, #7C54D1 0%, #534CD0 100%)',
+      }),
+    },
   },
   plugins: [
     createThemes({
       light: {
-        'background-color': '#e5e5e5',
-        'primary-color': '#404040',
-        'card-background-color': '#d4d4d4',
-        'secondary-color': '#d4d4d4',
+        ...LIGHT_THEMES,
       },
       dark: {
-        'background-color': '#404040',
-        'primary-color': '#e5e5e5',
-        'card-background-color': '#525252',
-        'secondary-color': '#525252',
+        ...DARK_THEMES,
       },
     }),
   ],
