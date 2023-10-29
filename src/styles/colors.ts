@@ -28,6 +28,7 @@ const LIGHT_THEMES = {
   'secondary-color': COLORS.secondary_200,
   'secondary-hover-color': COLORS.secondary_300,
   'text-color': COLORS.black,
+  'dialog-background-color': COLORS.black,
 } as const
 
 const DARK_THEMES = {
@@ -37,6 +38,7 @@ const DARK_THEMES = {
   'secondary-color': COLORS.secondary_200,
   'secondary-hover-color': COLORS.secondary_300,
   'text-color': COLORS.white,
+  'dialog-background-color': COLORS.black,
 } as const
 
 export default COLORS
