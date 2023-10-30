@@ -20,6 +20,13 @@ module.exports = {
         'gradient-secondary':
           'linear-gradient(to right, #7C54D1 0%, #534CD0 100%)',
       }),
+      height: {
+        nav: 'var(--nav-height)',
+      },
+      width: {
+        page_min: 'var(--page-min-width)',
+        page_max: 'var(--page-max-width)',
+      },
     },
   },
   plugins: [
