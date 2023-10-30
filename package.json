@@ -11,7 +11,7 @@
     "test": "vitest --run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_00fe989402301dc"
+    "chromatic": "bash ./scripts/chromatic_publish.sh"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
