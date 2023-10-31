@@ -1,11 +1,6 @@
 const { createThemes } = require('tw-colors')
 const { LIGHT_THEMES, DARK_THEMES } = require('./src/styles/colors')
-const {
-  HEIGHT,
-  FONT_SIZE,
-  FONT_WEIGHT,
-  BORDER_RADIUS,
-} = require('./src/styles/sizes')
+const { HEIGHT, BORDER_RADIUS } = require('./src/styles/sizes')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -26,15 +21,6 @@ module.exports = {
         'gradient-secondary':
           'linear-gradient(to right, #7C54D1 0%, #534CD0 100%)',
       }),
-      fontSize: {
-        ...FONT_SIZE,
-      },
-      fontWeight: {
-        ...FONT_WEIGHT,
-      },
-      colors: {
-        ...LIGHT_THEMES,
-      },
       height: {
         ...HEIGHT,
       },

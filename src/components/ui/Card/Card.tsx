@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import Image from 'next/image'
+import COLORS from '@/styles/colors'
+import { TYPHOGRAPHY } from '@/styles/sizes'
 import { cn } from '@/utils'
 
 const cardVariants = cva(
@@ -93,22 +95,14 @@ CardImage.displayName = 'CardImage'
 const cardTextVariants = cva('', {
   variants: {
     type: {
-      h1: 'text-h1 font-bold',
-      h2: 'text-h2 font-bold',
-      h3: 'text-h3 font-bold',
-      h4: 'text-h4 font-bold',
-      p1: 'text-p1',
-      p2: 'text-p2',
-      p3: 'text-p3',
-    },
-    color: {
-      black: 'text-text-color',
-      gray: 'text-background-secondary-color',
+      title: TYPHOGRAPHY.title,
+      description: TYPHOGRAPHY.description,
+      date: TYPHOGRAPHY.date,
+      icon: TYPHOGRAPHY.icon,
     },
   },
   defaultVariants: {
-    type: 'h1',
-    // color: 'black',
+    type: 'description',
   },
 })
 
@@ -118,10 +112,10 @@ export type CardTextProps = React.HTMLAttributes<HTMLDivElement> &
   }
 
 const CardText = React.forwardRef<HTMLDivElement, CardTextProps>(
-  ({ type, color, className, ...props }, ref) => (
+  ({ type, className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn(cardTextVariants({ type, color, className }))}
+      className={cn(cardTextVariants({ type, className }))}
       {...props}
     />
   ),

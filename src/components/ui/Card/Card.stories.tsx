@@ -35,10 +35,10 @@ export const Small: Story = {
           </div>
 
           <CardFlex direction={'col'} justify={'between'}>
-            <CardText type={'h3'}>스위치 팜</CardText>
-            <CardText type={'p2'}>스위치</CardText>
-            <CardText type={'p2'}>10만원대</CardText>
-            <CardText type={'p3'}>25분전</CardText>
+            <CardText type={'title'}>스위치 팜</CardText>
+            <CardText type={'description'}>스위치</CardText>
+            <CardText type={'description'}>10만원대</CardText>
+            <CardText type={'date'}>25분전</CardText>
           </CardFlex>
         </CardFlex>
       </Card>
@@ -69,11 +69,11 @@ export const Large: Story = {
           </div>
 
           <CardFlex direction={'col'} justify={'between'}>
-            <CardText type={'h3'}>스위치 팜</CardText>
-            <CardText type={'p2'}>스위치</CardText>
-            <CardText type={'p2'}>10만원대</CardText>
+            <CardText type={'title'}>스위치 팜</CardText>
+            <CardText type={'description'}>스위치</CardText>
+            <CardText type={'description'}>10만원대</CardText>
             <Button>대기중</Button>
-            <CardText type={'p3'}>25분전</CardText>
+            <CardText type={'date'}>25분전</CardText>
           </CardFlex>
         </CardFlex>
       </Card>
