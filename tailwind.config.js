@@ -23,9 +23,15 @@ module.exports = {
       }),
       height: {
         ...HEIGHT,
+        nav: 'var(--nav-height)',
       },
       borderRadius: {
         ...BORDER_RADIUS,
+        nav: 'var(--nav-height)',
+      },
+      width: {
+        page_min: 'var(--page-min-width)',
+        page_max: 'var(--page-max-width)',
       },
     },
   },
