@@ -35,7 +35,7 @@ export default function RootLayout({
           <ThemeProviderContext>
             <Suspense>
               <div className="centered-content">
-                <Header isLogin={true} />
+                <Header isLogin={false} />
                 {children}
                 {authModal}
               </div>
