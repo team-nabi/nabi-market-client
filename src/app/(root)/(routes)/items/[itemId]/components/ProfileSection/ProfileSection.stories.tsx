@@ -12,8 +12,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Profile: Story = {
-  args: { userName: '푸바오바오' },
+  args: { profileImg: null, userName: '푸바오바오' },
   render: () => {
-    return <ProfileSection userName="푸바오바오" />
+    return <ProfileSection profileImg={null} userName="푸바오바오" />
   },
 }
