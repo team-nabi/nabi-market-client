@@ -30,11 +30,13 @@ class FetchAPI {
 
   public async get(
     endpoint: string,
+    nextInit: RequestInit = {},
     customHeaders: { [key: string]: string } = {},
   ): Promise<any> {
     const response = await fetch(`${this.baseURL}${endpoint}`, {
       method: 'GET',
       headers: { ...this.headers, ...customHeaders },
+      ...nextInit,
     })
     return response
   }
@@ -42,12 +44,14 @@ class FetchAPI {
   public async post(
     endpoint: string,
     body: any,
+    nextInit: RequestInit = {},
     customHeaders: { [key: string]: string } = {},
   ): Promise<any> {
     const response = await fetch(`${this.baseURL}${endpoint}`, {
       method: 'POST',
       headers: { ...this.headers, ...customHeaders },
       body: JSON.stringify(body),
+      ...nextInit,
     })
     return response
   }
@@ -55,23 +59,27 @@ class FetchAPI {
   public async put(
     endpoint: string,
     body: any,
+    nextInit: RequestInit = {},
     customHeaders: { [key: string]: string } = {},
   ): Promise<any> {
     const response = await fetch(`${this.baseURL}${endpoint}`, {
       method: 'PUT',
       headers: { ...this.headers, ...customHeaders },
       body: JSON.stringify(body),
+      ...nextInit,
     })
     return response
   }
 
   public async delete(
     endpoint: string,
+    nextInit: RequestInit = {},
     customHeaders: { [key: string]: string } = {},
   ): Promise<any> {
     const response = await fetch(`${this.baseURL}${endpoint}`, {
       method: 'DELETE',
       headers: { ...this.headers, ...customHeaders },
+      ...nextInit,
     })
     return response
   }
