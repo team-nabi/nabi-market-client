@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import Header from '@/components/domain/Header'
-import { FetchProvider } from '@/contexts/FetchContext'
 import MSWWrapper from '@/contexts/MSWWrapper'
 import TanstackQueryContext from '@/contexts/TanstackQueryContext'
 import ThemeProviderContext from '@/contexts/ThemeProviderContext'
@@ -24,19 +23,17 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <MSWWrapper>
-          <FetchProvider>
-            <TanstackQueryContext>
-              <ThemeProviderContext>
-                <Suspense fallback={<div>loading...</div>}>
-                  <div className="centered-content">
-                    <Header isLogin={false} />
-                    {children}
-                    {authModal}
-                  </div>
-                </Suspense>
-              </ThemeProviderContext>
-            </TanstackQueryContext>
-          </FetchProvider>
+          <TanstackQueryContext>
+            <ThemeProviderContext>
+              <Suspense fallback={<div>loading...</div>}>
+                <div className="centered-content">
+                  <Header isLogin={false} />
+                  {children}
+                  {authModal}
+                </div>
+              </Suspense>
+            </ThemeProviderContext>
+          </TanstackQueryContext>
         </MSWWrapper>
       </body>
     </html>
