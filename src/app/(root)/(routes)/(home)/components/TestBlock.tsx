@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect } from 'react'
-// import { useApiClient } from '@/contexts/FetchContext'
 import { getTest } from '@/services/test/test'
 
 // async function getTestValue() {

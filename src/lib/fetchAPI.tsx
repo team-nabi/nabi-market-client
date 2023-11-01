@@ -1,5 +1,3 @@
-import { Environment } from '@/config/environment'
-
 class FetchAPI {
   private baseURL: string
   private headers: { [key: string]: string }
@@ -7,7 +5,7 @@ class FetchAPI {
   private static instance: FetchAPI
 
   private constructor() {
-    this.baseURL = Environment.apiAddress() ?? ''
+    this.baseURL = ''
     this.headers = {
       'Content-Type': 'application/json',
     }

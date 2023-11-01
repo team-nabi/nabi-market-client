@@ -24,9 +24,7 @@ const MSWComponent = ({ children }: PropsWithChildren) => {
     }
   }, [mswReady])
 
-  if (!mswReady) {
-    return null
-  }
+  if (!mswReady) return null
 
   return <>{children}</>
 }
