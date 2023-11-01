@@ -7,6 +7,7 @@ import { Item } from '@/types'
 
 type TradeStateCardProps = {
   item: Item
+  className: string
 }
 type TradeStateMap = {
   [key: string]: {
@@ -23,6 +24,7 @@ type TradeStateMap = {
 
 const TradeStateCard = ({
   item: { image, cardTitle, tradeState, itemName, priceRange, createdAt },
+  className,
 }: TradeStateCardProps) => {
   const tradeStateMap: TradeStateMap = {
     possible: {
@@ -36,7 +38,7 @@ const TradeStateCard = ({
   }
 
   return (
-    <Card size={'sm'}>
+    <Card size={'sm'} className={className}>
       <CardFlex
         direction={'row'}
         justify={'start'}

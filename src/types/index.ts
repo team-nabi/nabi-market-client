@@ -8,5 +8,5 @@ export interface Item {
   dibCount: number
   priceRange: string
   image: string
-  tradeState: 'possible' | 'impossible'
+  tradeState: string
 }
