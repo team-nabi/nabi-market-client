@@ -24,14 +24,7 @@ const MSWComponent = ({ children }: PropsWithChildren) => {
     }
   }, [mswReady])
 
-  if (!mswReady) {
-    return (
-      <>
-        <div>Mock Worker를 로딩하는 중입니다...</div>
-        <div>해당 화면이 지속된다면 새로고침 해주세요.</div>
-      </>
-    )
-  }
+  if (!mswReady) return null
 
   return <>{children}</>
 }
