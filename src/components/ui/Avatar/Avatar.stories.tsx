@@ -17,15 +17,15 @@ export const Normal: Story = {
     return (
       <>
         <Avatar size="sm">
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage imgUrl={null} />
           <AvatarFallback>NB</AvatarFallback>
         </Avatar>
         <Avatar size="md">
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage imgUrl={null} />
           <AvatarFallback>NB</AvatarFallback>
         </Avatar>
         <Avatar size="lg">
-          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarImage imgUrl="https://cdn.pixabay.com/photo/2020/05/17/20/21/cat-5183427_1280.jpg" />
           <AvatarFallback>NB</AvatarFallback>
         </Avatar>
       </>
