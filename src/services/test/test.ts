@@ -1,9 +1,8 @@
 import ApiEndPoint from '@/config/apiEndPoint'
-import FetchAPI from '@/lib/fetchAPI'
+import apiClient from '../apiClient'
 
 const getTest = async () => {
-  const api = FetchAPI.getInstance()
-  const response = await api.get(
+  const response = await apiClient.get(
     ApiEndPoint.test(),
     { next: { revalidate: 10 } },
     {
