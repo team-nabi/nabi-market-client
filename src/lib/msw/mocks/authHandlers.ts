@@ -8,7 +8,6 @@ const authHandlers = [
   rest.get(`${baseUrl}${ApiEndPoint.kakaoLogin()}`, async (_req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.text('성공했습니다.'),
       ctx.json({
         data: {
           userInfo: {
@@ -27,7 +26,6 @@ const authHandlers = [
   rest.get(`${baseUrl}${ApiEndPoint.googleLogin()}`, async (_req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.text('성공했습니다.'),
       ctx.json({
         data: {
           userInfo: {
