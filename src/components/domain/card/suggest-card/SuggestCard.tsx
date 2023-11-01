@@ -1,6 +1,7 @@
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
+import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
 
 type SuggestCardProps = {
   thumbNail?: string
@@ -11,7 +12,7 @@ type SuggestCardProps = {
 }
 
 const SuggestCard = ({
-  thumbNail = 'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg',
+  thumbNail = DEFAULT_ITEM_THUMBNAIL_IMG,
   cardTitle,
   itemName,
   priceRange,
