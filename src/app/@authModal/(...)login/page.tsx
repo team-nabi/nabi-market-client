@@ -19,7 +19,7 @@ const LoginModalPage: FunctionComponent<LoginModalPageProps> = () => {
       }}
     >
       <DialogContent className="sm:max-w-[425px]">
-        <section className="py-4">
+        <section className="py-4 my-20">
           <LoginForm />
         </section>
       </DialogContent>
