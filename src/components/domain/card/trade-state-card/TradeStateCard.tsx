@@ -8,19 +8,32 @@ import { Item } from '@/types'
 type TradeStateCardProps = {
   item: Item
 }
+type TradeStateMap = {
+  [key: string]: {
+    style:
+      | 'primary'
+      | 'secondary'
+      | 'gradation'
+      | 'information'
+      | null
+      | undefined
+    text: string
+  }
+}
 
 const TradeStateCard = ({
   item: { image, cardTitle, tradeState, itemName, priceRange, createdAt },
 }: TradeStateCardProps) => {
-  const getStyleByTradeState = (tradeState: string) =>
-    tradeState === 'possible' ? 'primary' : 'secondary'
-  const getTextByTradeState = (tradeState: string) =>
-    tradeState === 'possible' ? '거래가능' : '예약중'
-  const renderBadgeByTradeState = (tradeState: string) => (
-    <Badge variant={getStyleByTradeState(tradeState)} size={'sm'}>
-      {getTextByTradeState(tradeState)}
-    </Badge>
-  )
+  const tradeStateMap: TradeStateMap = {
+    possible: {
+      style: 'primary',
+      text: '거래가능',
+    },
+    impossible: {
+      style: 'secondary',
+      text: '예약중',
+    },
+  }
 
   return (
     <Card size={'sm'}>
@@ -43,7 +56,9 @@ const TradeStateCard = ({
         <CardFlex direction={'col'} justify={'between'} className="h-full">
           <CardFlex align={'center'} gap={'space'}>
             <CardText type={'title'}>{cardTitle}</CardText>
-            {renderBadgeByTradeState(tradeState)}
+            <Badge variant={tradeStateMap[tradeState].style}>
+              {tradeStateMap[tradeState].text}
+            </Badge>
           </CardFlex>
           <CardText type={'description'}>{itemName}</CardText>
           <CardText type={'description'}>{priceRange}</CardText>

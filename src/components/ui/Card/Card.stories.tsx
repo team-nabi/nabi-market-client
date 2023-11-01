@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import TradeStateCard from '@/components/domain/card/TradeStateCard'
+import TradeStateCard from '@/components/domain/card/trade-state-card'
 import Button from '../Button'
 import { Card, CardFlex, CardImage, CardText } from './Card'
 
