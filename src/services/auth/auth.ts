@@ -1,6 +1,4 @@
-import Cookies from 'js-cookie'
 import ApiEndPoint from '@/config/apiEndPoint'
-import { Environment } from '@/config/environment'
 import apiClient from '../apiClient'
 
 const getKakaoLogin = async () => {
@@ -15,8 +13,7 @@ const getGoogleLogin = async () => {
   return response
 }
 
-const getValidateUser = async () => {
-  const token = Cookies.get(Environment.tokenName())
+const getValidateUser = async (token: string | undefined) => {
   const response = await apiClient.get(
     ApiEndPoint.getValidateUser(),
     {},

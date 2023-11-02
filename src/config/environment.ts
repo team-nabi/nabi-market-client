@@ -1,4 +1,4 @@
-import { assertValue } from '@/utils'
+// import { assertValue } from '@/utils'
 
 export const Environment = {
   apiAddress: () =>
@@ -7,9 +7,5 @@ export const Environment = {
       : process.env.NEXT_PUBLIC_API_ADDRESS,
   apiMocking: () =>
     process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' ? 'enabled' : 'disabled',
-  tokenName: () => assertEnv('NEXT_PUBLIC_API_TOKEN_NAME'),
-}
-
-function assertEnv(key: string) {
-  return assertValue<string>(process.env[key], `${key}가 설정되지 않았습니다.`)
+  tokenName: () => process.env.NEXT_PUBLIC_API_TOKEN_NAME ?? '',
 }
