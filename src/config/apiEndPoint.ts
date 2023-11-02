@@ -1,5 +1,6 @@
 const ApiEndPoint = {
-  login: () => '/login',
+  kakaoLogin: () => '/oauth2/authorize/kakao/login',
+  googleLogin: () => '/oauth2/authorize/google/login',
   test: () => '/test',
   item: (itemId:string) => `/${itemId}`
 } as const
