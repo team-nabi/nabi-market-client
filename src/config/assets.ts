@@ -5,9 +5,11 @@ import GoogleIcon from '/public/images/google.png'
 import KakaoIcon from '/public/images/kakao.png'
 import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
+import Search from '/public/images/search.svg'
 import XIcon from '/public/images/x-icon.svg'
 
 const Assets = {
+  search: Search,
   menuIcon: MenuIcon,
   arrowLeftIcon: ArrowLeftIcon,
   filterIcon: FilterIcon,
