@@ -1,16 +1,19 @@
 // 'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { getTest } from '@/services/test/test'
 
 async function getTestValue() {
-  const res = await getTest()
-  const data = await res.json()
-  return data
+  try {
+    const res = await getTest()
+    const data = await res.json()
+    return data
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 export default async function TestBlock() {
   const data = await getTestValue()
-  console.log(data.message)
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -20,5 +23,5 @@ export default async function TestBlock() {
   //   fetchData()
   // }, [])
 
-  return <div>{'index ' + data.message}</div>
+  return <div>{'index ' + data?.message}</div>
 }
