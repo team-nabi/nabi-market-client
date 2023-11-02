@@ -37,11 +37,11 @@ const Header = ({ isLogin = false }: HeaderProps) => {
             {/** TODO: 아바타 컴포넌트로 변경 */}
           </>
         ) : (
-          <>
-            <Button variant={'gradation'}>
-              <Link href={AppPath.login()}>로그인</Link>
-            </Button>
-          </>
+          <Button variant={'gradation'}>
+            <Link href={AppPath.login()} scroll={false}>
+              로그인
+            </Link>
+          </Button>
         )}
       </div>
     </header>
