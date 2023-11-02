@@ -2,8 +2,13 @@ import apiClient from "../apiClient"
 import ApiEndPoint from "@/config/apiEndPoint"
 
 const getItemInfo = async(itemId:string) =>{
-    const res = await apiClient.get(ApiEndPoint.item(itemId))
-    return res
+    try {
+        const res = await apiClient.get(ApiEndPoint.item(itemId));
+        return res
+    } catch (error) {
+        console.error(error)
+    }
+    
 }
 
 export {getItemInfo}
