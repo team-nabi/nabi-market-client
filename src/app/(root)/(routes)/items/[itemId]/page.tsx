@@ -10,14 +10,19 @@ type ItemPageProps = {
 }
 
 async function getItemValue(itemId: string) {
-  const res = await getItemInfo(itemId)
-  const data = await res.json()
-  return data
+  try {
+    const res = await getItemInfo(itemId)
+    const data = await res.json()
+    return data
+  } catch (e) {
+    console.log(e)
+    return null
+  }
 }
 
 const ItemPage = async ({ params }: ItemPageProps) => {
-  const itemData = await getItemValue(params.itemId)
-  console.log(itemData)
+  const data = await getItemValue(params.itemId)
+  console.log(data)
 
   return (
     <main className="flex-col min-h-screen bg-background-color">

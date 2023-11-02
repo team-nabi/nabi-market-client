@@ -2,13 +2,13 @@ import apiClient from "../apiClient"
 import ApiEndPoint from "@/config/apiEndPoint"
 
 const getItemInfo = async(itemId:string) =>{
-    try {
-        const res = await apiClient.get(ApiEndPoint.item(itemId));
-        return res
-    } catch (error) {
-        console.error(error)
-    }
-    
+    console.log(itemId)
+        const response = await apiClient.get(ApiEndPoint.item(itemId), { next: { revalidate: 10 } },
+        {
+          'Content-Type': 'application/json',
+        }
+        )
+        return response    
 }
 
 export {getItemInfo}
