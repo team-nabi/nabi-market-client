@@ -1,3 +1,4 @@
+import { itemHandler } from './itemHandlers'
 import { testHandlers } from './testHandler'
 
-export const handlers = [...testHandlers]
+export const handlers = [...testHandlers, ...itemHandler]
