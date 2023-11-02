@@ -37,7 +37,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
 )
 Card.displayName = 'Card'
 
-const cardFlexVariants = cva('flex h-full', {
+const cardFlexVariants = cva('flex', {
   variants: {
     direction: {
       row: 'flex-row',
