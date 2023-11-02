@@ -10,36 +10,64 @@ import {
 } from '@/components/ui/DropdownMenu'
 import Assets from '@/config/assets'
 import { TYPHOGRAPHY } from '@/styles/sizes'
+import { ItemDetail } from '@/types'
 import Dibs from './Dibs'
 
-type DescriptionSectionProps = {}
+type DescriptionSectionProps = {
+  itemData: ItemDetail
+}
 
-const DescriptionSection = ({}: DescriptionSectionProps) => {
+type TradeStateMap = {
+  [key: string]: {
+    style:
+      | 'primary'
+      | 'secondary'
+      | 'gradation'
+      | 'information'
+      | null
+      | undefined
+    text: string
+  }
+}
+
+const DescriptionSection = ({
+  itemData: { status, cardTitle, category, createdAt, dibsCount, content },
+}: DescriptionSectionProps) => {
+  const tradeStateMap: TradeStateMap = {
+    TRADE_AVAILABLE: {
+      style: 'primary',
+      text: '거래가능',
+    },
+    RESERVED: {
+      style: 'secondary',
+      text: '예약중',
+    },
+    TRADE_COMPLETE: {
+      style: 'gradation',
+      text: '거래성사',
+    },
+  }
   return (
     <article className="flex flex-col w-full pt-4 pb-8  border-b-[1px] gap-4">
       <div className="flex flex-row items-center">
-        <Badge variant={'gradation'} size={'sm'} className="mr-2">
-          거래가능
+        <Badge variant={tradeStateMap[status].style}>
+          {tradeStateMap[status].text}
         </Badge>
-        <h3 className={`${TYPHOGRAPHY.title}`}>스위치 교환가능합니다</h3>
+        <h3 className={`${TYPHOGRAPHY.title} ml-2`}>{cardTitle}</h3>
         <MoreButton />
       </div>
       <div className="flex flex-row items-center">
         <p
           className={`${TYPHOGRAPHY.description} mr-2 text-text-secondary-color`}
         >
-          <u>전자기기</u>
+          <u>{category}</u>
         </p>
         <p className={`${TYPHOGRAPHY.description} text-text-secondary-color`}>
-          25분 전
+          {createdAt}
         </p>
-        <Dibs />
+        <Dibs count={dibsCount} />
       </div>
-      <p className="">
-        닌텐도 스위치 팝니다. 구매 후에 쭉 투명케이스 쓰고 사용해서 상태 정말
-        좋아요~ 박스는 이사가면서 버려서 없지만 구성품은 다 있고 스위치 프로콘
-        같이 드립니다.
-      </p>
+      <p className="">{content}</p>
     </article>
   )
 }
