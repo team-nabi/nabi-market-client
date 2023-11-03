@@ -7,7 +7,7 @@ import TradeStateCard from '@/components/domain/card/trade-state-card'
 import Assets from '@/config/assets'
 import { GetItems, getItems } from '@/services/item/item'
 import { Item } from '@/types'
-import SearchInput from '../SearchInput'
+import SearchInput from '../search-input'
 
 const ItemList = () => {
   const [params, setParams] = useState<GetItems>({

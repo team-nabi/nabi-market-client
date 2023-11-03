@@ -1,15 +1,16 @@
 import ApiEndPoint from '@/config/apiEndPoint'
-import { Environment } from '@/config/environment'
+import apiClient from '../apiClient'
 
-const postLogin = async () => {
-  const response = await fetch(Environment.apiAddress() + ApiEndPoint.login(), {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-  const data = await response.json()
-  return data
+const getKakaoLogin = async () => {
+  const response = await apiClient.get(ApiEndPoint.kakaoLogin())
+
+  return response
 }
 
-export { postLogin }
+const getGoogleLogin = async () => {
+  const response = await apiClient.get(ApiEndPoint.googleLogin())
+
+  return response
+}
+
+export { getKakaoLogin, getGoogleLogin }
