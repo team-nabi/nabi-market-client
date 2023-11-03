@@ -19,7 +19,7 @@ type HeaderProps = {
 
 const Header = ({ isLogin = false }: HeaderProps) => {
   return (
-    <header className="grid items-center justify-between w-full grid-cols-3 px-2 h-14 shadow-bottom bg-background-color">
+    <header className="absolute top-0 left-0 z-10 grid items-center justify-between w-full grid-cols-3 px-2 h-nav shadow-bottom bg-background-color">
       <div className="flex items-center justify-start">
         <MenuButton />
       </div>
@@ -37,11 +37,11 @@ const Header = ({ isLogin = false }: HeaderProps) => {
             {/** TODO: 아바타 컴포넌트로 변경 */}
           </>
         ) : (
-          <>
-            <Button variant={'gradation'}>
-              <Link href={AppPath.login()}>로그인</Link>
-            </Button>
-          </>
+          <Button variant={'gradation'}>
+            <Link href={AppPath.login()} scroll={false}>
+              로그인
+            </Link>
+          </Button>
         )}
       </div>
     </header>
