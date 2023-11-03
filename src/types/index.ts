@@ -10,7 +10,7 @@ export interface Item {
   dibCount: number
   priceRange: string
   image: string
-  tradeState: 'possible' | 'impossible'
+  status: string
 }
 
 export interface ItemDetail{

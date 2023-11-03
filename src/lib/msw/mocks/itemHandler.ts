@@ -1,0 +1,21 @@
+import { rest } from 'msw'
+import { Environment } from '@/config/environment'
+import items from '@/lib/msw/mocks/data/items.json'
+
+const baseUrl = Environment.apiAddress()
+
+export const itemHandlers = [
+  rest.get(`${baseUrl}/items`, async (req, res, ctx) => {
+    const queryString = req.url.search
+    const cursorId = queryString.slice(10)
+    const currentPage = Number(cursorId)
+    const PAGE_SIZE = 5
+    const filterdItems = items.filter(
+      (item, index) =>
+        index >= currentPage * PAGE_SIZE &&
+        index < (currentPage + 1) * PAGE_SIZE,
+    )
+
+    return res(ctx.status(200), ctx.json(filterdItems))
+  }),
+]
