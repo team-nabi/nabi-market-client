@@ -1,7 +1,8 @@
 import { GetItems } from '@/services/item/item'
 
 const ApiEndPoint = {
-  login: () => '/login',
+  kakaoLogin: () => '/oauth2/authorize/kakao/login',
+  googleLogin: () => '/oauth2/authorize/google/login',
   test: () => '/test',
   items: (cursorId: number) => `/items?cursorId=${cursorId}`,
 } as const
