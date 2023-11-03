@@ -108,7 +108,7 @@ devDependencies:
     version: 7.5.0(@types/react-dom@18.0.0)(@types/react@18.2.33)(encoding@0.1.13)(react-dom@18.0.0)(react@18.0.0)
   '@storybook/nextjs':
     specifier: 7.5.0
-    version: 7.5.0(@swc/core@1.3.95)(@types/react-dom@18.0.0)(@types/react@18.2.33)(esbuild@0.18.20)(next@14.0.1)(react-dom@18.0.0)(react@18.0.0)(typescript@5.2.2)(webpack@5.89.0)
+    version: 7.5.0(@swc/core@1.3.95)(@types/react-dom@18.0.0)(@types/react@18.2.33)(encoding@0.1.13)(esbuild@0.18.20)(next@14.0.1)(react-dom@18.0.0)(react@18.0.0)(typescript@5.2.2)(webpack@5.89.0)
   '@storybook/react':
     specifier: 7.5.0
     version: 7.5.0(encoding@0.1.13)(react-dom@18.0.0)(react@18.0.0)(typescript@5.2.2)
@@ -4099,7 +4099,7 @@ packages:
     resolution: {integrity: sha512-TXJJd5RAKakWx4BtpwvSNdgTDkKM6RkXU8GK34S/LhidQ5Pjz3wcnqb0TxEkfhK/ztbP8nKHqXFwLfa2CYkvQw==}
     dev: true
 
-  /@storybook/nextjs@7.5.0(@swc/core@1.3.95)(@types/react-dom@18.0.0)(@types/react@18.2.33)(esbuild@0.18.20)(next@14.0.1)(react-dom@18.0.0)(react@18.0.0)(typescript@5.2.2)(webpack@5.89.0):
+  /@storybook/nextjs@7.5.0(@swc/core@1.3.95)(@types/react-dom@18.0.0)(@types/react@18.2.33)(encoding@0.1.13)(esbuild@0.18.20)(next@14.0.1)(react-dom@18.0.0)(react@18.0.0)(typescript@5.2.2)(webpack@5.89.0):
     resolution: {integrity: sha512-uMYD0yHc/TlfSPWhsD5zpsjbuwwRSE6AbNqYOaqwPLJewQGpL9KjYFMUFg6IZItv7JKmOVSeVKg+P2dUWhoFDA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
