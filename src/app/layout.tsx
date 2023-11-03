@@ -12,15 +12,34 @@ import '@/styles/globals.css'
 export const metadata: Metadata = {
   title: '나비장터',
   description: '물물교환 플랫폼 나비장터입니다.',
-  viewport: 'width=device-width, initial-scale=1.0',
 }
 
 if (Environment.apiMocking() === 'enabled') {
   console.log('Mocking enabled')
   initMockApi()
 }
+/*
+const getIsLoggedIn = async () => {
+  try {
+    const cookieStore = cookies()
+    const token = cookieStore.get(Environment.tokenName())
+    console.log(token?.value)
+    const res = await getValidateUser(token?.value)
+    const data = await res.json()
+    console.log(data, 'data')
+    if (data?.data?.userInfo) {
+      return true
+    } else {
+      return false
+    }
+  } catch (e) {
+    console.log(e)
+    return false
+  }
+}
+*/
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   authModal,
 }: Readonly<{
@@ -30,21 +49,21 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <MSWWrapper>
-          <TanstackQueryContext>
-            <ThemeProviderContext>
+        <TanstackQueryContext>
+          <ThemeProviderContext>
+            <MSWWrapper>
               <AuthProvider>
                 <Suspense fallback={<div>loading...</div>}>
                   <div className="centered-content">
-                    <Header isLogin={false} />
+                    <Header />
                     {children}
                     {authModal}
                   </div>
                 </Suspense>
               </AuthProvider>
-            </ThemeProviderContext>
-          </TanstackQueryContext>
-        </MSWWrapper>
+            </MSWWrapper>
+          </ThemeProviderContext>
+        </TanstackQueryContext>
       </body>
     </html>
   )

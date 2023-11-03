@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useMemo } from 'react'
+import React, { createContext, useMemo, useContext } from 'react'
 import useValidate from '@/hooks/useValidate'
 
 const AuthContext = createContext<{
@@ -25,7 +25,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 }
 
 const useAuth = () => {
-  const context = React.useContext(AuthContext)
+  const context = useContext(AuthContext)
   if (context === undefined) {
     throw new Error(`useAuth must be used within a AuthProvider`)
   }

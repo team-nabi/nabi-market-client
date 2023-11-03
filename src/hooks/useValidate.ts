@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Cookies from 'js-cookie'
@@ -14,7 +16,10 @@ const useValidate = () => {
 
   const { data, isError } = useQuery({
     queryKey: ['validate', token],
-    queryFn: async () => await getValidateUser(token),
+    queryFn: async () => {
+      const res = await getValidateUser(token)
+      return await res.json()
+    },
     enabled: !!token,
   })
 
@@ -26,10 +31,9 @@ const useValidate = () => {
     }
     if (data) {
       setIsLoggedIn(() => true)
-      setCurrentUser(() => data.data)
+      setCurrentUser(() => data?.data?.userInfo)
     }
-    console.log('validate', isLoggedIn, currentUser)
-  }, [data, isError, pathname, token])
+  }, [currentUser, data, isError, isLoggedIn, pathname, token])
 
   return { isLoggedIn, currentUser }
 }

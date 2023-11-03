@@ -9,6 +9,7 @@ import { Environment } from '@/config/environment'
 import { getGoogleLogin, getKakaoLogin } from '@/services/auth/auth'
 import LoginButtons from './section/LoginButtons'
 
+//FIXME: 로그인 관련 로직은 추후에 따로 분리해야함
 const LoginForm = () => {
   const router = useRouter()
   const kakaoLoginHandler = async () => {
@@ -16,7 +17,6 @@ const LoginForm = () => {
       await getKakaoLogin()
       const res = await getKakaoLogin()
       const data = await res.json()
-      console.log(data)
       Cookies.set(Environment.tokenName(), data?.data?.token?.accessToken)
       alert('로그인 성공')
       router.back()
@@ -31,7 +31,6 @@ const LoginForm = () => {
       await getKakaoLogin()
       const res = await getGoogleLogin()
       const data = await res.json()
-      console.log(data)
       Cookies.set(Environment.tokenName(), data?.data?.token?.accessToken)
       alert('로그인 성공')
       router.back()
