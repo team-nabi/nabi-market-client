@@ -7,6 +7,11 @@ import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import Search from '/public/images/search.svg'
 import XIcon from '/public/images/x-icon.svg'
+import HeartIcon from '/public/images/icon-heart.svg'
+import VMoreIcon from '/public/images/more-vertical.svg'
+import UsersIcon from '/public/images/icon-users.svg'
+import MarkerIcon from '/public/images/icon-marker.svg'
+import MoneyIcon from '/public/images/icon-money.svg'
 
 const Assets = {
   search: Search,
@@ -18,6 +23,11 @@ const Assets = {
   kakaoIcon: KakaoIcon,
   logo: Logo,
   xIcon: XIcon,
+  heartIcon: HeartIcon,
+  vMoreIcon: VMoreIcon,
+  usersIcon: UsersIcon,
+  markerIcon: MarkerIcon,
+  moneyIcon: MoneyIcon
 } as const
 
 export default Assets

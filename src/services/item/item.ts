@@ -13,4 +13,9 @@ const getItems = async ({ cursorId }: GetItems) => {
   return response
 }
 
-export { getItems }
+const getItemInfo = async(itemId:string) =>{
+        const response = await apiClient.get(ApiEndPoint.item(itemId))
+        return response    
+}
+
+export { getItems, getItemInfo }
