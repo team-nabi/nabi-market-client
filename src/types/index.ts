@@ -1,3 +1,5 @@
+import {Category, Status} from "./item"
+
 export interface Item {
   _id: number
   cardId: number
@@ -14,7 +16,7 @@ export interface Item {
 export interface ItemDetail{
     cardId: number
     cardTitle: string
-    category: string
+    category: Category
     itemName: string
     pokeAvailable: boolean
     createdAt: string
@@ -22,7 +24,7 @@ export interface ItemDetail{
     viewCount: number
     priceRange: string
     content: string
-    status: string
+    status: Status
     images: ItemImage[]
     dibsCount: number
     userId: number
@@ -34,5 +36,4 @@ export interface ItemDetail{
 export interface ItemImage {
     _id: number
     image: string
-  }
-  
+}

@@ -11,6 +11,7 @@ import {
 import Assets from '@/config/assets'
 import { TYPHOGRAPHY } from '@/styles/sizes'
 import { ItemDetail } from '@/types'
+import { cn } from '@/utils'
 import Dibs from './Dibs'
 
 type DescriptionSectionProps = {
@@ -19,14 +20,8 @@ type DescriptionSectionProps = {
 
 type TradeStateMap = {
   [key: string]: {
-    style:
-      | 'primary'
-      | 'secondary'
-      | 'gradation'
-      | 'information'
-      | null
-      | undefined
-    text: string
+    style: 'primary' | 'secondary' | 'gradation' | 'information'
+    text: '거래가능' | '예약중' | '거래성사'
   }
 }
 
@@ -53,16 +48,19 @@ const DescriptionSection = ({
         <Badge variant={tradeStateMap[status].style}>
           {tradeStateMap[status].text}
         </Badge>
-        <h3 className={`${TYPHOGRAPHY.title} ml-2`}>{cardTitle}</h3>
+        <h3 className={cn('ml-2', TYPHOGRAPHY.title)}>{cardTitle}</h3>
         <MoreButton />
       </div>
       <div className="flex flex-row items-center">
         <p
-          className={`${TYPHOGRAPHY.description} mr-2 text-text-secondary-color`}
+          className={cn(
+            'mr-2 text-text-secondary-color',
+            TYPHOGRAPHY.description,
+          )}
         >
           <u>{category}</u>
         </p>
-        <p className={`${TYPHOGRAPHY.description} text-text-secondary-color`}>
+        <p className={cn('text-text-secondary-color', TYPHOGRAPHY.description)}>
           {createdAt}
         </p>
         <Dibs count={dibsCount} />

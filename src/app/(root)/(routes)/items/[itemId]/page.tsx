@@ -1,6 +1,6 @@
 import { getItemInfo } from '@/services/item/item'
 import ProfileSection from './components/ProfileSection'
-import DescriptionSection from './components/description-section/DescriptionSection'
+import DescriptionSection from './components/description-section'
 import TradeSection from './components/trade-section'
 
 type ItemPageProps = {
