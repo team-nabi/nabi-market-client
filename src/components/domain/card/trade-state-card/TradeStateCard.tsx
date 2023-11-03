@@ -7,6 +7,7 @@ import { Item } from '@/types'
 
 type TradeStateCardProps = {
   item: Item
+  className: string
 }
 type TradeStateMap = {
   [key: string]: {
@@ -22,21 +23,22 @@ type TradeStateMap = {
 }
 
 const TradeStateCard = ({
-  item: { image, cardTitle, tradeState, itemName, priceRange, createdAt },
+  item: { image, cardTitle, status, itemName, priceRange, createdAt },
+  className,
 }: TradeStateCardProps) => {
   const tradeStateMap: TradeStateMap = {
-    possible: {
+    EXCHANGEABLE: {
       style: 'primary',
       text: '거래가능',
     },
-    impossible: {
+    RESERVED: {
       style: 'secondary',
       text: '예약중',
     },
   }
 
   return (
-    <Card size={'sm'}>
+    <Card size={'sm'} className={className}>
       <CardFlex
         direction={'row'}
         justify={'start'}
@@ -56,8 +58,8 @@ const TradeStateCard = ({
         <CardFlex direction={'col'} justify={'between'} className="h-full">
           <CardFlex align={'center'} gap={'space'}>
             <CardText type={'title'}>{cardTitle}</CardText>
-            <Badge variant={tradeStateMap[tradeState].style}>
-              {tradeStateMap[tradeState].text}
+            <Badge variant={tradeStateMap[status].style}>
+              {tradeStateMap[status].text}
             </Badge>
           </CardFlex>
           <CardText type={'description'}>{itemName}</CardText>
