@@ -2,7 +2,7 @@ import ApiEndPoint from '@/config/apiEndPoint'
 import apiClient from '../apiClient'
 
 export type GetItems = {
-  categories: string[]
+  category: string[]
   priceRange: string
   name: string
   cursorId: number

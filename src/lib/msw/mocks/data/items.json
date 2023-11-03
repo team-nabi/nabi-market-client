@@ -8,7 +8,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 19,
     "priceRange": "10000-50000",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -20,8 +20,8 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 18,
     "priceRange": "10만원대",
-    "image": "이미지 링크",
-    "status": "EXCHANGEABLE"
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
   },
   {
     "_id": 3,
@@ -32,7 +32,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 17,
     "priceRange": "20만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -44,7 +44,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 19,
     "priceRange": "10000-50000",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -56,7 +56,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 18,
     "priceRange": "10만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -68,7 +68,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 17,
     "priceRange": "20만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -80,7 +80,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 19,
     "priceRange": "10000-50000",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -92,7 +92,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 18,
     "priceRange": "10만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -104,7 +104,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 17,
     "priceRange": "20만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -116,7 +116,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 19,
     "priceRange": "10000-50000",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -128,7 +128,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 18,
     "priceRange": "10만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -140,7 +140,79 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 17,
     "priceRange": "20만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "EXCHANGEABLE"
+  },
+  {
+    "_id": 12,
+    "cardId": 1,
+    "cardTitle": "갤럭시 16 팝니다",
+    "itemName": "갤럭시 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "dibCount": 19,
+    "priceRange": "10000-50000",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "EXCHANGEABLE"
+  },
+  {
+    "_id": 13,
+    "cardId": 2,
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "dibCount": 18,
+    "priceRange": "10만원대",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  },
+  {
+    "_id": 14,
+    "cardId": 3,
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "dibCount": 17,
+    "priceRange": "20만원대",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "EXCHANGEABLE"
+  },
+  {
+    "_id": 15,
+    "cardId": 1,
+    "cardTitle": "갤럭시 16 팝니다",
+    "itemName": "갤럭시 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "dibCount": 19,
+    "priceRange": "10000-50000",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "EXCHANGEABLE"
+  },
+  {
+    "_id": 16,
+    "cardId": 2,
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "dibCount": 18,
+    "priceRange": "10만원대",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "EXCHANGEABLE"
+  },
+  {
+    "_id": 3,
+    "cardId": 3,
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "dibCount": 17,
+    "priceRange": "20만원대",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
@@ -152,11 +224,11 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 19,
     "priceRange": "10000-50000",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
-    "_id": 2,
+    "_id": 17,
     "cardId": 2,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
@@ -164,11 +236,11 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 18,
     "priceRange": "10만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   },
   {
-    "_id": 3,
+    "_id": 18,
     "cardId": 3,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
@@ -176,79 +248,7 @@
     "modifiedAt": "2023-11-01T08:08:00",
     "dibCount": 17,
     "priceRange": "20만원대",
-    "image": "이미지 링크",
-    "status": "EXCHANGEABLE"
-  },
-  {
-    "_id": 1,
-    "cardId": 1,
-    "cardTitle": "갤럭시 16 팝니다",
-    "itemName": "갤럭시 16",
-    "createdAt": "2023-11-01T08:08:00",
-    "modifiedAt": "2023-11-01T08:08:00",
-    "dibCount": 19,
-    "priceRange": "10000-50000",
-    "image": "이미지 링크",
-    "status": "EXCHANGEABLE"
-  },
-  {
-    "_id": 2,
-    "cardId": 2,
-    "cardTitle": "아이폰 17 팝니다",
-    "itemName": "아이폰 17",
-    "createdAt": "2023-11-01T08:08:00",
-    "modifiedAt": "2023-11-01T08:08:00",
-    "dibCount": 18,
-    "priceRange": "10만원대",
-    "image": "이미지 링크",
-    "status": "EXCHANGEABLE"
-  },
-  {
-    "_id": 3,
-    "cardId": 3,
-    "cardTitle": "아이폰 18 팝니다",
-    "itemName": "아이폰 18",
-    "createdAt": "2023-11-01T08:08:00",
-    "modifiedAt": "2023-11-01T08:08:00",
-    "dibCount": 17,
-    "priceRange": "20만원대",
-    "image": "이미지 링크",
-    "status": "EXCHANGEABLE"
-  },
-  {
-    "_id": 1,
-    "cardId": 1,
-    "cardTitle": "갤럭시 16 팝니다",
-    "itemName": "갤럭시 16",
-    "createdAt": "2023-11-01T08:08:00",
-    "modifiedAt": "2023-11-01T08:08:00",
-    "dibCount": 19,
-    "priceRange": "10000-50000",
-    "image": "이미지 링크",
-    "status": "EXCHANGEABLE"
-  },
-  {
-    "_id": 2,
-    "cardId": 2,
-    "cardTitle": "아이폰 17 팝니다",
-    "itemName": "아이폰 17",
-    "createdAt": "2023-11-01T08:08:00",
-    "modifiedAt": "2023-11-01T08:08:00",
-    "dibCount": 18,
-    "priceRange": "10만원대",
-    "image": "이미지 링크",
-    "status": "EXCHANGEABLE"
-  },
-  {
-    "_id": 3,
-    "cardId": 3,
-    "cardTitle": "아이폰 18 팝니다",
-    "itemName": "아이폰 18",
-    "createdAt": "2023-11-01T08:08:00",
-    "modifiedAt": "2023-11-01T08:08:00",
-    "dibCount": 17,
-    "priceRange": "20만원대",
-    "image": "이미지 링크",
+    "image": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "status": "EXCHANGEABLE"
   }
 ]
