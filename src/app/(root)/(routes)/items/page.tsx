@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
-import PageTitle from '@/components/domain/PageTitle'
-import ItemList from './components/ItemList'
+import PageTitle from '@/components/domain/page-title'
+import ItemList from './components/Item-list'
 
 interface ItemListPageProps {}
 

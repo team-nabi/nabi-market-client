@@ -2,7 +2,7 @@ import Image from 'next/image'
 import TradeStateCard from '@/components/domain/card/trade-state-card'
 import Assets from '@/config/assets'
 import { Item } from '@/types'
-import SearchInput from '../SearchInput'
+import SearchInput from '../search-input'
 
 const list = [
   {
