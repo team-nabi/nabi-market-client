@@ -16,7 +16,7 @@ async function getItemValue(itemId: string) {
 
     return data.data.cardResponseDto
   } catch (e) {
-    console.error(e)
+    console.log(e)
   }
 }
 
