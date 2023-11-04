@@ -99,7 +99,7 @@ export const Trade: Story = {
           priceRange: '10000-50000',
           image:
             'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg',
-          status: 'impossible',
+          status: 'EXCHANGEABLE',
         }}
         className={''}
       />
