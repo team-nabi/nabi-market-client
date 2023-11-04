@@ -26,6 +26,7 @@ const TradeStateCard = ({
   item: { image, cardTitle, status, itemName, priceRange, createdAt },
   className,
 }: TradeStateCardProps) => {
+  console.log(image, cardTitle, status, itemName, priceRange, createdAt)
   const tradeStateMap: TradeStateMap = {
     EXCHANGEABLE: {
       style: 'primary',
@@ -58,15 +59,15 @@ const TradeStateCard = ({
         <CardFlex direction={'col'} justify={'between'} className="h-full">
           <CardFlex align={'center'} gap={'space'}>
             <CardText type={'title'}>{cardTitle}</CardText>
-            <Badge variant={tradeStateMap[status].style}>
-              {tradeStateMap[status].text}
+            <Badge variant={tradeStateMap['EXCHANGEABLE'].style}>
+              {tradeStateMap['EXCHANGEABLE'].text}
             </Badge>
           </CardFlex>
           <CardText type={'description'}>{itemName}</CardText>
           <CardText type={'description'}>{priceRange}</CardText>
-          <CardText type={'date'}>
+          {/* <CardText type={'date'}>
             {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
-          </CardText>
+          </CardText> */}
         </CardFlex>
       </CardFlex>
     </Card>

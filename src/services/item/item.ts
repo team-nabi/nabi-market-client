@@ -6,8 +6,8 @@ export type GetItems = {
   priceRange: string
   name: string
   status: string[]
-  cursorId: number
   size: number
+  cursorId: number
 }
 
 const getItems = async ({
@@ -19,7 +19,7 @@ const getItems = async ({
   cursorId,
 }: GetItems) => {
   const response = await apiClient.get(ApiEndPoint.items(cursorId))
-  return response
+  return response.json()
 }
 
 export { getItems }
