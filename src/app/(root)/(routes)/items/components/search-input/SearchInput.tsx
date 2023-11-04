@@ -1,33 +1,22 @@
-import React, { ChangeEventHandler } from 'react'
+import React from 'react'
+import { useFormContext } from 'react-hook-form'
 import { useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
 import Input from '@/components/ui/Input'
 import Assets from '@/config/assets'
-import { GetItems } from '@/services/item/item'
 
-const SearchInput = ({
-  params,
-  updateParams,
-}: {
-  params: GetItems
-  updateParams: (nextState: GetItems) => void
-}) => {
+const SearchInput = () => {
+  const { register } = useFormContext()
   const queryClient = useQueryClient()
   const handleFetchData = () => {
-    queryClient.invalidateQueries({ queryKey: ['items', { ...params }] })
+    queryClient.invalidateQueries({
+      queryKey: ['items'],
+    })
   }
-
-  const handleChangeParams: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const { name, value } = e.target
-    updateParams({ ...params, [name]: value })
-  }
-
   return (
     <div className="relative w-4/5">
       <Input
-        onChange={handleChangeParams}
-        value={params.cursorId}
-        name="cursorId"
+        {...register('name')}
         placeholder="찾으시는 물건을 입력해주세요."
       />
       <div
