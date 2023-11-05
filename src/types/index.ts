@@ -1,4 +1,4 @@
-import {Category, Status} from "./item"
+import { Category, Status } from './item'
 
 export interface Item {
   _id: number
@@ -13,27 +13,35 @@ export interface Item {
   status: string
 }
 
-export interface ItemDetail{
-    cardId: number
-    cardTitle: string
-    category: Category
-    itemName: string
-    pokeAvailable: boolean
-    createdAt: string
-    modifiedAt: string
-    viewCount: number
-    priceRange: string
-    content: string
-    status: Status
-    images: ItemImage[]
-    dibsCount: number
-    userId: number
-    userName: string
-    tradeType: string
-    tradeArea: string
+export interface ItemDetail {
+  cardId: number
+  cardTitle: string
+  category: Category
+  itemName: string
+  pokeAvailable: boolean
+  createdAt: string
+  modifiedAt: string
+  viewCount: number
+  priceRange: string
+  content: string
+  status: Status
+  images: ItemImage[]
+  dibs: Dibs[]
+  userId: number
+  userName: string
+  tradeType: string
+  tradeArea: string
 }
 
 export interface ItemImage {
-    _id: number
-    image: string
+  _id: number
+  image: string
+}
+
+export interface Dibs {
+  dibsId: number
+  userId: number
+  cardId: number
+  createdAt: string
+  modifiedAt: string
 }

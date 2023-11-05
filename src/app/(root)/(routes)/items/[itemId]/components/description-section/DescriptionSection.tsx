@@ -26,7 +26,7 @@ type TradeStateMap = {
 }
 
 const DescriptionSection = ({
-  itemData: { status, cardTitle, category, createdAt, dibsCount, content },
+  itemData: { status, cardTitle, category, createdAt, dibs, content, cardId },
 }: DescriptionSectionProps) => {
   const tradeStateMap: TradeStateMap = {
     TRADE_AVAILABLE: {
@@ -63,7 +63,7 @@ const DescriptionSection = ({
         <p className={cn('text-text-secondary-color', TYPHOGRAPHY.description)}>
           {createdAt}
         </p>
-        <Dibs count={dibsCount} />
+        <Dibs itemId={cardId} dibsData={dibs} />
       </div>
       <p className="">{content}</p>
     </article>

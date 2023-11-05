@@ -13,9 +13,31 @@ const getItems = async ({ cursorId }: GetItems) => {
   return response
 }
 
-const getItemInfo = async(itemId:string) =>{
-        const response = await apiClient.get(ApiEndPoint.item(itemId))
-        return response    
+const getItemInfo = async (itemId: string) => {
+  const response = await apiClient.get(ApiEndPoint.item(itemId))
+  return response
 }
 
-export { getItems, getItemInfo }
+const postItemDibs = async (itemId: number, token: string) => {
+  const response = await apiClient.post(
+    ApiEndPoint.dibs(itemId),
+    {},
+    {},
+    {
+      Authorization: `Bearer ${token}`,
+    },
+  )
+  return response.json()
+}
+
+const deleteItemDibs = async (itemId: number, token: string) => {
+  const response = await apiClient.delete(
+    ApiEndPoint.dibs(itemId),
+    {},
+    {
+      Authorization: `Bearer ${token}`,
+    },
+  )
+  return response.json()
+}
+export { getItems, getItemInfo, postItemDibs, deleteItemDibs }
