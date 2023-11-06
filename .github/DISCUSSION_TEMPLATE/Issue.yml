@@ -1,0 +1,61 @@
+title: '버그 제목'
+labels: ['환경세팅', 'API', '기타']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### JIRA 이슈 번호 ex) NABI-1
+  - type: input
+    id: jira-id
+    attributes:
+      label: 이슈 번호
+      description: JIRA 이슈 번호를 작성해주세요
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ### :beetle: Bug Report
+        1시간 이상 버그가 해결되지 않는 경우 작성해주세요
+  - type: textarea
+    id: content
+    attributes:
+      label: 현재 상황과 버그 내용을 작성해주세요
+      description: '현재 상황과 버그 내용을 자세하게 작성해주세요'
+      value: |
+        1. 어디 페이지에 접근해서 ...
+        2. 어떤 것을 클릭했더니 ...
+        3. 화면에 ...
+        4. 이러한 에러가 발생했다
+        ...
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: cause
+    attributes:
+      label: 예상 원인
+      description: '문제가 발생한 원인을 예상하여 작성해주세요'
+      value: |
+        ...
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: code
+    attributes:
+      label: 이슈와 관련된 현재 코드
+      description: '이슈와 관련된 현재 코드를 복붙해주세요'
+      value: |
+        ...
+      render: bash
+    validations:
+      required: false
+  - type: textarea
+    id: image
+    attributes:
+      label: 이슈와 관련된 이미지
+      description: '이슈와 관련된 이미지를 첨부해주세요'
+      render: bash
+    validations:
+      required: false
