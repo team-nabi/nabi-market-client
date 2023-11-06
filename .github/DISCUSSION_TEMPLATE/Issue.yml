@@ -54,8 +54,8 @@ body:
   - type: textarea
     id: image
     attributes:
-      label: 이슈와 관련된 이미지
-      description: '이슈와 관련된 이미지를 첨부해주세요'
+      label: 이슈와 관련된 Log
+      description: '이슈와 관련된 Log를 첨부해주세요'
       render: bash
     validations:
       required: false
