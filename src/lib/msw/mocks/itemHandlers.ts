@@ -48,7 +48,22 @@ export const itemHandlers = [
                 image: '이미지 url',
               },
             ],
-            dibsCount: 14,
+            dibs: [
+              {
+                dibId: 1,
+                userId: 1,
+                cardId: 3,
+                createdAt: '2023-10-23-20:08',
+                modifiedAt: '2023-10-24-20:08',
+              },
+              {
+                dibId: 2,
+                userId: 2,
+                cardId: 3,
+                createdAt: '2023-10-23-20:08',
+                modifiedAt: '2023-10-24-20:08',
+              },
+            ],
             userId: 1,
             userName: '왕쩌는 구범모',
             tradeType: '직거래',
