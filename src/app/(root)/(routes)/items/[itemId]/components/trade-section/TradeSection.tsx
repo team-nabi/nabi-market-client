@@ -6,6 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/Dialog'
+import { getSuggestions } from '@/services/suggest/suggest'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
 
@@ -22,12 +23,25 @@ type TradeInfo = {
   variant: 'primary' | 'information'
 }
 
-const TradeSection = ({
+async function getSuggestionsValue(itemId: string) {
+  try {
+    const res = await getSuggestions(itemId)
+    const data = await res.json()
+
+    return data.data.cardList
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const TradeSection = async ({
   priceRange,
   tradeType,
   tradeArea,
   itemId,
 }: TradeSectionProps) => {
+  const suggestions = await getSuggestionsValue(itemId)
+
   const tradeInfo: TradeInfo[] = [
     { title: '가격대', content: priceRange, variant: 'primary' },
     { title: '거래 방식', content: tradeType, variant: 'information' },
@@ -55,7 +69,7 @@ const TradeSection = ({
           <DialogHeader>
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
-          <SuggestList itemId={itemId} />
+          <SuggestList suggestionData={suggestions} />
         </DialogContent>
       </Dialog>
     </section>
