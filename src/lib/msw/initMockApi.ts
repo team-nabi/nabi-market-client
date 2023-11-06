@@ -3,9 +3,7 @@ import { SetupServer } from 'msw/node'
 
 let server: SetupServer | null = null
 let worker: SetupWorker | null = null
-const option: SharedOptions = {
-  onUnhandledRequest: 'bypass',
-}
+const option: SharedOptions = {}
 export const initMockApi = async () => {
   if (server) {
     server.close()
