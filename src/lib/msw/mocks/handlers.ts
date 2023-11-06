@@ -1,4 +1,4 @@
-import authHandlers from './authHandlers'
+import { authHandlers } from './authHandlers'
 import { itemHandlers } from './itemHandlers'
 import { suggestHandlers } from './suggestHandlers'
 import { testHandlers } from './testHandler'
