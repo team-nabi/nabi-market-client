@@ -18,26 +18,6 @@ if (Environment.apiMocking() === 'enabled') {
   console.log('Mocking enabled')
   initMockApi()
 }
-/*
-const getIsLoggedIn = async () => {
-  try {
-    const cookieStore = cookies()
-    const token = cookieStore.get(Environment.tokenName())
-    console.log(token?.value)
-    const res = await getValidateUser(token?.value)
-    const data = await res.json()
-    console.log(data, 'data')
-    if (data?.data?.userInfo) {
-      return true
-    } else {
-      return false
-    }
-  } catch (e) {
-    console.log(e)
-    return false
-  }
-}
-*/
 
 export default async function RootLayout({
   children,
