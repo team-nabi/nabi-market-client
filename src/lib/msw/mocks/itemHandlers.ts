@@ -27,7 +27,7 @@ export const itemHandlers = [
         message: '성공했습니다.',
         data: {
           cardResponseDto: {
-            cardId: 1,
+            cardId: 3,
             cardTitle: '아이폰 16 팝니다',
             category: '전자기기',
             itemName: '아이폰 16',

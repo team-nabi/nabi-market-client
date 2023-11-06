@@ -25,6 +25,7 @@ const SuggestCard = ({
         justify={'start'}
         align={'center'}
         gap={'space'}
+        className="h-full"
       >
         <div className="h-full w-36 relative">
           <CardImage
