@@ -40,6 +40,19 @@ const FilterFormDialog = () => {
     size: 5,
   })
 
+  const categories = [
+    '남성의류',
+    '여성의류',
+    '잡화ㆍ액세서리',
+    '신발',
+    '가전',
+    '스포츠',
+    '가구ㆍ인테리어',
+    '도서',
+    '전자기기ㆍ디지털',
+    '기타',
+  ]
+
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -110,50 +123,34 @@ const FilterFormDialog = () => {
               )}
             />
           </DialogDescription>
-          <DialogDescription className="border border-solid border-background-secondary-color mb-6"></DialogDescription>
+          <DialogDescription className="border-t border-solid border-background-secondary-color mb-6"></DialogDescription>
 
-          {/*TODO: 카테고리 Select를 어떻게 구현할지 조언을 구한 후 구현,  현재 SelectItem의 value와 textContent가 동일 실 API를 받을 경우, 어떤 값을 줄지 정한후 map 객체로 파싱하여 요청 */}
+          {/*TODO: 현재 SelectItem의 value와 textContent가 동일 실 API를 받을 경우, 어떤 값을 줄지 정한후 map 객체로 파싱하여 요청 */}
           <DialogDescription className="mb-6">
             <DialogDescription className="text-sm mb-2">
               카테고리
             </DialogDescription>
-            <Controller
-              name="category"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  onValueChange={(value) => {
-                    field.onChange({ target: { name, value } })
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue
-                      placeholder={
-                        getValues('category') || '카테고리를 선택해주세요.'
-                      }
-                    />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup className="w-full">
-                      <SelectItem value="남성의류">남성의류</SelectItem>
-                      <SelectItem value="여성의류">여성의류</SelectItem>
-                      <SelectItem value="잡화,액세서리">
-                        잡화,액세서리
-                      </SelectItem>
-                      <SelectItem value="신발">신발</SelectItem>
-                      <SelectItem value="가전">가전</SelectItem>
-                      <SelectItem value="스포츠">스포츠</SelectItem>
-                      <SelectItem value="가구">가구</SelectItem>
-                      <SelectItem value="도서">도서</SelectItem>
-                      <SelectItem value="전자기기,디지털">
-                        전자기기,디지털
-                      </SelectItem>
-                      <SelectItem value="기타">기타</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              )}
-            />
+            {categories.map((category) => (
+              <Controller
+                key={category}
+                name="category"
+                control={control}
+                defaultValue={''}
+                render={({ field }) => (
+                  <button
+                    className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
+                      field.value === category
+                        ? 'border-primary-color text-primary-color'
+                        : 'border-background-secondary-color text-background-secondary-color'
+                    }`}
+                    type="button"
+                    onClick={() => field.onChange(category)}
+                  >
+                    {category}
+                  </button>
+                )}
+              />
+            ))}
           </DialogDescription>
           <DialogFooter className="w-full flex justify-end">
             <Button
