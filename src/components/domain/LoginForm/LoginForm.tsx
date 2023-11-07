@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { Environment } from '@/config/environment'
+import apiClient from '@/services/apiClient'
 import { getGoogleLogin, getKakaoLogin } from '@/services/auth/auth'
 import LoginButtons from './section/LoginButtons'
 
@@ -18,6 +19,10 @@ const LoginForm = () => {
       const res = await getKakaoLogin()
       const data = await res.json()
       Cookies.set(Environment.tokenName(), data?.data?.token?.accessToken)
+      apiClient.setDefaultHeader(
+        'Authorization',
+        `Bearer ${data?.data?.token?.accessToken}`,
+      )
       alert('로그인 성공')
       router.back()
     } catch (e) {
@@ -32,6 +37,10 @@ const LoginForm = () => {
       const res = await getGoogleLogin()
       const data = await res.json()
       Cookies.set(Environment.tokenName(), data?.data?.token?.accessToken)
+      apiClient.setDefaultHeader(
+        'Authorization',
+        `Bearer ${data?.data?.token?.accessToken}`,
+      )
       alert('로그인 성공')
       router.back()
     } catch (e) {

@@ -12,6 +12,7 @@ import {
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { Environment } from '@/config/environment'
+import apiClient from '@/services/apiClient'
 
 //TODO: 공용 아바타 컴포넌트로 변경
 
@@ -37,6 +38,7 @@ const MenuButton = () => {
 const Avatar = () => {
   const onClickLogout = () => {
     Cookies.remove(Environment.tokenName())
+    apiClient.setDefaultHeader('Authorization', '')
     location.reload()
   }
 
