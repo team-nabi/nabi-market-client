@@ -3,6 +3,7 @@ const TYPHOGRAPHY = {
   description: 'text-[12px]',
   date: 'text-[10px] text-[#BFBFBF]',
   icon: 'text-[10px]',
+  profile: 'text-color text-[12px] font-bold'
 }
 const HEIGHT = {
   'card-lg': '161px',

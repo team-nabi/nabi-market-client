@@ -23,32 +23,38 @@ jobs:
       - name: Install node
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
           cache: 'npm'
           cache-dependency-path: ./pnpm-lock.yaml
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       # package.json에 명시된 의존성을 설치합니다.
       - name: Install Dependencies
-        run: npm install
+        run: pnpm install
 
       # 아래 단계에서 .env 파일을 생성하고 시크릿 값을 설정합니다.
-      # - name: Set Environment Variables
-      #   env:
-      #     NEXT_PUBLIC_API_ADDRESS: ${{ secrets.NEXT_PUBLIC_API_ADDRESS }}
-      #     NEXT_PUBLIC_CHANNEL_ID: ${{ secrets.NEXT_PUBLIC_CHANNEL_ID }}
-      #     NEXT_PUBLIC_DISLIKE_CHANNEL_ID: ${{ secrets.NEXT_PUBLIC_DISLIKE_CHANNEL_ID }}
-      #   run: |
-      #     echo "NEXT_PUBLIC_API_ADDRESS=$NEXT_PUBLIC_API_ADDRESS" >> .env
-      #     echo "NEXT_PUBLIC_CHANNEL_ID=$NEXT_PUBLIC_CHANNEL_ID" >> .env
-      #     echo "NEXT_PUBLIC_DISLIKE_CHANNEL_ID=$NEXT_PUBLIC_DISLIKE_CHANNEL_ID" >> .env
+      - name: Set Environment Variables
+        env:
+          NEXT_PUBLIC_API_ADDRESS: ${{ secrets.NEXT_PUBLIC_API_ADDRESS }}
+          NEXT_PUBLIC_API_MOCKING: ${{ secrets.NEXT_PUBLIC_API_MOCKING }}
+          NEXT_PUBLIC_API_MOCKING_ADDRESS: ${{ secrets.NEXT_PUBLIC_API_MOCKING_ADDRESS }}
+          CHROMATIC_TOKEN: ${{ secrets.CHROMATIC_TOKEN }}
+        run: |
+          echo "NEXT_PUBLIC_API_ADDRESS=$NEXT_PUBLIC_API_ADDRESS" >> .env
+          echo "NEXT_PUBLIC_API_MOCKING=$NEXT_PUBLIC_API_MOCKING" >> .env
+          echo "NEXT_PUBLIC_API_MOCKING_ADDRESS=$NEXT_PUBLIC_API_MOCKING_ADDRESS" >> .env
+          echo "CHROMATIC_TOKEN=$CHROMATIC_TOKEN" >> .env
 
       # 빌드를 수행합니다.
       - name: Build
-        run: npm run build
+        run: pnpm build
 
       # 테스트를 수행합니다.
       - name: Run tests
-        run: npm run test
+        run: pnpm test
 
       - name: if_fail
         uses: actions/github-script@v4
@@ -61,12 +67,7 @@ jobs:
             await github.pulls.createReview({
               ...context.repo,
               pull_number,
-              body : "테스트코드를 다시 확인해주세요. ",
+              body : "actions 결과를 다시 확인해주세요. -자동으로 작성됨-",
               event : "REQUEST_CHANGES"
-            })
-            await github.pulls.update({
-              ...context.repo,
-              pull_number,
-              state: "closed"
             })
         if: failure()

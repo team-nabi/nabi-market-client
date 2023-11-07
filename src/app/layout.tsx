@@ -1,11 +1,12 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
-import Head from 'next/head'
 import Header from '@/components/domain/Header'
-import { FetchProvider } from '@/contexts/FetchContext'
+import { Environment } from '@/config/environment'
+import AuthProvider from '@/contexts/AuthProvider'
 import MSWWrapper from '@/contexts/MSWWrapper'
 import TanstackQueryContext from '@/contexts/TanstackQueryContext'
 import ThemeProviderContext from '@/contexts/ThemeProviderContext'
+import { initMockApi } from '@/lib/msw/initMockApi'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
@@ -13,34 +14,36 @@ export const metadata: Metadata = {
   description: '물물교환 플랫폼 나비장터입니다.',
 }
 
-export default function RootLayout({
+if (Environment.apiMocking() === 'enabled') {
+  console.log('Mocking enabled')
+  initMockApi()
+}
+
+export default async function RootLayout({
   children,
   authModal,
-}: {
+}: Readonly<{
   children: React.ReactNode
   authModal: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="ko">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
       <body>
-        <FetchProvider>
-          <TanstackQueryContext>
+        <TanstackQueryContext>
+          <ThemeProviderContext>
             <MSWWrapper>
-              <ThemeProviderContext>
-                <Suspense>
+              <AuthProvider>
+                <Suspense fallback={<div>loading...</div>}>
                   <div className="centered-content">
-                    <Header isLogin={false} />
+                    <Header />
                     {children}
                     {authModal}
                   </div>
                 </Suspense>
-              </ThemeProviderContext>
+              </AuthProvider>
             </MSWWrapper>
-          </TanstackQueryContext>
-        </FetchProvider>
+          </ThemeProviderContext>
+        </TanstackQueryContext>
       </body>
     </html>
   )
