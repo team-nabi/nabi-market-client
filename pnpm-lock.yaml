@@ -35,6 +35,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.0.0
     version: 5.0.0(react-dom@18.0.0)(react@18.0.0)
+  '@tanstack/react-query-devtools':
+    specifier: ^5.7.2
+    version: 5.7.2(@tanstack/react-query@5.0.0)(react-dom@18.0.0)(react@18.0.0)
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.0.0)
@@ -4620,6 +4623,23 @@ packages:
 
   /@tanstack/query-core@5.0.0:
     resolution: {integrity: sha512-Y1BpiA6BblJd/UlVqxEVeAG7IACn568YJuTTItAiecBI7En+33g780kg+/8lhgl+BzcUPN7o+NjBrSRGJoemyQ==}
+    dev: false
+
+  /@tanstack/query-devtools@5.4.2:
+    resolution: {integrity: sha512-EXdaMXi8CxZuMp97J5mq6wy1RduOfoWFv5vtA1U+hyqb8Wst6M8kkkjDSdFvGZIRpYY4K8mKLlEFHNUZDG5dtw==}
+    dev: false
+
+  /@tanstack/react-query-devtools@5.7.2(@tanstack/react-query@5.0.0)(react-dom@18.0.0)(react@18.0.0):
+    resolution: {integrity: sha512-yYkzdmlntdJsy+GZzCabQGxxMjhRYayQzxe7OqYYFPnLEFf/eWkbH3cjyTBlGSKqpUN/8T5QS3P1Xur+l9hEng==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.7.2
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@tanstack/query-devtools': 5.4.2
+      '@tanstack/react-query': 5.0.0(react-dom@18.0.0)(react@18.0.0)
+      react: 18.0.0
+      react-dom: 18.0.0(react@18.0.0)
     dev: false
 
   /@tanstack/react-query@5.0.0(react-dom@18.0.0)(react@18.0.0):
