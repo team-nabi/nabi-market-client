@@ -1,5 +1,6 @@
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
+import FilterActiveIcon from '/public/images/filter-active.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
 import ActiveHeartIcon from '/public/images/icon-heart-active.svg'
@@ -19,6 +20,7 @@ const Assets = {
   menuIcon: MenuIcon,
   arrowLeftIcon: ArrowLeftIcon,
   filterIcon: FilterIcon,
+  filterActiveIcon: FilterActiveIcon,
   alarmIcon: AlarmIcon,
   googleIcon: GoogleIcon,
   kakaoIcon: KakaoIcon,

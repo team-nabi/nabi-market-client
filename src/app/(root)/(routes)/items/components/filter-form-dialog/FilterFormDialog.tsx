@@ -8,7 +8,6 @@ import {
   DialogDescription,
 } from '@radix-ui/react-dialog'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
 import Button from '@/components/ui/Button'
 import { DialogFooter, DialogHeader } from '@/components/ui/Dialog'
 import {
@@ -24,7 +23,6 @@ import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 
 const FilterFormDialog = () => {
   const [isOpen, setIsOpen] = useState(false)
-
   const openModal = () => {
     setIsOpen(true)
   }
@@ -46,7 +44,26 @@ const FilterFormDialog = () => {
     <div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <div onClick={openModal}>필터</div>
+          <div className="flex gap-2 cursor-pointer">
+            <Image
+              src={
+                getValues('priceRange') !== '' || getValues('category') !== ''
+                  ? Assets.filterActiveIcon
+                  : Assets.filterIcon
+              }
+              alt="필터 아이콘"
+            />{' '}
+            <div
+              className={
+                getValues('priceRange') !== '' || getValues('category') !== ''
+                  ? 'text-primary-color'
+                  : ''
+              }
+              onClick={openModal}
+            >
+              필터
+            </div>
+          </div>
         </DialogTrigger>
         <DialogContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-[390px] h-[398px] shadow-md z-50 p-6 rounded-lg">
           <DialogHeader>
