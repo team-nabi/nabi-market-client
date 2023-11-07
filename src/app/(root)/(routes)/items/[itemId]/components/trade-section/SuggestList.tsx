@@ -3,7 +3,7 @@ import { Tabs, TabsTrigger, TabsList, TabsContent } from '@/components/ui/Tabs'
 import { ItemSuggestion } from '@/types'
 
 type SuggestListProps = {
-  suggestionData: []
+  suggestionData: ItemSuggestion[]
 }
 
 /**
