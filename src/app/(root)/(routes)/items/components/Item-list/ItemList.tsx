@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import React from 'react'
+import { useEffect, useRef, Fragment } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import Image from 'next/image'
 import TradeStateCard from '@/components/domain/card/trade-state-card'
@@ -45,6 +44,7 @@ const ItemList = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
+  // TODO: 아이템이 없을시에 대한 처리 하기
   return (
     <div>
       <div className="h-9 flex justify-between items-center mb-6">
@@ -59,11 +59,11 @@ const ItemList = () => {
       </div>
       <div>
         {data?.pages.map((group, i) => (
-          <React.Fragment key={i}>
+          <Fragment key={i}>
             {group.map((item: Item) => (
               <TradeStateCard key={item._id} item={item} className="mb-6" />
             ))}
-          </React.Fragment>
+          </Fragment>
         ))}
         {/*TODO: 로딩 부분에 대한 처리 논의 후 구체적으로 적용 할 것 => <Suspense> 를 사용할지, isLoading으로 처리할지 논의 */}
         {isFetchingNextPage && '데이터 불러오는 중'}
