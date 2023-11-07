@@ -1,11 +1,10 @@
 'use client'
 
-import { useEffect, useRef, Fragment, useState } from 'react'
+import { useEffect, useRef, Fragment } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import TradeStateCard from '@/components/domain/card/trade-state-card'
-import Assets from '@/config/assets'
+import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { Item } from '@/types'
@@ -53,7 +52,7 @@ const ItemList = () => {
 
   // TODO: 아이템이 없을시 어떤 UI를 보여줄지 차후에 결정
   return (
-    <div>
+    <MaxWidthWrapper>
       <div className="h-9 flex justify-between items-center mb-6">
         <FormProvider {...methods}>
           <SearchInput />
@@ -75,7 +74,7 @@ const ItemList = () => {
         {isFetchingNextPage && '데이터 불러오는 중'}
       </div>
       <div ref={lastElementRef} />
-    </div>
+    </MaxWidthWrapper>
   )
 }
 export default ItemList
