@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --nav-height: 3.5rem;
+    --page-min-width: 320px;
+    --page-max-width: 640px;
+  }
+}
+
+@layer base {
+  .centered-content {
+    @apply max-w-[640px] min-w-[320px] shadow-2xl bg-background-color text-text-color relative overflow-hidden mx-auto p-2 pt-16 min-h-screen;
+  }
+
+  :root,
+  html,
+  body {
+    @apply h-full;
+  }
+}
