@@ -51,7 +51,7 @@ const ItemList = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
-  // TODO: 아이템이 없을시에 대한 처리 하기
+  // TODO: 아이템이 없을시 어떤 UI를 보여줄지 차후에 결정
   return (
     <div>
       <div className="h-9 flex justify-between items-center mb-6">
@@ -62,13 +62,15 @@ const ItemList = () => {
         </FormProvider>
       </div>
       <div>
-        {data?.pages.map((group, i) => (
-          <Fragment key={i}>
-            {group.map((item: Item) => (
-              <TradeStateCard key={item._id} item={item} className="mb-6" />
-            ))}
-          </Fragment>
-        ))}
+        {data?.pages[0].length !== 0
+          ? data?.pages.map((group, i) => (
+              <Fragment key={i}>
+                {group.map((item: Item) => (
+                  <TradeStateCard key={item._id} item={item} className="mb-6" />
+                ))}
+              </Fragment>
+            ))
+          : '데이터가 없습니다.'}
         {/*TODO: 로딩 부분에 대한 처리 논의 후 구체적으로 적용 할 것 => <Suspense> 를 사용할지, isLoading으로 처리할지 논의 */}
         {isFetchingNextPage && '데이터 불러오는 중'}
       </div>
