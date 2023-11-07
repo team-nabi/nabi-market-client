@@ -41,10 +41,10 @@ const FilterFormDialog = () => {
   })
 
   return (
-    <div>
+    <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <div className="flex gap-2 cursor-pointer">
+          <DialogTitle className="flex gap-2 cursor-pointer">
             <Image
               src={
                 getValues('priceRange') !== '' || getValues('category') !== ''
@@ -53,7 +53,7 @@ const FilterFormDialog = () => {
               }
               alt="필터 아이콘"
             />{' '}
-            <div
+            <DialogDescription
               className={
                 getValues('priceRange') !== '' || getValues('category') !== ''
                   ? 'text-primary-color'
@@ -62,12 +62,12 @@ const FilterFormDialog = () => {
               onClick={openModal}
             >
               필터
-            </div>
-          </div>
+            </DialogDescription>
+          </DialogTitle>
         </DialogTrigger>
-        <DialogContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-[390px] h-[398px] shadow-md z-50 p-6 rounded-lg">
+        <DialogContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-full max-w-[640px] h-[398px] shadow-md z-50 p-6 rounded-lg">
           <DialogHeader>
-            <div className="flex justify-between mb-4">
+            <DialogDescription className="flex justify-between mb-4">
               <DialogTitle className="text-xl font-bold">필터</DialogTitle>
               <Image
                 className="cursor-pointer"
@@ -75,10 +75,12 @@ const FilterFormDialog = () => {
                 src={Assets.xIcon}
                 alt="검색 아이콘"
               />
-            </div>
+            </DialogDescription>
           </DialogHeader>
           <DialogDescription className="mb-6">
-            <div className="text-sm mb-2">가격대</div>
+            <DialogDescription className="text-sm mb-2">
+              가격대
+            </DialogDescription>
             <Controller
               name="priceRange"
               control={control}
@@ -108,11 +110,13 @@ const FilterFormDialog = () => {
               )}
             />
           </DialogDescription>
-          <div className="border border-solid border-background-secondary-color mb-6"></div>
+          <DialogDescription className="border border-solid border-background-secondary-color mb-6"></DialogDescription>
 
           {/*TODO: 카테고리 Select를 어떻게 구현할지 조언을 구한 후 구현,  현재 SelectItem의 value와 textContent가 동일 실 API를 받을 경우, 어떤 값을 줄지 정한후 map 객체로 파싱하여 요청 */}
           <DialogDescription className="mb-6">
-            <div className="text-sm mb-2">카테고리</div>
+            <DialogDescription className="text-sm mb-2">
+              카테고리
+            </DialogDescription>
             <Controller
               name="category"
               control={control}
@@ -164,7 +168,7 @@ const FilterFormDialog = () => {
         </DialogContent>
       </Dialog>
       {isOpen && <div className="fixed inset-0 bg-black opacity-60 z-40" />}
-    </div>
+    </>
   )
 }
 

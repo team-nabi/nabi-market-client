@@ -56,7 +56,6 @@ const ItemList = () => {
       <div className="h-9 flex justify-between items-center mb-6">
         <FormProvider {...methods}>
           <SearchInput />
-
           <FilterFormDialog />
         </FormProvider>
       </div>
@@ -73,6 +72,7 @@ const ItemList = () => {
         {/*TODO: 로딩 부분에 대한 처리 논의 후 구체적으로 적용 할 것 => <Suspense> 를 사용할지, isLoading으로 처리할지 논의 */}
         {isFetchingNextPage && '데이터 불러오는 중'}
       </div>
+
       <div ref={lastElementRef} />
     </MaxWidthWrapper>
   )
