@@ -26,8 +26,29 @@ type TradeStateMap = {
 }
 
 const DescriptionSection = ({
-  itemData: { status, cardTitle, category, createdAt, dibs, content, cardId },
+  itemData: {
+    status,
+    cardTitle,
+    category,
+    createdAt,
+    dibs,
+    content,
+    cardId,
+    userId: authorId,
+  },
 }: DescriptionSectionProps) => {
+  // FIX : 로그인 관련 완성되면 실제 데이터로 수정
+  // const { isLoggedIn } = useAuth()
+  // const {currentUser} = useAuth();
+
+  const currentUser = {
+    imageUrl: 'http://asdf~',
+    nickname: '병원에 간 미어캣',
+    userId: 3,
+  }
+  const isLoggedIn = true
+  const isMyItem = currentUser.userId === authorId
+
   const tradeStateMap: TradeStateMap = {
     TRADE_AVAILABLE: {
       style: 'primary',
@@ -49,7 +70,7 @@ const DescriptionSection = ({
           {tradeStateMap[status].text}
         </Badge>
         <h3 className={cn('ml-2', TYPHOGRAPHY.title)}>{cardTitle}</h3>
-        <MoreButton />
+        {isLoggedIn && isMyItem && <MoreButton />}
       </div>
       <div className="flex flex-row items-center">
         <p
@@ -63,7 +84,7 @@ const DescriptionSection = ({
         <p className={cn('text-text-secondary-color', TYPHOGRAPHY.description)}>
           {createdAt}
         </p>
-        <Dibs itemId={cardId} dibsData={dibs} />
+        {isLoggedIn && <Dibs itemId={cardId} dibsData={dibs} />}
       </div>
       <p className="">{content}</p>
     </article>
