@@ -8,6 +8,7 @@ import {
   DialogDescription,
 } from '@radix-ui/react-dialog'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 import Button from '@/components/ui/Button'
 import { DialogFooter, DialogHeader } from '@/components/ui/Dialog'
 import {
@@ -23,6 +24,7 @@ import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 
 const FilterFormDialog = () => {
   const [isOpen, setIsOpen] = useState(false)
+
   const openModal = () => {
     setIsOpen(true)
   }

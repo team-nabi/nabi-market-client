@@ -1,12 +1,15 @@
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 import Input from '@/components/ui/Input'
 import Assets from '@/config/assets'
 import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 
 const SearchInput = () => {
   const { register, getValues } = useFormContext()
+
+  const searchParams = useSearchParams()
 
   const { fetchNextPage } = useItemsQuery({
     category: getValues('category'),
@@ -19,7 +22,7 @@ const SearchInput = () => {
   return (
     <div className="relative w-4/5">
       <Input
-        {...register('cardTitle')}
+        {...register('cardTitle', { value: searchParams.get('cardTitle') })}
         placeholder="찾으시는 물건을 입력해주세요."
       />
       <div

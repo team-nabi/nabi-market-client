@@ -3,6 +3,7 @@
 import { useEffect, useRef, Fragment } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 import TradeStateCard from '@/components/domain/card/trade-state-card'
 import Assets from '@/config/assets'
 import { useItemsQuery } from '@/hooks/api/useItemsQuery'
@@ -18,7 +19,14 @@ type ItemFilterInputs = {
 }
 
 const ItemList = () => {
-  const methods = useForm<ItemFilterInputs>()
+  const searchParams = useSearchParams()
+  const methods = useForm<ItemFilterInputs>({
+    defaultValues: {
+      category: searchParams.get('category') || '', // 초기값 설정
+      priceRange: searchParams.get('priceRange') || '',
+    },
+  })
+
   const { getValues } = methods
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
