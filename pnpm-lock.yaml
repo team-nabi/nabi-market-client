@@ -35,9 +35,6 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.0.0
     version: 5.0.0(react-dom@18.0.0)(react@18.0.0)
-  '@tanstack/react-query-devtools':
-    specifier: ^5.7.2
-    version: 5.7.2(@tanstack/react-query@5.0.0)(react-dom@18.0.0)(react@18.0.0)
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.0.0)
@@ -124,6 +121,9 @@ devDependencies:
   '@tanstack/eslint-plugin-query':
     specifier: ^5.0.0
     version: 5.0.0(eslint@8.0.0)(typescript@5.2.2)
+  '@tanstack/react-query-devtools':
+    specifier: ^5.7.2
+    version: 5.7.2(@tanstack/react-query@5.0.0)(react-dom@18.0.0)(react@18.0.0)
   '@trivago/prettier-plugin-sort-imports':
     specifier: ^4.2.0
     version: 4.2.0(prettier@3.0.3)
@@ -4629,11 +4629,10 @@ packages:
 
   /@tanstack/query-core@5.0.0:
     resolution: {integrity: sha512-Y1BpiA6BblJd/UlVqxEVeAG7IACn568YJuTTItAiecBI7En+33g780kg+/8lhgl+BzcUPN7o+NjBrSRGJoemyQ==}
-    dev: false
 
   /@tanstack/query-devtools@5.4.2:
     resolution: {integrity: sha512-EXdaMXi8CxZuMp97J5mq6wy1RduOfoWFv5vtA1U+hyqb8Wst6M8kkkjDSdFvGZIRpYY4K8mKLlEFHNUZDG5dtw==}
-    dev: false
+    dev: true
 
   /@tanstack/react-query-devtools@5.7.2(@tanstack/react-query@5.0.0)(react-dom@18.0.0)(react@18.0.0):
     resolution: {integrity: sha512-yYkzdmlntdJsy+GZzCabQGxxMjhRYayQzxe7OqYYFPnLEFf/eWkbH3cjyTBlGSKqpUN/8T5QS3P1Xur+l9hEng==}
@@ -4646,7 +4645,7 @@ packages:
       '@tanstack/react-query': 5.0.0(react-dom@18.0.0)(react@18.0.0)
       react: 18.0.0
       react-dom: 18.0.0(react@18.0.0)
-    dev: false
+    dev: true
 
   /@tanstack/react-query@5.0.0(react-dom@18.0.0)(react@18.0.0):
     resolution: {integrity: sha512-diQoC8FNBcO5Uf5yuaJlXthTtbO1xM8kzOX+pSBUMT9n/cqQ/u1wJGCtukvhDWA+6j07WmIj4bfqNbd2KOB6jQ==}
@@ -4663,7 +4662,6 @@ packages:
       '@tanstack/query-core': 5.0.0
       react: 18.0.0
       react-dom: 18.0.0(react@18.0.0)
-    dev: false
 
   /@testing-library/dom@9.3.3:
     resolution: {integrity: sha512-fB0R+fa3AUqbLHWyxXa2kGVtf1Fe1ZZFr0Zp6AIbIAzXb2mKbEXl+PCQNUOaq5lbTab5tfctfXRNsWXxa2f7Aw==}
