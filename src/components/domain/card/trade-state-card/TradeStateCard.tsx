@@ -64,9 +64,9 @@ const TradeStateCard = ({
           </CardFlex>
           <CardText type={'description'}>{itemName}</CardText>
           <CardText type={'description'}>{priceRange}</CardText>
-          <CardText type={'date'}>
+          {/* <CardText type={'date'}>
             {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
-          </CardText>
+          </CardText> */}
         </CardFlex>
       </CardFlex>
     </Card>
