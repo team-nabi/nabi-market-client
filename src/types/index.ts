@@ -45,3 +45,13 @@ export interface Dibs {
   createdAt: string
   modifiedAt: string
 }
+
+export interface ItemSuggestion {
+  _id: number
+  cardId: number
+  thumbNail: string
+  cardTitle: string
+  itemName: string
+  priceRange: Category
+  suggestionType: 'poke' | 'offer'
+}

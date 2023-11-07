@@ -23,7 +23,7 @@ async function getItemValue(itemId: string) {
 const ItemPage = async ({ params }: ItemPageProps) => {
   const data = await getItemValue(params.itemId)
   console.log(data)
-  const { userName, priceRange, tradeType, tradeArea, userId } = data
+  const { cardId, userName, priceRange, tradeType, tradeArea, userId } = data
 
   return (
     <main className="flex-col min-h-screen bg-background-color">
@@ -36,6 +36,7 @@ const ItemPage = async ({ params }: ItemPageProps) => {
           tradeType={tradeType}
           tradeArea={tradeArea}
           authorId={userId}
+          itemId={cardId}
         />
       </div>
     </main>

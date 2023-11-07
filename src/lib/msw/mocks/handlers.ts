@@ -1,6 +1,7 @@
-import authHandlers from './authHandlers'
+import { authHandlers } from './authHandlers'
 import { dibsHandlers } from './dibsHandlers'
 import { itemHandlers } from './itemHandlers'
+import { suggestHandlers } from './suggestHandlers'
 import { testHandlers } from './testHandler'
 
 export const handlers = [
@@ -8,4 +9,5 @@ export const handlers = [
   ...authHandlers,
   ...itemHandlers,
   ...dibsHandlers,
+  ...suggestHandlers,
 ]

@@ -19,7 +19,6 @@ const useDibs = (dibsData: Dibs[]) => {
 
   const [callDibs, setCallDibs] = useState(false)
   const [dibsCount, setDibsCount] = useState(0)
-  const tmpToken = 'abcd'
 
   useEffect(() => {
     if (!currentUser) return
@@ -31,12 +30,12 @@ const useDibs = (dibsData: Dibs[]) => {
     if (callDibs) {
       setDibsCount(dibsCount - 1)
       setCallDibs(false)
-      const res = await deleteItemDibs(itemId, tmpToken)
+      const res = await deleteItemDibs(itemId)
       console.log(res.message)
     } else {
       setDibsCount(dibsCount + 1)
       setCallDibs(true)
-      const res = await postItemDibs(itemId, tmpToken)
+      const res = await postItemDibs(itemId)
       console.log(res.message)
     }
   }
