@@ -22,12 +22,7 @@ body:
     attributes:
       label: 현재 상황과 버그 내용을 작성해주세요
       description: '현재 상황과 버그 내용을 자세하게 작성해주세요'
-      value: |
-        1. 어디 페이지에 접근해서 ...
-        2. 어떤 것을 클릭했더니 ...
-        3. 화면에 ...
-        4. 이러한 에러가 발생했다
-        ...
+      placeholder: 예시) 물건 상세 페이지에서 거래 제안하기 버튼을 클릭했더니 화면에 모달이 뜨지 않는 에러가 발생했다.
       render: bash
     validations:
       required: true
@@ -36,26 +31,22 @@ body:
     attributes:
       label: 예상 원인
       description: '문제가 발생한 원인을 예상하여 작성해주세요'
-      value: |
-        ...
       render: bash
     validations:
       required: true
   - type: textarea
     id: code
     attributes:
-      label: 이슈와 관련된 현재 코드
-      description: '이슈와 관련된 현재 코드를 복붙해주세요'
-      value: |
-        ...
-      render: bash
+      label: 이슈와 관련된 현재 코드 (선택)
+      description: '버그와 관련된 현재 코드를 첨부해주세요'
+      render: shell
     validations:
       required: false
   - type: textarea
     id: image
     attributes:
-      label: 이슈와 관련된 Log
-      description: '이슈와 관련된 Log를 첨부해주세요'
-      render: bash
+      label: 버그와 관련된 Log (선택)
+      description: '버그와 관련된 Log를 첨부해주세요'
+      render: shell
     validations:
       required: false
