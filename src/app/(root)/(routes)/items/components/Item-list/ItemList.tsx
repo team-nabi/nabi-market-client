@@ -1,39 +1,38 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import TradeStateCard from '@/components/domain/card/trade-state-card'
 import Assets from '@/config/assets'
 import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import { getItems } from '@/services/item/item'
 import { Item } from '@/types'
+import FilterFormDialog from '../filter-form-dialog'
 import SearchInput from '../search-input'
 
 type ItemFilterInputs = {
-  category: string[]
+  category: string
   priceRange: string
-  name: string
-  status: string[]
+  cardTitle: string
 }
 
 const ItemList = () => {
-  const PAGE_SIZE = 5
   const methods = useForm<ItemFilterInputs>()
   const { getValues } = methods
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
 
+  // TODO: 현재 API 명세에 status에 어떤 값을 줘야하는지에 대한 정의가 되어 있지 않기 때문에 임시로 상수 값을 전달함 => 추후에 실제 동작 값으로 고치기
+  // TODO: size에 숫자 5를 넣었지만 상수 처리하여 바꿔줄 것
   const { data, fetchNextPage, isFetchingNextPage } = useItemsQuery({
     category: getValues('category'),
     priceRange: getValues('priceRange'),
-    name: getValues('name'),
-    status: getValues('status'),
-    size: PAGE_SIZE,
+    cardTitle: getValues('cardTitle'),
+    status: ['TRADE_AVAILABLE'],
+    size: 5,
   })
 
   useEffect(() => {
@@ -51,13 +50,14 @@ const ItemList = () => {
       <div className="h-9 flex justify-between items-center mb-6">
         <FormProvider {...methods}>
           <SearchInput />
+
+          <div className="h-6 flex gap-2">
+            <Image src={Assets.filterIcon} alt="필터 아이콘" />{' '}
+            <FilterFormDialog />
+          </div>
         </FormProvider>
-        <div className="h-6 flex gap-2">
-          <Image src={Assets.filterIcon} alt="필터 아이콘" />{' '}
-          <div className="flex">필터</div>
-        </div>
       </div>
-      <div className="">
+      <div>
         {data?.pages.map((group, i) => (
           <React.Fragment key={i}>
             {group.map((item: Item) => (
@@ -65,6 +65,7 @@ const ItemList = () => {
             ))}
           </React.Fragment>
         ))}
+        {/*TODO: 로딩 부분에 대한 처리 논의 후 구체적으로 적용 할 것 => <Suspense> 를 사용할지, isLoading으로 처리할지 논의 */}
         {isFetchingNextPage && '데이터 불러오는 중'}
       </div>
       <div ref={lastElementRef} />
