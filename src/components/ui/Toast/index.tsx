@@ -10,7 +10,6 @@ import {
   ToastAction,
 } from './Toast'
 import { Toaster } from './Toaster'
-import { useToast } from './useToast'
 
 export type { ToastProps, ToastActionElement }
 
@@ -23,5 +22,4 @@ export {
   ToastClose,
   ToastAction,
   Toaster,
-  useToast,
 }

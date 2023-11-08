@@ -3,9 +3,9 @@
 // Error components must be Client Components
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useToast } from '@/components/ui/Toast/useToast'
 import AppPath from '@/config/appPath'
 import ErrorMessages from '@/config/errorMessages'
+import { useToast } from '@/hooks/useToast'
 
 export default function ErrorPage({
   error,

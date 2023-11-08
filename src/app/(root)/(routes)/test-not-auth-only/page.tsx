@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import { useToast } from '@/components/ui/Toast/useToast'
+import { useToast } from '@/hooks/useToast'
 import { handleApiError } from '@/lib/handleApiError'
 import { getTest } from '@/services/test/test'
 

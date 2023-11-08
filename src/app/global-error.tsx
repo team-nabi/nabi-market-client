@@ -1,5 +1,5 @@
 'use client'
-
+//TODO: 추가 테스트 후 코드 추가
 export default function GlobalError({
   _error,
   reset,
