@@ -14,19 +14,21 @@ interface EditButtonProps extends React.HTMLAttributes<HTMLInputElement> {
 type AvatarEditablePropsType = {
   fileChangeHandler: (_file: File) => void
   changedSuccessfully: boolean
+  defaultImage?: string | null
 }
 
 const AvatarEditable = ({
   fileChangeHandler,
   changedSuccessfully,
+  defaultImage = null,
 }: AvatarEditablePropsType) => {
-  const [profileImage, setProfileImage] = useState<string | null>(null)
+  const [profileImage, setProfileImage] = useState<string | null>(defaultImage)
 
   useEffect(() => {
     if (!changedSuccessfully) {
-      setProfileImage(() => null)
+      setProfileImage(() => defaultImage)
     }
-  }, [changedSuccessfully])
+  }, [changedSuccessfully, defaultImage])
 
   const onClickEdit = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()

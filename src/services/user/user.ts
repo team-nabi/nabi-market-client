@@ -16,8 +16,16 @@ const putUserProfile = async ({ file }: putUserProfileReq) => {
       'Content-Type': 'multipart/form-data',
     },
   )
-  console.log(response)
+
   return response
 }
 
-export { putUserProfile }
+const putUserNickname = async (nickname: string) => {
+  const response = await apiClient.put(ApiEndPoint.putUserNickname(), {
+    nickname,
+  })
+
+  return response
+}
+
+export { putUserProfile, putUserNickname }
