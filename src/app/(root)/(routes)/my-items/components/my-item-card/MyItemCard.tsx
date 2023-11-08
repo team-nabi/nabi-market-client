@@ -48,37 +48,39 @@ const MyItemCard = ({
   myItems: { cardTitle, itemName, createdAt, priceRange, thumbNail, status },
 }: MyItemCardProps) => {
   return (
-    <Card size={'lg'}>
-      <CardFlex
-        direction={'row'}
-        justify={'start'}
-        align={'center'}
-        gap={'space'}
-        className="h-full"
-      >
-        <div className="h-full w-36 relative">
-          <CardImage
-            className="rounded-lg"
-            src={thumbNail}
-            alt="이미지가 없습니다."
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
+    <div className="mb-6">
+      <Card size={'lg'}>
+        <CardFlex
+          direction={'row'}
+          justify={'start'}
+          align={'center'}
+          gap={'space'}
+          className="h-full"
+        >
+          <div className="h-full w-36 relative">
+            <CardImage
+              className="rounded-lg"
+              src={thumbNail}
+              alt="이미지가 없습니다."
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
 
-        <CardFlex direction={'col'} justify={'between'} className="h-full">
-          <CardText type={'title'}>{cardTitle}</CardText>
-          <CardText type={'description'}>{itemName}</CardText>
-          <CardText type={'description'}>{priceRange}</CardText>
-          <CardFlex gap={'space'}>
-            {renderMoveButtonsByStatus(status, priceRange)}
+          <CardFlex direction={'col'} justify={'between'} className="h-full">
+            <CardText type={'title'}>{cardTitle}</CardText>
+            <CardText type={'description'}>{itemName}</CardText>
+            <CardText type={'description'}>{priceRange}</CardText>
+            <CardFlex gap={'space'}>
+              {renderMoveButtonsByStatus(status, priceRange)}
+            </CardFlex>
+            <CardText type={'date'}>
+              {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
+            </CardText>
           </CardFlex>
-          <CardText type={'date'}>
-            {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
-          </CardText>
         </CardFlex>
-      </CardFlex>
-    </Card>
+      </Card>
+    </div>
   )
 }
 
