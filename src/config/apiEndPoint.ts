@@ -5,6 +5,7 @@ const ApiEndPoint = {
   test: () => '/test',
   item: (itemId: string) => `/${itemId}`,
   items: (cursorId: number) => `/items?cursorId=${cursorId}`,
+  myItems: (cursorId: number) => `/my-items?cursorId=${cursorId}`,
   dibs: (itemId: number) => `/dib/${itemId}`,
   suggestions: (itemId: string) => `/${itemId}/available-cards`,
 } as const
