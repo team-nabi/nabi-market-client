@@ -12,9 +12,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Normal: Story = {
-  args: {},
-}
-
-export const Disabled: Story = {
-  args: {},
+  args: {
+    fileChangeHandler: (file) => {
+      alert(file.name)
+    },
+    changedSuccessfully: true,
+  },
 }

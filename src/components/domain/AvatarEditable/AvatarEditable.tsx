@@ -11,15 +11,22 @@ interface EditButtonProps extends React.HTMLAttributes<HTMLInputElement> {
   onChangeHandler: (_event: ChangeEvent<HTMLInputElement>) => void
 }
 
-const AvatarEditable = () => {
+type AvatarEditablePropsType = {
+  fileChangeHandler: (_file: File) => void
+  changedSuccessfully: boolean
+}
+
+const AvatarEditable = ({
+  fileChangeHandler,
+  changedSuccessfully,
+}: AvatarEditablePropsType) => {
   const [profileImage, setProfileImage] = useState<string | null>(null)
-  const [file, setFile] = useState<File | null>(null)
 
   useEffect(() => {
-    if (file) {
-      console.log(file)
+    if (!changedSuccessfully) {
+      setProfileImage(() => null)
     }
-  }, [file])
+  }, [changedSuccessfully])
 
   const onClickEdit = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault()
@@ -27,7 +34,7 @@ const AvatarEditable = () => {
     if (event.target.files) {
       const file = event.target.files[0]
       const reader = new FileReader()
-      setFile(() => file)
+      fileChangeHandler(file)
       reader.onloadend = () => {
         setProfileImage(() => reader.result as string)
       }
