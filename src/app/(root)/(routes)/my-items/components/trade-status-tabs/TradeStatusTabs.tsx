@@ -17,8 +17,8 @@ const TradeStatusTabs = ({
     <Tabs defaultValue={currentTab}>
       <TabsList>
         <TabsTrigger
-          value="EXCHANGEABLE"
-          onClick={() => handleChangeCurrentTab('EXCHANGEABLE')}
+          value="TRADE_AVAILABLE"
+          onClick={() => handleChangeCurrentTab('TRADE_AVAILABLE')}
         >
           거래가능
         </TabsTrigger>
@@ -29,8 +29,8 @@ const TradeStatusTabs = ({
           예약중
         </TabsTrigger>
         <TabsTrigger
-          value="COMPLETED"
-          onClick={() => handleChangeCurrentTab('COMPLETED')}
+          value="TRADE_COMPLETE"
+          onClick={() => handleChangeCurrentTab('TRADE_COMPLETE')}
         >
           거래성사
         </TabsTrigger>

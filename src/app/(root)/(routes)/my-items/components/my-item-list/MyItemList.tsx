@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, Fragment, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
 import { useMyItemsQuery } from '@/hooks/api/useMyItemsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { MyItems } from '@/types'
@@ -9,8 +8,7 @@ import MyItemCard from '../my-item-card'
 import TradeStatusTabs from '../trade-status-tabs'
 
 const MyItemList = () => {
-  const searchParams = useSearchParams()
-  const [currentTab, setCurrentTab] = useState('EXCHANGEABLE')
+  const [currentTab, setCurrentTab] = useState('TRADE_AVAILABLE')
 
   // TODO: 현재 API 명세에 status에 어떤 값을 줘야하는지에 대한 정의가 되어 있지 않기 때문에 임시로 상수 값을 전달함 => 추후에 실제 동작 값으로 고치기
   // TODO: size에 숫자 5를 넣었지만 상수 처리하여 바꿔줄 것
