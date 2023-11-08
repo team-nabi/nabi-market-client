@@ -48,6 +48,8 @@ export const itemHandlers = [
                 image: '이미지 url',
               },
             ],
+            dibsCount: 11,
+            isMyDib: true,
             dibs: [
               {
                 dibId: 1,
@@ -64,7 +66,7 @@ export const itemHandlers = [
                 modifiedAt: '2023-10-24-20:08',
               },
             ],
-            userId: 1,
+            userId: 3,
             userName: '왕쩌는 구범모',
             tradeType: '직거래',
             tradeArea: '서울시 성동구',

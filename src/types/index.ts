@@ -36,7 +36,8 @@ export interface ItemDetail {
   content: string
   status: Status
   images: ItemImage[]
-  dibs: Dibs[]
+  dibsCount: number
+  isMyDib: boolean
   userId: number
   userName: string
   tradeType: string
@@ -46,14 +47,6 @@ export interface ItemDetail {
 export interface ItemImage {
   _id: number
   image: string
-}
-
-export interface Dibs {
-  dibsId: number
-  userId: number
-  cardId: number
-  createdAt: string
-  modifiedAt: string
 }
 
 export interface ItemSuggestion {
