@@ -12,10 +12,8 @@ type ItemPageProps = {
 
 async function getItemValue(itemId: string) {
   try {
-    const res = await getItemInfo(itemId)
-    const data = await res.json()
-
-    return data.data.cardResponseDto
+    const res = await getItemInfo(Number(itemId))
+    return res.data.cardResponseDto
   } catch (e) {
     console.log(e)
   }
