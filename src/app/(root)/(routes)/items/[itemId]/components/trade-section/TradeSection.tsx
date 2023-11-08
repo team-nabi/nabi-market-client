@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Button from '@/components/ui/Button'
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,

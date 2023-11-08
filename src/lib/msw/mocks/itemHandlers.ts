@@ -77,7 +77,7 @@ export const itemHandlers = [
   }),
   rest.delete(`${baseUrl}${ApiEndPoint.item(3)}`, async (_req, res, ctx) => {
     return res(
-      ctx.status(204),
+      ctx.status(200),
       ctx.json({
         code: 'C001',
         message: '삭제를 성공했습니다.',

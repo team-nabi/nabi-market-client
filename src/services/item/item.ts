@@ -30,19 +30,16 @@ const getItemInfo = async (itemId: number) => {
 
 const postItemDibs = async (itemId: number) => {
   const response = await apiClient.post(ApiEndPoint.dibs(itemId), {})
-  return response.json()
+  return response
 }
 
 const deleteItemDibs = async (itemId: number) => {
   const response = await apiClient.delete(ApiEndPoint.dibs(itemId))
-  return response.json()
+  return response
 }
 
 const deleteItem = async (itemId: number) => {
   const response = await apiClient.delete(ApiEndPoint.item(itemId))
-
-  // FIX : 공통 에러처리 코드로 변경하기. 백엔드에서 에러처리 관련 응답은 주말에 회의한다고 함
-  // return this.reponseHandler(response);
-  return response.json()
+  return response
 }
 export { getItems, getItemInfo, postItemDibs, deleteItemDibs, deleteItem }

@@ -11,7 +11,7 @@ type DibsProps = {
   itemId: number
 }
 const Dibs = ({ isMyDib, dibsCount: count, itemId }: DibsProps) => {
-  const { dibsCount, handleDibs } = useDibs(isMyDib, count)
+  const { dibsCount, dibsState, handleDibs } = useDibs(isMyDib, count)
   const onClickDibs = () => {
     handleDibs(itemId)
   }
@@ -19,7 +19,7 @@ const Dibs = ({ isMyDib, dibsCount: count, itemId }: DibsProps) => {
     <div className="flex flex-row gap-0 items-center ml-auto">
       <Button size="icon_sm" variant={null} onClick={onClickDibs}>
         <Image
-          src={isMyDib ? Assets.activeHeartIcon : Assets.inactiveHeartIcon}
+          src={dibsState ? Assets.activeHeartIcon : Assets.inactiveHeartIcon}
           alt="dibs"
         />
       </Button>

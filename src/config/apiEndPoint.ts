@@ -6,7 +6,7 @@ const ApiEndPoint = {
   item: (itemId: number) => `/${itemId}`,
   items: (cursorId: number) => `/items?cursorId=${cursorId}`,
   dibs: (itemId: number) => `/dib/${itemId}`,
-  suggestions: (itemId: string) => `/${itemId}/available-cards`,
+  suggestions: (itemId: number) => `/${itemId}/available-cards`,
 } as const
 
 export default ApiEndPoint

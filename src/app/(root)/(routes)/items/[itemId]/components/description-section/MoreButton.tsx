@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/Button'
@@ -26,18 +28,17 @@ const MoreButton = ({ itemId }: MoreButtonProps) => {
       router.push(AppPath.home())
       toast({
         title: '삭제를 완료하였습니다',
-        duration: 1000,
+        duration: 2000,
       })
     } catch (error) {
-      const { shouldRedirect, message } = handleApiError(error)
+      const { shouldRedirect } = handleApiError(error)
       if (shouldRedirect) {
         router.push(shouldRedirect)
       } else {
         console.log(shouldRedirect, error)
         toast({
           title: '삭제를 실패했습니다',
-          description: message,
-          duration: 1000,
+          duration: 2000,
         })
       }
     }
