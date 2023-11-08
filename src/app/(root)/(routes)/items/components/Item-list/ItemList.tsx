@@ -3,7 +3,7 @@
 import { useEffect, useRef, Fragment } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import Image from 'next/image'
-import TradeStateCard from '@/components/domain/card/trade-state-card'
+import TradueStatusCard from '@/components/domain/card/trade-state-card'
 import Assets from '@/config/assets'
 import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
@@ -61,7 +61,7 @@ const ItemList = () => {
         {data?.pages.map((group, i) => (
           <Fragment key={i}>
             {group.map((item: Items) => (
-              <TradeStateCard key={item._id} items={item} className="mb-6" />
+              <TradueStatusCard key={item._id} items={item} className="mb-6" />
             ))}
           </Fragment>
         ))}

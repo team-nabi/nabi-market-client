@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import TradeStateCard from '@/components/domain/card/trade-state-card'
+import TradeStatusCard from '@/components/domain/card/trade-state-card/TradeStausCard'
 import Button from '../Button'
 import { Card, CardFlex, CardImage, CardText } from './Card'
 
@@ -87,8 +87,8 @@ export const Trade: Story = {
   args: {},
   render: () => {
     return (
-      <TradeStateCard
-        item={{
+      <TradeStatusCard
+        items={{
           _id: 1,
           cardId: 1,
           cardTitle: '아이폰 16 팝니다',

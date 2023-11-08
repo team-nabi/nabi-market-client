@@ -5,11 +5,11 @@ import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
 import { Items } from '@/types'
 
-type TradeStateCardProps = {
+type TradueStatusCardProps = {
   items: Items
   className: string
 }
-type TradeStateMap = {
+type TradueStatusMap = {
   [key: string]: {
     style:
       | 'primary'
@@ -22,11 +22,11 @@ type TradeStateMap = {
   }
 }
 
-const TradeStateCard = ({
+const TradeStatusCard = ({
   items: { image, cardTitle, status, itemName, priceRange, createdAt },
   className,
-}: TradeStateCardProps) => {
-  const tradeStateMap: TradeStateMap = {
+}: TradueStatusCardProps) => {
+  const TradueStatusMap: TradueStatusMap = {
     EXCHANGEABLE: {
       style: 'primary',
       text: '거래가능',
@@ -58,8 +58,8 @@ const TradeStateCard = ({
         <CardFlex direction={'col'} justify={'between'} className="h-full">
           <CardFlex align={'center'} gap={'space'}>
             <CardText type={'title'}>{cardTitle}</CardText>
-            <Badge variant={tradeStateMap[status].style}>
-              {tradeStateMap[status].text}
+            <Badge variant={TradueStatusMap[status].style}>
+              {TradueStatusMap[status].text}
             </Badge>
           </CardFlex>
           <CardText type={'description'}>{itemName}</CardText>
@@ -73,4 +73,4 @@ const TradeStateCard = ({
   )
 }
 
-export default TradeStateCard
+export default TradeStatusCard

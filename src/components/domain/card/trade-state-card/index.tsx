@@ -1,3 +1,3 @@
-import { default as TradeStateCard } from './TradeStateCard'
+import { default as TradeStatusCard } from './TradeStausCard'
 
-export default TradeStateCard
+export default TradeStatusCard
