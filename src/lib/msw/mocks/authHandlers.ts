@@ -44,9 +44,7 @@ const authHandlers = [
   rest.get(
     `${baseUrl}${ApiEndPoint.getValidateUser()}`,
     async (req, res, ctx) => {
-      console.log('hit')
       const token = req.headers.get('Authorization')?.split(' ')[1]
-      console.log(token)
       if (!token || token === 'undefined') {
         return res(
           ctx.status(401),
