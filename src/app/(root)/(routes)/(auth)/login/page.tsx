@@ -1,5 +1,16 @@
-import React from 'react'
+import { FunctionComponent } from 'react'
+import LoginForm from '@/components/domain/LoginForm'
 
-export default function LoginPage() {
-  return <div>LoginPage</div>
+interface LoginPageProps {}
+
+const LoginPage: FunctionComponent<LoginPageProps> = ({}) => {
+  return (
+    <div className="h-screen">
+      <section className="flex items-center justify-center h-full ">
+        <LoginForm />
+      </section>
+    </div>
+  )
 }
+
+export default LoginPage

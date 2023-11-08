@@ -8,6 +8,7 @@ const COLORS = {
   gray: '#BFBFBF',
   black: '#000000',
   white: '#FFFFFF',
+  kakao: '#FEE103',
 
   //   dark: {
   //     primary_300: '#534CD0',
@@ -28,6 +29,10 @@ const LIGHT_THEMES = {
   'secondary-color': COLORS.secondary_200,
   'secondary-hover-color': COLORS.secondary_300,
   'text-color': COLORS.black,
+  'text-secondary-color': COLORS.gray,
+  'background-secondary-color': COLORS.gray,
+  'dialog-background-color': COLORS.black,
+  'kakao-color': COLORS.kakao,
 } as const
 
 const DARK_THEMES = {
@@ -37,6 +42,10 @@ const DARK_THEMES = {
   'secondary-color': COLORS.secondary_200,
   'secondary-hover-color': COLORS.secondary_300,
   'text-color': COLORS.white,
+  'text-secondary-color': COLORS.gray,
+  'background-secondary-color': COLORS.gray,
+  'dialog-background-color': COLORS.black,
+  'kakao-color': COLORS.kakao,
 } as const
 
 export default COLORS
