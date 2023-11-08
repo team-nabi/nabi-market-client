@@ -8,6 +8,18 @@
     --page-min-width: 320px;
     --page-max-width: 640px;
   }
+
+  @font-face {
+    font-family: Pretendard;
+    font-weight: 400;
+    src: url("/public/font/Pretendard-Regular.woff") format('woff'),
+  }
+  
+  @font-face {
+    font-family: Pretendard;
+    font-weight: 700;
+    src: url("/public/font/Pretendard-Bold.woff") format('woff'),
+  }
 }
 
 @layer base {
@@ -19,5 +31,7 @@
   html,
   body {
     @apply h-full;
+    @apply font-pretendard
+
   }
 }
