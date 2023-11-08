@@ -1,4 +1,11 @@
 import { Environment } from '@/config/environment'
+import {
+  ApiError,
+  ForbiddenError,
+  NotFoundError,
+  ServerError,
+  UnauthorizedError,
+} from './errors'
 
 class FetchAPI {
   private baseURL: string
@@ -38,7 +45,7 @@ class FetchAPI {
       headers: { ...this.headers, ...customHeaders },
       ...nextInit,
     })
-    return response
+    return this.responseHandler(response)
   }
 
   public async post(
@@ -53,7 +60,7 @@ class FetchAPI {
       body: JSON.stringify(body),
       ...nextInit,
     })
-    return response
+    return this.responseHandler(response)
   }
 
   public async put(
@@ -68,7 +75,7 @@ class FetchAPI {
       body: JSON.stringify(body),
       ...nextInit,
     })
-    return response
+    return this.responseHandler(response)
   }
 
   public async delete(
@@ -81,7 +88,25 @@ class FetchAPI {
       headers: { ...this.headers, ...customHeaders },
       ...nextInit,
     })
-    return response
+    return this.responseHandler(response)
+  }
+
+  private async responseHandler(response: Response): Promise<any> {
+    if (!response.ok) {
+      switch (response.status) {
+        case 401:
+          throw new UnauthorizedError(response)
+        case 403:
+          throw new ForbiddenError(response)
+        case 404:
+          throw new NotFoundError(response)
+        case 500:
+          throw new ServerError(response)
+        default:
+          throw new ApiError(response, 'An unexpected error occurred')
+      }
+    }
+    return await response.json()
   }
 }
 
