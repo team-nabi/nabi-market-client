@@ -30,7 +30,6 @@
     "classnames": "^2.3.2",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
-    "lucide-react": "^0.291.0",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.291.0",
     "next": "14.0.1",
@@ -38,6 +37,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
+    "swiper": "^11.0.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.3.3",
     "tailwindcss-animate": "^1.0.7",
@@ -46,7 +46,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@tanstack/react-query-devtools": "^5.7.2",
     "@storybook/addon-essentials": "7.5.0",
     "@storybook/addon-interactions": "7.5.0",
     "@storybook/addon-links": "7.5.0",
@@ -58,6 +57,7 @@
     "@storybook/testing-library": "0.2.2",
     "@storybook/theming": "^7.5.1",
     "@tanstack/eslint-plugin-query": "^5.0.0",
+    "@tanstack/react-query-devtools": "^5.7.2",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/js-cookie": "^3.0.5",
     "@types/node": "^20",

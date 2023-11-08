@@ -41,11 +41,13 @@ export const itemHandlers = [
             images: [
               {
                 _id: 1,
-                image: '이미지 url',
+                image:
+                  'https://flexible.img.hani.co.kr/flexible/height/500/400/imgdb/original/2023/1107/9816993187982728.jpg',
               },
               {
                 _id: 2,
-                image: '이미지 url',
+                image:
+                  'https://img.seoul.co.kr//img/upload/2023/08/27/SSC_20230827144801.jpg',
               },
             ],
             dibsCount: 11,
