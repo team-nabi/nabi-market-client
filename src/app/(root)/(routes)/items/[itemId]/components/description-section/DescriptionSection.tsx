@@ -31,7 +31,8 @@ const DescriptionSection = ({
     cardTitle,
     category,
     createdAt,
-    dibs,
+    dibsCount,
+    isMyDib,
     content,
     cardId,
     userId: authorId,
@@ -84,7 +85,9 @@ const DescriptionSection = ({
         <p className={cn('text-text-secondary-color', TYPHOGRAPHY.description)}>
           {createdAt}
         </p>
-        {isLoggedIn && <Dibs itemId={cardId} dibsData={dibs} />}
+        {isLoggedIn && (
+          <Dibs itemId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
+        )}
       </div>
       <p className="">{content}</p>
     </article>

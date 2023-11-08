@@ -48,6 +48,8 @@ export const itemHandlers = [
                 image: '이미지 url',
               },
             ],
+            dibsCount: 11,
+            isMyDib: true,
             dibs: [
               {
                 dibId: 1,
