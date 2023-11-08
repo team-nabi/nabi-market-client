@@ -6,7 +6,7 @@ import Image from 'next/image'
 import TradeStateCard from '@/components/domain/card/trade-state-card'
 import Assets from '@/config/assets'
 import { GetItems, getItems } from '@/services/item/item'
-import { Item } from '@/types'
+import { Items } from '@/types'
 import SearchInput from '../search-input'
 
 const ItemList = () => {
@@ -42,8 +42,8 @@ const ItemList = () => {
         </div>
       </div>
       <div>
-        {data?.map((item: Item) => (
-          <TradeStateCard key={item._id} item={item} className="mb-6" />
+        {data?.map((item: Items) => (
+          <TradeStateCard key={item._id} items={item} className="mb-6" />
         ))}
       </div>
     </div>

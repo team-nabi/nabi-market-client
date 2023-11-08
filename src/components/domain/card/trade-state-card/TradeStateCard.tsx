@@ -3,10 +3,10 @@ import koLocale from 'date-fns/locale/ko'
 import Badge from '@/components/ui/Badge'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
-import { Item } from '@/types'
+import { Items } from '@/types'
 
 type TradeStateCardProps = {
-  item: Item
+  items: Items
   className: string
 }
 type TradeStateMap = {
@@ -23,7 +23,7 @@ type TradeStateMap = {
 }
 
 const TradeStateCard = ({
-  item: { image, cardTitle, status, itemName, priceRange, createdAt },
+  items: { image, cardTitle, status, itemName, priceRange, createdAt },
   className,
 }: TradeStateCardProps) => {
   const tradeStateMap: TradeStateMap = {

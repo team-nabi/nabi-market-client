@@ -1,6 +1,6 @@
 import { Category, Status } from './item'
 
-export interface Item {
+export interface Items {
   _id: number
   cardId: number
   cardTitle: string
@@ -13,6 +13,16 @@ export interface Item {
   status: string
 }
 
+export interface MyItems {
+  cardId: string
+  cardTitle: string
+  itemName: string
+  createdAt: string
+  modifiedAt: string
+  priceRange: string
+  thumbNail: string
+  status: string
+}
 export interface ItemDetail {
   cardId: number
   cardTitle: string
