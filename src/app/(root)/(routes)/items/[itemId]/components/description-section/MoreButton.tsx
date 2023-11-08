@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/DropdownMenu'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
+import { toast } from '@/hooks/useToast'
+import { handleApiError } from '@/lib/handleApiError'
 import { deleteItem } from '@/services/item/item'
 
 type MoreButtonProps = {
@@ -22,18 +24,22 @@ const MoreButton = ({ itemId }: MoreButtonProps) => {
     try {
       await deleteItem(itemId)
       router.push(AppPath.home())
+      toast({
+        title: '삭제를 완료하였습니다',
+        duration: 1000,
+      })
     } catch (error) {
-      // const { shouldRedirect, message } = handleApiError(error)
-      // if (shouldRedirect) {
-      //   router.push(shouldRedirect)
-      // } else {
-      //   console.log(shouldRedirect, error)
-      //   toast({
-      //     title: '삭제를 실패했습니다'
-      //     description: message,
-      //     duration: 1000
-      //   })
-      // }
+      const { shouldRedirect, message } = handleApiError(error)
+      if (shouldRedirect) {
+        router.push(shouldRedirect)
+      } else {
+        console.log(shouldRedirect, error)
+        toast({
+          title: '삭제를 실패했습니다',
+          description: message,
+          duration: 1000,
+        })
+      }
     }
   }
 
