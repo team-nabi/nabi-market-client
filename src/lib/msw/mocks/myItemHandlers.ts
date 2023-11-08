@@ -4,10 +4,10 @@ import myItems from '@/lib/msw/mocks/data/my-items.json'
 
 const baseUrl = Environment.apiAddress()
 
-export const myitemHandlers = [
+export const myItemHandlers = [
   rest.get(`${baseUrl}/my-items`, async (req, res, ctx) => {
     const queryString = req.url.search
-    const cursorId = queryString.slice(13)
+    const cursorId = queryString.slice(10)
     const currentPage = Number(cursorId)
     const PAGE_SIZE = 10
     const filterdItems = myItems.filter(
