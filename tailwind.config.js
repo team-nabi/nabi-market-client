@@ -33,6 +33,9 @@ module.exports = {
         page_min: 'var(--page-min-width)',
         page_max: 'var(--page-max-width)',
       },
+      fontFamily: {
+        pretendard: ['Pretendard'],
+      },
     },
   },
   plugins: [
@@ -53,5 +56,6 @@ module.exports = {
       }
       addUtilities(newUtilities, ['responsive', 'hover'])
     },
+    require('tailwindcss-animate'),
   ],
 }
