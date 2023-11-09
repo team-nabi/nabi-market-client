@@ -7,8 +7,10 @@ import InActiveHeartIcon from '/public/images/icon-heart-inactive.svg'
 import LeftIcon from '/public/images/icon-left.svg'
 import MarkerIcon from '/public/images/icon-marker.svg'
 import MoneyIcon from '/public/images/icon-money.svg'
+import PlusIcon from '/public/images/icon-plus.svg'
 import RightIcon from '/public/images/icon-right.svg'
 import UsersIcon from '/public/images/icon-users.svg'
+import XCircleIcon from '/public/images/icon-x-circle.svg'
 import KakaoIcon from '/public/images/kakao.png'
 import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
@@ -34,6 +36,8 @@ const Assets = {
   usersIcon: UsersIcon,
   markerIcon: MarkerIcon,
   moneyIcon: MoneyIcon,
+  xCircleIcon: XCircleIcon,
+  plusIcon: PlusIcon,
 } as const
 
 export default Assets
