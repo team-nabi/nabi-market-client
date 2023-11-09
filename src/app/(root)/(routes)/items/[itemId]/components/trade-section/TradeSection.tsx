@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Button from '@/components/ui/Button'
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogTitle,
@@ -18,7 +17,7 @@ type TradeSectionProps = {
   tradeType: string
   tradeArea: string
   authorId: number
-  itemId: string
+  itemId: number
 }
 
 type TradeInfo = {
@@ -64,7 +63,7 @@ const TradeSection = ({
   }
 
   useEffect(() => {
-    async function getSuggestionsValue(itemId: string) {
+    async function getSuggestionsValue(itemId: number) {
       try {
         const res = await getSuggestions(itemId)
         if (res.status == 200) {

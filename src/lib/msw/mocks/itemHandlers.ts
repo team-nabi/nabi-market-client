@@ -19,7 +19,7 @@ export const itemHandlers = [
 
     return res(ctx.status(200), ctx.json(filterdItems))
   }),
-  rest.get(`${baseUrl}${ApiEndPoint.item('3')}`, async (_req, res, ctx) => {
+  rest.get(`${baseUrl}${ApiEndPoint.item(3)}`, async (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -72,6 +72,15 @@ export const itemHandlers = [
             tradeArea: '서울시 성동구',
           },
         },
+      }),
+    )
+  }),
+  rest.delete(`${baseUrl}${ApiEndPoint.item(3)}`, async (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        code: 'C001',
+        message: '삭제를 성공했습니다.',
       }),
     )
   }),
