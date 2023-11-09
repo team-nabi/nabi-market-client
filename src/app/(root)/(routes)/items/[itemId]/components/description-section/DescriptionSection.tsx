@@ -70,7 +70,7 @@ const DescriptionSection = ({
         <Badge variant={tradeStateMap[status].style}>
           {tradeStateMap[status].text}
         </Badge>
-        <h3 className={cn('ml-2', TYPHOGRAPHY.title)}>{cardTitle}</h3>
+        <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
         {isLoggedIn && isMyItem && <MoreButton itemId={cardId} />}
       </div>
       <div className="flex flex-row items-center">
