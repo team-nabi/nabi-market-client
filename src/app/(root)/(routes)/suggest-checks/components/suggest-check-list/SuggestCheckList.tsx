@@ -3,17 +3,21 @@
 import { useEffect, useRef, Fragment, useState } from 'react'
 import { useSuggestChecksQuery } from '@/hooks/api/useSuggestChecksQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import { SuggestList } from '@/types/suggest'
+import { DirectionType, SuggestList, SuggestionType } from '@/types/suggest'
 import SuggestCheckCard from '../suggest-check-card'
+import SuggestStatusTabs from '../suggest-status-tabs'
 
 const SuggestCheckList = () => {
-  //   const [suggestionType, setSuggestionType] = useState('TRADE_AVAILABLE')
+  const [suggestionTypeState, setSuggestionTypeState] =
+    useState<SuggestionType>('OFFER')
+  const [directionTypeState, setDirectionTypeState] =
+    useState<DirectionType>('RECEIVE')
   //   const []
 
   // TODO: 현재 API 명세에 status에 어떤 값을 줘야하는지에 대한 정의가 되어 있지 않기 때문에 임시로 상수 값을 전달함 => 추후에 실제 동작 값으로 고치기
   const { data, fetchNextPage, isFetchingNextPage } = useSuggestChecksQuery({
-    suggestionType: 'OFFER',
-    directionType: 'RECEIVE',
+    suggestionType: suggestionTypeState,
+    directionType: directionTypeState,
   })
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
@@ -32,10 +36,10 @@ const SuggestCheckList = () => {
   return (
     <>
       <div className="h-9 flex justify-center items-center my-12">
-        {/* <SuggestStatusTabs
-          currentTab={currentTab}
-          setCurrentTab={setCurrentTab}
-        /> */}
+        <SuggestStatusTabs
+          setSuggestionTypeState={setSuggestionTypeState}
+          setDirectionTypeState={setDirectionTypeState}
+        />
       </div>
       <div>
         {data?.pages[0].length !== 0
