@@ -2,6 +2,8 @@ import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
+import EditMemoIcon from '/public/images/icon-edit-memo.svg'
+import editIcon from '/public/images/icon-edit.svg'
 import ActiveHeartIcon from '/public/images/icon-heart-active.svg'
 import InActiveHeartIcon from '/public/images/icon-heart-inactive.svg'
 import LeftIcon from '/public/images/icon-left.svg'
@@ -34,6 +36,8 @@ const Assets = {
   usersIcon: UsersIcon,
   markerIcon: MarkerIcon,
   moneyIcon: MoneyIcon,
+  editIcon: editIcon,
+  editMemoIcon: EditMemoIcon,
 } as const
 
 export default Assets
