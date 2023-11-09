@@ -16,6 +16,7 @@ import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
 import Search from '/public/images/search.svg'
+import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
 
 const Assets = {
@@ -38,6 +39,7 @@ const Assets = {
   moneyIcon: MoneyIcon,
   editIcon: editIcon,
   editMemoIcon: EditMemoIcon,
+  unavailableIcon: UnavailableIcon,
 } as const
 
 export default Assets

@@ -21,7 +21,15 @@ async function getItemValue(itemId: string) {
 const ItemPage = async ({ params }: ItemPageProps) => {
   const data = await getItemValue(params.itemId)
   console.log(data)
-  const { cardId, userName, priceRange, tradeType, tradeArea, userId } = data
+  const {
+    cardId,
+    userName,
+    priceRange,
+    tradeType,
+    tradeArea,
+    userId,
+    pokeAvailable,
+  } = data
 
   return (
     <main className="flex-col min-h-screen bg-background-color">
@@ -35,6 +43,7 @@ const ItemPage = async ({ params }: ItemPageProps) => {
           tradeArea={tradeArea}
           authorId={userId}
           itemId={cardId}
+          pokeAvailable={pokeAvailable}
         />
       </div>
     </main>

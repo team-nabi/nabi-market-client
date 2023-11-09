@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/Button'
 import {
   Dialog,
@@ -8,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/Dialog'
+import { handleApiError } from '@/lib/handleApiError'
 import { getSuggestions } from '@/services/suggest/suggest'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
@@ -18,6 +20,7 @@ type TradeSectionProps = {
   tradeArea: string
   authorId: number
   itemId: number
+  pokeAvailable: boolean
 }
 
 type TradeInfo = {
@@ -32,6 +35,7 @@ const TradeSection = ({
   tradeArea,
   authorId,
   itemId,
+  pokeAvailable,
 }: TradeSectionProps) => {
   // FIX : 로그인 관련 완성되면 실제 데이터로 수정
   // const { isLoggedIn } = useAuth()
@@ -40,7 +44,7 @@ const TradeSection = ({
   const currentUser = {
     imageUrl: 'http://asdf~',
     nickname: '병원에 간 미어캣',
-    userId: 3,
+    userId: 2,
   }
 
   const isLoggedIn = true
@@ -62,16 +66,20 @@ const TradeSection = ({
     }
   }
 
+  const router = useRouter()
+
   useEffect(() => {
     async function getSuggestionsValue(itemId: number) {
       try {
         const res = await getSuggestions(itemId)
-        if (res.status == 200) {
-          const data = await res.json()
-          setSuggestions(data.data.cardList)
-        }
+        setSuggestions(res.data.cardList)
       } catch (e) {
-        console.log(e)
+        const { shouldRedirect } = handleApiError(e)
+        if (shouldRedirect) {
+          router.push(shouldRedirect)
+        } else {
+          console.log(shouldRedirect, e)
+        }
       }
     }
     getSuggestionsValue(itemId)
@@ -98,7 +106,10 @@ const TradeSection = ({
           <DialogHeader>
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
-          <SuggestList suggestionData={suggestions} />
+          <SuggestList
+            pokeAvailable={pokeAvailable}
+            suggestionData={suggestions}
+          />
         </DialogContent>
       </Dialog>
     </section>
