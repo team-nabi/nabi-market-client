@@ -1,11 +1,11 @@
 import { rest } from 'msw'
 import { Environment } from '@/config/environment'
-import items from '@/lib/msw/mocks/data/items.json'
+import items from '@/lib/msw/mocks/data/suggest-checks.json'
 
 const baseUrl = Environment.apiAddress()
 
-export const suggestionCheckHandlers = [
-  rest.get(`${baseUrl}/suggestion-checks`, async (req, res, ctx) => {
+export const suggestCheckHandlers = [
+  rest.get(`${baseUrl}/suggest-checks`, async (req, res, ctx) => {
     const queryString = req.url.search
     const cursorId = queryString.slice(10)
     const currentPage = Number(cursorId)
@@ -15,7 +15,6 @@ export const suggestionCheckHandlers = [
         index >= currentPage * PAGE_SIZE &&
         index < (currentPage + 1) * PAGE_SIZE,
     )
-
     return res(ctx.status(200), ctx.json(filterdItems))
   }),
 ]

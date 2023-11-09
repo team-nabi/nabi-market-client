@@ -1,7 +1,6 @@
 import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
-import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
@@ -63,13 +62,10 @@ type SuggestCheckCardProps = {
 }
 const SuggestCheckCard = ({
   suggestList: {
-    suggestionId,
-    cardId,
     cardTitle,
     itemName,
     priceRange,
     thumbnail,
-    suggestionType,
     suggestionStatus,
     createdAt,
     directionType,

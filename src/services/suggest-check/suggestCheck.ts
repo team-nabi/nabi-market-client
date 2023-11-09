@@ -13,8 +13,8 @@ const getSuggestChecks = async ({
   directionType,
   cursorId,
 }: GetSuggestChecks) => {
-  const response = await apiClient.get(ApiEndPoint.suggestionChecks(cursorId))
-  return response.json()
+  const response = await apiClient.get(ApiEndPoint.suggestChecks(cursorId))
+  return response
 }
 
 export { getSuggestChecks }
