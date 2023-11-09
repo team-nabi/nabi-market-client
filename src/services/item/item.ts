@@ -23,18 +23,23 @@ const getItems = async ({
   return response.json()
 }
 
-const getItemInfo = async (itemId: string) => {
+const getItemInfo = async (itemId: number) => {
   const response = await apiClient.get(ApiEndPoint.item(itemId))
   return response
 }
 
 const postItemDibs = async (itemId: number) => {
   const response = await apiClient.post(ApiEndPoint.dibs(itemId), {})
-  return response.json()
+  return response
 }
 
 const deleteItemDibs = async (itemId: number) => {
   const response = await apiClient.delete(ApiEndPoint.dibs(itemId))
-  return response.json()
+  return response
 }
-export { getItems, getItemInfo, postItemDibs, deleteItemDibs }
+
+const deleteItem = async (itemId: number) => {
+  const response = await apiClient.delete(ApiEndPoint.item(itemId))
+  return response
+}
+export { getItems, getItemInfo, postItemDibs, deleteItemDibs, deleteItem }
