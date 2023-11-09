@@ -1,5 +1,6 @@
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
+import CheckCircle from '/public/images/check-circle.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
 import ActiveHeartIcon from '/public/images/icon-heart-active.svg'
@@ -13,10 +14,13 @@ import KakaoIcon from '/public/images/kakao.png'
 import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
+import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
 import XIcon from '/public/images/x-icon.svg'
 
 const Assets = {
+  quitCircle: QuitCircle,
+  checkCircle: CheckCircle,
   search: Search,
   menuIcon: MenuIcon,
   arrowLeftIcon: ArrowLeftIcon,
