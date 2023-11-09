@@ -1,4 +1,5 @@
 import { Category, Status } from './item'
+import { User } from './user'
 
 export interface Item {
   _id: number
@@ -48,3 +49,5 @@ export interface ItemSuggestion {
   priceRange: Category
   suggestionType: 'poke' | 'offer'
 }
+
+export type { User }
