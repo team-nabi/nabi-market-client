@@ -27,7 +27,7 @@ const ItemPage = async ({ params }: ItemPageProps) => {
 
   return (
     <main className="flex-col min-h-screen bg-background-color">
-      {/* <Slider imageData={images} /> */}
+      <Slider imageData={images} imageAspectRatio="square" />
       <div className="p-4">
         <ProfileSection profileImg={null} userName={userName} />
         <DescriptionSection itemData={data} />

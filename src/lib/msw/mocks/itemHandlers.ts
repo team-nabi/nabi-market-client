@@ -42,12 +42,12 @@ export const itemHandlers = [
               {
                 _id: 1,
                 image:
-                  'https://flexible.img.hani.co.kr/flexible/height/500/400/imgdb/original/2023/1107/9816993187982728.jpg',
+                  'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182102_1_2797370.jpg',
               },
               {
                 _id: 2,
                 image:
-                  'https://img.seoul.co.kr//img/upload/2023/08/27/SSC_20230827144801.jpg',
+                  'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
               },
             ],
             dibsCount: 11,
