@@ -3,10 +3,10 @@ const ApiEndPoint = {
   googleLogin: () => '/oauth2/authorize/google/login',
   getValidateUser: () => '/users',
   test: () => '/test',
-  item: (itemId: string) => `/${itemId}`,
+  item: (itemId: number) => `/${itemId}`,
   items: (cursorId: number) => `/items?cursorId=${cursorId}`,
   dibs: (itemId: number) => `/dib/${itemId}`,
-  suggestions: (itemId: string) => `/${itemId}/available-cards`,
+  suggestions: (itemId: number) => `/${itemId}/available-cards`,
   putUserProfile: () => '/users/profile-image',
   putUserNickname: () => '/users/nickname',
 } as const

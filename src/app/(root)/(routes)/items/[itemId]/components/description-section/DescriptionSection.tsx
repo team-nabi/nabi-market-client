@@ -1,18 +1,9 @@
-import Image from 'next/image'
 import Badge from '@/components/ui/Badge'
-import Button from '@/components/ui/Button'
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-} from '@/components/ui/DropdownMenu'
-import Assets from '@/config/assets'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { ItemDetail } from '@/types'
 import { cn } from '@/utils'
 import Dibs from './Dibs'
+import MoreButton from './MoreButton'
 
 type DescriptionSectionProps = {
   itemData: ItemDetail
@@ -71,7 +62,7 @@ const DescriptionSection = ({
           {tradeStateMap[status].text}
         </Badge>
         <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
-        {isLoggedIn && isMyItem && <MoreButton />}
+        {isLoggedIn && isMyItem && <MoreButton itemId={cardId} />}
       </div>
       <div className="flex flex-row items-center">
         <p
@@ -89,28 +80,9 @@ const DescriptionSection = ({
           <Dibs itemId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
         )}
       </div>
-      <p className="">{content}</p>
+      <p>{content}</p>
     </article>
   )
 }
 
 export default DescriptionSection
-
-const MoreButton = () => {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button className="ml-auto" size="icon_sm" variant={null}>
-          <Image src={Assets.vMoreIcon} alt="more" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuGroup>
-          <DropdownMenuItem>수정하기</DropdownMenuItem>
-          <DropdownMenuItem>삭제하기</DropdownMenuItem>
-          <DropdownMenuItem>거래완료</DropdownMenuItem>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
-}
