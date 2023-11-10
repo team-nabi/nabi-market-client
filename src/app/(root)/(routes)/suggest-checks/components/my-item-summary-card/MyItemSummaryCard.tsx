@@ -1,15 +1,22 @@
 import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
-import { ItemDetail } from '@/types'
+import { getItemInfo } from '@/services/item/item'
 
-type MyItemSummaryCardProps = {
-  itemDetail: ItemDetail
+async function getItemValue(itemId: string) {
+  try {
+    const res = await getItemInfo(itemId)
+    const data = await res.json()
+
+    return data.data.cardResponseDto
+  } catch (e) {
+    console.log(e)
+  }
 }
 
-const MyItemSummaryCard = ({
-  itemDetail: { cardTitle, itemName, priceRange, createdAt, images },
-}: MyItemSummaryCardProps) => {
+const MyItemSummaryCard = async ({ params }: { params: any }) => {
+  // const data = await getItemValue('2')
+
   return (
     <div className="w-full h-card-lg p-2">
       <CardFlex
@@ -30,12 +37,13 @@ const MyItemSummaryCard = ({
         </div>
 
         <CardFlex direction={'col'} justify={'between'} className="h-full">
-          <CardText type={'title'}>{cardTitle}</CardText>
+          {/* <CardText type={'title'}>{cardTitle}</CardText>
           <CardText type={'description'}>{itemName}</CardText>
           <CardText type={'description'}>{priceRange}</CardText>
-          <CardText type={'date'}>
-            {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
-          </CardText>
+          <CardText type={'date'}> */}
+          {/* {JSON.stringify(data)} */}
+          {/* {formatDistanceToNow(new Date(createdAt), { locale: koLocale })} */}
+          {/* </CardText> */}
         </CardFlex>
       </CardFlex>
     </div>
