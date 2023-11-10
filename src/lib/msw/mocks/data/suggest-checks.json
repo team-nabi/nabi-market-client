@@ -1,6 +1,6 @@
 [
   {
-    "suggestionId": 1,
+    "suggestionId": 0,
     "cardId": 2,
     "cardTitle": "아이폰 14",
     "itemName": "아이폰 14",
@@ -9,6 +9,18 @@
     "suggestionType": "POKE",
     "suggestionStatus": "ACCEPTED",
     "createdAt": "2023-11-09T13:38:44",
+    "directionType": "RECEIVE"
+  },
+  {
+    "suggestionId": 1,
+    "cardId": 2,
+    "cardTitle": "아이폰 14",
+    "itemName": "아이폰 14",
+    "priceRange": "PRICE_RANGE_ONE",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "suggestionType": "POKE",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:37:39",
     "directionType": "RECEIVE"
   },
   {
@@ -18,10 +30,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "POKE",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:37:39",
-    "directionType": "RECEIVE"
+    "suggestionType": "OFFER",
+    "suggestionStatus": "DECLINED",
+    "createdAt": "2023-11-09T13:39:03",
+    "directionType": "SEND"
   },
   {
     "suggestionId": 3,
@@ -31,8 +43,8 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "OFFER",
-    "suggestionStatus": "DECLINED",
-    "createdAt": "2023-11-09T13:39:03",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:38:54",
     "directionType": "SEND"
   },
   {
@@ -42,10 +54,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "OFFER",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:38:54",
-    "directionType": "SEND"
+    "suggestionType": "POKE",
+    "suggestionStatus": "ACCEPTED",
+    "createdAt": "2023-11-09T13:38:44",
+    "directionType": "RECEIVE"
   },
   {
     "suggestionId": 5,
@@ -55,8 +67,8 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "POKE",
-    "suggestionStatus": "ACCEPTED",
-    "createdAt": "2023-11-09T13:38:44",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:37:39",
     "directionType": "RECEIVE"
   },
   {
@@ -66,10 +78,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "POKE",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:37:39",
-    "directionType": "RECEIVE"
+    "suggestionType": "OFFER",
+    "suggestionStatus": "DECLINED",
+    "createdAt": "2023-11-09T13:39:03",
+    "directionType": "SEND"
   },
   {
     "suggestionId": 7,
@@ -79,8 +91,8 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "OFFER",
-    "suggestionStatus": "DECLINED",
-    "createdAt": "2023-11-09T13:39:03",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:38:54",
     "directionType": "SEND"
   },
   {
@@ -90,10 +102,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "OFFER",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:38:54",
-    "directionType": "SEND"
+    "suggestionType": "POKE",
+    "suggestionStatus": "ACCEPTED",
+    "createdAt": "2023-11-09T13:38:44",
+    "directionType": "RECEIVE"
   },
   {
     "suggestionId": 9,
@@ -103,8 +115,8 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "POKE",
-    "suggestionStatus": "ACCEPTED",
-    "createdAt": "2023-11-09T13:38:44",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:37:39",
     "directionType": "RECEIVE"
   },
   {
@@ -114,10 +126,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "POKE",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:37:39",
-    "directionType": "RECEIVE"
+    "suggestionType": "OFFER",
+    "suggestionStatus": "DECLINED",
+    "createdAt": "2023-11-09T13:39:03",
+    "directionType": "SEND"
   },
   {
     "suggestionId": 11,
@@ -127,8 +139,8 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "OFFER",
-    "suggestionStatus": "DECLINED",
-    "createdAt": "2023-11-09T13:39:03",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:38:54",
     "directionType": "SEND"
   },
   {
@@ -138,10 +150,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "OFFER",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:38:54",
-    "directionType": "SEND"
+    "suggestionType": "POKE",
+    "suggestionStatus": "ACCEPTED",
+    "createdAt": "2023-11-09T13:38:44",
+    "directionType": "RECEIVE"
   },
   {
     "suggestionId": 13,
@@ -151,8 +163,8 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "POKE",
-    "suggestionStatus": "ACCEPTED",
-    "createdAt": "2023-11-09T13:38:44",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:37:39",
     "directionType": "RECEIVE"
   },
   {
@@ -162,10 +174,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "POKE",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:37:39",
-    "directionType": "RECEIVE"
+    "suggestionType": "OFFER",
+    "suggestionStatus": "DECLINED",
+    "createdAt": "2023-11-09T13:39:03",
+    "directionType": "SEND"
   },
   {
     "suggestionId": 15,
@@ -175,8 +187,8 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "OFFER",
-    "suggestionStatus": "DECLINED",
-    "createdAt": "2023-11-09T13:39:03",
+    "suggestionStatus": "WAITING",
+    "createdAt": "2023-11-09T13:38:54",
     "directionType": "SEND"
   },
   {
@@ -186,10 +198,10 @@
     "itemName": "아이폰 14",
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "OFFER",
-    "suggestionStatus": "WAITING",
-    "createdAt": "2023-11-09T13:38:54",
-    "directionType": "SEND"
+    "suggestionType": "POKE",
+    "suggestionStatus": "ACCEPTED",
+    "createdAt": "2023-11-09T13:38:44",
+    "directionType": "RECEIVE"
   },
   {
     "suggestionId": 17,
@@ -199,24 +211,12 @@
     "priceRange": "PRICE_RANGE_ONE",
     "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
     "suggestionType": "POKE",
-    "suggestionStatus": "ACCEPTED",
-    "createdAt": "2023-11-09T13:38:44",
-    "directionType": "RECEIVE"
-  },
-  {
-    "suggestionId": 18,
-    "cardId": 2,
-    "cardTitle": "아이폰 14",
-    "itemName": "아이폰 14",
-    "priceRange": "PRICE_RANGE_ONE",
-    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
-    "suggestionType": "POKE",
     "suggestionStatus": "WAITING",
     "createdAt": "2023-11-09T13:37:39",
     "directionType": "RECEIVE"
   },
   {
-    "suggestionId": 19,
+    "suggestionId": 18,
     "cardId": 2,
     "cardTitle": "아이폰 14",
     "itemName": "아이폰 14",
@@ -228,7 +228,7 @@
     "directionType": "SEND"
   },
   {
-    "suggestionId": 20,
+    "suggestionId": 19,
     "cardId": 2,
     "cardTitle": "아이폰 14",
     "itemName": "아이폰 14",
@@ -240,7 +240,7 @@
     "directionType": "SEND"
   },
   {
-    "suggestionId": 21,
+    "suggestionId": 20,
     "cardId": 2,
     "cardTitle": "아이폰 14",
     "itemName": "아이폰 14",
@@ -252,7 +252,7 @@
     "directionType": "RECEIVE"
   },
   {
-    "suggestionId": 22,
+    "suggestionId": 21,
     "cardId": 2,
     "cardTitle": "아이폰 14",
     "itemName": "아이폰 14",
@@ -264,7 +264,7 @@
     "directionType": "RECEIVE"
   },
   {
-    "suggestionId": 23,
+    "suggestionId": 22,
     "cardId": 2,
     "cardTitle": "아이폰 14",
     "itemName": "아이폰 14",
@@ -276,7 +276,7 @@
     "directionType": "SEND"
   },
   {
-    "suggestionId": 24,
+    "suggestionId": 23,
     "cardId": 2,
     "cardTitle": "아이폰 14",
     "itemName": "아이폰 14",

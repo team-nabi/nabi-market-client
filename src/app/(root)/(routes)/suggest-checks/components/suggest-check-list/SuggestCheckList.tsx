@@ -1,9 +1,14 @@
 'use client'
 
 import { useEffect, useRef, Fragment, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { useSuggestChecksQuery } from '@/hooks/api/useSuggestChecksQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import { DirectionType, SuggestList, SuggestionType } from '@/types/suggest'
+import {
+  DirectionType,
+  SuggestCheck,
+  SuggestionType,
+} from '@/types/suggest-check'
 import SuggestCheckCard from '../suggest-check-card'
 import SuggestStatusTabs from '../suggest-status-tabs'
 
@@ -12,13 +17,13 @@ const SuggestCheckList = () => {
     useState<SuggestionType>('OFFER')
   const [directionTypeState, setDirectionTypeState] =
     useState<DirectionType>('RECEIVE')
-  //   const []
+  const searchParams = useSearchParams()
 
-  // TODO: 현재 API 명세에 status에 어떤 값을 줘야하는지에 대한 정의가 되어 있지 않기 때문에 임시로 상수 값을 전달함 => 추후에 실제 동작 값으로 고치기
-  const { data, fetchNextPage, isFetchingNextPage } = useSuggestChecksQuery({
-    suggestionType: suggestionTypeState,
-    directionType: directionTypeState,
-  })
+  const { data, fetchNextPage, isFetchingNextPage } = useSuggestChecksQuery(
+    suggestionTypeState,
+    directionTypeState,
+    searchParams.get('itemId'),
+  )
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
@@ -45,10 +50,12 @@ const SuggestCheckList = () => {
         {data?.pages[0].length !== 0
           ? data?.pages.map((group, i) => (
               <Fragment key={i}>
-                {group.map((item: SuggestList) => (
+                {group.map((suggestCheck: SuggestCheck) => (
                   <SuggestCheckCard
-                    key={item.suggestionId}
-                    suggestList={item}
+                    key={suggestCheck.suggestionId}
+                    suggestCheck={suggestCheck}
+                    suggestionTypeState={suggestionTypeState}
+                    directionTypeState={directionTypeState}
                   />
                 ))}
               </Fragment>

@@ -1,24 +1,47 @@
 import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
 import Assets from '@/config/assets'
-import { DirectionType, SuggestList, SuggestionStatus } from '@/types/suggest'
+import { useSuggestCheckUpdateMutation } from '@/hooks/api/useSuggestCheckUpdateMutation'
+import {
+  DirectionType,
+  SuggestCheck,
+  SuggestionStatus,
+  SuggestionType,
+} from '@/types/suggest-check'
 
-const SuggestCheckButtons = () => (
+const SuggestCheckButtons = ({
+  handleSuggestionCheckUpdate,
+}: {
+  handleSuggestionCheckUpdate: (suggestionStatus: SuggestionStatus) => void
+}) => (
   <>
-    <CardFlex className="cursor-pointer" align={'center'} gap={'space'}>
+    <CardFlex
+      onClick={() => handleSuggestionCheckUpdate('ACCEPTED')}
+      className="cursor-pointer"
+      align={'center'}
+      gap={'space'}
+    >
       <Image src={Assets.checkCircle} alt="check-circle" />
       <CardText>수락</CardText>
     </CardFlex>
-    <CardFlex className="cursor-pointer" align={'center'} gap={'space'}>
+    <CardFlex
+      onClick={() => handleSuggestionCheckUpdate('DECLINED')}
+      className="cursor-pointer"
+      align={'center'}
+      gap={'space'}
+    >
       <Image src={Assets.quitCircle} alt="check-circle" />
       <CardText>거절</CardText>
     </CardFlex>
   </>
 )
+
+// TODO : 채팅 페이지 라우팅 및 설정이 나오면 라우팅 기능 만들기
 const AcceptedButton = () => {
   return <Button variant={'gradation'}>채팅</Button>
 }
@@ -37,31 +60,14 @@ const WaitingButton = () => {
   )
 }
 
-const renderMap = {
-  WAITING: {
-    RECEIVE: <SuggestCheckButtons />,
-    SEND: <WaitingButton />,
-  },
-  ACCEPTED: <AcceptedButton />,
-  DECLINED: <DeclinedButton />,
-}
-
-const reder = (
-  suggestionStatus: SuggestionStatus,
-  directionType: DirectionType,
-) => {
-  if (suggestionStatus === 'WAITING') {
-    return renderMap[suggestionStatus][directionType]
-  } else {
-    return renderMap[suggestionStatus]
-  }
-}
-
 type SuggestCheckCardProps = {
-  suggestList: SuggestList
+  suggestCheck: SuggestCheck
+  suggestionTypeState: SuggestionType
+  directionTypeState: DirectionType
 }
 const SuggestCheckCard = ({
-  suggestList: {
+  suggestCheck: {
+    suggestionId,
     cardTitle,
     itemName,
     priceRange,
@@ -69,8 +75,25 @@ const SuggestCheckCard = ({
     suggestionStatus,
     createdAt,
     directionType,
+    pageInfo,
   },
+  suggestionTypeState,
+  directionTypeState,
 }: SuggestCheckCardProps) => {
+  const searchParams = useSearchParams()
+
+  const { mutate } = useSuggestCheckUpdateMutation(
+    suggestionTypeState,
+    directionTypeState,
+    searchParams.get('itemId'),
+  )
+  const handleSuggestCheckUpdate = (
+    suggestionId: string,
+    suggestionStatus: SuggestionStatus,
+  ) => {
+    mutate({ suggestionId, suggestionStatus, currentPage: pageInfo })
+  }
+
   return (
     <div className="mb-6">
       <Card size={'lg'}>
@@ -96,7 +119,23 @@ const SuggestCheckCard = ({
             <CardText type={'description'}>{itemName}</CardText>
             <CardText type={'description'}>{priceRange}</CardText>
             <CardFlex gap={'space'}>
-              {reder(suggestionStatus, directionType)}
+              {suggestionStatus === 'WAITING' ? (
+                directionType === 'RECEIVE' ? (
+                  <SuggestCheckButtons
+                    handleSuggestionCheckUpdate={(
+                      suggestionStatus: SuggestionStatus,
+                    ) =>
+                      handleSuggestCheckUpdate(suggestionId, suggestionStatus)
+                    }
+                  />
+                ) : (
+                  <WaitingButton />
+                )
+              ) : suggestionStatus === 'ACCEPTED' ? (
+                <AcceptedButton />
+              ) : (
+                <DeclinedButton />
+              )}
             </CardFlex>
             <CardText type={'date'}>
               {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}

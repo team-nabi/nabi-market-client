@@ -4,7 +4,7 @@ export type SuggestionType = 'POKE' | 'OFFER'
 export type SuggestionStatus = 'WAITING' | 'ACCEPTED' | 'DECLINED'
 export type DirectionType = 'RECEIVE' | 'SEND'
 
-export interface SuggestList {
+export interface SuggestCheck {
   suggestionId: string
   cardId: string
   cardTitle: string
@@ -15,4 +15,5 @@ export interface SuggestList {
   suggestionStatus: SuggestionStatus
   createdAt: string
   directionType: DirectionType
+  pageInfo: number
 }

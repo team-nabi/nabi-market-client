@@ -1,5 +1,5 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { DirectionType, SuggestionType } from '@/types/suggest'
+import { DirectionType, SuggestionType } from '@/types/suggest-check'
 
 type SuggestStatusTabsProps = {
   setSuggestionTypeState: (suggestionTypeState: SuggestionType) => void
