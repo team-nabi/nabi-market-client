@@ -1,3 +1,5 @@
+'use client'
+
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
@@ -18,6 +20,15 @@ const SuggestCard = ({
   priceRange,
   suggestionType,
 }: SuggestCardProps) => {
+  const onClickSuggest = () => {
+    if (suggestionType === 'offer') {
+      alert('오퍼하기 클릭됨')
+      //
+    } else {
+      alert('찔러보기 클릭됨')
+    }
+  }
+
   return (
     <Card size="md">
       <CardFlex
@@ -40,7 +51,7 @@ const SuggestCard = ({
           <CardText type={'description'}>{itemName}</CardText>
           <CardText type={'description'}>{priceRange}</CardText>
           <div className="flex justify-end">
-            <Button variant={'gradation'} size={'sm'}>
+            <Button variant={'gradation'} size={'sm'} onClick={onClickSuggest}>
               {suggestionType === 'poke' ? '찔러보기' : '오퍼하기'}
             </Button>
           </div>
