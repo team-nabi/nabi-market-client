@@ -10,7 +10,7 @@ export interface Item {
   modifiedAt: string
   dibCount: number
   priceRange: string
-  image: string
+  thumbNail: string
   status: string
 }
 

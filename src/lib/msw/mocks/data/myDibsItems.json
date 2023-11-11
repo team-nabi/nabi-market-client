@@ -1,0 +1,237 @@
+{
+	"code": "D001",
+	"message": "성공했습니다.",
+	"data": {
+		"dibList": [
+			{
+				"cardId": 1,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~",
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "10만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+
+			},
+			{
+				"cardId": 2,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+			{
+				"cardId": 3,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 4,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+				
+			},
+            {
+				"cardId": 5,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},{
+				"cardId": 6,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},{
+				"cardId": 7,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},{
+				"cardId": 8,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},{
+				"cardId": 9,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 10,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 11,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 12,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 13,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 14,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 15,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 16,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 17,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 18,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 19,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 20,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 21,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 22,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			},
+            {
+				"cardId": 23,  
+				"thumbNail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+				"cardTitle": "스톤아일랜드 팝니다~", 
+				"itemName": "스톤아일랜드 멘투맨",
+				"priceRange": "20만원대",
+				"createdAt": "xxx",
+				"modifiedAt": "xxx",
+				"status": "EXCHANGEABLE"
+			}
+		],
+		"nextCursorId" : 24
+	}
+}

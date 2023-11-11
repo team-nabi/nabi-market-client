@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { getMyDibs } from '@/services/item/item'
 
-export const useDibsQuery = () => {
+export const useMyDibsQuery = () => {
   return useInfiniteQuery({
     queryKey: ['myDibs'],
     queryFn: async ({ pageParam = 0 }) => await getMyDibs(pageParam),

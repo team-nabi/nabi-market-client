@@ -1,7 +1,7 @@
 import { rest } from 'msw'
 import ApiEndPoint from '@/config/apiEndPoint'
 import { Environment } from '@/config/environment'
-import items from '@/lib/msw/mocks/data/items.json'
+import myDibsItems from '@/lib/msw/mocks/data/myDibsItems.json'
 
 const baseUrl = Environment.apiAddress()
 
@@ -22,12 +22,12 @@ export const dibsHandlers = [
       }),
     )
   }),
-  rest.get(`${baseUrl}${ApiEndPoint.getMyDibs}`, async (req, res, ctx) => {
+  rest.get(`${baseUrl}/api/v1/dibs`, async (req, res, ctx) => {
     const queryString = req.url.search
     const cursorId = queryString.slice(10)
     const currentPage = Number(cursorId)
     const PAGE_SIZE = 10
-    const filterdItems = items.filter(
+    const filterdItems = myDibsItems.data.dibList.filter(
       (item, index) =>
         index >= currentPage * PAGE_SIZE &&
         index < (currentPage + 1) * PAGE_SIZE,

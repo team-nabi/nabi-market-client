@@ -23,7 +23,7 @@ type TradeStateMap = {
 }
 
 const TradeStateCard = ({
-  item: { image, cardTitle, status, itemName, priceRange, createdAt },
+  item: { thumbNail, cardTitle, status, itemName, priceRange, createdAt },
   className,
 }: TradeStateCardProps) => {
   const tradeStateMap: TradeStateMap = {
@@ -48,7 +48,7 @@ const TradeStateCard = ({
       >
         <div className="h-full w-32 relative">
           <CardImage
-            src={image}
+            src={thumbNail}
             alt="이미지가 없습니다."
             layout="fill"
             objectFit="cover"
