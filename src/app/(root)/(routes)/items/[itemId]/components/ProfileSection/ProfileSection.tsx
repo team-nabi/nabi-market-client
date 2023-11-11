@@ -1,5 +1,5 @@
 import { Avatar, AvatarImage } from '@/components/ui/Avatar'
-import { TYPHOGRAPHY } from '@/styles/sizes'
+import { TYPOGRAPHY } from '@/styles/sizes'
 
 type ProfileSectionProps = {
   profileImg: string | null
@@ -12,7 +12,7 @@ const ProfileSection = ({ profileImg, userName }: ProfileSectionProps) => {
       <Avatar size="md">
         <AvatarImage imgUrl={profileImg} />
       </Avatar>
-      <div className={`ml-9 ${TYPHOGRAPHY.profile}`}>{userName}</div>
+      <div className={`ml-9 ${TYPOGRAPHY.profile}`}>{userName}</div>
     </section>
   )
 }
