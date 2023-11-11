@@ -17,6 +17,8 @@ export const Normal: Story = {
     itemName: '에어팟 맥스',
     priceRange: '30만원대',
     suggestionType: '오퍼하기',
+    cardId: 1,
+    toCardId: 3,
   },
   render: () => {
     return (
@@ -24,7 +26,9 @@ export const Normal: Story = {
         cardTitle={'에어팟 맥스 교환해요'}
         itemName={'에어팟 맥스'}
         priceRange={'30만원대'}
-        suggestionType={'offer'}
+        suggestionType={'OFFER'}
+        cardId={1}
+        toCardId={3}
       />
     )
   },

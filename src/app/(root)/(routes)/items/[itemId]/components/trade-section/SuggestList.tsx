@@ -7,26 +7,32 @@ import { ItemSuggestion } from '@/types'
 type SuggestListProps = {
   suggestionData: ItemSuggestion[]
   pokeAvailable: boolean
+  toCardId: number
 }
 
 /**
  * TODO : 스크롤바 디자인 수정
  * TODO : 실제 API 연결(useMutation 사용해서)
  */
-const SuggestList = ({ suggestionData, pokeAvailable }: SuggestListProps) => {
+const SuggestList = ({
+  suggestionData,
+  pokeAvailable,
+  toCardId,
+}: SuggestListProps) => {
+  console.log(suggestionData)
   return (
-    <Tabs defaultValue="offer">
+    <Tabs defaultValue="OFFER">
       <TabsList>
-        <TabsTrigger value="offer">오퍼하기</TabsTrigger>
-        <TabsTrigger value="poke">찔러보기</TabsTrigger>
+        <TabsTrigger value="OFFER">오퍼하기</TabsTrigger>
+        <TabsTrigger value="POKE">찔러보기</TabsTrigger>
       </TabsList>
-      {['offer', 'poke'].map((type) => (
+      {['OFFER', 'POKE'].map((type) => (
         <TabsContent
           key={type}
           value={type}
           className=" data-[state=inactive]:hidden h-[402px] overflow-y-auto"
         >
-          {!pokeAvailable && type === 'poke' ? (
+          {!pokeAvailable && type === 'POKE' ? (
             <div className="flex flex-col justify-start items-center gap-4 p-8">
               <Image
                 width={200}
@@ -49,6 +55,9 @@ const SuggestList = ({ suggestionData, pokeAvailable }: SuggestListProps) => {
                   itemName={v.itemName}
                   priceRange={v.priceRange}
                   suggestionType={v.suggestionType}
+                  cardId={v.cardId}
+                  toCardId={toCardId}
+                  suggestionStatus={v.suggestionStatus}
                 />
               ))
           )}

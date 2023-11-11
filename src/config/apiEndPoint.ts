@@ -9,6 +9,7 @@ const ApiEndPoint = {
   suggestions: (itemId: number) => `/${itemId}/available-cards`,
   putUserProfile: () => '/users/profile-image',
   putUserNickname: () => '/users/nickname',
+  postSuggestion: (suggestionType: string) => `/${suggestionType}`,
 } as const
 
 export default ApiEndPoint

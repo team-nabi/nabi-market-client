@@ -9,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/Dialog'
+import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
 import { handleApiError } from '@/lib/handleApiError'
 import { getSuggestions } from '@/services/suggest/suggest'
 import SuggestList from './SuggestList'
@@ -49,7 +50,6 @@ const TradeSection = ({
 
   const isLoggedIn = true
   const isMyItem = currentUser.userId === authorId
-  const [suggestions, setSuggestions] = useState([])
   const [open, setOpen] = useState(false)
 
   const tradeInfo: TradeInfo[] = [
@@ -66,24 +66,7 @@ const TradeSection = ({
     }
   }
 
-  const router = useRouter()
-
-  useEffect(() => {
-    async function getSuggestionsValue(itemId: number) {
-      try {
-        const res = await getSuggestions(itemId)
-        setSuggestions(res.data.cardList)
-      } catch (e) {
-        const { shouldRedirect } = handleApiError(e)
-        if (shouldRedirect) {
-          router.push(shouldRedirect)
-        } else {
-          console.log(shouldRedirect, e)
-        }
-      }
-    }
-    getSuggestionsValue(itemId)
-  }, [itemId])
+  const { data: suggestions } = useSuggestionsQuery(itemId)
 
   return (
     <section className="flex flex-col gap-2 w-full pt-4">
@@ -107,6 +90,7 @@ const TradeSection = ({
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
           <SuggestList
+            toCardId={itemId}
             pokeAvailable={pokeAvailable}
             suggestionData={suggestions}
           />

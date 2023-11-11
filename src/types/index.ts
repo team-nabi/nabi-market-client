@@ -47,7 +47,13 @@ export interface ItemSuggestion {
   cardTitle: string
   itemName: string
   priceRange: Category
-  suggestionType: 'poke' | 'offer'
+  suggestionType: 'POKE' | 'OFFER'
+  suggestionStatus: null | string
 }
 
+export interface SuggestionRequestData {
+  suggestionType: string
+  fromCardId: number
+  toCardId: number
+}
 export type { User }
