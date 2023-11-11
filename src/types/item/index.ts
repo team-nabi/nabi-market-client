@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image'
+
 export type Category =
   | '전체보기'
   | '남성의류'
@@ -21,3 +23,8 @@ export type PriceRange =
   | '30만원대'
   | '40만원대'
   | '50만원 이상'
+
+export interface itemImages {
+  _id: number
+  image: string | StaticImageData
+}
