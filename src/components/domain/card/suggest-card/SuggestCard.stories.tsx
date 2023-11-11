@@ -17,7 +17,7 @@ export const Normal: Story = {
     itemName: '에어팟 맥스',
     priceRange: '30만원대',
     suggestionType: '오퍼하기',
-    suggestionStatus: 'null',
+    suggestionStatus: null,
     cardId: 1,
     toCardId: 3,
   },
