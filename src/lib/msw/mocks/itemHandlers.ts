@@ -31,7 +31,7 @@ export const itemHandlers = [
             cardTitle: '아이폰 16 팝니다',
             category: '전자기기',
             itemName: '아이폰 16',
-            pokeAvailable: true,
+            pokeAvailable: false,
             createdAt: '2023-10-23-20:08',
             modifiedAt: '2023-10-24-20:08',
             viewCount: 19,
