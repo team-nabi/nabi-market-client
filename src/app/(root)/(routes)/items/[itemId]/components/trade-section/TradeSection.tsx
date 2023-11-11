@@ -58,32 +58,15 @@ const TradeSection = ({
     { title: '거래 지역', content: tradeArea, variant: 'information' },
   ]
 
-  const onClickButton = () => {
+  const onClickButton = async () => {
     if (isMyItem) {
       alert('제안확인 페이지로 이동하기')
     } else {
       setOpen(true)
+      const res = await getSuggestions(itemId)
+      setSuggestions(res.data.cardList)
     }
   }
-
-  const router = useRouter()
-
-  useEffect(() => {
-    async function getSuggestionsValue(itemId: number) {
-      try {
-        const res = await getSuggestions(itemId)
-        setSuggestions(res.data.cardList)
-      } catch (e) {
-        const { shouldRedirect } = handleApiError(e)
-        if (shouldRedirect) {
-          router.push(shouldRedirect)
-        } else {
-          console.log(shouldRedirect, e)
-        }
-      }
-    }
-    getSuggestionsValue(itemId)
-  }, [itemId])
 
   return (
     <section className="flex flex-col gap-2 w-full pt-4">
