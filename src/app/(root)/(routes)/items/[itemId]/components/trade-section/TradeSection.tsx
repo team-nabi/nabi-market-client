@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import Button from '@/components/ui/Button'
 import {
   Dialog,
@@ -10,8 +9,6 @@ import {
   DialogTitle,
 } from '@/components/ui/Dialog'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
-import { handleApiError } from '@/lib/handleApiError'
-import { getSuggestions } from '@/services/suggest/suggest'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
 
@@ -58,7 +55,7 @@ const TradeSection = ({
     { title: '거래 지역', content: tradeArea, variant: 'information' },
   ]
 
-  const onClickButton = () => {
+  const onClickButton = async () => {
     if (isMyItem) {
       alert('제안확인 페이지로 이동하기')
     } else {
@@ -67,7 +64,6 @@ const TradeSection = ({
   }
 
   const { data: suggestions } = useSuggestionsQuery(itemId)
-
   return (
     <section className="flex flex-col gap-2 w-full pt-4">
       {tradeInfo.map((v, i) => (
