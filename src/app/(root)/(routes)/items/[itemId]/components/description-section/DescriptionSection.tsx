@@ -1,5 +1,14 @@
 import Badge from '@/components/ui/Badge'
-import { TYPHOGRAPHY } from '@/styles/sizes'
+import Button from '@/components/ui/Button'
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+} from '@/components/ui/DropdownMenu'
+import Assets from '@/config/assets'
+import { TYPOGRAPHY } from '@/styles/sizes'
 import { ItemDetail } from '@/types'
 import { cn } from '@/utils'
 import Dibs from './Dibs'
@@ -61,19 +70,19 @@ const DescriptionSection = ({
         <Badge variant={tradeStateMap[status].style}>
           {tradeStateMap[status].text}
         </Badge>
-        <h3 className={cn('ml-2', TYPHOGRAPHY.title)}>{cardTitle}</h3>
+        <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
         {isLoggedIn && isMyItem && <MoreButton itemId={cardId} />}
       </div>
       <div className="flex flex-row items-center">
         <p
           className={cn(
             'mr-2 text-text-secondary-color',
-            TYPHOGRAPHY.description,
+            TYPOGRAPHY.description,
           )}
         >
           <u>{category}</u>
         </p>
-        <p className={cn('text-text-secondary-color', TYPHOGRAPHY.description)}>
+        <p className={cn('text-text-secondary-color', TYPOGRAPHY.description)}>
           {createdAt}
         </p>
         {isLoggedIn && (
