@@ -25,11 +25,15 @@ const MyDibsList = () => {
 
   return (
     <>
-      <div>
+      <div className="flex flex-col items-center">
         {data?.pages.map((group, i) => (
           <Fragment key={i}>
             {group.map((item: Item) => (
-              <TradeStateCard key={item.cardId} item={item} className="mb-6" />
+              <TradeStateCard
+                key={item.cardId}
+                item={item}
+                className="mb-6 w-[80%]"
+              />
             ))}
           </Fragment>
         ))}
