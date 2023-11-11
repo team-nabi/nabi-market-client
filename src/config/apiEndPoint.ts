@@ -9,6 +9,7 @@ const ApiEndPoint = {
   suggestions: (itemId: number) => `/${itemId}/available-cards`,
   putUserProfile: () => '/users/profile-image',
   putUserNickname: () => '/users/nickname',
+  getMyDibs: (cursorId: number) => `/api/v1/dibs/?cursorId=${cursorId}`,
 } as const
 
 export default ApiEndPoint

@@ -20,7 +20,7 @@ const getItems = async ({
   cursorId,
 }: GetItems) => {
   const response = await apiClient.get(ApiEndPoint.items(cursorId))
-  return response.json()
+  return response
 }
 
 const getItemInfo = async (itemId: number) => {
@@ -42,4 +42,16 @@ const deleteItem = async (itemId: number) => {
   const response = await apiClient.delete(ApiEndPoint.item(itemId))
   return response
 }
-export { getItems, getItemInfo, postItemDibs, deleteItemDibs, deleteItem }
+
+const getMyDibs = async (cursorId: number) => {
+  const response = await apiClient.get(ApiEndPoint.getMyDibs(cursorId))
+  return response
+}
+export {
+  getItems,
+  getItemInfo,
+  postItemDibs,
+  deleteItemDibs,
+  deleteItem,
+  getMyDibs,
+}
