@@ -1,8 +1,9 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { getMyItems } from '@/services/my-item/myItem'
+import { Status } from '@/types/item'
 
 export type UseMyItemsQuery = {
-  status: string
+  status: Status
 }
 
 export const useMyItemsQuery = ({ status }: UseMyItemsQuery) => {

@@ -1,20 +1,18 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/Tabs'
+import { Status } from '@/types/item'
 
 type TradeStatusTabsProps = {
-  currentTab: string
-  setCurrentTab: (currentTab: string) => void
+  status: Status
+  setStatus: (status: Status) => void
 }
 
-const TradeStatusTabs = ({
-  currentTab,
-  setCurrentTab,
-}: TradeStatusTabsProps) => {
-  const handleChangeCurrentTab = (status: string) => {
-    setCurrentTab(status)
+const TradeStatusTabs = ({ status, setStatus }: TradeStatusTabsProps) => {
+  const handleChangeCurrentTab = (status: Status) => {
+    setStatus(status)
   }
 
   return (
-    <Tabs defaultValue={currentTab}>
+    <Tabs defaultValue={status}>
       <TabsList>
         <TabsTrigger
           value="TRADE_AVAILABLE"

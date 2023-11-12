@@ -1,28 +1,27 @@
-import { Category, Status } from './item'
+import { Category, PriceRange, Status } from './item'
 import { User } from './user'
 
 export interface Item {
-  _id: number
   cardId: number
   cardTitle: string
   itemName: string
   createdAt: string
   modifiedAt: string
   dibCount: number
-  priceRange: string
+  priceRange: PriceRange
   image: string
-  status: string
+  status: Status
 }
 
-export interface MyItems {
+export interface MyItem {
   cardId: string
   cardTitle: string
   itemName: string
   createdAt: string
   modifiedAt: string
-  priceRange: string
+  priceRange: PriceRange
   thumbNail: string
-  status: string
+  status: Status
 }
 export interface ItemDetail {
   cardId: number

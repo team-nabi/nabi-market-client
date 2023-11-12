@@ -64,7 +64,7 @@ const ItemList = () => {
               <Fragment key={pageIndex}>
                 {currentPage.map((item: Item) => (
                   <TradeStatusCard
-                    key={item._id}
+                    key={item.cardId}
                     item={item}
                     className="mb-6"
                   />

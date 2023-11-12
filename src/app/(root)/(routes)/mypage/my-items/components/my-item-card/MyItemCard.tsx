@@ -4,11 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
+import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
-import { MyItems } from '@/types'
+import { MyItem } from '@/types'
 
-const MoveToItemListPage = ({ priceRange }: { priceRange: string }) => (
-  <Link href={`/items?priceRange=${priceRange}`}>
+const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
+  <Link href={`${AppPath.items()}?priceRange=${priceRange}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.checkCircle} alt="check-circle" />
       <CardText>제안 하러가기</CardText>
@@ -16,8 +17,8 @@ const MoveToItemListPage = ({ priceRange }: { priceRange: string }) => (
   </Link>
 )
 
-const MoveToOfferPage = () => (
-  <Link href={`/offers`}>
+const MoveToSuggestCheckPageButton = ({ itemId }: { itemId: string }) => (
+  <Link href={`${AppPath.suggestChecks()}?itemId=${itemId}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.arrowCircleRight} alt="arrow-circle-right" />{' '}
       <CardText>제안 확인</CardText>
@@ -25,27 +26,19 @@ const MoveToOfferPage = () => (
   </Link>
 )
 
-const renderMoveButtonsByStatus = (status: string, priceRange: string) => {
-  switch (status) {
-    case 'EXCHANGEABLE':
-      return (
-        <>
-          <MoveToOfferPage />
-          <MoveToItemListPage priceRange={priceRange} />
-        </>
-      )
-    case 'RESERVED':
-      return <MoveToOfferPage />
-    case 'COMPLETED':
-      return null
-  }
-}
-
 type MyItemCardProps = {
-  myItems: MyItems
+  myItem: MyItem
 }
 const MyItemCard = ({
-  myItems: { cardTitle, itemName, createdAt, priceRange, thumbNail, status },
+  myItem: {
+    cardId,
+    cardTitle,
+    itemName,
+    createdAt,
+    priceRange,
+    thumbNail,
+    status,
+  },
 }: MyItemCardProps) => {
   return (
     <div className="mb-6">
@@ -72,7 +65,14 @@ const MyItemCard = ({
             <CardText type={'description'}>{itemName}</CardText>
             <CardText type={'description'}>{priceRange}</CardText>
             <CardFlex gap={'space'}>
-              {renderMoveButtonsByStatus(status, priceRange)}
+              {status === 'TRADE_AVAILABLE' ? (
+                <>
+                  <MoveToSuggestCheckPageButton itemId={cardId} />
+                  <MoveToItemListPageButton priceRange={priceRange} />
+                </>
+              ) : status === 'RESERVED' ? (
+                <MoveToSuggestCheckPageButton itemId={cardId} />
+              ) : status === 'TRADE_COMPLETE' ? null : undefined}
             </CardFlex>
             <CardText type={'date'}>
               {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
