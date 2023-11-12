@@ -88,7 +88,7 @@ export const Trade: Story = {
   render: () => {
     return (
       <TradeStatusCard
-        items={{
+        item={{
           _id: 1,
           cardId: 1,
           cardTitle: '아이폰 16 팝니다',
