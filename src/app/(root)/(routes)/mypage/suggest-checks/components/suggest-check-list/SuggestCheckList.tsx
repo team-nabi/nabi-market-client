@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, Fragment, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useSuggestChecksQuery } from '@/hooks/api/useSuggestChecksQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import {
@@ -38,8 +39,11 @@ const SuggestCheckList = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
+  const hasData = data?.pages[0].length !== 0
+  const pages = data?.pages
+
   return (
-    <>
+    <MaxWidthWrapper>
       <div className="h-9 flex justify-center items-center my-12">
         <SuggestStatusTabs
           setSuggestionTypeState={setSuggestionTypeState}
@@ -47,10 +51,10 @@ const SuggestCheckList = () => {
         />
       </div>
       <div>
-        {data?.pages[0].length !== 0
-          ? data?.pages.map((group, i) => (
-              <Fragment key={i}>
-                {group.map((suggestCheck: SuggestCheck) => (
+        {hasData
+          ? pages?.map((currentPage, pageIndex) => (
+              <Fragment key={pageIndex}>
+                {currentPage.map((suggestCheck: SuggestCheck) => (
                   <SuggestCheckCard
                     key={suggestCheck.suggestionId}
                     suggestCheck={suggestCheck}
@@ -66,7 +70,7 @@ const SuggestCheckList = () => {
       </div>
 
       <div ref={lastElementRef} />
-    </>
+    </MaxWidthWrapper>
   )
 }
 export default SuggestCheckList
