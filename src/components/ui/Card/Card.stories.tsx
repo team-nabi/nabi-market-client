@@ -89,17 +89,16 @@ export const Trade: Story = {
     return (
       <TradeStatusCard
         item={{
-          _id: 1,
-          cardId: 1,
+          cardId: '1',
           cardTitle: '아이폰 16 팝니다',
           itemName: '아이폰 16',
           createdAt: '2023-11-01T08:08:00',
           modifiedAt: '2023-11-01T08:08:00',
           dibCount: 19,
-          priceRange: '10000-50000',
+          priceRange: '10만원대',
           image:
             'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg',
-          status: 'EXCHANGEABLE',
+          status: 'TRADE_AVAILABLE',
         }}
         className={''}
       />
