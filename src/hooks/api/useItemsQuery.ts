@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { getItems } from '@/services/item/item'
-import { Category, PriceRange, Status } from '@/types/item'
+import { Category, PriceRange } from '@/types/item'
 
 export type UseItemsQuery = {
   category: Category
@@ -14,7 +14,8 @@ export const useItemsQuery = ({
   cardTitle,
 }: UseItemsQuery) => {
   return useInfiniteQuery({
-    queryKey: ['items', category, priceRange, cardTitle, status],
+    queryKey: ['items', category, priceRange, cardTitle],
+
     queryFn: async ({ pageParam = 0 }) =>
       await getItems({
         category,

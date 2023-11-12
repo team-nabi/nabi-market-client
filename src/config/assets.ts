@@ -1,8 +1,10 @@
 import Banner1 from '/public/images/Banner1.png'
 import Banner2 from '/public/images/Banner2.png'
 import Banner3 from '/public/images/Banner3.png'
+import ArrowCircleRight from '/public/images/arrow-circle-right.svg'
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
+import CheckCircle from '/public/images/check-circle.svg'
 import FilterActiveIcon from '/public/images/filter-active.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
@@ -28,6 +30,8 @@ import XIcon from '/public/images/x-icon.svg'
 const Assets = {
   search: Search,
   menuIcon: MenuIcon,
+  arrowCircleRight: ArrowCircleRight,
+  checkCircle: CheckCircle,
   arrowLeftIcon: ArrowLeftIcon,
   filterIcon: FilterIcon,
   filterActiveIcon: FilterActiveIcon,

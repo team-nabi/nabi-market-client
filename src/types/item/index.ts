@@ -30,4 +30,3 @@ export interface itemImages {
   _id: number
   image: string | StaticImageData
 }
-

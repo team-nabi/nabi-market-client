@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, Fragment, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import TradeStateCard from '@/components/domain/card/trade-state-card'
+import TradeStatusCard from '@/components/domain/card/trade-status-card'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
@@ -63,7 +63,11 @@ const ItemList = () => {
           ? pages?.map((currentPage, pageIndex) => (
               <Fragment key={pageIndex}>
                 {currentPage.map((item: Item) => (
-                  <TradeStateCard key={item._id} item={item} className="mb-6" />
+                  <TradeStatusCard
+                    key={item.cardId}
+                    item={item}
+                    className="mb-6"
+                  />
                 ))}
               </Fragment>
             ))

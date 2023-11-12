@@ -1,5 +1,5 @@
 import ApiEndPoint from '@/config/apiEndPoint'
-import { Category, PriceRange, Status } from '@/types/item'
+import { Category, PriceRange } from '@/types/item'
 import apiClient from '../apiClient'
 
 export type GetItems = {
@@ -17,7 +17,7 @@ const getItems = async ({
   cursorId,
 }: GetItems) => {
   const response = await apiClient.get(ApiEndPoint.items(cursorId))
-  return response.json()
+  return response
 }
 
 const getItemInfo = async (itemId: number) => {
