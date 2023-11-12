@@ -1,18 +1,28 @@
-import { Category, Status } from './item'
+import { Category, PriceRange, Status } from './item'
+import { User } from './user'
 
 export interface Item {
-  _id: number
-  cardId: number
+  cardId: string
   cardTitle: string
   itemName: string
   createdAt: string
   modifiedAt: string
   dibCount: number
-  priceRange: string
+  priceRange: PriceRange
   image: string
-  status: string
+  status: Status
 }
 
+export interface MyItem {
+  cardId: string
+  cardTitle: string
+  itemName: string
+  createdAt: string
+  modifiedAt: string
+  priceRange: PriceRange
+  thumbNail: string
+  status: Status
+}
 export interface ItemDetail {
   cardId: number
   cardTitle: string
@@ -48,3 +58,5 @@ export interface ItemSuggestion {
   priceRange: Category
   suggestionType: 'poke' | 'offer'
 }
+
+export type { User }

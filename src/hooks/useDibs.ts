@@ -10,7 +10,7 @@ const useDibs = (isMyDib: boolean, count: number) => {
    * const token = Cookies.get(Environment.tokenName())
    */
 
-  const [dibsState, setDibsState] = useState(isMyDib)
+  const [isDibsActive, setIsDibsActive] = useState(isMyDib)
   const [dibsCount, setDibsCount] = useState(count)
 
   /**
@@ -19,21 +19,21 @@ const useDibs = (isMyDib: boolean, count: number) => {
    * useMutation에서 낙관적 업데이트 먼저 하고 실패했을 경우 onError 핸들러로 이전 값 복원
    */
   const handleDibs = async (itemId: number) => {
-    if (dibsState) {
+    if (isDibsActive) {
       setDibsCount(dibsCount - 1)
-      setDibsState(false)
+      setIsDibsActive(false)
       const res = await deleteItemDibs(itemId)
       console.log(res.message)
     } else {
       setDibsCount(dibsCount + 1)
-      setDibsState(true)
+      setIsDibsActive(true)
       const res = await postItemDibs(itemId)
       console.log(res.message)
     }
   }
 
   return {
-    dibsState,
+    isDibsActive,
     dibsCount,
     handleDibs,
   }

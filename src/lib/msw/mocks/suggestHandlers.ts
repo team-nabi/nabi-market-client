@@ -7,7 +7,7 @@ const baseUrl = Environment.apiAddress()
 
 export const suggestHandlers = [
   rest.get(
-    `${baseUrl}${ApiEndPoint.suggestions('3')}`,
+    `${baseUrl}${ApiEndPoint.suggestions(3)}`,
     async (_req, res, ctx) => {
       return res(
         ctx.status(200),
@@ -44,7 +44,7 @@ export const suggestHandlers = [
                 suggestionType: 'poke',
               },
               {
-                _id: 3,
+                _id: 4,
                 cardId: 6,
                 thumbNail: DEFAULT_ITEM_THUMBNAIL_IMG,
                 cardTitle: 'xxx',
@@ -53,7 +53,7 @@ export const suggestHandlers = [
                 suggestionType: 'poke',
               },
               {
-                _id: 3,
+                _id: 5,
                 cardId: 7,
                 thumbNail: DEFAULT_ITEM_THUMBNAIL_IMG,
                 cardTitle: 'xxx',
