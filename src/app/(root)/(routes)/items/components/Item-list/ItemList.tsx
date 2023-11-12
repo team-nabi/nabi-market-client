@@ -1,40 +1,33 @@
 'use client'
 
-import { useEffect, useRef, Fragment } from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
+import { useEffect, useRef, Fragment, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import TradeStateCard from '@/components/domain/card/trade-state-card'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useItemsQuery } from '@/hooks/api/useItemsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { Item } from '@/types'
+import { Category, PriceRange } from '@/types/item'
 import FilterFormDialog from '../filter-form-dialog'
 import SearchInput from '../search-input'
 
-type ItemFilterInputs = {
-  category: string
-  priceRange: string
-  cardTitle: string
-}
-
 const ItemList = () => {
   const searchParams = useSearchParams()
-  const methods = useForm<ItemFilterInputs>({
-    defaultValues: {
-      category: searchParams.get('category') || '', // 초기값 설정
-      priceRange: searchParams.get('priceRange') || '',
-    },
-  })
-  const { getValues } = methods
+  const [cardTitle, setCardTitle] = useState(
+    searchParams.get('cardTitle' as string) || '',
+  )
+  const [category, setCatgegory] = useState<Category>(
+    (searchParams.get('category') as Category) || '전체보기',
+  )
+  const [priceRange, setPriceRange] = useState<PriceRange>(
+    (searchParams.get('priceRange') as PriceRange) || '전체보기',
+  )
 
   // TODO: 현재 API 명세에 status에 어떤 값을 줘야하는지에 대한 정의가 되어 있지 않기 때문에 임시로 상수 값을 전달함 => 추후에 실제 동작 값으로 고치기
-  // TODO: size에 숫자 5를 넣었지만 상수 처리하여 바꿔줄 것
   const { data, fetchNextPage, isFetchingNextPage } = useItemsQuery({
-    category: getValues('category'),
-    priceRange: getValues('priceRange'),
-    cardTitle: getValues('cardTitle'),
-    status: ['TRADE_AVAILABLE'],
-    size: 5,
+    category: category,
+    priceRange: priceRange,
+    cardTitle: cardTitle,
   })
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
@@ -50,20 +43,26 @@ const ItemList = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
+  const hasData = data?.pages[0].length !== 0
+  const pages = data?.pages
+
   // TODO: 아이템이 없을시 어떤 UI를 보여줄지 차후에 결정
   return (
     <MaxWidthWrapper>
       <div className="h-9 flex justify-between items-center mb-6">
-        <FormProvider {...methods}>
-          <SearchInput />
-          <FilterFormDialog />
-        </FormProvider>
+        <SearchInput setCardTitle={setCardTitle} />
+        <FilterFormDialog
+          category={category}
+          priceRange={priceRange}
+          setPriceRange={setPriceRange}
+          setCategory={setCatgegory}
+        />
       </div>
       <div>
-        {data?.pages[0].length !== 0
-          ? data?.pages.map((group, i) => (
-              <Fragment key={i}>
-                {group.map((item: Item) => (
+        {hasData
+          ? pages?.map((currentPage, pageIndex) => (
+              <Fragment key={pageIndex}>
+                {currentPage.map((item: Item) => (
                   <TradeStateCard key={item._id} item={item} className="mb-6" />
                 ))}
               </Fragment>

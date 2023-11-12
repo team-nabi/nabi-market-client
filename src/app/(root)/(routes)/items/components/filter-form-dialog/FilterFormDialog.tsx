@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
 import {
   Dialog,
   DialogTrigger,
@@ -8,20 +7,30 @@ import {
   DialogDescription,
 } from '@radix-ui/react-dialog'
 import Image from 'next/image'
-import Button from '@/components/ui/Button'
-import { DialogFooter, DialogHeader } from '@/components/ui/Dialog'
+import { DialogHeader } from '@/components/ui/Dialog'
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from '@/components/ui/Select/Select'
 import Assets from '@/config/assets'
-import { useItemsQuery } from '@/hooks/api/useItemsQuery'
+import { Category, PriceRange } from '@/types/item'
 
-const FilterFormDialog = () => {
+type FilterFormDialogProps = {
+  priceRange: PriceRange
+  category: Category
+  setPriceRange: (priceRange: PriceRange) => void
+  setCategory: (category: Category) => void
+}
+
+const FilterFormDialog = ({
+  priceRange,
+  category,
+  setPriceRange,
+  setCategory,
+}: FilterFormDialogProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const openModal = () => {
     setIsOpen(true)
@@ -30,17 +39,8 @@ const FilterFormDialog = () => {
     setIsOpen(false)
   }
 
-  const { control, getValues } = useFormContext()
-
-  const { fetchNextPage } = useItemsQuery({
-    category: getValues('category'),
-    priceRange: getValues('priceRange'),
-    cardTitle: getValues('cardTitle'),
-    status: ['TRADE_AVAILABLE'],
-    size: 5,
-  })
-
-  const categories = [
+  const categories: Category[] = [
+    '전체보기',
     '남성의류',
     '여성의류',
     '잡화ㆍ액세서리',
@@ -53,25 +53,19 @@ const FilterFormDialog = () => {
     '기타',
   ]
 
+  const hasNoFilter = priceRange !== '전체보기' || category !== '전체보기'
+
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
           <DialogTitle className="flex gap-2 cursor-pointer">
             <Image
-              src={
-                getValues('priceRange') !== '' || getValues('category') !== ''
-                  ? Assets.filterActiveIcon
-                  : Assets.filterIcon
-              }
+              src={hasNoFilter ? Assets.filterActiveIcon : Assets.filterIcon}
               alt="필터 아이콘"
             />{' '}
             <DialogDescription
-              className={
-                getValues('priceRange') !== '' || getValues('category') !== ''
-                  ? 'text-primary-color'
-                  : ''
-              }
+              className={hasNoFilter ? 'text-primary-color' : ''}
               onClick={openModal}
             >
               필터
@@ -94,34 +88,24 @@ const FilterFormDialog = () => {
             <DialogDescription className="text-sm mb-2">
               가격대
             </DialogDescription>
-            <Controller
-              name="priceRange"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  onValueChange={(value) => {
-                    field.onChange({ target: { name, value } })
-                  }}
-                >
-                  <SelectTrigger>
-                    <SelectValue
-                      placeholder={
-                        getValues('priceRange') || '가격대를 선택해주세요.'
-                      }
-                    />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup className="w-full">
-                      <SelectItem value="10만원대">10만원대</SelectItem>
-                      <SelectItem value="20만원대">20만원대</SelectItem>
-                      <SelectItem value="30만원대">30만원대</SelectItem>
-                      <SelectItem value="40만원대">40만원대</SelectItem>
-                      <SelectItem value="50만원이상">50만원이상</SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              )}
-            />
+            <Select
+              value={priceRange}
+              onValueChange={(value: PriceRange) => {
+                setPriceRange(value)
+              }}
+            >
+              <SelectTrigger>{priceRange}</SelectTrigger>
+              <SelectContent>
+                <SelectGroup className="w-full">
+                  <SelectItem value="전체보기">전체보기</SelectItem>
+                  <SelectItem value="10만원대">10만원대</SelectItem>
+                  <SelectItem value="20만원대">20만원대</SelectItem>
+                  <SelectItem value="30만원대">30만원대</SelectItem>
+                  <SelectItem value="40만원대">40만원대</SelectItem>
+                  <SelectItem value="50만원이상">50만원이상</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </DialogDescription>
           <DialogDescription className="border-t border-solid border-background-secondary-color mb-6"></DialogDescription>
 
@@ -130,38 +114,22 @@ const FilterFormDialog = () => {
             <DialogDescription className="text-sm mb-2">
               카테고리
             </DialogDescription>
-            {categories.map((category) => (
-              <Controller
-                key={category}
-                name="category"
-                control={control}
-                defaultValue={''}
-                render={({ field }) => (
-                  <button
-                    className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
-                      field.value === category
-                        ? 'border-primary-color text-primary-color'
-                        : 'border-background-secondary-color text-background-secondary-color'
-                    }`}
-                    type="button"
-                    onClick={() => field.onChange(category)}
-                  >
-                    {category}
-                  </button>
-                )}
-              />
+            {categories.map((currentCategory: Category, index) => (
+              <button
+                key={index}
+                className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
+                  category === currentCategory
+                    ? 'border-primary-color text-primary-color'
+                    : 'border-background-secondary-color text-background-secondary-color'
+                }`}
+                onClick={(e) =>
+                  setCategory(e.currentTarget.textContent as Category)
+                }
+              >
+                {currentCategory}
+              </button>
             ))}
           </DialogDescription>
-          <DialogFooter className="w-full flex justify-end">
-            <Button
-              onClick={() => {
-                fetchNextPage()
-                closeModal()
-              }}
-            >
-              적용하기
-            </Button>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
       {isOpen && <div className="fixed inset-0 bg-black opacity-60 z-40" />}
