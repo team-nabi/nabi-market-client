@@ -3,6 +3,7 @@ import Banner2 from '/public/images/Banner2.png'
 import Banner3 from '/public/images/Banner3.png'
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
+import FilterActiveIcon from '/public/images/filter-active.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
 import EditMemoIcon from '/public/images/icon-edit-memo.svg'
@@ -29,6 +30,7 @@ const Assets = {
   menuIcon: MenuIcon,
   arrowLeftIcon: ArrowLeftIcon,
   filterIcon: FilterIcon,
+  filterActiveIcon: FilterActiveIcon,
   alarmIcon: AlarmIcon,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
