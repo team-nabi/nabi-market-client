@@ -2,6 +2,7 @@ import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
 import Link from 'next/link'
+import Badge from '@/components/ui/Badge'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
 import AppPath from '@/config/appPath'
@@ -25,6 +26,10 @@ const MoveToSuggestCheckPageButton = ({ itemId }: { itemId: string }) => (
     </CardFlex>
   </Link>
 )
+
+const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge>
+const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
+const TradeCompleteBadge = () => <Badge variant={'gradation'}>거래성사</Badge>
 
 type MyItemCardProps = {
   myItem: MyItem
@@ -61,7 +66,16 @@ const MyItemCard = ({
           </div>
 
           <CardFlex direction={'col'} justify={'between'} className="h-full">
-            <CardText type={'title'}>{cardTitle}</CardText>
+            <CardFlex align={'center'} gap={'space'}>
+              <CardText type={'title'}>{cardTitle}</CardText>
+              {status === 'TRADE_AVAILABLE' ? (
+                <TradeAvailableBadge />
+              ) : status === 'RESERVED' ? (
+                <ReservedBadge />
+              ) : (
+                <TradeCompleteBadge />
+              )}
+            </CardFlex>
             <CardText type={'description'}>{itemName}</CardText>
             <CardText type={'description'}>{priceRange}</CardText>
             <CardFlex gap={'space'}>
