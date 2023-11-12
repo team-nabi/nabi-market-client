@@ -15,6 +15,7 @@ export const useItemsQuery = ({
 }: UseItemsQuery) => {
   return useInfiniteQuery({
     queryKey: ['items', category, priceRange, cardTitle],
+
     queryFn: async ({ pageParam = 0 }) =>
       await getItems({
         category,
