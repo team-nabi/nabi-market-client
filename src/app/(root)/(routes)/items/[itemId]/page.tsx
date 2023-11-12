@@ -1,3 +1,4 @@
+import Slider from '@/components/domain/Slider/Slider'
 import { getItemInfo } from '@/services/item/item'
 import ProfileSection from './components/ProfileSection'
 import DescriptionSection from './components/description-section'
@@ -11,10 +12,8 @@ type ItemPageProps = {
 
 async function getItemValue(itemId: string) {
   try {
-    const res = await getItemInfo(itemId)
-    const data = await res.json()
-
-    return data.data.cardResponseDto
+    const res = await getItemInfo(Number(itemId))
+    return res.data.cardResponseDto
   } catch (e) {
     console.log(e)
   }
@@ -23,11 +22,20 @@ async function getItemValue(itemId: string) {
 const ItemPage = async ({ params }: ItemPageProps) => {
   const data = await getItemValue(params.itemId)
   console.log(data)
-  const { cardId, userName, priceRange, tradeType, tradeArea } = data
+  const {
+    cardId,
+    userName,
+    priceRange,
+    tradeType,
+    tradeArea,
+    userId,
+    images,
+    pokeAvailable,
+  } = data
 
   return (
     <main className="flex-col min-h-screen bg-background-color">
-      <div>이미지 슬라이더 영역</div>
+      <Slider imageData={images} imageAspectRatio="square" />
       <div className="p-4">
         <ProfileSection profileImg={null} userName={userName} />
         <DescriptionSection itemData={data} />
@@ -35,7 +43,9 @@ const ItemPage = async ({ params }: ItemPageProps) => {
           priceRange={priceRange}
           tradeType={tradeType}
           tradeArea={tradeArea}
+          authorId={userId}
           itemId={cardId}
+          pokeAvailable={pokeAvailable}
         />
       </div>
     </main>

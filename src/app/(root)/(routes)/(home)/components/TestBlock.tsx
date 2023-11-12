@@ -2,15 +2,9 @@
 import React from 'react'
 import { getTest } from '@/services/test/test'
 
-async function getTestValue(): Promise<{ message: string } | null> {
-  try {
-    const res = await getTest()
-    const data = await res.json()
-    return data
-  } catch (e) {
-    console.log(e)
-    return null
-  }
+async function getTestValue() {
+  const res = await getTest()
+  return res
 }
 
 export default async function TestBlock() {

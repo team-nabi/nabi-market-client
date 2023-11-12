@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import {
@@ -9,10 +8,11 @@ import {
   DropdownMenuItem,
 } from '@/components/ui/DropdownMenu'
 import Assets from '@/config/assets'
-import { TYPHOGRAPHY } from '@/styles/sizes'
+import { TYPOGRAPHY } from '@/styles/sizes'
 import { ItemDetail } from '@/types'
 import { cn } from '@/utils'
 import Dibs from './Dibs'
+import MoreButton from './MoreButton'
 
 type DescriptionSectionProps = {
   itemData: ItemDetail
@@ -26,8 +26,30 @@ type TradeStateMap = {
 }
 
 const DescriptionSection = ({
-  itemData: { status, cardTitle, category, createdAt, dibs, content, cardId },
+  itemData: {
+    status,
+    cardTitle,
+    category,
+    createdAt,
+    dibsCount,
+    isMyDib,
+    content,
+    cardId,
+    userId: authorId,
+  },
 }: DescriptionSectionProps) => {
+  // FIX : 로그인 관련 완성되면 실제 데이터로 수정
+  // const { isLoggedIn } = useAuth()
+  // const {currentUser} = useAuth();
+
+  const currentUser = {
+    imageUrl: 'http://asdf~',
+    nickname: '병원에 간 미어캣',
+    userId: 3,
+  }
+  const isLoggedIn = true
+  const isMyItem = currentUser.userId === authorId
+
   const tradeStateMap: TradeStateMap = {
     TRADE_AVAILABLE: {
       style: 'primary',
@@ -48,45 +70,28 @@ const DescriptionSection = ({
         <Badge variant={tradeStateMap[status].style}>
           {tradeStateMap[status].text}
         </Badge>
-        <h3 className={cn('ml-2', TYPHOGRAPHY.title)}>{cardTitle}</h3>
-        <MoreButton />
+        <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
+        {isLoggedIn && isMyItem && <MoreButton itemId={cardId} />}
       </div>
       <div className="flex flex-row items-center">
         <p
           className={cn(
             'mr-2 text-text-secondary-color',
-            TYPHOGRAPHY.description,
+            TYPOGRAPHY.description,
           )}
         >
           <u>{category}</u>
         </p>
-        <p className={cn('text-text-secondary-color', TYPHOGRAPHY.description)}>
+        <p className={cn('text-text-secondary-color', TYPOGRAPHY.description)}>
           {createdAt}
         </p>
-        <Dibs itemId={cardId} dibsData={dibs} />
+        {isLoggedIn && (
+          <Dibs itemId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
+        )}
       </div>
-      <p className="">{content}</p>
+      <p>{content}</p>
     </article>
   )
 }
 
 export default DescriptionSection
-
-const MoreButton = () => {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button className="ml-auto" size="icon_sm" variant={null}>
-          <Image src={Assets.vMoreIcon} alt="more" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuGroup>
-          <DropdownMenuItem>수정하기</DropdownMenuItem>
-          <DropdownMenuItem>삭제하기</DropdownMenuItem>
-          <DropdownMenuItem>거래완료</DropdownMenuItem>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
-}

@@ -1,4 +1,5 @@
 import { Category, Status } from './item'
+import { User } from './user'
 
 export interface Item {
   _id: number
@@ -26,7 +27,8 @@ export interface ItemDetail {
   content: string
   status: Status
   images: ItemImage[]
-  dibs: Dibs[]
+  dibsCount: number
+  isMyDib: boolean
   userId: number
   userName: string
   tradeType: string
@@ -38,14 +40,6 @@ export interface ItemImage {
   image: string
 }
 
-export interface Dibs {
-  dibsId: number
-  userId: number
-  cardId: number
-  createdAt: string
-  modifiedAt: string
-}
-
 export interface ItemSuggestion {
   _id: number
   cardId: number
@@ -55,3 +49,5 @@ export interface ItemSuggestion {
   priceRange: Category
   suggestionType: 'poke' | 'offer'
 }
+
+export type { User }
