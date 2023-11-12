@@ -7,6 +7,7 @@ const PRICE_RANGE = [
   '30만원대',
   '40만원대',
   '50만원 이상',
+  '전체보기',
 ] as const
 
 const CATEGORY = [
@@ -20,6 +21,8 @@ const CATEGORY = [
   '전자기기',
   '가구ㆍ인테리어',
   '가전',
+  '전자기기ㆍ디지털',
+  '기타',
 ] as const
 
 const TRADE_TYPE = ['직거래', '택배거래'] as const

@@ -77,6 +77,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.47.0
     version: 7.47.0(react@18.0.0)
+  swiper:
+    specifier: ^11.0.3
+    version: 11.0.3
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -11760,6 +11763,11 @@ packages:
       '@swc/core': 1.3.95
       webpack: 5.89.0(@swc/core@1.3.95)(esbuild@0.18.20)
     dev: true
+
+  /swiper@11.0.3:
+    resolution: {integrity: sha512-MyV9ooQsriAe2EibeamqewLjgCfSvl2xoyratl6S3ln5BXDL4BzlO6mxcbLMCzQL6Z60b/u0AS/nKrepL0+TAg==}
+    engines: {node: '>= 4.7.0'}
+    dev: false
 
   /synchronous-promise@2.0.17:
     resolution: {integrity: sha512-AsS729u2RHUfEra9xJrE39peJcc2stq2+poBXX8bcM08Y6g9j/i/PUzwNQqkaJde7Ntg1TO7bSREbR5sdosQ+g==}

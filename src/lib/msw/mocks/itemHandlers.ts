@@ -31,7 +31,7 @@ export const itemHandlers = [
             cardTitle: '아이폰 16 팝니다',
             category: '전자기기',
             itemName: '아이폰 16',
-            pokeAvailable: true,
+            pokeAvailable: false,
             createdAt: '2023-10-23-20:08',
             modifiedAt: '2023-10-24-20:08',
             viewCount: 19,
@@ -41,11 +41,13 @@ export const itemHandlers = [
             images: [
               {
                 _id: 1,
-                image: '이미지 url',
+                image:
+                  'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182102_1_2797370.jpg',
               },
               {
                 _id: 2,
-                image: '이미지 url',
+                image:
+                  'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
               },
             ],
             dibsCount: 11,
