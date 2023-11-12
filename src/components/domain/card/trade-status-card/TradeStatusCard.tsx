@@ -3,40 +3,20 @@ import koLocale from 'date-fns/locale/ko'
 import Badge from '@/components/ui/Badge'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
-import { Items } from '@/types'
+import { Item } from '@/types'
 
-type TradueStatusCardProps = {
-  items: Items
+type TradeStatusCardProps = {
+  item: Item
   className: string
 }
-type TradueStatusMap = {
-  [key: string]: {
-    style:
-      | 'primary'
-      | 'secondary'
-      | 'gradation'
-      | 'information'
-      | null
-      | undefined
-    text: string
-  }
-}
+
+const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge>
+const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
 
 const TradeStatusCard = ({
-  items: { image, cardTitle, status, itemName, priceRange, createdAt },
+  item: { image, cardTitle, status, itemName, priceRange, createdAt },
   className,
-}: TradueStatusCardProps) => {
-  const TradueStatusMap: TradueStatusMap = {
-    EXCHANGEABLE: {
-      style: 'primary',
-      text: '거래가능',
-    },
-    RESERVED: {
-      style: 'secondary',
-      text: '예약중',
-    },
-  }
-
+}: TradeStatusCardProps) => {
   return (
     <Card size={'sm'} className={className}>
       <CardFlex
@@ -58,15 +38,17 @@ const TradeStatusCard = ({
         <CardFlex direction={'col'} justify={'between'} className="h-full">
           <CardFlex align={'center'} gap={'space'}>
             <CardText type={'title'}>{cardTitle}</CardText>
-            <Badge variant={TradueStatusMap[status].style}>
-              {TradueStatusMap[status].text}
-            </Badge>
+            {status === 'TRADE_AVAILABLE' ? (
+              <TradeAvailableBadge />
+            ) : (
+              <ReservedBadge />
+            )}
           </CardFlex>
           <CardText type={'description'}>{itemName}</CardText>
           <CardText type={'description'}>{priceRange}</CardText>
-          {/* <CardText type={'date'}>
+          <CardText type={'date'}>
             {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
-          </CardText> */}
+          </CardText>
         </CardFlex>
       </CardFlex>
     </Card>

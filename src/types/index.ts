@@ -1,6 +1,7 @@
 import { Category, Status } from './item'
+import { User } from './user'
 
-export interface Items {
+export interface Item {
   _id: number
   cardId: number
   cardTitle: string
@@ -58,3 +59,5 @@ export interface ItemSuggestion {
   priceRange: Category
   suggestionType: 'poke' | 'offer'
 }
+
+export type { User }

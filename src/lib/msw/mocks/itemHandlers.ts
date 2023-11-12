@@ -19,7 +19,7 @@ export const itemHandlers = [
 
     return res(ctx.status(200), ctx.json(filterdItems))
   }),
-  rest.get(`${baseUrl}${ApiEndPoint.item('3')}`, async (_req, res, ctx) => {
+  rest.get(`${baseUrl}${ApiEndPoint.item(3)}`, async (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -31,7 +31,7 @@ export const itemHandlers = [
             cardTitle: '아이폰 16 팝니다',
             category: '전자기기',
             itemName: '아이폰 16',
-            pokeAvailable: true,
+            pokeAvailable: false,
             createdAt: '2023-10-23-20:08',
             modifiedAt: '2023-10-24-20:08',
             viewCount: 19,
@@ -41,11 +41,13 @@ export const itemHandlers = [
             images: [
               {
                 _id: 1,
-                image: '이미지 url',
+                image:
+                  'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182102_1_2797370.jpg',
               },
               {
                 _id: 2,
-                image: '이미지 url',
+                image:
+                  'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
               },
             ],
             dibsCount: 11,
@@ -72,6 +74,15 @@ export const itemHandlers = [
             tradeArea: '서울시 성동구',
           },
         },
+      }),
+    )
+  }),
+  rest.delete(`${baseUrl}${ApiEndPoint.item(3)}`, async (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        code: 'C001',
+        message: '삭제를 성공했습니다.',
       }),
     )
   }),

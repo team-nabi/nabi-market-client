@@ -4,6 +4,7 @@ import { itemHandlers } from './itemHandlers'
 import { myItemHandlers } from './myItemHandlers'
 import { suggestHandlers } from './suggestHandlers'
 import { testHandlers } from './testHandler'
+import { userHandlers } from './userHandlers'
 
 export const handlers = [
   ...testHandlers,
@@ -12,4 +13,5 @@ export const handlers = [
   ...dibsHandlers,
   ...suggestHandlers,
   ...myItemHandlers,
+  ...userHandlers,
 ]

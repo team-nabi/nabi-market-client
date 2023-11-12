@@ -33,6 +33,8 @@ const LIGHT_THEMES = {
   'background-secondary-color': COLORS.gray,
   'dialog-background-color': COLORS.black,
   'kakao-color': COLORS.kakao,
+  'bullet-inactive-color': COLORS.gray,
+  'bullet-active-color': COLORS.primary_200,
 } as const
 
 const DARK_THEMES = {
@@ -46,6 +48,8 @@ const DARK_THEMES = {
   'background-secondary-color': COLORS.gray,
   'dialog-background-color': COLORS.black,
   'kakao-color': COLORS.kakao,
+  'bullet-inactive-color': COLORS.gray,
+  'bullet-active-color': COLORS.primary_200,
 } as const
 
 export default COLORS

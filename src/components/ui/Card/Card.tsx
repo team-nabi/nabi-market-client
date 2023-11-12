@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import Image from 'next/image'
 import COLORS from '@/styles/colors'
-import { TYPHOGRAPHY } from '@/styles/sizes'
+import { TYPOGRAPHY } from '@/styles/sizes'
 import { cn } from '@/utils'
 
 const cardVariants = cva(
@@ -95,10 +95,10 @@ CardImage.displayName = 'CardImage'
 const cardTextVariants = cva('', {
   variants: {
     type: {
-      title: TYPHOGRAPHY.title,
-      description: TYPHOGRAPHY.description,
-      date: TYPHOGRAPHY.date,
-      icon: TYPHOGRAPHY.icon,
+      title: TYPOGRAPHY.title,
+      description: TYPOGRAPHY.description,
+      date: TYPOGRAPHY.date,
+      icon: TYPOGRAPHY.icon,
     },
   },
   defaultVariants: {
