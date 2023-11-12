@@ -1,6 +1,5 @@
 [
   {
-    "_id": 1,
     "cardId": 1,
     "cardTitle": "갤럭시 16 팝니다",
     "itemName": "갤럭시 16",
@@ -12,7 +11,6 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 2,
     "cardId": 2,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
@@ -24,7 +22,6 @@
     "status": "RESERVED"
   },
   {
-    "_id": 3,
     "cardId": 3,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
@@ -36,8 +33,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 4,
-    "cardId": 1,
+    "cardId": 4,
     "cardTitle": "갤럭시 16 팝니다",
     "itemName": "갤럭시 16",
     "createdAt": "2023-11-01T08:08:00",
@@ -48,8 +44,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 5,
-    "cardId": 2,
+    "cardId": 5,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
     "createdAt": "2023-11-01T08:08:00",
@@ -60,8 +55,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 6,
-    "cardId": 3,
+    "cardId": 6,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
     "createdAt": "2023-11-01T08:08:00",
@@ -72,8 +66,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 7,
-    "cardId": 1,
+    "cardId": 7,
     "cardTitle": "갤럭시 16 팝니다",
     "itemName": "갤럭시 16",
     "createdAt": "2023-11-01T08:08:00",
@@ -84,8 +77,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 8,
-    "cardId": 2,
+    "cardId": 8,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
     "createdAt": "2023-11-01T08:08:00",
@@ -96,8 +88,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 9,
-    "cardId": 3,
+    "cardId": 9,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
     "createdAt": "2023-11-01T08:08:00",
@@ -108,8 +99,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 10,
-    "cardId": 1,
+    "cardId": 10,
     "cardTitle": "갤럭시 16 팝니다",
     "itemName": "갤럭시 16",
     "createdAt": "2023-11-01T08:08:00",
@@ -120,8 +110,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 11,
-    "cardId": 2,
+    "cardId": 11,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
     "createdAt": "2023-11-01T08:08:00",
@@ -132,8 +121,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 12,
-    "cardId": 3,
+    "cardId": 12,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
     "createdAt": "2023-11-01T08:08:00",
@@ -144,8 +132,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 13,
-    "cardId": 1,
+    "cardId": 13,
     "cardTitle": "갤럭시 16 팝니다",
     "itemName": "갤럭시 16",
     "createdAt": "2023-11-01T08:08:00",
@@ -156,8 +143,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 14,
-    "cardId": 2,
+    "cardId": 14,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
     "createdAt": "2023-11-01T08:08:00",
@@ -168,8 +154,7 @@
     "status": "RESERVED"
   },
   {
-    "_id": 15,
-    "cardId": 3,
+    "cardId": 15,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
     "createdAt": "2023-11-01T08:08:00",
@@ -180,8 +165,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 16,
-    "cardId": 1,
+    "cardId": 16,
     "cardTitle": "갤럭시 16 팝니다",
     "itemName": "갤럭시 16",
     "createdAt": "2023-11-01T08:08:00",
@@ -192,8 +176,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 17,
-    "cardId": 2,
+    "cardId": 17,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
     "createdAt": "2023-11-01T08:08:00",
@@ -204,8 +187,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 18,
-    "cardId": 3,
+    "cardId": 18,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
     "createdAt": "2023-11-01T08:08:00",
@@ -216,8 +198,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 19,
-    "cardId": 1,
+    "cardId": 19,
     "cardTitle": "갤럭시 16 팝니다",
     "itemName": "갤럭시 16",
     "createdAt": "2023-11-01T08:08:00",
@@ -228,8 +209,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 20,
-    "cardId": 2,
+    "cardId": 20,
     "cardTitle": "아이폰 17 팝니다",
     "itemName": "아이폰 17",
     "createdAt": "2023-11-01T08:08:00",
@@ -240,8 +220,7 @@
     "status": "TRADE_AVAILABLE"
   },
   {
-    "_id": 21,
-    "cardId": 3,
+    "cardId": 21,
     "cardTitle": "아이폰 18 팝니다",
     "itemName": "아이폰 18",
     "createdAt": "2023-11-01T08:08:00",

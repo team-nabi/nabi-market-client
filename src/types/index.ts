@@ -2,7 +2,7 @@ import { Category, PriceRange, Status } from './item'
 import { User } from './user'
 
 export interface Item {
-  cardId: number
+  cardId: string
   cardTitle: string
   itemName: string
   createdAt: string
