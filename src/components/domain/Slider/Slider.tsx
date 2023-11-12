@@ -6,11 +6,11 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { itemImages } from '@/types/item'
+import { ItemImages } from '@/types/item'
 import './index.css'
 
 type SliderProps = {
-  imageData: itemImages[]
+  imageData: ItemImages[]
   imageAspectRatio: string
 }
 

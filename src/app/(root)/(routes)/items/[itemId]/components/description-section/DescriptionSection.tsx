@@ -1,13 +1,4 @@
 import Badge from '@/components/ui/Badge'
-import Button from '@/components/ui/Button'
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-} from '@/components/ui/DropdownMenu'
-import Assets from '@/config/assets'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { ItemDetail } from '@/types'
 import { cn } from '@/utils'
