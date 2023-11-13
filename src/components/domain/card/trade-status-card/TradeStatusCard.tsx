@@ -16,7 +16,15 @@ const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge
 const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
 
 const TradeStatusCard = ({
-  item: { cardId, image, cardTitle, status, itemName, priceRange, createdAt },
+  item: {
+    cardId,
+    thumbNail,
+    cardTitle,
+    status,
+    itemName,
+    priceRange,
+    createdAt,
+  },
   className,
 }: TradeStatusCardProps) => {
   return (
@@ -31,7 +39,7 @@ const TradeStatusCard = ({
         >
           <div className="h-full w-32 relative">
             <CardImage
-              src={image}
+              src={thumbNail}
               alt="이미지가 없습니다."
               layout="fill"
               objectFit="cover"

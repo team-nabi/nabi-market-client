@@ -27,7 +27,7 @@ const MyDibsList = () => {
   const pages = data?.pages
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mt-6">
         {hasData
           ? pages?.map((currentPage, pageIndex) => (
               <Fragment key={pageIndex}>
@@ -35,7 +35,7 @@ const MyDibsList = () => {
                   <TradeStatusCard
                     key={item.cardId}
                     item={item}
-                    className="mb-6 w-[80%]"
+                    className="mb-6"
                   />
                 ))}
               </Fragment>
