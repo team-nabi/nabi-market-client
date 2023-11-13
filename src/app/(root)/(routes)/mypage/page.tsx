@@ -1,5 +1,5 @@
 import React from 'react'
-import UserInfo from './section/UserInfo'
+import UserInfo from './components/UserInfo'
 
 const MyPage = () => {
   return (

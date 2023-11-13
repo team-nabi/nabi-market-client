@@ -1,5 +1,5 @@
 import PageTitle from '@/components/domain/page-title'
-import MyDibsList from './my-dibs-list'
+import MyDibsList from './components'
 
 const MyDibsPage = () => {
   return (
