@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Header from '@/components/domain/Header'
-import { Toaster } from '@/components/ui/Toast/Toaster'
+import Header from '@/components/domain/header'
+import { Toaster } from '@/components/ui/toast'
 import { Environment } from '@/config/environment'
 import AuthProvider from '@/contexts/AuthProvider'
 import MSWWrapper from '@/contexts/MSWWrapper'
