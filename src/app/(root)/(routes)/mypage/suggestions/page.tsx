@@ -10,9 +10,9 @@ interface SuggestCheckListPageProps {
   }
 }
 
-async function getItemValue(itemId: string) {
+async function getItemValue(cardId: number) {
   try {
-    const res = await getCardInfo(Number(itemId))
+    const res = await getCardInfo(cardId)
     const data = await res
     data.data.cardResponseDto.image =
       'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg'
@@ -26,7 +26,7 @@ async function getItemValue(itemId: string) {
 const SuggestCheckListPage: FunctionComponent<
   SuggestCheckListPageProps
 > = async ({ params }: SuggestCheckListPageProps) => {
-  const data = await getItemValue('3')
+  const data = await getItemValue(3)
 
   return (
     <div>

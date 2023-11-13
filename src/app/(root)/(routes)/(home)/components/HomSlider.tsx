@@ -1,4 +1,4 @@
-import Slider from '@/components/domain/Slider'
+import Slider from '@/components/domain/slider'
 import Assets from '@/config/assets'
 
 const HomeSlider = () => {

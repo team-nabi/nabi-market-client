@@ -52,7 +52,11 @@ const MySuggestionList = () => {
           ? pages?.map((currentPage, pageIndex) => (
               <Fragment key={pageIndex}>
                 {currentPage.map(
-                  (mySuggestionListResponseData: MySuggestionRes) => (
+                  (
+                    mySuggestionListResponseData: MySuggestionRes & {
+                      pageInfo: number
+                    },
+                  ) => (
                     <MySuggestionCard
                       key={mySuggestionListResponseData.suggestion.suggestionId}
                       mySuggestionListResponseData={

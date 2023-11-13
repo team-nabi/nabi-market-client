@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { DarkModeButton } from '@/components/ui/DarkModeButton'
+import { DarkModeButton } from '@/components/ui/dark-mode-button'
 import HomeSlider from './components/HomSlider'
 import TestBlock from './components/TestBlock'
 

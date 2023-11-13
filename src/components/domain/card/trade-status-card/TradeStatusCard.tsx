@@ -1,14 +1,14 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import koLocale from 'date-fns/locale/ko'
 import Link from 'next/link'
-import Badge from '@/components/ui/Badge'
-import Card from '@/components/ui/Card'
-import { CardFlex, CardImage, CardText } from '@/components/ui/Card'
+import Badge from '@/components/ui/badge'
+import Card from '@/components/ui/card'
+import { CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
-import { Card } from '@/types/card'
+import { Card as CardInfo } from '@/types/card'
 
 type TradeStatusCardProps = {
-  card: Card
+  card: CardInfo
   className: string
 }
 

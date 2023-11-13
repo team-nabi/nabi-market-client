@@ -3,17 +3,13 @@ import { Card } from '@/types/card'
 import { DirectionType, Suggestion, SuggestionType } from '@/types/suggestion'
 import apiClient from '../apiClient'
 
-type AvailableCardSuggestionListResponseData = {
-  suggestionList: [
-    {
-      cardInfo: Card
-      suggestion: Suggestion
-    },
-  ]
+export type AvailableCardSuggestionListRes = {
+  cardInfo: Card
+  suggestion: Suggestion
 }
 
 const getAvailableCardSuggestionList = async (cardId: number) => {
-  const response: AvailableCardSuggestionListResponseData = await apiClient.get(
+  const response: AvailableCardSuggestionListRes[] = await apiClient.get(
     ApiEndPoint.getAvailableCardSuggestionList(cardId),
   )
   return response
@@ -46,7 +42,6 @@ type GetSuggestChecksParams = {
 export type MySuggestionRes = {
   cardInfo: Card
   suggestion: Suggestion
-  pageInfo: number
 }
 
 const getMySuggestionList = async ({

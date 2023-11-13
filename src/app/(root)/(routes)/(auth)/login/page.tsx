@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react'
-import LoginForm from '@/components/domain/LoginForm'
+import LoginForm from '@/components/domain/login-form'
 
 interface LoginPageProps {}
 

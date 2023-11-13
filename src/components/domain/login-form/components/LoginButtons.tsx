@@ -1,7 +1,10 @@
 'use client'
 
 import React from 'react'
-import { KakaoLoginButton, GoogleLoginButton } from '../../buttons/LoginButtons'
+import {
+  KakaoLoginButton,
+  GoogleLoginButton,
+} from '../../buttons/login-buttons'
 
 type LoginButtonsProps = {
   kakaoLoginHandler: () => void

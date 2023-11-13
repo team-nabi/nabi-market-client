@@ -60,7 +60,7 @@ const WaitingButton = () => {
 }
 
 type SuggestCheckCardProps = {
-  mySuggestionListResponseData: MySuggestionRes
+  mySuggestionListResponseData: MySuggestionRes & { pageInfo: number }
   suggestionTypeState: SuggestionType
   directionTypeState: DirectionType
 }
@@ -68,7 +68,6 @@ const MySuggestionCard = ({
   mySuggestionListResponseData: {
     suggestion: { suggestionId, suggestionStatus, directionType },
     cardInfo: { cardTitle, itemName, priceRange, thumbNail, createdAt },
-
     pageInfo,
   },
   suggestionTypeState,

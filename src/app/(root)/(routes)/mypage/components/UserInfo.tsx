@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import AvatarEditable from '@/components/domain/AvatarEditable'
-import TextEditable from '@/components/domain/TextEditable'
+import AvatarEditable from '@/components/domain/avatar-editable'
+import TextEditable from '@/components/domain/text-editable'
 import { useAuth } from '@/contexts/AuthProvider'
 import { putUserNickname, putUserProfile } from '@/services/user/user'
 

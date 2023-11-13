@@ -2,7 +2,7 @@
 
 import React, { createContext, useMemo, useContext } from 'react'
 import useValidate from '@/hooks/useValidate'
-import type { User } from '@/types'
+import { User } from '@/types/user'
 
 const AuthContext = createContext<{
   currentUser: User | null
