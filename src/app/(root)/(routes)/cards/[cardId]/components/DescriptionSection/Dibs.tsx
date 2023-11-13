@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import Button from '@/components/ui/button'
+import Button from '@/components/ui/Button'
 import Assets from '@/config/assets'
 import useDibs from '@/hooks/useDibs'
 
@@ -16,7 +16,7 @@ const Dibs = ({ isMyDib, dibsCount: count, cardId }: DibsProps) => {
     handleDibs(cardId)
   }
   return (
-    <div className="flex flex-row gap-0 items-center ml-auto">
+    <div className="flex flex-row items-center gap-0 ml-auto">
       <Button size="icon_sm" variant={null} onClick={onClickDibs}>
         <Image
           src={isDibsActive ? Assets.activeHeartIcon : Assets.inactiveHeartIcon}

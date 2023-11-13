@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import Button from '@/components/ui/button'
+import Button from '@/components/ui/Button'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@/components/ui/Dialog'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
@@ -65,7 +65,7 @@ const TradeSection = ({
 
   const { data: suggestions } = useSuggestionsQuery(cardId)
   return (
-    <section className="flex flex-col gap-2 w-full pt-4">
+    <section className="flex flex-col w-full gap-2 pt-4">
       {tradeInfo.map((v, i) => (
         <TradeInfo
           key={i}
