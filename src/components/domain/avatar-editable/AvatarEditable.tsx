@@ -2,9 +2,9 @@
 
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
-import Button from '@/components/ui/Button'
-import Input from '@/components/ui/Input'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import Button from '@/components/ui/button'
+import Input from '@/components/ui/input'
 import Assets from '@/config/assets'
 
 interface EditButtonProps extends React.HTMLAttributes<HTMLInputElement> {
