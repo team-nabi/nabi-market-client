@@ -1,7 +1,10 @@
+'use client'
+
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
 import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
+import useSuggestMutation from '@/hooks/api/mutations/useSuggestMutation'
 
 type SuggestCardProps = {
   thumbNail?: string
@@ -9,6 +12,9 @@ type SuggestCardProps = {
   itemName: string
   priceRange: string
   suggestionType: string
+  cardId: number
+  toCardId: number
+  suggestionStatus: string | null
 }
 
 const SuggestCard = ({
@@ -17,7 +23,20 @@ const SuggestCard = ({
   itemName,
   priceRange,
   suggestionType,
+  cardId,
+  toCardId,
+  suggestionStatus,
 }: SuggestCardProps) => {
+  const { mutate } = useSuggestMutation(toCardId, cardId)
+
+  const onClickSuggest = async (type: string) => {
+    mutate({
+      suggestionType: type,
+      fromCardId: cardId,
+      toCardId: toCardId,
+    })
+  }
+  console.log(suggestionStatus)
   return (
     <Card size="md">
       <CardFlex
@@ -40,8 +59,17 @@ const SuggestCard = ({
           <CardText type={'description'}>{itemName}</CardText>
           <CardText type={'description'}>{priceRange}</CardText>
           <div className="flex justify-end">
-            <Button variant={'gradation'} size={'sm'}>
-              {suggestionType === 'poke' ? '찔러보기' : '오퍼하기'}
+            <Button
+              variant={'gradation'}
+              size={'sm'}
+              onClick={() => onClickSuggest(suggestionType)}
+              disabled={suggestionStatus !== null}
+            >
+              {suggestionStatus === null
+                ? suggestionType === 'POKE'
+                  ? '찔러보기'
+                  : '오퍼하기'
+                : '제안됨'}
             </Button>
           </div>
         </CardFlex>

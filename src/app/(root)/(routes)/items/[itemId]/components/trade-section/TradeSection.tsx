@@ -1,7 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import Button from '@/components/ui/Button'
 import {
   Dialog,
@@ -9,8 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/Dialog'
-import { handleApiError } from '@/lib/handleApiError'
-import { getSuggestions } from '@/services/suggest/suggest'
+import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
 
@@ -49,7 +47,6 @@ const TradeSection = ({
 
   const isLoggedIn = true
   const isMyItem = currentUser.userId === authorId
-  const [suggestions, setSuggestions] = useState([])
   const [open, setOpen] = useState(false)
 
   const tradeInfo: TradeInfo[] = [
@@ -63,11 +60,10 @@ const TradeSection = ({
       alert('제안확인 페이지로 이동하기')
     } else {
       setOpen(true)
-      const res = await getSuggestions(itemId)
-      setSuggestions(res.data.cardList)
     }
   }
 
+  const { data: suggestions } = useSuggestionsQuery(itemId)
   return (
     <section className="flex flex-col gap-2 w-full pt-4">
       {tradeInfo.map((v, i) => (
@@ -90,6 +86,7 @@ const TradeSection = ({
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
           <SuggestList
+            toCardId={itemId}
             pokeAvailable={pokeAvailable}
             suggestionData={suggestions}
           />
