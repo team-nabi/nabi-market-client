@@ -1,5 +1,11 @@
+import Banner1 from '/public/images/Banner1.png'
+import Banner2 from '/public/images/Banner2.png'
+import Banner3 from '/public/images/Banner3.png'
+import ArrowCircleRight from '/public/images/arrow-circle-right.svg'
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
+import CheckCircle from '/public/images/check-circle.svg'
+import FilterActiveIcon from '/public/images/filter-active.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
 import EditMemoIcon from '/public/images/icon-edit-memo.svg'
@@ -18,13 +24,17 @@ import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
 import Search from '/public/images/search.svg'
+import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
 
 const Assets = {
   search: Search,
   menuIcon: MenuIcon,
+  arrowCircleRight: ArrowCircleRight,
+  checkCircle: CheckCircle,
   arrowLeftIcon: ArrowLeftIcon,
   filterIcon: FilterIcon,
+  filterActiveIcon: FilterActiveIcon,
   alarmIcon: AlarmIcon,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
@@ -38,10 +48,14 @@ const Assets = {
   usersIcon: UsersIcon,
   markerIcon: MarkerIcon,
   moneyIcon: MoneyIcon,
+  banner1: Banner1,
+  banner2: Banner2,
+  banner3: Banner3,
   xCircleIcon: XCircleIcon,
   plusIcon: PlusIcon,
   editIcon: editIcon,
   editMemoIcon: EditMemoIcon,
+  unavailableIcon: UnavailableIcon,
 } as const
 
 export default Assets

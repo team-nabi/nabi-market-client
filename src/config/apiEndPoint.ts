@@ -5,6 +5,7 @@ const ApiEndPoint = {
   test: () => '/test',
   item: (itemId: number) => `/${itemId}`,
   items: (cursorId: number) => `/items?cursorId=${cursorId}`,
+  myItems: (cursorId: number) => `/my-items?cursorId=${cursorId}`,
   dibs: (itemId: number) => `/dib/${itemId}`,
   suggestions: (itemId: number) => `/${itemId}/available-cards`,
   putUserProfile: () => '/users/profile-image',
