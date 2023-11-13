@@ -7,7 +7,7 @@ const baseUrl = Environment.apiAddress()
 
 export const suggestHandlers = [
   rest.get(
-    `${baseUrl}${ApiEndPoint.suggestions('3')}`,
+    `${baseUrl}${ApiEndPoint.suggestions(3)}`,
     async (_req, res, ctx) => {
       return res(
         ctx.status(200),
