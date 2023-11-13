@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import Button from '@/components/ui/Button'
+import Button from '@/components/ui/button'
 import Assets from '@/config/assets'
 
 const KakaoLoginButton = ({ onClickButton }: { onClickButton: () => void }) => {
