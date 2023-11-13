@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { getSuggestions } from '@/services/suggest/suggest'
+import { getAvailableCardSuggestionList } from '@/services/suggestion/suggestion'
 
-const useSuggestionsQuery = (itemId: number) => {
+const useSuggestionsQuery = (cardId: number) => {
   return useQuery({
-    queryKey: [itemId, 'suggestions'] as const,
-    queryFn: () => getSuggestions(itemId),
+    queryKey: [cardId, 'suggestions'] as const,
+    queryFn: () => getAvailableCardSuggestionList(cardId),
   })
 }
 

@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { getMyDibs } from '@/services/item/item'
+import { getMyDibs } from '@/services/card/card'
 
 export const useMyDibsQuery = () => {
   return useInfiniteQuery({

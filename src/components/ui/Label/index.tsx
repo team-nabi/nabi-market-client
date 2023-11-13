@@ -1,3 +1,3 @@
-import { Label } from './Label'
+import { Label } from './label'
 
 export default Label

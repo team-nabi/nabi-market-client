@@ -8,7 +8,7 @@ import Assets from '@/config/assets'
 import { Environment } from '@/config/environment'
 import apiClient from '@/services/apiClient'
 import { getGoogleLogin, getKakaoLogin } from '@/services/auth/auth'
-import LoginButtons from './section/LoginButtons'
+import LoginButtons from './components/LoginButtons'
 
 //FIXME: 로그인 관련 로직은 추후에 따로 분리해야함
 const LoginForm = () => {

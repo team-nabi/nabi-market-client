@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { deleteItemDibs, postItemDibs } from '@/services/item/item'
+import { deleteCardDibs, postCardDibs } from '@/services/card/card'
 
 const useDibs = (isMyDib: boolean, count: number) => {
   /**
@@ -18,16 +18,16 @@ const useDibs = (isMyDib: boolean, count: number) => {
    * 만약 찜 기능 실패로 답이 온다면?
    * useMutation에서 낙관적 업데이트 먼저 하고 실패했을 경우 onError 핸들러로 이전 값 복원
    */
-  const handleDibs = async (itemId: number) => {
+  const handleDibs = async (cardId: number) => {
     if (isDibsActive) {
       setDibsCount(dibsCount - 1)
       setIsDibsActive(false)
-      const res = await deleteItemDibs(itemId)
+      const res = await deleteCardDibs(cardId)
       console.log(res.message)
     } else {
       setDibsCount(dibsCount + 1)
       setIsDibsActive(true)
-      const res = await postItemDibs(itemId)
+      const res = await postCardDibs(cardId)
       console.log(res.message)
     }
   }

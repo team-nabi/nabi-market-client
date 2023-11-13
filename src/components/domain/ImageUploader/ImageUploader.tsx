@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 import { MAX_IMAGE_NUMBER } from '@/constants/image'
 import { useToast } from '@/hooks/useToast'
-import ImageBlock from './section/ImageBlock'
-import UploadBlock from './section/UploadBlock'
+import ImageBlock from './components/ImageBlock'
+import UploadBlock from './components/UploadBlock'
 
 type ImageUploaderPropsType = {
   onFilesChanged: (_files: FileList) => void

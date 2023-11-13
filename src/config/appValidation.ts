@@ -1,6 +1,6 @@
 import z from 'zod'
+import { CATEGORY, PRICE_RANGE, TRADE_TYPE } from '@/constants/card'
 import { MAX_IMAGE_NUMBER } from '@/constants/image'
-import { CATEGORY, PRICE_RANGE, TRADE_TYPE } from '@/constants/item'
 
 export const AppValidation = {
   title: () =>

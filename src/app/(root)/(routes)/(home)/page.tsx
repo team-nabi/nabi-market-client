@@ -5,7 +5,7 @@ import TestBlock from './components/TestBlock'
 
 function HomePage() {
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen  text-4xl font-bold text-text-color bg-background-color">
+    <main className="flex flex-col items-center justify-between min-h-screen text-4xl font-bold text-text-color bg-background-color">
       <section>
         <HomeSlider />
       </section>
