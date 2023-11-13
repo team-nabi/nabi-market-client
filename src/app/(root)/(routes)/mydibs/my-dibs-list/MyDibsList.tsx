@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, Fragment } from 'react'
-import TradeStateCard from '@/components/domain/card/trade-state-card'
+import TradeStatusCard from '@/components/domain/card/trade-status-card'
 import { useMyDibsQuery } from '@/hooks/api/queries/useMyDibsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { Item } from '@/types'
@@ -23,20 +23,24 @@ const MyDibsList = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
+  const hasData = data?.pages[0].length !== 0
+  const pages = data?.pages
   return (
     <>
       <div className="flex flex-col items-center">
-        {data?.pages.map((group, i) => (
-          <Fragment key={i}>
-            {group.map((item: Item) => (
-              <TradeStateCard
-                key={item.cardId}
-                item={item}
-                className="mb-6 w-[80%]"
-              />
-            ))}
-          </Fragment>
-        ))}
+        {hasData
+          ? pages?.map((currentPage, pageIndex) => (
+              <Fragment key={pageIndex}>
+                {currentPage.map((item: Item) => (
+                  <TradeStatusCard
+                    key={item.cardId}
+                    item={item}
+                    className="mb-6 w-[80%]"
+                  />
+                ))}
+              </Fragment>
+            ))
+          : '데이터가 없습니다.'}
         {isFetchingNextPage && '데이터 불러오는 중'}
       </div>
 
