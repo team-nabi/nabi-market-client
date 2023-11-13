@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 import { usePathname } from 'next/navigation'
 import { Environment } from '@/config/environment'
 import { getValidateUser } from '@/services/auth/auth'
-import type { User } from '@/types'
+import type { User } from '@/types/user'
 
 const useValidate = () => {
   const token = Cookies.get(Environment.tokenName())

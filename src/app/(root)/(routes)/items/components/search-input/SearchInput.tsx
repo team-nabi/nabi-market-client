@@ -8,10 +8,10 @@ import React, {
 import { useFormContext } from 'react-hook-form'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
-import Input from '@/components/ui/Input'
+import Input from '@/components/ui/input'
 import Assets from '@/config/assets'
-import { useItemsQuery } from '@/hooks/api/useItemsQuery'
-import { Category, PriceRange } from '@/types/item'
+import { useCardsQuery } from '@/hooks/api/queries/useCardsQuery'
+import { Category, PriceRange } from '@/types/card'
 
 type SearchInputProps = {
   setCardTitle: (cardTitle: string) => void

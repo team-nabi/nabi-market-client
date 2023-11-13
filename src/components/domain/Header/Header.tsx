@@ -8,7 +8,7 @@ import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { useAuth } from '@/contexts/AuthProvider'
 import Logo from '../Logo'
-import { MenuButton, Avatar } from './section/Avatar'
+import { MenuButton, Avatar } from './components/Avatar'
 
 // type HeaderProps = {
 //   isLogin?: boolean

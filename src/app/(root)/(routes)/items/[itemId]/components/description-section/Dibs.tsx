@@ -1,19 +1,19 @@
 'use client'
 
 import Image from 'next/image'
-import Button from '@/components/ui/Button'
+import Button from '@/components/ui/button'
 import Assets from '@/config/assets'
 import useDibs from '@/hooks/useDibs'
 
 type DibsProps = {
   isMyDib: boolean
   dibsCount: number
-  itemId: number
+  cardId: number
 }
-const Dibs = ({ isMyDib, dibsCount: count, itemId }: DibsProps) => {
+const Dibs = ({ isMyDib, dibsCount: count, cardId }: DibsProps) => {
   const { dibsCount, isDibsActive, handleDibs } = useDibs(isMyDib, count)
   const onClickDibs = () => {
-    handleDibs(itemId)
+    handleDibs(cardId)
   }
   return (
     <div className="flex flex-row gap-0 items-center ml-auto">

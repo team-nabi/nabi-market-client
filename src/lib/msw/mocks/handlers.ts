@@ -1,6 +1,6 @@
 import { authHandlers } from './authHandlers'
+import { itemHandlers } from './cardHandler'
 import { dibsHandlers } from './dibsHandlers'
-import { itemHandlers } from './itemHandlers'
 import { myItemHandlers } from './myItemHandlers'
 import { suggestCheckHandlers } from './suggestCheckHandlers'
 import { suggestHandlers } from './suggestHandlers'

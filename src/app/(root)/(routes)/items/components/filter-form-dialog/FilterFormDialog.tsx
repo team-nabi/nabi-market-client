@@ -7,16 +7,16 @@ import {
   DialogDescription,
 } from '@radix-ui/react-dialog'
 import Image from 'next/image'
-import { DialogHeader } from '@/components/ui/Dialog'
+import { DialogHeader } from '@/components/ui/dialog'
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
   SelectTrigger,
-} from '@/components/ui/Select/Select'
+} from '@/components/ui/select'
 import Assets from '@/config/assets'
-import { Category, PriceRange } from '@/types/item'
+import { Category, PriceRange } from '@/types/card'
 
 type FilterFormDialogProps = {
   priceRange: PriceRange

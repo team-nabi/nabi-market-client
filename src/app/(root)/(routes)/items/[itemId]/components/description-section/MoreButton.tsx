@@ -2,29 +2,29 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import Button from '@/components/ui/Button'
+import Button from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-} from '@/components/ui/DropdownMenu'
+} from '@/components/ui/dropdown-menu'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { toast } from '@/hooks/useToast'
 import { handleApiError } from '@/lib/handleApiError'
-import { deleteItem } from '@/services/item/item'
+import { deleteCard } from '@/services/card/card'
 
 type MoreButtonProps = {
-  itemId: number
+  cardId: number
 }
-const MoreButton = ({ itemId }: MoreButtonProps) => {
+const MoreButton = ({ cardId }: MoreButtonProps) => {
   const router = useRouter()
 
   const onClickDelete = async () => {
     try {
-      await deleteItem(itemId)
+      await deleteCard(cardId)
       router.push(AppPath.home())
       toast({
         title: '삭제를 완료하였습니다',

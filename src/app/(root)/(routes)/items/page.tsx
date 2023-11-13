@@ -1,16 +1,16 @@
 import { FunctionComponent } from 'react'
 import PageTitle from '@/components/domain/page-title'
-import ItemList from './components/Item-list'
+import CardList from './components/card-list'
 
-interface ItemListPageProps {}
+interface CardListPageProps {}
 
-const ItemListPage: FunctionComponent<ItemListPageProps> = ({}) => {
+const CardListPage: FunctionComponent<CardListPageProps> = ({}) => {
   return (
     <div>
       <PageTitle title="물건 목록" />
-      <ItemList />
+      <CardList />
     </div>
   )
 }
 
-export default ItemListPage
+export default CardListPage

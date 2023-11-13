@@ -3,12 +3,12 @@ import koLocale from 'date-fns/locale/ko'
 import Link from 'next/link'
 import Badge from '@/components/ui/Badge'
 import Card from '@/components/ui/Card'
-import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
+import { CardFlex, CardImage, CardText } from '@/components/ui/Card'
 import AppPath from '@/config/appPath'
-import { Item } from '@/types'
+import { Card } from '@/types/card'
 
 type TradeStatusCardProps = {
-  item: Item
+  card: Card
   className: string
 }
 
@@ -16,7 +16,7 @@ const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge
 const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
 
 const TradeStatusCard = ({
-  item: {
+  card: {
     cardId,
     thumbNail,
     cardTitle,

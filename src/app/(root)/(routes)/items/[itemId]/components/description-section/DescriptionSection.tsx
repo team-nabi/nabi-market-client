@@ -1,12 +1,12 @@
-import Badge from '@/components/ui/Badge'
+import Badge from '@/components/ui/badge'
 import { TYPOGRAPHY } from '@/styles/sizes'
-import { ItemDetail } from '@/types'
+import { CardDetail } from '@/types/card'
 import { cn } from '@/utils'
 import Dibs from './Dibs'
 import MoreButton from './MoreButton'
 
 type DescriptionSectionProps = {
-  itemData: ItemDetail
+  cardData: CardDetail
 }
 
 type TradeStateMap = {
@@ -17,7 +17,7 @@ type TradeStateMap = {
 }
 
 const DescriptionSection = ({
-  itemData: {
+  cardData: {
     status,
     cardTitle,
     category,
@@ -62,7 +62,7 @@ const DescriptionSection = ({
           {tradeStateMap[status].text}
         </Badge>
         <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
-        {isLoggedIn && isMyItem && <MoreButton itemId={cardId} />}
+        {isLoggedIn && isMyItem && <MoreButton cardId={cardId} />}
       </div>
       <div className="flex flex-row items-center">
         <p
@@ -77,7 +77,7 @@ const DescriptionSection = ({
           {createdAt}
         </p>
         {isLoggedIn && (
-          <Dibs itemId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
+          <Dibs cardId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
         )}
       </div>
       <p>{content}</p>

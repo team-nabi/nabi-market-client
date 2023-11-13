@@ -1,4 +1,4 @@
-import { Avatar, AvatarImage } from '@/components/ui/Avatar'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { TYPOGRAPHY } from '@/styles/sizes'
 
 type ProfileSectionProps = {

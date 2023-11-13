@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import SuggestCard from '@/components/domain/card/suggest-card'
-import { Tabs, TabsTrigger, TabsList, TabsContent } from '@/components/ui/Tabs'
+import { Tabs, TabsTrigger, TabsList, TabsContent } from '@/components/ui/tabs'
 import Assets from '@/config/assets'
 import { ItemSuggestion } from '@/types'
 

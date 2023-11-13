@@ -1,10 +1,11 @@
 'use client'
 
-import Button from '@/components/ui/Button'
-import Card from '@/components/ui/Card'
-import { CardFlex, CardImage, CardText } from '@/components/ui/Card/Card'
+import Button from '@/components/ui/button'
+import Card from '@/components/ui/card'
+import { CardFlex, CardImage, CardText } from '@/components/ui/card/Card'
 import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
-import useSuggestMutation from '@/hooks/api/mutations/useSuggestMutation'
+
+//import useSuggestMutation from '@/hooks/api/mutations/useSuggestMutation'
 
 type SuggestCardProps = {
   thumbNail?: string
@@ -27,16 +28,15 @@ const SuggestCard = ({
   toCardId,
   suggestionStatus,
 }: SuggestCardProps) => {
-  const { mutate } = useSuggestMutation(toCardId, cardId)
+  //  const { mutate } = useSuggestMutation(toCardId, cardId)
 
   const onClickSuggest = async (type: string) => {
-    mutate({
-      suggestionType: type,
-      fromCardId: cardId,
-      toCardId: toCardId,
-    })
+    // mutate({
+    //   suggestionType: type,
+    //   fromCardId: cardId,
+    //   toCardId: toCardId,
+    // })
   }
-  console.log(suggestionStatus)
   return (
     <Card size="md">
       <CardFlex

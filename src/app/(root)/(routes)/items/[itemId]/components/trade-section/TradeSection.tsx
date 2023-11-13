@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import Button from '@/components/ui/Button'
+import Button from '@/components/ui/button'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/Dialog'
+} from '@/components/ui/dialog'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
@@ -17,7 +17,7 @@ type TradeSectionProps = {
   tradeType: string
   tradeArea: string
   authorId: number
-  itemId: number
+  cardId: number
   pokeAvailable: boolean
 }
 
@@ -32,7 +32,7 @@ const TradeSection = ({
   tradeType,
   tradeArea,
   authorId,
-  itemId,
+  cardId,
   pokeAvailable,
 }: TradeSectionProps) => {
   // FIX : 로그인 관련 완성되면 실제 데이터로 수정
@@ -63,7 +63,7 @@ const TradeSection = ({
     }
   }
 
-  const { data: suggestions } = useSuggestionsQuery(itemId)
+  const { data: suggestions } = useSuggestionsQuery(cardId)
   return (
     <section className="flex flex-col gap-2 w-full pt-4">
       {tradeInfo.map((v, i) => (
@@ -86,7 +86,7 @@ const TradeSection = ({
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
           <SuggestList
-            toCardId={itemId}
+            toCardId={cardId}
             pokeAvailable={pokeAvailable}
             suggestionData={suggestions}
           />

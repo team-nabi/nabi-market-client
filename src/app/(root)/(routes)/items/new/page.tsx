@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemUploadTemplate from './section/ItemUploadTemplate'
+import ItemUploadTemplate from './ItemUploadTemplate'
 
 const ItemUploadPage = () => {
   return <ItemUploadTemplate />

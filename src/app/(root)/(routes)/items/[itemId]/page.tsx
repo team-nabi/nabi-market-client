@@ -1,26 +1,26 @@
-import Slider from '@/components/domain/Slider/Slider'
-import { getItemInfo } from '@/services/item/item'
+import Slider from '@/components/domain/slider'
+import { getCardInfo } from '@/services/card/card'
 import ProfileSection from './components/ProfileSection'
 import DescriptionSection from './components/description-section'
 import TradeSection from './components/trade-section'
 
-type ItemPageProps = {
+type CardPageProps = {
   params: {
-    itemId: string
+    cardId: string
   }
 }
 
-async function getItemValue(itemId: string) {
+async function getCardValue(cardId: string) {
   try {
-    const res = await getItemInfo(Number(itemId))
+    const res = await getCardInfo(Number(cardId))
     return res.data.cardResponseDto
   } catch (e) {
     console.log(e)
   }
 }
 
-const ItemPage = async ({ params }: ItemPageProps) => {
-  const data = await getItemValue(params.itemId)
+const CardPage = async ({ params }: CardPageProps) => {
+  const data = await getCardValue(params.cardId)
   console.log(data)
   const {
     cardId,
@@ -44,7 +44,7 @@ const ItemPage = async ({ params }: ItemPageProps) => {
           tradeType={tradeType}
           tradeArea={tradeArea}
           authorId={userId}
-          itemId={cardId}
+          cardId={cardId}
           pokeAvailable={pokeAvailable}
         />
       </div>
@@ -52,4 +52,4 @@ const ItemPage = async ({ params }: ItemPageProps) => {
   )
 }
 
-export default ItemPage
+export default CardPage
