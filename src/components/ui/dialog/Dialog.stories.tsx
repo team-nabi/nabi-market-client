@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Button from '../Button'
-import Input from '../Input'
-import Label from '../Label'
+import Button from '../button'
+import Input from '../input'
+import Label from '../label'
 import {
   Dialog,
   DialogTrigger,

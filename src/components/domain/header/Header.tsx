@@ -3,11 +3,11 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Button from '@/components/ui/Button'
+import Button from '@/components/ui/button'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { useAuth } from '@/contexts/AuthProvider'
-import Logo from '../Logo'
+import Logo from '../logo'
 import { MenuButton, Avatar } from './components/Avatar'
 
 // type HeaderProps = {
