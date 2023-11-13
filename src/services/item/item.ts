@@ -1,12 +1,11 @@
 import ApiEndPoint from '@/config/apiEndPoint'
+import { Category, PriceRange } from '@/types/item'
 import apiClient from '../apiClient'
 
 export type GetItems = {
-  category: string
-  priceRange: string
+  category: Category
+  priceRange: PriceRange
   cardTitle: string
-  status: string[]
-  size: number
   cursorId: number
 }
 
@@ -15,12 +14,10 @@ const getItems = async ({
   category,
   priceRange,
   cardTitle,
-  status,
-  size,
   cursorId,
 }: GetItems) => {
   const response = await apiClient.get(ApiEndPoint.items(cursorId))
-  return response.json()
+  return response
 }
 
 const getItemInfo = async (itemId: number) => {
@@ -42,4 +39,16 @@ const deleteItem = async (itemId: number) => {
   const response = await apiClient.delete(ApiEndPoint.item(itemId))
   return response
 }
-export { getItems, getItemInfo, postItemDibs, deleteItemDibs, deleteItem }
+
+const getMyDibs = async (cursorId: number) => {
+  const response = await apiClient.get(ApiEndPoint.getMyDibs(cursorId))
+  return response
+}
+export {
+  getItems,
+  getItemInfo,
+  postItemDibs,
+  deleteItemDibs,
+  deleteItem,
+  getMyDibs,
+}
