@@ -23,15 +23,17 @@ import KakaoIcon from '/public/images/kakao.png'
 import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
+import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
 import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
 
 const Assets = {
+  quitCircle: QuitCircle,
+  checkCircle: CheckCircle,
   search: Search,
   menuIcon: MenuIcon,
   arrowCircleRight: ArrowCircleRight,
-  checkCircle: CheckCircle,
   arrowLeftIcon: ArrowLeftIcon,
   filterIcon: FilterIcon,
   filterActiveIcon: FilterActiveIcon,
