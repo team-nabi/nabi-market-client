@@ -8,9 +8,9 @@ export interface Item {
   createdAt: string
   modifiedAt: string
   dibCount: number
-  priceRange: PriceRange
-  image: string
-  status: Status
+  priceRange: string
+  thumbNail: string
+  status: string
 }
 
 export interface MyItem {
