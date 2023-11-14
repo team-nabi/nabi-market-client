@@ -72,7 +72,7 @@ const MySuggestionCard = ({
       directionType,
       createdAt,
     },
-    cardInfo: { cardTitle, itemName, priceRange, thumbNail },
+    cardInfo: { cardTitle, itemName, priceRange, thumbnail },
     pageInfo,
   },
   suggestionTypeState,
@@ -105,7 +105,7 @@ const MySuggestionCard = ({
           <div className="h-full w-36 relative">
             <CardImage
               className="rounded-lg"
-              src={thumbNail}
+              src={thumbnail}
               alt="이미지가 없습니다."
               layout="fill"
               objectFit="cover"

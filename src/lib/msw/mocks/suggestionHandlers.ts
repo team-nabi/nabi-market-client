@@ -21,7 +21,7 @@ export const suggestionHandlers = [
                 cardInfo: {
                   _id: 1,
                   cardId: 1,
-                  thumbNail: DEFAULT_ITEM_THUMBNAIL_IMG,
+                  thumbnail: DEFAULT_ITEM_THUMBNAIL_IMG,
                   cardTitle: 'xxx',
                   itemName: '다이슨 청소기',
                   priceRange: '10만원대',

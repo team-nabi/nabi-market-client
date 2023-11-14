@@ -40,7 +40,7 @@ const MyCard = ({
     itemName,
     createdAt,
     priceRange,
-    thumbNail,
+    thumbnail,
     status,
   },
 }: MyCardProps) => {
@@ -57,7 +57,7 @@ const MyCard = ({
           <div className="h-full w-36 relative">
             <CardImage
               className="rounded-lg"
-              src={thumbNail}
+              src={thumbnail}
               alt="이미지가 없습니다."
               layout="fill"
               objectFit="cover"

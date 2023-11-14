@@ -13,7 +13,7 @@ interface Card {
   createdAt: string
   modifiedAt: string
   priceRange: PriceRange
-  thumbNail: string
+  thumbnail: string
   status: TradeStatus
 }
 
