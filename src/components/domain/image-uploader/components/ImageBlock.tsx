@@ -7,6 +7,7 @@ import { cn } from '@/utils'
 type ImageBlockType = {
   imageSrc: string
   isDeletable?: boolean
+  isThumbnail?: boolean
   onDeleteHandler?: () => void
 }
 
@@ -14,6 +15,7 @@ const ImageBlock = ({
   imageSrc,
   onDeleteHandler,
   isDeletable = false,
+  isThumbnail = false,
 }: ImageBlockType) => {
   return (
     <figure className="relative w-20 h-20 border rounded-lg border-1">
@@ -24,6 +26,11 @@ const ImageBlock = ({
         layout="fill"
         className="rounded-lg"
       />
+      {isThumbnail && (
+        <figcaption className="absolute bottom-0 right-0 w-full p-1 text-xs text-center text-white rounded-b-lg bg-black/50">
+          대표 사진
+        </figcaption>
+      )}
     </figure>
   )
 }

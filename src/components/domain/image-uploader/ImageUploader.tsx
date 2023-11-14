@@ -73,11 +73,13 @@ const ImageUploader = ({
         maxPhotoNumber={maxImageNumber}
       />
       {images.map((image, index) => {
+        const isThumbnail = index === 0
         return (
           <ImageBlock
             key={image + index}
             imageSrc={image}
             isDeletable={isImageDeletable}
+            isThumbnail={isThumbnail}
             onDeleteHandler={() => {
               setImages(images.filter((_, i) => i !== index))
             }}
