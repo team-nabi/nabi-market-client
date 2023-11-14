@@ -13,6 +13,7 @@ import {
   TradeArea,
   TradeType,
 } from './components'
+import Content from './components/Content'
 import { useItemUploadForm } from './hooks/useItemUploadForm'
 
 const ItemUploadTemplate = () => {
@@ -49,9 +50,17 @@ const ItemUploadTemplate = () => {
             <div className="flex flex-col gap-2 ">
               <PokeAvailable form={form} />
             </div>
-            <div className="flex flex-col gap-2 "></div>
+            <div className="flex flex-col gap-2 ">
+              <Content form={form} />
+            </div>
             <div className="mt-8 ml-auto w-fit">
-              <Button type="submit" variant={'gradation'}>
+              <Button
+                type="submit"
+                variant={'gradation'}
+                onClick={() => {
+                  console.log('clicked')
+                }}
+              >
                 등록하기
               </Button>
             </div>

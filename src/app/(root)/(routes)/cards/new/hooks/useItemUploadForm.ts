@@ -25,25 +25,25 @@ export const useItemUploadForm = () => {
   const form = useForm<ItemUploadFormValues>({
     resolver: zodResolver(itemUploadFormSchema),
     defaultValues: {
-      cardTitle: undefined,
-      itemName: undefined,
+      cardTitle: '',
+      itemName: '',
       priceRange: undefined,
       category: undefined,
       tradeType: undefined,
-      tradeArea: undefined,
+      tradeArea: '',
       pokeAvailable: false,
-      content: undefined,
-      images: undefined,
+      content: '',
+      images: [],
       thumbnailImage: undefined,
     },
     mode: 'onSubmit',
   })
 
-  const [isSubmitting, setisSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const onSubmit = async (data: ItemUploadFormValues) => {
     if (isSubmitting) return
-    setisSubmitting(() => true)
+    setIsSubmitting(() => true)
     console.log(data)
     try {
       // await createItem({ variables: { input: { ...values } } })
@@ -56,6 +56,7 @@ export const useItemUploadForm = () => {
       })
       console.log(error)
     }
+    setIsSubmitting(() => false)
   }
 
   return { form, onSubmit: form.handleSubmit(onSubmit), isSubmitting }
