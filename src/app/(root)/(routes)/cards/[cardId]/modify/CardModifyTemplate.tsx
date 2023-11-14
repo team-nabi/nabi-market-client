@@ -12,19 +12,24 @@ import {
   PriceRange,
   TradeArea,
   TradeType,
-} from './components'
-import Content from './components/Content'
-import { useItemUploadForm } from './hooks/useItemUploadForm'
+  Content,
+} from '../../new/components'
+import { CardUploadFormValues } from '../../new/hooks/useCardUploadForm'
+import { useCardModifyForm } from './hooks/useCardModifyForm'
 
-const ItemUploadTemplate = () => {
-  const { form, onSubmit, isSubmitting } = useItemUploadForm()
+type CardModifyTemplateProps = {
+  cardInfo: CardUploadFormValues
+}
+
+const CardModifyTemplate = ({ cardInfo }: CardModifyTemplateProps) => {
+  const { form, onSubmit, isSubmitting } = useCardModifyForm(cardInfo)
+
   return (
     <main className="flex flex-col items-center w-full gap-3 px-2">
-      <h1>물건 등록</h1>
       <Form {...form}>
         <form onSubmit={onSubmit} className="flex flex-col w-full gap-3">
           <section className="w-full mr-auto">
-            <ItemImageUploader />
+            <ItemImageUploader defaultImages={cardInfo.images} />
           </section>
           <section className="flex flex-col w-full gap-3">
             <div className="flex flex-col gap-2 ">
@@ -69,4 +74,4 @@ const ItemUploadTemplate = () => {
   )
 }
 
-export default ItemUploadTemplate
+export default CardModifyTemplate

@@ -12,14 +12,14 @@ import {
   PriceRange,
   TradeArea,
   TradeType,
-} from '../components'
-import { useItemUploadForm } from '../hooks/useItemUploadForm'
+  Content,
+} from './components'
+import { useCardUploadForm } from './hooks/useCardUploadForm'
 
-const ItemUploadTemplate = () => {
-  const { form, onSubmit } = useItemUploadForm()
+const CardUploadTemplate = () => {
+  const { form, onSubmit, isSubmitting } = useCardUploadForm()
   return (
     <main className="flex flex-col items-center w-full gap-3 px-2">
-      <h1>물건 등록</h1>
       <Form {...form}>
         <form onSubmit={onSubmit} className="flex flex-col w-full gap-3">
           <section className="w-full mr-auto">
@@ -49,9 +49,15 @@ const ItemUploadTemplate = () => {
             <div className="flex flex-col gap-2 ">
               <PokeAvailable form={form} />
             </div>
-            <div className="flex flex-col gap-2 "></div>
+            <div className="flex flex-col gap-2 ">
+              <Content form={form} />
+            </div>
             <div className="mt-8 ml-auto w-fit">
-              <Button type="submit" variant={'gradation'}>
+              <Button
+                type="submit"
+                variant={'gradation'}
+                disabled={isSubmitting}
+              >
                 등록하기
               </Button>
             </div>
@@ -62,4 +68,4 @@ const ItemUploadTemplate = () => {
   )
 }
 
-export default ItemUploadTemplate
+export default CardUploadTemplate

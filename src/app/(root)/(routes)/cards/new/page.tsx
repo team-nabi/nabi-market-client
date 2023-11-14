@@ -1,8 +1,14 @@
 import React from 'react'
-import ItemUploadTemplate from './ItemUploadTemplate'
+import PageTitle from '@/components/domain/page-title'
+import CardUploadTemplate from './CardUploadTemplate'
 
-const ItemUploadPage = () => {
-  return <ItemUploadTemplate />
+const CardUploadPage = () => {
+  return (
+    <>
+      <PageTitle title={'물건 등록'} />
+      <CardUploadTemplate />
+    </>
+  )
 }
 
-export default ItemUploadPage
+export default CardUploadPage

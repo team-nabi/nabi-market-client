@@ -7,7 +7,7 @@ import { AppValidation } from '@/config/appValidation'
 import { useToast } from '@/hooks/useToast'
 import { postCard } from '@/services/card/card'
 
-const itemUploadFormSchema = z.object({
+export const cardUploadFormSchema = z.object({
   cardTitle: AppValidation.title(),
   itemName: AppValidation.itemName(),
   priceRange: AppValidation.priceRange(),
@@ -20,13 +20,13 @@ const itemUploadFormSchema = z.object({
   thumbnail: AppValidation.thumbnail(),
 })
 
-export type ItemUploadFormValues = z.infer<typeof itemUploadFormSchema>
+export type CardUploadFormValues = z.infer<typeof cardUploadFormSchema>
 
-export const useItemUploadForm = () => {
+export const useCardUploadForm = () => {
   const router = useRouter()
   const { toast } = useToast()
-  const form = useForm<ItemUploadFormValues>({
-    resolver: zodResolver(itemUploadFormSchema),
+  const form = useForm<CardUploadFormValues>({
+    resolver: zodResolver(cardUploadFormSchema),
     defaultValues: {
       cardTitle: '',
       itemName: '',
@@ -44,7 +44,7 @@ export const useItemUploadForm = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const onSubmit = async (data: ItemUploadFormValues) => {
+  const onSubmit = async (data: CardUploadFormValues) => {
     if (isSubmitting) return
     setIsSubmitting(() => true)
     console.log(data)

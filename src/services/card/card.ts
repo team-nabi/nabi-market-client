@@ -1,4 +1,4 @@
-import { ItemUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useItemUploadForm'
+import { CardUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useCardUploadForm'
 import ApiEndPoint from '@/config/apiEndPoint'
 import type { Category, PriceRange, TradeStatus } from '@/types/card'
 import apiClient from '../apiClient'
@@ -10,7 +10,7 @@ export type Getcards = {
   cursorId: number
 }
 
-const postCard = async (cardReq: ItemUploadFormValues) => {
+const postCard = async (cardReq: CardUploadFormValues) => {
   cardReq.thumbnail = cardReq.images[0]
 
   const response = await apiClient.post(ApiEndPoint.postCard(), cardReq)

@@ -15,9 +15,9 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { CATEGORY } from '@/constants/card'
-import type { ItemUploadFormValues } from '../hooks/useItemUploadForm'
+import type { CardUploadFormValues } from '../hooks/useCardUploadForm'
 
-const Category = ({ form }: { form: UseFormReturn<ItemUploadFormValues> }) => {
+const Category = ({ form }: { form: UseFormReturn<CardUploadFormValues> }) => {
   return (
     <FormField
       control={form.control}
