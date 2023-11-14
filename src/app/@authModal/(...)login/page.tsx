@@ -2,8 +2,8 @@
 
 import { FunctionComponent } from 'react'
 import { useRouter } from 'next/navigation'
-import LoginForm from '@/components/domain/LoginForm'
-import { Dialog, DialogContent } from '@/components/ui/Dialog'
+import LoginForm from '@/components/domain/login-form'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 interface LoginModalPageProps {}
 

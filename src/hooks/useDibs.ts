@@ -1,47 +1,39 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { deleteItemDibs, postItemDibs } from '@/services/item/item'
-import { Dibs } from '@/types'
+import { useState } from 'react'
+import { deleteCardDibs, postCardDibs } from '@/services/card/card'
 
-const currentUser = {
-  imageUrl: 'http://asdf~',
-  nickname: '병원에 간 미어캣',
-  userId: 1,
-}
-
-const useDibs = (dibsData: Dibs[]) => {
+const useDibs = (isMyDib: boolean, count: number) => {
   /**
    * FIX: 로그인 관련 PR merge 되면 실제 currentUser 데이터 가져오기
    * const {currentUser} = useAuth();
    * const token = Cookies.get(Environment.tokenName())
    */
 
-  const [callDibs, setCallDibs] = useState(false)
-  const [dibsCount, setDibsCount] = useState(0)
+  const [isDibsActive, setIsDibsActive] = useState(isMyDib)
+  const [dibsCount, setDibsCount] = useState(count)
 
-  useEffect(() => {
-    if (!currentUser) return
-    setDibsCount(dibsData.length ?? 0)
-    setCallDibs(dibsData.some((x) => x.userId === currentUser.userId))
-  }, [dibsData])
-
-  const handleDibs = async (itemId: number) => {
-    if (callDibs) {
+  /**
+   * TODO: 실제 api 연결 + 실패처리
+   * 만약 찜 기능 실패로 답이 온다면?
+   * useMutation에서 낙관적 업데이트 먼저 하고 실패했을 경우 onError 핸들러로 이전 값 복원
+   */
+  const handleDibs = async (cardId: number) => {
+    if (isDibsActive) {
       setDibsCount(dibsCount - 1)
-      setCallDibs(false)
-      const res = await deleteItemDibs(itemId)
+      setIsDibsActive(false)
+      const res = await deleteCardDibs(cardId)
       console.log(res.message)
     } else {
       setDibsCount(dibsCount + 1)
-      setCallDibs(true)
-      const res = await postItemDibs(itemId)
+      setIsDibsActive(true)
+      const res = await postCardDibs(cardId)
       console.log(res.message)
     }
   }
 
   return {
-    callDibs,
+    isDibsActive,
     dibsCount,
     handleDibs,
   }

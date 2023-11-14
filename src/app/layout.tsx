@@ -1,6 +1,6 @@
-import { Suspense } from 'react'
 import type { Metadata } from 'next'
-import Header from '@/components/domain/Header'
+import Header from '@/components/domain/header'
+import { Toaster } from '@/components/ui/toast/Toaster'
 import { Environment } from '@/config/environment'
 import AuthProvider from '@/contexts/AuthProvider'
 import MSWWrapper from '@/contexts/MSWWrapper'
@@ -33,13 +33,12 @@ export default async function RootLayout({
           <ThemeProviderContext>
             <MSWWrapper>
               <AuthProvider>
-                <Suspense fallback={<div>loading...</div>}>
-                  <div className="centered-content">
-                    <Header />
-                    {children}
-                    {authModal}
-                  </div>
-                </Suspense>
+                <div className="centered-content">
+                  <Header />
+                  {children}
+                  {authModal}
+                </div>
+                <Toaster />
               </AuthProvider>
             </MSWWrapper>
           </ThemeProviderContext>

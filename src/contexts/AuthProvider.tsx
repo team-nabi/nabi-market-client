@@ -2,9 +2,10 @@
 
 import React, { createContext, useMemo, useContext } from 'react'
 import useValidate from '@/hooks/useValidate'
+import { User } from '@/types/user'
 
 const AuthContext = createContext<{
-  currentUser: any
+  currentUser: User | null
   isLoggedIn: boolean
 }>({
   currentUser: null,
