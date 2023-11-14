@@ -1,3 +1,4 @@
+import { ItemUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useItemUploadForm'
 import ApiEndPoint from '@/config/apiEndPoint'
 import type { Category, PriceRange, TradeStatus } from '@/types/card'
 import apiClient from '../apiClient'
@@ -7,6 +8,13 @@ export type Getcards = {
   priceRange: PriceRange
   cardTitle: string
   cursorId: number
+}
+
+const postCard = async (cardReq: ItemUploadFormValues) => {
+  cardReq.thumbnail = cardReq.images[0]
+
+  const response = await apiClient.post(ApiEndPoint.postCard(), cardReq)
+  return response
 }
 
 // TODO: 현재 cardsHandler(가짜 API)는 필터에 대한 처리가 이루어져 있지 않으므로, cursorId만 넘겨주고 있음 => 실 API를 받을시 교체 작업 해주기
@@ -64,4 +72,5 @@ export {
   deleteCard,
   getMyDibs,
   getMyCardList,
+  postCard,
 }

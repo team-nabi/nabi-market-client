@@ -92,4 +92,39 @@ export const itemHandlers = [
       )
     },
   ),
+  rest.post(`${baseUrl}${ApiEndPoint.postCard()}`, async (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        code: 'C001',
+        message: '찜하기를 성공했습니다.',
+        data: {
+          cardInfo: {
+            cardId: 1,
+            cardTitle: '아이폰 16 팝니다',
+            thumbNailImage: 'xxx',
+            itemName: '아이폰 16',
+            priceRange: 'PRICE_RANGE_ONE',
+            tradeType: 'DIRECT_DEALING',
+            category: 'ELECTRONICS',
+            tradeArea: '서울시 성동구',
+            pokeAvailable: true,
+            content: '이거 진짜 쩔어요',
+            createdAt: '2023-10-23-20:08',
+            modifiedAt: '2023-10-23-20:08',
+            viewCount: 0,
+            dibsCount: 0,
+            images: [
+              {
+                url: 'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
+              },
+              {
+                url: 'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
+              },
+            ],
+          },
+        },
+      }),
+    )
+  }),
 ]

@@ -28,5 +28,5 @@ export const AppValidation = {
       .max(500, { message: '내용은 500자 이내로 입력해주세요.' }),
   images: () =>
     z.array(z.string()).min(1, { message: '이미지를 업로드해주세요.' }),
-  thumbnailImage: () => z.any(),
+  thumbnail: () => z.any(),
 }

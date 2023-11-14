@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { AppValidation } from '@/config/appValidation'
 import { useToast } from '@/hooks/useToast'
+import { postCard } from '@/services/card/card'
 
 const itemUploadFormSchema = z.object({
   cardTitle: AppValidation.title(),
@@ -15,12 +17,13 @@ const itemUploadFormSchema = z.object({
   pokeAvailable: AppValidation.pokeAvailable(),
   content: AppValidation.content(),
   images: AppValidation.images(),
-  thumbnailImage: AppValidation.thumbnailImage(),
+  thumbnail: AppValidation.thumbnail(),
 })
 
 export type ItemUploadFormValues = z.infer<typeof itemUploadFormSchema>
 
 export const useItemUploadForm = () => {
+  const router = useRouter()
   const { toast } = useToast()
   const form = useForm<ItemUploadFormValues>({
     resolver: zodResolver(itemUploadFormSchema),
@@ -34,7 +37,7 @@ export const useItemUploadForm = () => {
       pokeAvailable: false,
       content: '',
       images: [],
-      thumbnailImage: undefined,
+      thumbnail: undefined,
     },
     mode: 'onSubmit',
   })
@@ -46,8 +49,12 @@ export const useItemUploadForm = () => {
     setIsSubmitting(() => true)
     console.log(data)
     try {
-      // await createItem({ variables: { input: { ...values } } })
-      // await router.push('/items')
+      await postCard(data)
+      toast({
+        title: 'Success',
+        description: '게시글을 업로드했습니다.',
+      })
+      router.back()
     } catch (error) {
       toast({
         variant: 'destructive',
@@ -55,8 +62,9 @@ export const useItemUploadForm = () => {
         description: '게시글을 업로드하는데 실패했습니다.',
       })
       console.log(error)
+    } finally {
+      setIsSubmitting(() => false)
     }
-    setIsSubmitting(() => false)
   }
 
   return { form, onSubmit: form.handleSubmit(onSubmit), isSubmitting }

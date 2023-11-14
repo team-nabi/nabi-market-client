@@ -17,7 +17,7 @@ import Content from './components/Content'
 import { useItemUploadForm } from './hooks/useItemUploadForm'
 
 const ItemUploadTemplate = () => {
-  const { form, onSubmit } = useItemUploadForm()
+  const { form, onSubmit, isSubmitting } = useItemUploadForm()
   return (
     <main className="flex flex-col items-center w-full gap-3 px-2">
       <h1>물건 등록</h1>
@@ -57,9 +57,7 @@ const ItemUploadTemplate = () => {
               <Button
                 type="submit"
                 variant={'gradation'}
-                onClick={() => {
-                  console.log('clicked')
-                }}
+                disabled={isSubmitting}
               >
                 등록하기
               </Button>

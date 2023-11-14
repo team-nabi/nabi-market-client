@@ -20,6 +20,7 @@ const ApiEndPoint = {
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
   getMyDibsList: (cursorId: number) => `/dibs/?cursorId=${cursorId}`,
   postImageFile: () => '/s3/upload/single',
+  postCard: () => '/cards',
 } as const
 
 export default ApiEndPoint
