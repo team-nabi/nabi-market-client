@@ -2,13 +2,19 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
+import AppPath from '@/config/appPath'
 import { useToast } from '@/hooks/useToast'
+import { putCard } from '@/services/card/card'
 import {
   CardUploadFormValues,
   cardUploadFormSchema,
 } from '../../../new/hooks/useCardUploadForm'
+import { CardModifyTemplateProps } from '../CardModifyTemplate'
 
-export const useCardModifyForm = (cardInfo: CardUploadFormValues) => {
+export const useCardModifyForm = ({
+  cardInfo,
+  cardId,
+}: CardModifyTemplateProps) => {
   const router = useRouter()
   const { toast } = useToast()
   const form = useForm<CardUploadFormValues>({
@@ -35,17 +41,20 @@ export const useCardModifyForm = (cardInfo: CardUploadFormValues) => {
     setIsSubmitting(() => true)
     console.log(data)
     try {
-      //   await postCard(data)
+      await putCard({
+        cardId: cardId,
+        cardReq: data,
+      })
+      router.push(AppPath.cardDetail(cardId))
       toast({
         title: 'Success',
-        description: '게시글을 업로드했습니다.',
+        description: '게시글을 성공적으로 수정했습니다.',
       })
-      router.back()
     } catch (error) {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: '게시글을 업로드하는데 실패했습니다.',
+        description: '게시글을 수정하는데 실패했습니다.',
       })
       console.log(error)
     } finally {

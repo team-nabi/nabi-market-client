@@ -17,12 +17,16 @@ import {
 import { CardUploadFormValues } from '../../new/hooks/useCardUploadForm'
 import { useCardModifyForm } from './hooks/useCardModifyForm'
 
-type CardModifyTemplateProps = {
+export type CardModifyTemplateProps = {
   cardInfo: CardUploadFormValues
+  cardId: string
 }
 
-const CardModifyTemplate = ({ cardInfo }: CardModifyTemplateProps) => {
-  const { form, onSubmit, isSubmitting } = useCardModifyForm(cardInfo)
+const CardModifyTemplate = ({ cardInfo, cardId }: CardModifyTemplateProps) => {
+  const { form, onSubmit, isSubmitting } = useCardModifyForm({
+    cardInfo,
+    cardId,
+  })
 
   return (
     <main className="flex flex-col items-center w-full gap-3 px-2">

@@ -10,10 +10,22 @@ export type Getcards = {
   cursorId: number
 }
 
+type putCardReq = {
+  cardId: string
+  cardReq: CardUploadFormValues
+}
+
 const postCard = async (cardReq: CardUploadFormValues) => {
   cardReq.thumbnail = cardReq.images[0]
 
   const response = await apiClient.post(ApiEndPoint.postCard(), cardReq)
+  return response
+}
+
+const putCard = async ({ cardId, cardReq }: putCardReq) => {
+  cardReq.thumbnail = cardReq.images[0]
+
+  const response = await apiClient.put(ApiEndPoint.putCard(cardId), cardReq)
   return response
 }
 
@@ -73,4 +85,5 @@ export {
   getMyDibs,
   getMyCardList,
   postCard,
+  putCard,
 }

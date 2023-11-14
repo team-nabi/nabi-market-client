@@ -10,6 +10,7 @@ type CardModifyPageProps = {
   }
 }
 
+// TODO: 실제 데이터를 받아오는 로직으로 변경
 const getInitialCardInfo = async (
   cardId: string,
 ): Promise<CardUploadFormValues> => {
@@ -32,7 +33,7 @@ const CardModifyPage = async ({ params }: CardModifyPageProps) => {
   return (
     <>
       <PageTitle title={'물건 수정'} />
-      <CardModifyTemplate cardInfo={initialCardInfo} />
+      <CardModifyTemplate cardInfo={initialCardInfo} cardId={params.cardId} />
     </>
   )
 }
