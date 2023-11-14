@@ -15,7 +15,7 @@ const TradeStatusTabs = ({
   }
 
   return (
-    <Tabs defaultValue={status}>
+    <Tabs defaultValue={tradeStatus}>
       <TabsList>
         <TabsTrigger
           value="TRADE_AVAILABLE"

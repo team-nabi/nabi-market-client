@@ -6,15 +6,15 @@ import { DirectionType, SuggestionType } from '@/types/suggestion'
 export const useMySuggestionsQuery = (
   suggestionType: SuggestionType,
   directionType: DirectionType,
-  itemId: string | null,
+  cardId: string | null,
 ) => {
   return useInfiniteQuery({
-    queryKey: ['my-suggestions', suggestionType, directionType, itemId],
+    queryKey: ['my-suggestions', suggestionType, directionType, cardId],
     queryFn: async ({ pageParam = 0 }) => {
       const data: MySuggestionRes[] = await getMySuggestionList({
         suggestionType,
         directionType,
-        itemId,
+        cardId,
         cursorId: pageParam,
       })
 

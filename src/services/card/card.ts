@@ -32,7 +32,9 @@ const getMyCardList = async ({
   tradeStatus: TradeStatus
   cursorId: number
 }) => {
-  const response = await apiClient.get(ApiEndPoint.getMyCardList(cursorId))
+  const response = await apiClient.get(
+    ApiEndPoint.getMyCardList(tradeStatus, cursorId),
+  )
   return response
 }
 
