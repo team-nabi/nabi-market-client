@@ -1,6 +1,5 @@
 import z from 'zod'
 import { CATEGORY, PRICE_RANGE, TRADE_TYPE } from '@/constants/card'
-import { MAX_IMAGE_NUMBER } from '@/constants/image'
 
 export const AppValidation = {
   title: () =>
@@ -28,34 +27,6 @@ export const AppValidation = {
       .min(5, { message: '5자 이상 입력해주세요.' })
       .max(500, { message: '내용은 500자 이내로 입력해주세요.' }),
   images: () =>
-    z
-      .instanceof(FileList, {
-        message: `최소 1개의 이미지를 업로드해주세요.`,
-      })
-      .refine(
-        (files) => {
-          return Array.from(files).every((file) => file instanceof File)
-        },
-        {
-          message: '잘못된 파일 형식입니다.',
-        },
-      )
-      .refine(
-        (files) => {
-          return Array.from(files).length <= MAX_IMAGE_NUMBER
-        },
-        {
-          message: `최대 ${MAX_IMAGE_NUMBER}개의 이미지를 업로드할 수 있습니다.`,
-        },
-      )
-      .refine(
-        (files) => {
-          return Array.from(files).length > 0
-        },
-        {
-          message: `최소 1개의 이미지를 업로드해주세요.`,
-        },
-      ),
-
-  thumbnailImage: () => z.any(),
+    z.array(z.string()).min(1, { message: '이미지를 업로드해주세요.' }),
+  thumbnail: () => z.any(),
 }

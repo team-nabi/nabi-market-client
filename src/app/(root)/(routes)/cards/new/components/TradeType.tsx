@@ -15,9 +15,9 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { TRADE_TYPE } from '@/constants/card'
-import type { ItemUploadFormValues } from '../hooks/useItemUploadForm'
+import type { CardUploadFormValues } from '../hooks/useCardUploadForm'
 
-const TradeType = ({ form }: { form: UseFormReturn<ItemUploadFormValues> }) => {
+const TradeType = ({ form }: { form: UseFormReturn<CardUploadFormValues> }) => {
   return (
     <FormField
       control={form.control}

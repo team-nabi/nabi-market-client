@@ -7,7 +7,11 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 
-const ItemImageUploader = () => {
+const ItemImageUploader = ({
+  defaultImages = [],
+}: {
+  defaultImages?: string[]
+}) => {
   return (
     <FormField
       name="images"
@@ -17,7 +21,10 @@ const ItemImageUploader = () => {
             <FormMessage />
           </div>
           <FormControl>
-            <ImageUploader onFilesChanged={field.onChange} />
+            <ImageUploader
+              onFilesChanged={field.onChange}
+              defaultImages={defaultImages}
+            />
           </FormControl>
         </FormItem>
       )}
