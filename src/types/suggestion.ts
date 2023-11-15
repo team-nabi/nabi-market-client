@@ -13,5 +13,7 @@ export interface Suggestion {
   suggestionStatus: SuggestionStatus
   suggestionType: SuggestionType
   directionType: DirectionType
+  fromCardId: number
+  toCardId: number
   createdAt: string
 }

@@ -5,30 +5,38 @@ import apiClient from '../apiClient'
 
 export type AvailableCardSuggestionListRes = {
   cardInfo: Card
-  suggestion: Suggestion
+  suggestionInfo: Suggestion
 }
 
 const getAvailableCardSuggestionList = async (cardId: number) => {
-  const response: AvailableCardSuggestionListRes[] = await apiClient.get(
+  const response = await apiClient.get(
     ApiEndPoint.getAvailableCardSuggestionList(cardId),
   )
-  return response
+  return response.data.cardList
 }
 
-export interface postSuggestionReponseData extends Suggestion {
+export interface PostSuggestionRes {
+  code: string
+  message: string
+  data: Suggestion
+}
+
+export interface PostSuggestionReq {
+  suggestionType: SuggestionType
   fromCardId: number
   toCardId: number
 }
 
-const postSuggestion = async (
-  suggestionType: SuggestionType,
-  fromCardId: number,
-  toCardId: number,
-) => {
-  const response: postSuggestionReponseData = await apiClient.post(
+const postSuggestion = async ({
+  suggestionType,
+  fromCardId,
+  toCardId,
+}: PostSuggestionReq) => {
+  const response: PostSuggestionRes = await apiClient.post(
     ApiEndPoint.postSuggestion(suggestionType),
     { fromCardId, toCardId },
   )
+  console.log(response)
   return response
 }
 
