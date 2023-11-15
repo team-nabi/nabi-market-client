@@ -6,6 +6,7 @@ import { PriceRange } from '@/types/card'
 interface MyHistoryListPageProps {}
 
 const myHistory = {
+  historyId: '1',
   fromCard: {
     cardId: 9,
     itemName: 'string',

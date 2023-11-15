@@ -27,6 +27,8 @@ const ApiEndPoint = {
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
   getMyDibsList: (cursorId: number) => `/dibs/?cursorId=${cursorId}`,
+  getMyHistoryList: (cursorId: number) =>
+    `/complete-requests/user/?size&cursorId=${cursorId}`,
 } as const
 
 export default ApiEndPoint
