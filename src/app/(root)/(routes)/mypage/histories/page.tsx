@@ -2,6 +2,7 @@ import { FunctionComponent } from 'react'
 import HistoryCard from '@/components/domain/history-card'
 import PageTitle from '@/components/domain/page-title'
 import { PriceRange } from '@/types/card'
+import HistoryList from './components/history-list'
 
 interface MyHistoryListPageProps {}
 
@@ -28,8 +29,11 @@ const myHistory = {
 const MyHistoryListPage: FunctionComponent<MyHistoryListPageProps> = ({}) => {
   return (
     <div>
-      <PageTitle title="내 거래 완료 내역" />
-      <HistoryCard history={myHistory} />
+      <div className="mb-8">
+        <PageTitle title="내 거래 완료 내역" />
+      </div>
+
+      <HistoryList />
     </div>
   )
 }

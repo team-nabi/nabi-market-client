@@ -27,7 +27,6 @@ const SubCard = ({
 )
 
 type HistoryCardProps = {
-  // TODO: services/historyHandlers.ts 만들때, MyHistoryRes 타입으로 교체해주기
   history: History
 }
 
