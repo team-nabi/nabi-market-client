@@ -168,7 +168,8 @@ export const cardHandlers = [
           },
         },
       }),
-    ),
+    )
+  }),
   rest.get(`${baseUrl}/cards/:status/my-cards`, async (req, res, ctx) => {
     const queryString = req.url.search
     const keyValuePairs = queryString.split('&')
