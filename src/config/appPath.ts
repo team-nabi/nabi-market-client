@@ -4,10 +4,11 @@ const AppPath = {
   logout: () => '/logout' as const,
   cards: () => '/cards' as const,
   newCard: () => '/cards/new' as const,
-  cardDetail: (cardId: string) => `/cards/${cardId}` as const,
+  cardDetail: (cardId: number) => `/cards/${cardId}` as const,
   mypage: () => '/mypage' as const,
   myItems: () => '/mypage/my-items' as const,
   suggestChecks: () => '/mypage/suggest-checks' as const,
+  modifyCard: (cardId: number) => `/cards/${cardId}/modify` as const,
 } as const
 
 type AppPathReturnType = {

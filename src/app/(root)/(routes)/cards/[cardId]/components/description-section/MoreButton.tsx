@@ -53,9 +53,12 @@ const MoreButton = ({ cardId }: MoreButtonProps) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
-          <DropdownMenuItem>수정하기</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => router.push(AppPath.modifyCard(cardId))}
+          >
+            수정하기
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={onClickDelete}>삭제하기</DropdownMenuItem>
-          <DropdownMenuItem>거래완료</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
