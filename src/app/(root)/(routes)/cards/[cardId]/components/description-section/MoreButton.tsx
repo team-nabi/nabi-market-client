@@ -54,7 +54,7 @@ const MoreButton = ({ cardId }: MoreButtonProps) => {
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuItem
-            onClick={() => router.push(AppPath.modifyCard(cardId))}
+            onClick={() => router.push(AppPath.modifyCard(String(cardId)))}
           >
             수정하기
           </DropdownMenuItem>
