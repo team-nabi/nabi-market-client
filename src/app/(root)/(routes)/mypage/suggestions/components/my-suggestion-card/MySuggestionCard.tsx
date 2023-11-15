@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import Button from '@/components/ui/button'
 import { CardFlex, CardText, Card, CardImage } from '@/components/ui/card/Card'
 import Assets from '@/config/assets'
-import { useMySuggestionUpdateMutation } from '@/hooks/api/queries/useMySuggestionUpdateMutation'
+import { useMySuggestionUpdateMutation } from '@/hooks/api/mutations/useMySuggestionUpdateMutation'
 import { MySuggestionRes } from '@/services/suggestion/suggestion'
 import {
   DirectionType,
@@ -66,8 +66,13 @@ type SuggestCheckCardProps = {
 }
 const MySuggestionCard = ({
   mySuggestionListResponseData: {
-    suggestion: { suggestionId, suggestionStatus, directionType },
-    cardInfo: { cardTitle, itemName, priceRange, thumbNail, createdAt },
+    suggestionInfo: {
+      suggestionId,
+      suggestionStatus,
+      directionType,
+      createdAt,
+    },
+    cardInfo: { cardTitle, itemName, priceRange, thumbNail },
     pageInfo,
   },
   suggestionTypeState,

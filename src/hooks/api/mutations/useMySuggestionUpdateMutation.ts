@@ -9,7 +9,7 @@ import {
 export const useMySuggestionUpdateMutation = (
   suggestionType: SuggestionType,
   directionType: DirectionType,
-  itemId: string | null,
+  cardId: string | null,
 ) => {
   const queryClient = useQueryClient()
   return useMutation({
@@ -23,25 +23,33 @@ export const useMySuggestionUpdateMutation = (
       currentPage: number
     }) => {
       await queryClient.cancelQueries({
-        queryKey: ['suggest-checks', suggestionType, directionType, itemId],
+        queryKey: ['my-suggestions', suggestionType, directionType, cardId],
       })
-      const oldMySuggestionList = queryClient.getQueryData([
-        'suggest-checks',
+      console.log(
         suggestionType,
         directionType,
-        itemId,
+        cardId,
+        suggestionId,
+        currentPage,
+      )
+      const oldMySuggestionList = queryClient.getQueryData([
+        'my-suggestions',
+        suggestionType,
+        directionType,
+        cardId,
       ])
 
       const newMySuggestionList: any = structuredClone(oldMySuggestionList)
       const currentPageMySuggstionList = newMySuggestionList.pages[currentPage]
-      const currentSuggestCheck = currentPageMySuggstionList.find(
-        (suggestCheck: MySuggestionRes) =>
-          suggestCheck.suggestion.suggestionId === suggestionId,
+      const currentMySuggestionList = currentPageMySuggstionList.find(
+        (mySuggestion: MySuggestionRes) =>
+          mySuggestion.suggestionInfo.suggestionId === suggestionId,
       )
-      currentSuggestCheck.suggestionStatus = suggestionStatus
+      currentMySuggestionList.suggestionInfo.suggestionStatus = suggestionStatus
+      console.log(newMySuggestionList)
 
       queryClient.setQueryData(
-        ['suggest-checks', suggestionType, directionType, itemId],
+        ['my-suggestions', suggestionType, directionType, cardId],
         newMySuggestionList,
       )
       return { oldMySuggestionList, newMySuggestionList }

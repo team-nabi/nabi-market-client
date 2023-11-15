@@ -1,19 +1,15 @@
 import { authHandlers } from './authHandlers'
-import { itemHandlers } from './cardHandler'
+import { cardHandlers } from './cardHandler'
 import { dibsHandlers } from './dibsHandlers'
-import { myItemHandlers } from './myItemHandlers'
-import { suggestCheckHandlers } from './suggestCheckHandlers'
-import { suggestHandlers } from './suggestHandlers'
+import { suggestionHandlers } from './suggestionHandlers'
 import { testHandlers } from './testHandler'
 import { userHandlers } from './userHandlers'
 
 export const handlers = [
   ...testHandlers,
   ...authHandlers,
-  ...itemHandlers,
+  ...cardHandlers,
   ...dibsHandlers,
-  ...suggestHandlers,
-  ...suggestCheckHandlers,
-  ...myItemHandlers,
+  ...suggestionHandlers,
   ...userHandlers,
 ]
