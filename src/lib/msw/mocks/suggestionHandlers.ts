@@ -2,10 +2,11 @@ import { rest } from 'msw'
 import ApiEndPoint from '@/config/apiEndPoint'
 import { Environment } from '@/config/environment'
 import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
+import suggestions from '@/lib/msw/mocks/data/suggestions.json'
 
 const baseUrl = Environment.apiAddress()
 
-export const suggestHandlers = [
+export const suggestionHandlers = [
   rest.get(
     `${baseUrl}${ApiEndPoint.getAvailableCardSuggestionList(3)}`,
     async (_req, res, ctx) => {
@@ -130,6 +131,29 @@ export const suggestHandlers = [
           },
         }),
       )
+    },
+  ),
+  rest.get(
+    `${baseUrl}/suggestions/:directionType/:suggestionType/:cardId/`,
+    async (req, res, ctx) => {
+      const queryString = req.url.search
+      const keyValuePairs = queryString.split('&')
+      let cursorId
+      for (var i = 0; i < keyValuePairs.length; i++) {
+        if (keyValuePairs[i].startsWith('cursorId')) {
+          cursorId = keyValuePairs[i].split('=')[1]
+          break
+        }
+      }
+      console.log(cursorId)
+      const currentPage = Number(cursorId)
+      const PAGE_SIZE = 10
+      const filterdSuggestions = suggestions.filter(
+        (suggestion, index) =>
+          index >= currentPage * PAGE_SIZE &&
+          index < (currentPage + 1) * PAGE_SIZE,
+      )
+      return res(ctx.status(200), ctx.json(filterdSuggestions))
     },
   ),
 ]

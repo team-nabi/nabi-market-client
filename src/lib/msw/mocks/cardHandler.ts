@@ -1,23 +1,31 @@
 import { rest } from 'msw'
 import ApiEndPoint from '@/config/apiEndPoint'
 import { Environment } from '@/config/environment'
-import items from '@/lib/msw/mocks/data/items.json'
+import cards from '@/lib/msw/mocks/data/cards.json'
+import myCards from '@/lib/msw/mocks/data/my-cards.json'
 
 const baseUrl = Environment.apiAddress()
 
-export const itemHandlers = [
-  rest.get(`${baseUrl}/items`, async (req, res, ctx) => {
+export const cardHandlers = [
+  rest.get(`${baseUrl}/cards`, async (req, res, ctx) => {
     const queryString = req.url.search
-    const cursorId = queryString.slice(10)
+    const keyValuePairs = queryString.split('&')
+    let cursorId
+    for (var i = 0; i < keyValuePairs.length; i++) {
+      if (keyValuePairs[i].startsWith('cursorId')) {
+        cursorId = keyValuePairs[i].split('=')[1]
+        break
+      }
+    }
     const currentPage = Number(cursorId)
-    const PAGE_SIZE = 5
-    const filterdItems = items.filter(
-      (item, index) =>
+    const PAGE_SIZE = 10
+    const filterdCards = cards.filter(
+      (card, index) =>
         index >= currentPage * PAGE_SIZE &&
         index < (currentPage + 1) * PAGE_SIZE,
     )
 
-    return res(ctx.status(200), ctx.json(filterdItems))
+    return res(ctx.status(200), ctx.json(filterdCards))
   }),
   rest.get(
     `${baseUrl}${ApiEndPoint.getCardInfo(3)}`,
@@ -160,6 +168,25 @@ export const itemHandlers = [
           },
         },
       }),
+    ),
+  rest.get(`${baseUrl}/cards/:status/my-cards`, async (req, res, ctx) => {
+    const queryString = req.url.search
+    const keyValuePairs = queryString.split('&')
+    let cursorId
+    for (var i = 0; i < keyValuePairs.length; i++) {
+      if (keyValuePairs[i].startsWith('cursorId')) {
+        cursorId = keyValuePairs[i].split('=')[1]
+        break
+      }
+    }
+    const currentPage = Number(cursorId)
+    const PAGE_SIZE = 10
+    const filterdMyCards = myCards.filter(
+      (myCard, index) =>
+        index >= currentPage * PAGE_SIZE &&
+        index < (currentPage + 1) * PAGE_SIZE,
     )
+
+    return res(ctx.status(200), ctx.json(filterdMyCards))
   }),
 ]

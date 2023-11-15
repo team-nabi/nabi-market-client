@@ -58,7 +58,9 @@ const MySuggestionList = () => {
                     },
                   ) => (
                     <MySuggestionCard
-                      key={mySuggestionListResponseData.suggestion.suggestionId}
+                      key={
+                        mySuggestionListResponseData.suggestionInfo.suggestionId
+                      }
                       mySuggestionListResponseData={
                         mySuggestionListResponseData
                       }
