@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
+import { TradeStatus } from '@/types/card'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
 
@@ -19,6 +20,7 @@ type TradeSectionProps = {
   authorId: number
   cardId: number
   pokeAvailable: boolean
+  status: TradeStatus
 }
 
 type TradeInfo = {
@@ -34,6 +36,7 @@ const TradeSection = ({
   authorId,
   cardId,
   pokeAvailable,
+  status,
 }: TradeSectionProps) => {
   // FIX : 로그인 관련 완성되면 실제 데이터로 수정
   // const { isLoggedIn } = useAuth()
@@ -42,11 +45,12 @@ const TradeSection = ({
   const currentUser = {
     imageUrl: 'http://asdf~',
     nickname: '병원에 간 미어캣',
-    userId: 2,
+    userId: 1,
   }
 
   const isLoggedIn = true
   const isMyItem = currentUser.userId === authorId
+  const suggestAvailable = status === 'TRADE_AVAILABLE'
   const [open, setOpen] = useState(false)
 
   const tradeInfo: TradeInfo[] = [
@@ -74,7 +78,7 @@ const TradeSection = ({
           variant={v.variant}
         />
       ))}
-      {isLoggedIn && (
+      {isLoggedIn && (suggestAvailable || isMyItem) && (
         <Button className="mt-6" variant={'primary'} onClick={onClickButton}>
           {isMyItem ? '제안 확인하기' : '거래 제안하기'}
         </Button>
