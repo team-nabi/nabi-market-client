@@ -28,7 +28,7 @@ const TradeStatusCard = ({
   className,
 }: TradeStatusCardProps) => {
   return (
-    <Link href={`${AppPath.items()}/${cardId}`}>
+    <Link href={`${AppPath.cards()}/${cardId}`}>
       <Card size={'sm'} className={className}>
         <CardFlex
           direction={'row'}
@@ -37,7 +37,7 @@ const TradeStatusCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="h-full w-32 relative">
+          <div className="relative w-32 h-full">
             <CardImage
               src={thumbnail}
               alt="이미지가 없습니다."

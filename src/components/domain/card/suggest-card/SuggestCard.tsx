@@ -4,16 +4,16 @@ import Button from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card/Card'
 import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
-
-//import useSuggestMutation from '@/hooks/api/mutations/useSuggestMutation'
+import useSuggestMutation from '@/hooks/api/mutations/useSuggestMutation'
+import { SuggestionType } from '@/types/suggestion'
 
 type SuggestCardProps = {
   thumbnail?: string
   cardTitle: string
   itemName: string
   priceRange: string
-  suggestionType: string
-  cardId: number
+  suggestionType: SuggestionType
+  fromCardId: number
   toCardId: number
   suggestionStatus: string | null
 }
@@ -24,18 +24,14 @@ const SuggestCard = ({
   itemName,
   priceRange,
   suggestionType,
-  cardId,
+  fromCardId,
   toCardId,
   suggestionStatus,
 }: SuggestCardProps) => {
-  //  const { mutate } = useSuggestMutation(toCardId, cardId)
+  const { mutate } = useSuggestMutation(toCardId, fromCardId)
 
-  const onClickSuggest = async (type: string) => {
-    // mutate({
-    //   suggestionType: type,
-    //   fromCardId: cardId,
-    //   toCardId: toCardId,
-    // })
+  const onClickSuggest = async (suggestionType: SuggestionType) => {
+    mutate({ suggestionType, fromCardId, toCardId })
   }
   return (
     <Card size="md">

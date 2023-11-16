@@ -40,17 +40,16 @@ const FilterFormDialog = ({
   }
 
   const categories: Category[] = [
-    '전체보기',
     '남성의류',
     '여성의류',
     '잡화ㆍ액세서리',
     '신발',
-    '가전',
     '스포츠',
-    '가구ㆍ인테리어',
     '도서',
-    '전자기기ㆍ디지털',
-    '기타',
+    '전자기기',
+    '가구ㆍ인테리어',
+    '가전',
+    '전체보기',
   ]
 
   const hasNoFilter = priceRange !== '전체보기' || category !== '전체보기'

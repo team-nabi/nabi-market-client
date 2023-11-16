@@ -9,7 +9,7 @@ import Assets from '@/config/assets'
 import type { Card as CardInfo } from '@/types/card'
 
 const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
-  <Link href={`${AppPath.items()}?priceRange=${priceRange}`}>
+  <Link href={`${AppPath.cards()}?priceRange=${priceRange}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.checkCircle} alt="check-circle" />
       <CardText>제안 하러가기</CardText>
@@ -54,7 +54,7 @@ const MyCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="h-full w-36 relative">
+          <div className="relative h-full w-36">
             <CardImage
               className="rounded-lg"
               src={thumbnail}

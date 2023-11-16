@@ -1,7 +1,7 @@
 import Slider from '@/components/domain/slider'
 import Assets from '@/config/assets'
 
-const HomeSlider = () => {
+const BannerSection = () => {
   const bannerArr = [
     { _id: 1, image: Assets.banner1 },
     { _id: 2, image: Assets.banner2 },
@@ -10,4 +10,4 @@ const HomeSlider = () => {
   return <Slider imageData={bannerArr} imageAspectRatio="auto" />
 }
 
-export default HomeSlider
+export default BannerSection

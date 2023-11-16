@@ -23,12 +23,12 @@ export const suggestionHandlers = [
                   cardId: 1,
                   thumbnail: DEFAULT_ITEM_THUMBNAIL_IMG,
                   cardTitle: 'xxx',
-                  itemName: '다이슨 청소기',
+                  itemName: '다이슨 청소기 id 1',
                   priceRange: '10만원대',
                 },
-                suggestion: {
+                suggestionInfo: {
                   suggestionType: 'OFFER',
-                  suggestionStatus: 'WAITING',
+                  suggestionStatus: null,
                 },
               },
               {
@@ -37,10 +37,10 @@ export const suggestionHandlers = [
                   cardId: 2,
                   thumbNail: DEFAULT_ITEM_THUMBNAIL_IMG,
                   cardTitle: 'xxx',
-                  itemName: '애플 워치',
+                  itemName: '애플 워치 id 2',
                   priceRange: '20만원대',
                 },
-                suggestion: {
+                suggestionInfo: {
                   suggestionType: 'POKE',
                   suggestionStatus: null,
                 },
@@ -51,10 +51,10 @@ export const suggestionHandlers = [
                   cardId: 5,
                   thumbNail: DEFAULT_ITEM_THUMBNAIL_IMG,
                   cardTitle: 'xxx',
-                  itemName: '에어팟 프로',
+                  itemName: '에어팟 프로 id 5',
                   priceRange: '20만원대',
                 },
-                suggestion: {
+                suggestionInfo: {
                   suggestionType: 'POKE',
                   suggestionStatus: null,
                 },
@@ -65,10 +65,10 @@ export const suggestionHandlers = [
                   cardId: 6,
                   thumbNail: DEFAULT_ITEM_THUMBNAIL_IMG,
                   cardTitle: 'xxx',
-                  itemName: '에어팟 프로',
+                  itemName: '에어팟 프로 id 6',
                   priceRange: '20만원대',
                 },
-                suggestion: {
+                suggestionInfo: {
                   suggestionType: 'POKE',
                   suggestionStatus: null,
                 },
@@ -79,10 +79,10 @@ export const suggestionHandlers = [
                   cardId: 7,
                   thumbNail: DEFAULT_ITEM_THUMBNAIL_IMG,
                   cardTitle: 'xxx',
-                  itemName: '에어팟 프로',
+                  itemName: '에어팟 프로 id 7',
                   priceRange: '20만원대',
                 },
-                suggestion: {
+                suggestionInfo: {
                   suggestionType: 'POKE',
                   suggestionStatus: 'WAITING',
                 },
@@ -100,7 +100,7 @@ export const suggestionHandlers = [
         ctx.status(200),
         ctx.json({
           code: 'SUCCESS',
-          message: '성공하였습니다.',
+          message: '찔러보기 성공하였습니다.',
           data: {
             suggestionId: 1,
             suggestionType: 'POKE',
@@ -120,7 +120,7 @@ export const suggestionHandlers = [
         ctx.status(200),
         ctx.json({
           code: 'SUCCESS',
-          message: '성공하였습니다.',
+          message: '오퍼하기 성공하였습니다.',
           data: {
             suggestionId: 1,
             suggestionType: 'OFFER',

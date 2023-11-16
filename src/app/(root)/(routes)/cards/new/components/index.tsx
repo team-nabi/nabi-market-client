@@ -1,5 +1,6 @@
 import CardTitle from './CardTitle'
 import Category from './Category'
+import Content from './Content'
 import ItemImageUploader from './ItemImageUploader'
 import ItemName from './ItemName'
 import PokeAvailable from './PokeAvailable'
@@ -16,4 +17,5 @@ export {
   PriceRange,
   TradeArea,
   TradeType,
+  Content,
 }

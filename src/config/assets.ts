@@ -1,6 +1,16 @@
+import Books from '/public/images/BOOKS.png'
 import Banner1 from '/public/images/Banner1.png'
 import Banner2 from '/public/images/Banner2.png'
 import Banner3 from '/public/images/Banner3.png'
+import Electronics from '/public/images/ELECTRONICS.png'
+import FemaleClothes from '/public/images/FEMALE_CLOTHES.png'
+import FurnitureInterior from '/public/images/FURNITURE_INTERIOR.png'
+import GoodsAccessory from '/public/images/GOODS_ACCESSORY.png'
+import HomeElectronics from '/public/images/HOME_ELECTRONICS.png'
+import MaleClothes from '/public/images/MALE_CLOTHES.png'
+import AllCards from '/public/images/SEARCH_ALL.png'
+import Shoes from '/public/images/SHOES.png'
+import Sports from '/public/images/SPORTS.png'
 import ArrowCircleRight from '/public/images/arrow-circle-right.svg'
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
@@ -60,6 +70,16 @@ const Assets = {
   editMemoIcon: EditMemoIcon,
   unavailableIcon: UnavailableIcon,
   tradeComplete: TradeComplete,
+  maleClothesIcon: MaleClothes,
+  femaleClothesIcon: FemaleClothes,
+  goodsAccessoryIcon: GoodsAccessory,
+  shoesIcon: Shoes,
+  sportsIcon: Sports,
+  booksIcon: Books,
+  electronicsIcon: Electronics,
+  furnitureInteriorIcon: FurnitureInterior,
+  homeElectronicsIcon: HomeElectronics,
+  allCardIcon: AllCards,
 } as const
 
 export default Assets

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 import { AppValidation } from '@/config/appValidation'
 import { useToast } from '@/hooks/useToast'
+import { postCard } from '@/services/card/card'
 
-const itemUploadFormSchema = z.object({
+export const cardUploadFormSchema = z.object({
   cardTitle: AppValidation.title(),
   itemName: AppValidation.itemName(),
   priceRange: AppValidation.priceRange(),
@@ -15,39 +17,44 @@ const itemUploadFormSchema = z.object({
   pokeAvailable: AppValidation.pokeAvailable(),
   content: AppValidation.content(),
   images: AppValidation.images(),
-  thumbnailImage: AppValidation.thumbnailImage(),
+  thumbnail: AppValidation.thumbnail(),
 })
 
-export type ItemUploadFormValues = z.infer<typeof itemUploadFormSchema>
+export type CardUploadFormValues = z.infer<typeof cardUploadFormSchema>
 
-export const useItemUploadForm = () => {
+export const useCardUploadForm = () => {
+  const router = useRouter()
   const { toast } = useToast()
-  const form = useForm<ItemUploadFormValues>({
-    resolver: zodResolver(itemUploadFormSchema),
+  const form = useForm<CardUploadFormValues>({
+    resolver: zodResolver(cardUploadFormSchema),
     defaultValues: {
-      cardTitle: undefined,
-      itemName: undefined,
+      cardTitle: '',
+      itemName: '',
       priceRange: undefined,
       category: undefined,
       tradeType: undefined,
-      tradeArea: undefined,
+      tradeArea: '',
       pokeAvailable: false,
-      content: undefined,
-      images: undefined,
-      thumbnailImage: undefined,
+      content: '',
+      images: [],
+      thumbnail: undefined,
     },
     mode: 'onSubmit',
   })
 
-  const [isSubmitting, setisSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const onSubmit = async (data: ItemUploadFormValues) => {
+  const onSubmit = async (data: CardUploadFormValues) => {
     if (isSubmitting) return
-    setisSubmitting(() => true)
+    setIsSubmitting(() => true)
     console.log(data)
     try {
-      // await createItem({ variables: { input: { ...values } } })
-      // await router.push('/items')
+      await postCard(data)
+      toast({
+        title: 'Success',
+        description: '게시글을 업로드했습니다.',
+      })
+      router.back()
     } catch (error) {
       toast({
         variant: 'destructive',
@@ -55,6 +62,8 @@ export const useItemUploadForm = () => {
         description: '게시글을 업로드하는데 실패했습니다.',
       })
       console.log(error)
+    } finally {
+      setIsSubmitting(() => false)
     }
   }
 
