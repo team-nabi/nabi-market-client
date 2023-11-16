@@ -2,8 +2,6 @@ import { TradeStatus } from '@/types/card'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
 
 const ApiEndPoint = {
-  kakaoLogin: () => 'users/oauth2/authorize/kakao/login',
-  googleLogin: () => 'users/oauth2/authorize/google/login',
   getValidateUser: () => '/users',
   test: () => '/test',
   getCardInfo: (cardId: number) => `cards/${cardId}`,
@@ -30,6 +28,10 @@ const ApiEndPoint = {
   postImageFile: () => '/s3/upload/single',
   postCard: () => '/cards',
   putCard: (cardId: string) => `/cards/${cardId}`,
+  getKakaoRedirect: (code: string) =>
+    `/users/oauth2/authorize/kakao/redirect?code=${code}`,
+  getGoogleRedirect: (code: string) =>
+    `/users/oauth2/authorize/google/redirect?code=${code}`,
 } as const
 
 export default ApiEndPoint

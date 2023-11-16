@@ -14,9 +14,11 @@ class FetchAPI {
   private static instance: FetchAPI
 
   private constructor() {
-    this.baseURL = Environment.apiAddress() ?? ''
+    this.baseURL = Environment.currentAddress()
     this.headers = {
       'Content-Type': 'application/json',
+      mode: 'cors',
+      Credentials: 'include',
     }
   }
 
