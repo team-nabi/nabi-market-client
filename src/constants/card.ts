@@ -1,3 +1,5 @@
+import Assets from '@/config/assets'
+
 const PRICE_RANGE = [
   '~ 1만원',
   '1만원 ~ 5만원',
@@ -11,7 +13,6 @@ const PRICE_RANGE = [
 ] as const
 
 const CATEGORY = [
-  '전체보기',
   '남성의류',
   '여성의류',
   '잡화ㆍ액세서리',
@@ -21,8 +22,7 @@ const CATEGORY = [
   '전자기기',
   '가구ㆍ인테리어',
   '가전',
-  '전자기기ㆍ디지털',
-  '기타',
+  '전체보기',
 ] as const
 
 const CARD_TRADE_STATUS = [
@@ -39,6 +39,19 @@ const SUGGESTION_TYPE = ['OFFER', 'POKE'] as const
 
 const DIRECTION_TYPE = ['RECEIVE', 'SEND'] as const
 
+const CATEGORY_BUTTON_LIST = [
+  { name: '남성의류', image: Assets.maleClothesIcon },
+  { name: '여성의류', image: Assets.femaleClothesIcon },
+  { name: '잡화ㆍ액세서리', image: Assets.goodsAccessoryIcon },
+  { name: '신발', image: Assets.shoesIcon },
+  { name: '스포츠', image: Assets.sportsIcon },
+  { name: '도서', image: Assets.booksIcon },
+  { name: '전자기기', image: Assets.electronicsIcon },
+  { name: '가구ㆍ인테리어', image: Assets.furnitureInteriorIcon },
+  { name: '가전', image: Assets.homeElectronicsIcon },
+  { name: '전체보기', image: Assets.allCardIcon },
+] as const
+
 export {
   PRICE_RANGE,
   CATEGORY,
@@ -47,4 +60,5 @@ export {
   SUGGESTION_TYPE,
   SUGGESTION_STATUS,
   DIRECTION_TYPE,
+  CATEGORY_BUTTON_LIST,
 }
