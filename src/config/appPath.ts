@@ -8,6 +8,7 @@ const AppPath = {
   mypage: () => '/mypage' as const,
   myItems: () => '/mypage/my-items' as const,
   suggestChecks: () => '/mypage/suggest-checks' as const,
+  modifyCard: (cardId: string) => `/cards/${cardId}/modify` as const,
 } as const
 
 type AppPathReturnType = {

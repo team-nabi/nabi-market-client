@@ -12,14 +12,12 @@ type SuggestListProps = {
 
 /**
  * TODO : 스크롤바 디자인 수정
- * TODO : 실제 API 연결(useMutation 사용해서)
  */
 const SuggestList = ({
   suggestionData,
   pokeAvailable,
   toCardId,
 }: SuggestListProps) => {
-  console.log(suggestionData)
   return (
     <Tabs defaultValue="OFFER">
       <TabsList>
@@ -46,7 +44,7 @@ const SuggestList = ({
             </div>
           ) : (
             suggestionData
-              .filter((v) => v.suggestion.suggestionType === type)
+              .filter((v) => v.suggestionInfo.suggestionType === type)
               .map((v) => (
                 <SuggestCard
                   key={v.cardInfo.cardId}
@@ -54,10 +52,10 @@ const SuggestList = ({
                   cardTitle={v.cardInfo.cardTitle}
                   itemName={v.cardInfo.itemName}
                   priceRange={v.cardInfo.priceRange}
-                  suggestionType={v.suggestion.suggestionType}
-                  cardId={v.cardInfo.cardId}
+                  suggestionType={v.suggestionInfo.suggestionType}
+                  fromCardId={v.cardInfo.cardId}
                   toCardId={toCardId}
-                  suggestionStatus={v.suggestion.suggestionStatus}
+                  suggestionStatus={v.suggestionInfo.suggestionStatus}
                 />
               ))
           )}
