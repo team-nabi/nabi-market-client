@@ -20,7 +20,7 @@ const useValidate = () => {
   const { data, isError } = useQuery({
     queryKey: ['validate', token],
     queryFn: async () => {
-      const res = await getValidateUser()
+      const res = await getValidateUser(token)
       return await res.json()
     },
     enabled: !!token,

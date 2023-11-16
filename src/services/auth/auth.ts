@@ -11,8 +11,14 @@ const getGoogleRedirect = async (code: string) => {
   return response
 }
 
-const getValidateUser = async () => {
-  const response = await apiClient.get(ApiEndPoint.getValidateUser())
+const getValidateUser = async (token?: string) => {
+  const response = await apiClient.get(
+    ApiEndPoint.getValidateUser(),
+    {},
+    {
+      Authorization: `${token}`,
+    },
+  )
   return response
 }
 
