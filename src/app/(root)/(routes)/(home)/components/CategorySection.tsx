@@ -4,15 +4,21 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/button'
 import AppPath from '@/config/appPath'
-import { CATEGORY_BUTTON_LIST } from '@/constants/card'
+import { CATEGORY_BUTTON_LIST, CATEGORY_TO_KR } from '@/constants/card'
 import { TYPOGRAPHY } from '@/styles/sizes'
-import { Category } from '@/types/card'
 
 const CategorySection = () => {
   const router = useRouter()
 
-  const handleClick = (name: Category) => {
-    router.push(`${AppPath.cards()}?category=${name}`)
+  const handleClick = (name: string) => {
+    const category = Object.keys(CATEGORY_TO_KR).find(
+      (key) => CATEGORY_TO_KR[key] === name,
+    )
+    if (name === '전체보기') {
+      router.push(`${AppPath.cards()}`)
+    } else {
+      router.push(`${AppPath.cards()}?category=${category}`)
+    }
   }
   return (
     <div className="w-full  grid grid-cols-5 items-center gap-y-4">

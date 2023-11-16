@@ -18,8 +18,8 @@ const getInitialCardInfo = async (
   return {
     cardTitle: '테스트',
     itemName: '스마트폰',
-    priceRange: '~ 1만원',
-    category: '여성의류',
+    priceRange: 'PRICE_RANGE_ONE',
+    category: 'FEMALE_CLOTHES',
     tradeType: '직거래',
     tradeArea: '서울 강남',
     pokeAvailable: true,

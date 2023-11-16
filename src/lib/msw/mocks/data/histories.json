@@ -1,0 +1,206 @@
+[
+  {
+    "historyId": "1",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "2",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "3",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "4",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "5",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "6",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "7",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "8",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "9",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "10",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "11",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  },
+  {
+    "historyId": "12",
+    "fromCard": {
+      "cardId": 9,
+      "itemName": "닌텐도 스위치",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "toCard": {
+      "cardId": 10,
+      "itemName": "나이키 에어맥스",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+      "priceRange": "PRICE_RANGE_ONE"
+    },
+    "createdAt": "2023-11-10T16:24:34",
+    "modifiedAt": "2023-11-10T16:24:51"
+  }
+]

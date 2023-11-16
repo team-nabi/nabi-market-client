@@ -17,6 +17,7 @@ class FetchAPI {
     this.baseURL = Environment.apiAddress() ?? ''
     this.headers = {
       'Content-Type': 'application/json',
+      Credentials: 'include',
     }
   }
 

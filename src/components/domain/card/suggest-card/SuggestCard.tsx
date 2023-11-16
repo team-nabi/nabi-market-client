@@ -8,7 +8,7 @@ import useSuggestMutation from '@/hooks/api/mutations/useSuggestMutation'
 import { SuggestionType } from '@/types/suggestion'
 
 type SuggestCardProps = {
-  thumbNail?: string
+  thumbnail?: string
   cardTitle: string
   itemName: string
   priceRange: string
@@ -19,7 +19,7 @@ type SuggestCardProps = {
 }
 
 const SuggestCard = ({
-  thumbNail = DEFAULT_ITEM_THUMBNAIL_IMG,
+  thumbnail = DEFAULT_ITEM_THUMBNAIL_IMG,
   cardTitle,
   itemName,
   priceRange,
@@ -44,8 +44,8 @@ const SuggestCard = ({
       >
         <div className="h-full w-36 relative">
           <CardImage
-            src={thumbNail}
-            alt="thumbNail"
+            src={thumbnail}
+            alt="thumbnail"
             layout="fill"
             objectFit="cover"
           />

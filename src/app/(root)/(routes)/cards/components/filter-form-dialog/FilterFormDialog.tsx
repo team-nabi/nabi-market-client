@@ -16,6 +16,7 @@ import {
   SelectTrigger,
 } from '@/components/ui/select'
 import Assets from '@/config/assets'
+import { CATEGORY, CATEGORY_TO_KR } from '@/constants/card'
 import { Category, PriceRange } from '@/types/card'
 
 type FilterFormDialogProps = {
@@ -39,21 +40,8 @@ const FilterFormDialog = ({
     setIsOpen(false)
   }
 
-  const categories: Category[] = [
-    '남성의류',
-    '여성의류',
-    '잡화ㆍ액세서리',
-    '신발',
-    '스포츠',
-    '도서',
-    '전자기기',
-    '가구ㆍ인테리어',
-    '가전',
-    '전체보기',
-  ]
-
-  const hasNoFilter = priceRange !== '전체보기' || category !== '전체보기'
-
+  //  const hasNoFilter = priceRange !== '전체보기' || category !== '전체보기'
+  const hasNoFilter = true
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -113,7 +101,7 @@ const FilterFormDialog = ({
             <DialogDescription className="text-sm mb-2">
               카테고리
             </DialogDescription>
-            {categories.map((currentCategory: Category, index) => (
+            {CATEGORY.map((currentCategory: Category, index) => (
               <button
                 key={index}
                 className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
@@ -125,7 +113,7 @@ const FilterFormDialog = ({
                   setCategory(e.currentTarget.textContent as Category)
                 }
               >
-                {currentCategory}
+                {CATEGORY_TO_KR[currentCategory]}
               </button>
             ))}
           </DialogDescription>
