@@ -31,6 +31,7 @@ const CardPage = async ({ params }: CardPageProps) => {
     userId,
     images,
     pokeAvailable,
+    status,
   } = data
 
   return (
@@ -46,6 +47,7 @@ const CardPage = async ({ params }: CardPageProps) => {
           authorId={userId}
           cardId={cardId}
           pokeAvailable={pokeAvailable}
+          status={status}
         />
       </div>
     </main>

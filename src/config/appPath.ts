@@ -11,9 +11,10 @@ const AppPath = {
   myItems: () => '/mypage/my-items' as const,
   suggestChecks: () => '/mypage/suggest-checks' as const,
   kakaoLogin: () =>
-    `${Environment.apiAddress()}/users/oauth2/authorize/kakao/login`,
+    `${Environment.apiAddress()}/users/oauth2/authorize/kakao/login` as const,
   googleLogin: () =>
-    `${Environment.apiAddress()}/users/oauth2/authorize/google/login`,
+    `${Environment.apiAddress()}/users/oauth2/authorize/google/login` as const,
+  modifyCard: (cardId: string) => `/cards/${cardId}/modify` as const,
 } as const
 
 type AppPathReturnType = {
