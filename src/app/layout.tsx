@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import NewCardButton from '@/components/domain/buttons/new-card-button'
 import Header from '@/components/domain/header'
 import { Toaster } from '@/components/ui/toast/Toaster'
 import { Environment } from '@/config/environment'
@@ -37,6 +38,7 @@ export default async function RootLayout({
                   <Header />
                   {children}
                   {authModal}
+                  <NewCardButton />
                 </div>
                 <Toaster />
               </AuthProvider>
