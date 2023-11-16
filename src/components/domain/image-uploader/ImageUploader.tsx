@@ -1,9 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
+import Cookies from 'js-cookie'
+import { Environment } from '@/config/environment'
 import { MAX_IMAGE_NUMBER } from '@/constants/image'
 import { useToast } from '@/hooks/useToast'
 import { postImageFile } from '@/services/images'
+import { isNotNull } from '@/utils/isNotNull'
 import ImageBlock from './components/ImageBlock'
 import UploadBlock from './components/UploadBlock'
 
@@ -26,7 +29,8 @@ const ImageUploader = ({
   async function uploadImages(files: FileList) {
     const uploadPromises = Array.from(files).map(async (file) => {
       try {
-        return await postImageFile(file)
+        const res = await postImageFile(file)
+        return res.data
       } catch (e) {
         toast({
           title: '이미지 업로드 실패',
@@ -39,9 +43,10 @@ const ImageUploader = ({
     const uploadedImages = await Promise.all(uploadPromises)
 
     const successfulUploads = uploadedImages
-      .filter((imageUrl) => imageUrl.data != null)
-      .map((imageUrl) => imageUrl.data)
-    console.log([...images, ...successfulUploads])
+      .filter((imageUrl) => imageUrl != null)
+      .map((imageUrl) => imageUrl)
+      .filter(isNotNull)
+
     setImages((images) => [...images, ...successfulUploads])
     onFilesChanged([...images, ...successfulUploads])
   }

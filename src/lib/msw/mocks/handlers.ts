@@ -10,7 +10,6 @@ import { userHandlers } from './userHandlers'
 export const handlers = [
   ...testHandlers,
   ...authHandlers,
-  ...cardHandlers,
   ...dibsHandlers,
   ...suggestionHandlers,
   ...userHandlers,
