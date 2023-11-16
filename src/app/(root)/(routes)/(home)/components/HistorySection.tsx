@@ -31,7 +31,7 @@ const HistorySection = () => {
   return (
     <section className="flex flex-col w-full px-4 gap-6">
       <div className="text-[24px] font-bold">최근 거래성사된 물건들</div>
-      {dummyData.map((data, i) => (
+      {dummyData.map((data) => (
         <HistoryCard key={data.historyId} history={data} />
       ))}
     </section>
