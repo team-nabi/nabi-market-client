@@ -6,7 +6,7 @@ import PopularCardSection from './components/PopularCardSection'
 
 function HomePage() {
   return (
-    <main className="flex flex-col items-center min-h-screen bg-background-color gap-8">
+    <main className="flex flex-col items-center min-h-screen bg-background-color gap-12">
       <BannerSection />
       <CategorySection />
       <PopularCardSection />
