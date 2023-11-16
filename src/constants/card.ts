@@ -1,16 +1,15 @@
 import Assets from '@/config/assets'
 
-const PRICE_RANGE = [
-  '~ 1만원',
-  '1만원 ~ 5만원',
-  '5만원 ~ 10만원',
-  '10만원대',
-  '20만원대',
-  '30만원대',
-  '40만원대',
-  '50만원 이상',
-  '전체보기',
-] as const
+const PRICE_RANGE = {
+  PRICE_RANGE_ONE: '~ 1만원',
+  PRICE_RANGE_TWO: '1만원 ~ 5만원',
+  PRICE_RANGE_THREE: '5만원 ~ 10만원',
+  PRICE_RANGE_FOUR: '10만원대',
+  PRICE_RANGE_FIVE: '20만원대',
+  PRICE_RANGE_SIX: '30만원대',
+  PRICE_RANGE_SEVEN: '40만원대',
+  PRICE_RANGE_EIGHT: '50만원 이상',
+} as const
 
 const CATEGORY = [
   '남성의류',
@@ -22,7 +21,6 @@ const CATEGORY = [
   '전자기기',
   '가구ㆍ인테리어',
   '가전',
-  '전체보기',
 ] as const
 
 const CARD_TRADE_STATUS = [
@@ -49,7 +47,7 @@ const CATEGORY_BUTTON_LIST = [
   { name: '전자기기', image: Assets.electronicsIcon },
   { name: '가구ㆍ인테리어', image: Assets.furnitureInteriorIcon },
   { name: '가전', image: Assets.homeElectronicsIcon },
-  { name: '전체보기', image: Assets.allCardIcon },
+  { name: '', image: Assets.allCardIcon },
 ] as const
 
 export {
