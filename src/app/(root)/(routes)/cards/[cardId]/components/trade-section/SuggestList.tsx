@@ -48,7 +48,7 @@ const SuggestList = ({
               .map((v) => (
                 <SuggestCard
                   key={v.cardInfo.cardId}
-                  thumbNail={v.cardInfo.thumbNail}
+                  thumbnail={v.cardInfo.thumbnail}
                   cardTitle={v.cardInfo.cardTitle}
                   itemName={v.cardInfo.itemName}
                   priceRange={v.cardInfo.priceRange}

@@ -27,6 +27,8 @@ const ApiEndPoint = {
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
   getMyDibsList: (cursorId: number) => `/dibs/?cursorId=${cursorId}`,
+  getMyTradeHistoryList: (cursorId: number) =>
+    `/complete-requests/user/?size&cursorId=${cursorId}`,
   postImageFile: () => '/s3/upload/single',
   postCard: () => '/cards',
   putCard: (cardId: string) => `/cards/${cardId}`,

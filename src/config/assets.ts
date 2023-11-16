@@ -35,6 +35,7 @@ import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
+import TradeComplete from '/public/images/trade-complete.svg'
 import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
 
@@ -68,6 +69,7 @@ const Assets = {
   editIcon: editIcon,
   editMemoIcon: EditMemoIcon,
   unavailableIcon: UnavailableIcon,
+  tradeComplete: TradeComplete,
   maleClothesIcon: MaleClothes,
   femaleClothesIcon: FemaleClothes,
   goodsAccessoryIcon: GoodsAccessory,
