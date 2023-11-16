@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { DarkModeButton } from '@/components/ui/dark-mode-button'
 import BannerSection from './components/BannerSection'
 import CategorySection from './components/CategorySection'
