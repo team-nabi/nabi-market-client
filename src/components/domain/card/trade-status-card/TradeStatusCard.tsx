@@ -9,7 +9,6 @@ import { Card as CardInfo } from '@/types/card'
 
 type TradeStatusCardProps = {
   card: CardInfo
-  className: string
 }
 
 const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge>
@@ -25,11 +24,10 @@ const TradeStatusCard = ({
     priceRange,
     createdAt,
   },
-  className,
 }: TradeStatusCardProps) => {
   return (
     <Link href={`${AppPath.cards()}/${cardId}`}>
-      <Card size={'sm'} className={className}>
+      <Card size={'sm'}>
         <CardFlex
           direction={'row'}
           justify={'start'}
