@@ -1,14 +1,14 @@
 'use client'
 
 import { useEffect, useRef, Fragment } from 'react'
-import HistoryCard from '@/components/domain/history-card'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
-import { useMyHistoryQuery } from '@/hooks/api/queries/useMyHistoriesQuery'
+import HistoryCard from '@/components/domain/trade-history-card'
+import { useMyTradeHistoryQuery } from '@/hooks/api/queries/useMyTradeHistoriesQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { MyHistoryRes } from '@/services/history/history'
 
 const MyCardList = () => {
-  const { data, fetchNextPage, isFetchingNextPage } = useMyHistoryQuery()
+  const { data, fetchNextPage, isFetchingNextPage } = useMyTradeHistoryQuery()
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })

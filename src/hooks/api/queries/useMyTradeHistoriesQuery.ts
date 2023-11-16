@@ -1,11 +1,11 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { getMyHistoryList } from '@/services/history/history'
+import { getMyTradeHistoryList } from '@/services/history/history'
 
-export const useMyHistoryQuery = () => {
+export const useMyTradeHistoryQuery = () => {
   return useInfiniteQuery({
-    queryKey: ['my-histories'],
+    queryKey: ['my-trade-histories'],
     queryFn: async ({ pageParam = 0 }) =>
-      await getMyHistoryList({
+      await getMyTradeHistoryList({
         cursorId: pageParam,
       }),
     initialPageParam: 0,

@@ -2,7 +2,7 @@ import { format } from 'date-fns'
 import { CardFlex, CardImage, CardText, Card } from '@/components/ui/card'
 import Assets from '@/config/assets'
 import { Card as CardInfo } from '@/types/card'
-import { History } from '@/types/history'
+import { TradeHistory } from '@/types/tradeHistory'
 
 const SubCard = ({
   thumbnail,
@@ -26,13 +26,13 @@ const SubCard = ({
   </CardFlex>
 )
 
-type HistoryCardProps = {
-  history: History
+type TradeHistoryCardProps = {
+  history: TradeHistory
 }
 
-const HistoryCard = ({
+const TradeHistoryCard = ({
   history: { fromCard, toCard, createdAt },
-}: HistoryCardProps) => {
+}: TradeHistoryCardProps) => {
   return (
     <Card size={'sm'} className="p-2">
       <CardText type={'icon'}>
@@ -60,4 +60,4 @@ const HistoryCard = ({
   )
 }
 
-export default HistoryCard
+export default TradeHistoryCard

@@ -1,6 +1,6 @@
 import { Card } from './card'
 
-interface History {
+interface TradeHistory {
   historyId: string
   fromCard: Pick<Card, 'cardId' | 'thumbnail' | 'itemName' | 'priceRange'>
   toCard: Pick<Card, 'cardId' | 'thumbnail' | 'itemName' | 'priceRange'>
@@ -8,4 +8,4 @@ interface History {
   modifiedAt: string
 }
 
-export type { History }
+export type { TradeHistory }
