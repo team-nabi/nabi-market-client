@@ -18,7 +18,7 @@ const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
 const TradeStatusCard = ({
   card: {
     cardId,
-    thumbNail,
+    thumbnail,
     cardTitle,
     status,
     itemName,
@@ -39,7 +39,7 @@ const TradeStatusCard = ({
         >
           <div className="relative w-32 h-full">
             <CardImage
-              src={thumbNail}
+              src={thumbnail}
               alt="이미지가 없습니다."
               layout="fill"
               objectFit="cover"

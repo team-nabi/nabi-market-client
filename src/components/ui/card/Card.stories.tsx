@@ -95,7 +95,7 @@ export const Trade: Story = {
           createdAt: '2023-11-01T08:08:00',
           modifiedAt: '2023-11-01T08:08:00',
           priceRange: '10만원대',
-          thumbNail:
+          thumbnail:
             'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg',
           status: 'TRADE_AVAILABLE',
         }}

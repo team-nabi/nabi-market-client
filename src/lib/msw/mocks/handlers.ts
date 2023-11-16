@@ -1,6 +1,7 @@
 import { authHandlers } from './authHandlers'
 import { cardHandlers } from './cardHandler'
 import { dibsHandlers } from './dibsHandlers'
+import { historyHandlers } from './historyHandlers'
 import { imageHandlers } from './imageHandlers'
 import { suggestionHandlers } from './suggestionHandlers'
 import { testHandlers } from './testHandler'
@@ -13,5 +14,6 @@ export const handlers = [
   ...dibsHandlers,
   ...suggestionHandlers,
   ...userHandlers,
+  ...historyHandlers,
   ...imageHandlers,
 ]
