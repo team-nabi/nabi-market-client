@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import './index.css'
 
 type SliderProps = {
-  imageData: { id: number; image: StaticImageData }[]
+  imageData: { url: string | StaticImageData }[]
   imageAspectRatio: string
 }
 
@@ -30,13 +30,13 @@ const Slider = ({ imageData, imageAspectRatio }: SliderProps) => {
         disableOnInteraction: false,
       }}
     >
-      {imageData.map((v) => (
-        <SwiperSlide key={v.id}>
+      {imageData.map((v, idx) => (
+        <SwiperSlide key={idx}>
           <Image
             width={0}
             height={0}
             alt="sliderImage"
-            src={v.image}
+            src={v.url}
             sizes="100vw"
             style={{ width: '100%' }}
           />

@@ -30,6 +30,7 @@ import RightIcon from '/public/images/icon-right.svg'
 import UsersIcon from '/public/images/icon-users.svg'
 import XCircleIcon from '/public/images/icon-x-circle.svg'
 import KakaoIcon from '/public/images/kakao.png'
+import HeaderLogo from '/public/images/logo-header.svg'
 import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
@@ -80,6 +81,7 @@ const Assets = {
   furnitureInteriorIcon: FurnitureInterior,
   homeElectronicsIcon: HomeElectronics,
   allCardIcon: AllCards,
+  headerLogo: HeaderLogo,
 } as const
 
 export default Assets
