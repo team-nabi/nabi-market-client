@@ -42,7 +42,7 @@ const getCardList = async ({
 
 const getCardInfo = async (cardId: number) => {
   const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId))
-  return response
+  return response.data
 }
 
 const getMyCardList = async ({

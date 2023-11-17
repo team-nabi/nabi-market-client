@@ -1,5 +1,7 @@
+'use client'
+
 import Slider from '@/components/domain/slider'
-import { getCardInfo } from '@/services/card/card'
+import useCardInfoQuery from '@/hooks/api/queries/useCardInfoQuery'
 import ProfileSection from './components/ProfileSection'
 import DescriptionSection from './components/description-section'
 import TradeSection from './components/trade-section'
@@ -10,45 +12,25 @@ type CardPageProps = {
   }
 }
 
-async function getCardValue(cardId: string) {
-  try {
-    const res = await getCardInfo(Number(cardId))
-    return res.data.cardResponseDto
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-const CardPage = async ({ params }: CardPageProps) => {
-  const data = await getCardValue(params.cardId)
+const CardPage = ({ params }: CardPageProps) => {
+  const { data } = useCardInfoQuery(Number(params.cardId))
   console.log(data)
-  const {
-    cardId,
-    userName,
-    priceRange,
-    tradeType,
-    tradeArea,
-    userId,
-    images,
-    pokeAvailable,
-    status,
-  } = data
-
   return (
     <main className="flex-col min-h-screen bg-background-color">
-      <Slider imageData={images} imageAspectRatio="square" />
+      <div>물건상세정보페이지</div>
+      {/* <Slider imageData={data.cardInfo.images} imageAspectRatio="square" /> */}
       <div className="p-4">
-        <ProfileSection profileImg={null} userName={userName} />
-        <DescriptionSection cardData={data} />
+        {/* <ProfileSection profileImg={null} userName={data.userInfo.userName} />
+        <DescriptionSection cardData={data.cardInfo} />
         <TradeSection
-          priceRange={priceRange}
-          tradeType={tradeType}
-          tradeArea={tradeArea}
-          authorId={userId}
-          cardId={cardId}
-          pokeAvailable={pokeAvailable}
-          status={status}
-        />
+          priceRange={data.cardInfo.carriceRange}
+          tradeType={data.cardInfo.carradeType}
+          tradeArea={data.cardInfo.carradeArea}
+          authorId={data.cardInfo.carserId}
+          cardId={data.cardInfo.carardId}
+          pokeAvailable={data.cardInfo.pokeAvailable}
+          status={data.cardInfo.cardStatus}
+        /> */}
       </div>
     </main>
   )

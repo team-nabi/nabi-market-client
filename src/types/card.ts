@@ -38,6 +38,7 @@ interface CardDetail extends Card {
 interface CardImages {
   url: string
 }
+
 type TradeStatus = (typeof CARD_TRADE_STATUS)[number]
 type TradeType = (typeof TRADE_TYPE)[number]
 type Category = (typeof CATEGORY)[number]

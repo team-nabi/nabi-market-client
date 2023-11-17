@@ -4,8 +4,8 @@ import { DirectionType, SuggestionType } from '@/types/suggestion'
 const ApiEndPoint = {
   getValidateUser: () => '/users',
   test: () => '/test',
-  getCardInfo: (cardId: number) => `cards/${cardId}`,
-  deleteCard: (cardId: number) => `cards/${cardId}`,
+  getCardInfo: (cardId: number) => `/cards/${cardId}`,
+  deleteCard: (cardId: number) => `/cards/${cardId}`,
   getCardList: (cursorId: number) =>
     `/cards/?category&priceRange&cardTitle&cursorId=${cursorId}&status&size`, // TODO: category,priceRange,cardTitle,status,size 적용
   getMyCardList: (status: TradeStatus, cursorId: number) =>
