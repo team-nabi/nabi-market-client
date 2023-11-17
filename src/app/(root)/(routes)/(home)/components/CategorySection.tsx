@@ -6,16 +6,15 @@ import Button from '@/components/ui/button'
 import AppPath from '@/config/appPath'
 import { CATEGORY_BUTTON_LIST } from '@/constants/card'
 import { TYPOGRAPHY } from '@/styles/sizes'
-import { Category } from '@/types/card'
 
 const CategorySection = () => {
   const router = useRouter()
 
-  const handleClick = (name: Category) => {
+  const handleClick = (name: string) => {
     router.push(`${AppPath.cards()}?category=${name}`)
   }
   return (
-    <div className="w-full  grid grid-cols-5 items-center gap-y-4">
+    <div className="grid items-center w-full grid-cols-5 gap-y-4">
       {CATEGORY_BUTTON_LIST.map((v) => (
         <Button
           key={v.name}
