@@ -15,24 +15,30 @@ type CardPageProps = {
 const CardPage = ({ params }: CardPageProps) => {
   const { data } = useCardInfoQuery(Number(params.cardId))
   console.log(data)
+  //TODO - data가 null일때 처리
+
   return (
-    <main className="flex-col min-h-screen bg-background-color">
-      <div>물건상세정보페이지</div>
-      {/* <Slider imageData={data.cardInfo.images} imageAspectRatio="square" /> */}
-      <div className="p-4">
-        {/* <ProfileSection profileImg={null} userName={data.userInfo.userName} />
-        <DescriptionSection cardData={data.cardInfo} />
-        <TradeSection
-          priceRange={data.cardInfo.carriceRange}
-          tradeType={data.cardInfo.carradeType}
-          tradeArea={data.cardInfo.carradeArea}
-          authorId={data.cardInfo.carserId}
-          cardId={data.cardInfo.carardId}
-          pokeAvailable={data.cardInfo.pokeAvailable}
-          status={data.cardInfo.cardStatus}
-        /> */}
-      </div>
-    </main>
+    data && (
+      <main className="flex-col min-h-screen bg-background-color">
+        <Slider imageData={data.cardInfo.images} imageAspectRatio="square" />
+        <div className="p-4">
+          <ProfileSection
+            profileImg={data.userInfo.imageUrl ?? null}
+            userName={data.userInfo.nickname}
+          />
+          <DescriptionSection cardData={data.cardInfo} />
+          <TradeSection
+            priceRange={data.cardInfo.priceRange}
+            tradeType={data.cardInfo.tradeType}
+            tradeArea={data.cardInfo.tradeArea}
+            authorId={data.userInfo.userId}
+            cardId={data.cardInfo.cardId}
+            pokeAvailable={data.cardInfo.pokeAvailable}
+            status={data.cardInfo.status}
+          />
+        </div>
+      </main>
+    )
   )
 }
 

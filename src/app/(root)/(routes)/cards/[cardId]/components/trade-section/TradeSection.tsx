@@ -8,8 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { PRICE_RANGE_OBJS, TRADE_TYPE_OBJS } from '@/constants/card'
+import { useAuth } from '@/contexts/AuthProvider'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
 import { TradeStatus } from '@/types/card'
+import { getValueByKey } from '@/utils/getValueByKey'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
 
@@ -38,24 +41,24 @@ const TradeSection = ({
   pokeAvailable,
   status,
 }: TradeSectionProps) => {
-  // FIX : 로그인 관련 완성되면 실제 데이터로 수정
-  // const { isLoggedIn } = useAuth()
-  // const {currentUser} = useAuth();
+  const { isLoggedIn } = useAuth()
+  const { currentUser } = useAuth()
 
-  const currentUser = {
-    imageUrl: 'http://asdf~',
-    nickname: '병원에 간 미어캣',
-    userId: 1,
-  }
-
-  const isLoggedIn = true
-  const isMyItem = currentUser.userId === authorId
+  const isMyItem = currentUser?.userId === authorId
   const suggestAvailable = status === 'TRADE_AVAILABLE'
   const [open, setOpen] = useState(false)
 
   const tradeInfo: TradeInfo[] = [
-    { title: '가격대', content: priceRange, variant: 'primary' },
-    { title: '거래 방식', content: tradeType, variant: 'information' },
+    {
+      title: '가격대',
+      content: getValueByKey(PRICE_RANGE_OBJS, priceRange),
+      variant: 'primary',
+    },
+    {
+      title: '거래 방식',
+      content: getValueByKey(TRADE_TYPE_OBJS, tradeType),
+      variant: 'information',
+    },
     { title: '거래 지역', content: tradeArea, variant: 'information' },
   ]
 

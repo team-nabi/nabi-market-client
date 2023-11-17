@@ -1,7 +1,12 @@
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import koLocale from 'date-fns/locale/ko'
 import Badge from '@/components/ui/badge'
+import { CATEGORY_OBJS } from '@/constants/card'
+import { useAuth } from '@/contexts/AuthProvider'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { CardDetail } from '@/types/card'
 import { cn } from '@/utils'
+import { getValueByKey } from '@/utils/getValueByKey'
 import Dibs from './Dibs'
 import MoreButton from './MoreButton'
 
@@ -29,17 +34,10 @@ const DescriptionSection = ({
     userId: authorId,
   },
 }: DescriptionSectionProps) => {
-  // FIX : 로그인 관련 완성되면 실제 데이터로 수정
-  // const { isLoggedIn } = useAuth()
-  // const {currentUser} = useAuth();
+  const { isLoggedIn } = useAuth()
+  const { currentUser } = useAuth()
 
-  const currentUser = {
-    imageUrl: 'http://asdf~',
-    nickname: '병원에 간 미어캣',
-    userId: 3,
-  }
-  const isLoggedIn = true
-  const isMyItem = currentUser.userId === authorId
+  const isMyItem = currentUser?.userId === authorId
 
   const tradeStateMap: TradeStateMap = {
     TRADE_AVAILABLE: {
@@ -71,10 +69,10 @@ const DescriptionSection = ({
             TYPOGRAPHY.description,
           )}
         >
-          <u>{category}</u>
+          <u>{getValueByKey(CATEGORY_OBJS, category)}</u>
         </p>
         <p className={cn('text-text-secondary-color', TYPOGRAPHY.description)}>
-          {createdAt}
+          {formatDistanceToNow(new Date(createdAt), { locale: koLocale })} 전
         </p>
         {isLoggedIn && (
           <Dibs cardId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
