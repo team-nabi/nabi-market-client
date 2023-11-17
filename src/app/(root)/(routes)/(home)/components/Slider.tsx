@@ -5,9 +5,10 @@ import { useRouter } from 'next/navigation'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { PRICE_RANGE_TO_KR } from '@/constants/card'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { PopularCardsRes } from '@/services/card/card'
 import { TYPOGRAPHY } from '@/styles/sizes'
+import { getValueByKey } from '@/utils/getValueByKey'
 import './index.css'
 
 type PopularCardSliderProps = {
@@ -45,7 +46,7 @@ const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
             <div className="flex flex-col gap-1 items-center justify-center opacity-70 bg-black rounded-b-[5px] text-white w-full absolute inset-x-0 bottom-0 max-w-[240px] left-2/4 translate-x-[-50%] ">
               <p className={`${TYPOGRAPHY.title}`}>{v.itemName}</p>
               <p className={`${TYPOGRAPHY.description}`}>
-                {PRICE_RANGE_TO_KR[v.priceRange]}
+                {getValueByKey(PRICE_RANGE_OBJS, v.priceRange)}
               </p>
             </div>
           </SwiperSlide>

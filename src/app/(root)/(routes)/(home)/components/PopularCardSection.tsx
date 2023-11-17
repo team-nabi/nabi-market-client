@@ -1,4 +1,3 @@
-import { getPopularCardList } from '@/services/card/card'
 import PopularCardSlider from './Slider'
 
 const popularCardData = [
@@ -7,33 +6,35 @@ const popularCardData = [
     itemName: '아이패드 Pro 11',
     priceRange: 'PRICE_RANGE_EIGHT',
     thumbnail:
-      'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231115/231115145116_1_602265.jpeg',
+      'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/1f134814-6e58-4ea5-9782-a16661bac2bb-8.jpg',
   },
   {
     cardId: 4,
     itemName: '갤럭시 워치5',
     priceRange: 'PRICE_RANGE_FIVE',
     thumbnail:
-      'https://cdn.cetizen.com/CDN/market/market_large_crop/202309/20230916/230916110503_1_1651983.jpg',
+      'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/1f134814-6e58-4ea5-9782-a16661bac2bb-8.jpg',
   },
   {
     cardId: 6,
     itemName: '신비키즈폰2',
     priceRange: 'PRICE_RANGE_FOUR',
-    thumbnail: 'https://cdn.cetizen.com/CDN/review/thumb_350/7822.jpg',
+    thumbnail:
+      'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/1f134814-6e58-4ea5-9782-a16661bac2bb-8.jpg',
   },
   {
     cardId: 2,
     itemName: '에어팟 3세대',
     priceRange: 'PRICE_RANGE_FIVE',
     thumbnail:
-      'https://cdn.cetizen.com/CDN/market/market_large_crop/202310/20231030/231030191325_1_1754713.jpg',
+      'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/1f134814-6e58-4ea5-9782-a16661bac2bb-8.jpg',
   },
   {
     cardId: 13,
     itemName: '갤럭시버즈2프로',
     priceRange: 'PRICE_RANGE_THREE',
-    thumbnail: 'https://cdn.cetizen.com/CDN/review/thumb_350/7874.jpg',
+    thumbnail:
+      'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/1f134814-6e58-4ea5-9782-a16661bac2bb-8.jpg',
   },
 ]
 const PopularCardSection = async () => {
