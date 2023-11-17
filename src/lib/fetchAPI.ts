@@ -105,9 +105,6 @@ class FetchAPI {
           throw new ApiError(response, 'An unexpected error occurred')
       }
     }
-    const clonedResponse = response.clone()
-    const body = await clonedResponse.json()
-    console.log(body)
 
     return await response.json()
   }

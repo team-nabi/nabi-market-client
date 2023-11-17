@@ -1,6 +1,11 @@
 import { CardUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useCardUploadForm'
 import ApiEndPoint from '@/config/apiEndPoint'
-import type { Card, Category, PriceRange, TradeStatus } from '@/types/card'
+import type {
+  CardDetail,
+  Category,
+  PriceRange,
+  TradeStatus,
+} from '@/types/card'
 import apiClient from '../apiClient'
 
 export type Getcards = {
@@ -17,15 +22,37 @@ type putCardReq = {
 
 const postCard = async (cardReq: CardUploadFormValues) => {
   cardReq.thumbnail = cardReq.images[0]
-
-  const response = await apiClient.post(ApiEndPoint.postCard(), cardReq)
+  const imagesByForm = cardReq.images.map((image) => {
+    return { url: image }
+  })
+  Object.assign(cardReq, { images: imagesByForm })
+  console.log(cardReq)
+  const response = await apiClient.post(
+    ApiEndPoint.postCard(),
+    cardReq,
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
+  )
   return response
 }
 
 const putCard = async ({ cardId, cardReq }: putCardReq) => {
   cardReq.thumbnail = cardReq.images[0]
+  const imagesByForm = cardReq.images.map((image) => {
+    return { url: image }
+  })
+  Object.assign(cardReq, { images: imagesByForm })
 
-  const response = await apiClient.put(ApiEndPoint.putCard(cardId), cardReq)
+  const response = await apiClient.put(
+    ApiEndPoint.putCard(cardId),
+    cardReq,
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
+  )
   return response
 }
 
@@ -40,7 +67,9 @@ const getCardList = async ({
   return response
 }
 
-const getCardInfo = async (cardId: number) => {
+const getCardInfo = async (
+  cardId: number,
+): Promise<{ data: { cardInfo: CardDetail } }> => {
   const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId))
   return response
 }
@@ -54,6 +83,7 @@ const getMyCardList = async ({
 }) => {
   const response = await apiClient.get(
     ApiEndPoint.getMyCardList(tradeStatus, cursorId),
+    {},
   )
   return response
 }
@@ -80,7 +110,7 @@ const getMyDibs = async (cursorId: number) => {
 export type PopularCardsRes = {
   code: string
   message: string
-  data: Pick<Card, 'cardId' | 'itemName' | 'priceRange' | 'thumbnail'>
+  data: Pick<CardDetail, 'cardId' | 'itemName' | 'priceRange' | 'thumbnail'>
 }
 const getPopularCardList = async () => {
   const response: PopularCardsRes = await apiClient.get(
