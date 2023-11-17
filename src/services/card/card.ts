@@ -1,6 +1,6 @@
 import { CardUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useCardUploadForm'
 import ApiEndPoint from '@/config/apiEndPoint'
-import type { Category, PriceRange, TradeStatus } from '@/types/card'
+import type { Card, Category, PriceRange, TradeStatus } from '@/types/card'
 import apiClient from '../apiClient'
 
 export type Getcards = {
@@ -77,6 +77,18 @@ const getMyDibs = async (cursorId: number) => {
   const response = await apiClient.get(ApiEndPoint.getMyDibsList(cursorId))
   return response
 }
+export type PopularCardsRes = {
+  code: string
+  message: string
+  data: Pick<Card, 'cardId' | 'itemName' | 'priceRange' | 'thumbnail'>
+}
+const getPopularCardList = async () => {
+  const response: PopularCardsRes = await apiClient.get(
+    ApiEndPoint.getPopularCardList(),
+    { next: { revalidate: 6000 } },
+  )
+  return response
+}
 
 export {
   getCardList,
@@ -88,4 +100,5 @@ export {
   getMyCardList,
   postCard,
   putCard,
+  getPopularCardList,
 }
