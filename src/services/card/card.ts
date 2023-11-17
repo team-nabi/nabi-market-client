@@ -4,8 +4,8 @@ import type { Category, PriceRange, TradeStatus } from '@/types/card'
 import apiClient from '../apiClient'
 
 export type Getcards = {
-  category: Category
-  priceRange: PriceRange
+  category: Category['key']
+  priceRange: PriceRange['key']
   cardTitle: string
   cursorId: number
 }

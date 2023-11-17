@@ -17,11 +17,11 @@ const CardListContent = () => {
   const [cardTitle, setCardTitle] = useState(
     searchParams.get('cardTitle' as string) || '',
   )
-  const [category, setCatgegory] = useState<Category>(
-    (searchParams.get('category') as Category) || '전체보기',
+  const [category, setCatgegory] = useState<Category['key']>(
+    (searchParams.get('category') as Category['key']) || undefined,
   )
-  const [priceRange, setPriceRange] = useState<PriceRange>(
-    (searchParams.get('priceRange') as PriceRange) || '전체보기',
+  const [priceRange, setPriceRange] = useState<PriceRange['key']>(
+    (searchParams.get('priceRange') as PriceRange['key']) || undefined,
   )
 
   // TODO: 현재 API 명세에 status에 어떤 값을 줘야하는지에 대한 정의가 되어 있지 않기 때문에 임시로 상수 값을 전달함 => 추후에 실제 동작 값으로 고치기

@@ -16,13 +16,14 @@ import {
   SelectTrigger,
 } from '@/components/ui/select'
 import Assets from '@/config/assets'
+import { CATEGORY_OBJS, PRICE_RANGE, PRICE_RANGE_OBJS } from '@/constants/card'
 import { Category, PriceRange } from '@/types/card'
 
 type FilterFormDialogProps = {
-  priceRange: PriceRange
-  category: Category
-  setPriceRange: (priceRange: PriceRange) => void
-  setCategory: (category: Category) => void
+  priceRange: PriceRange['key']
+  category: Category['key']
+  setPriceRange: (priceRange: PriceRange['key']) => void
+  setCategory: (category: Category['key']) => void
 }
 
 const FilterFormDialog = ({
@@ -39,20 +40,12 @@ const FilterFormDialog = ({
     setIsOpen(false)
   }
 
-  const categories: Category[] = [
-    '남성의류',
-    '여성의류',
-    '잡화ㆍ액세서리',
-    '신발',
-    '스포츠',
-    '도서',
-    '전자기기',
-    '가구ㆍ인테리어',
-    '가전',
-  ]
-
   // FIXME: 선택 안된 경우 값으로 변경
   const hasNoFilter = priceRange !== undefined || category !== undefined
+  const priceRangeValue = PRICE_RANGE_OBJS.find(({ key }) => key === priceRange)
+    ?.value
+  const getCategoryValue = (categoryKey: Category['key']) =>
+    CATEGORY_OBJS.find(({ key }) => key === categoryKey)?.value
 
   return (
     <>
@@ -89,19 +82,23 @@ const FilterFormDialog = ({
             </DialogDescription>
             <Select
               value={priceRange}
-              onValueChange={(value: PriceRange) => {
+              onValueChange={(value: PriceRange['key']) => {
                 setPriceRange(value)
               }}
             >
-              <SelectTrigger>{priceRange}</SelectTrigger>
+              <SelectTrigger>
+                {priceRangeValue || '가격대를 선택해주세요'}
+              </SelectTrigger>
               <SelectContent>
                 <SelectGroup className="w-full">
-                  <SelectItem value="전체보기">전체보기</SelectItem>
-                  <SelectItem value="10만원대">10만원대</SelectItem>
-                  <SelectItem value="20만원대">20만원대</SelectItem>
-                  <SelectItem value="30만원대">30만원대</SelectItem>
-                  <SelectItem value="40만원대">40만원대</SelectItem>
-                  <SelectItem value="50만원이상">50만원이상</SelectItem>
+                  {PRICE_RANGE_OBJS.map((currentPriceRange: PriceRange) => (
+                    <SelectItem
+                      key={currentPriceRange['key']}
+                      value={currentPriceRange['key']}
+                    >
+                      {currentPriceRange['value']}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -113,19 +110,24 @@ const FilterFormDialog = ({
             <DialogDescription className="mb-2 text-sm">
               카테고리
             </DialogDescription>
-            {categories.map((currentCategory: Category, index) => (
+            {CATEGORY_OBJS.map((currentCategory: Category) => (
               <button
-                key={index}
+                key={currentCategory.key}
+                data-category-key={currentCategory.key}
                 className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
-                  category === currentCategory
+                  category === currentCategory.key
                     ? 'border-primary-color text-primary-color'
                     : 'border-background-secondary-color text-background-secondary-color'
                 }`}
                 onClick={(e) =>
-                  setCategory(e.currentTarget.textContent as Category)
+                  setCategory(
+                    e.currentTarget.getAttribute(
+                      'data-category-key',
+                    ) as Category['key'],
+                  )
                 }
               >
-                {currentCategory}
+                {getCategoryValue(currentCategory.key)}
               </button>
             ))}
           </DialogDescription>

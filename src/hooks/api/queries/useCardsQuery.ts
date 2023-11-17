@@ -3,8 +3,8 @@ import { getCardList } from '@/services/card/card'
 import { Category, PriceRange } from '@/types/card'
 
 export type UseCardsQueryParams = {
-  category: Category
-  priceRange: PriceRange
+  category: Category['key']
+  priceRange: PriceRange['key']
   cardTitle: string
 }
 

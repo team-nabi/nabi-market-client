@@ -4,6 +4,9 @@ import {
   PRICE_RANGE,
   TRADE_TYPE,
   CARD_TRADE_STATUS,
+  CATEGORY_OBJS,
+  TRADE_TYPE_OBJS,
+  PRICE_RANGE_OBJS,
 } from '@/constants/card'
 
 interface Card {
@@ -39,10 +42,10 @@ interface CardImages {
   image: string | StaticImageData
 }
 
-type Category = (typeof CATEGORY)[number]
+type Category = (typeof CATEGORY_OBJS)[number]
 type TradeStatus = (typeof CARD_TRADE_STATUS)[number]
-type PriceRange = (typeof PRICE_RANGE)[number]
-type TradeType = (typeof TRADE_TYPE)[number]
+type PriceRange = (typeof PRICE_RANGE_OBJS)[number]
+type TradeType = (typeof TRADE_TYPE_OBJS)[number]
 
 export type {
   Category,
