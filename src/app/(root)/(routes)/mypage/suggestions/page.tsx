@@ -14,10 +14,10 @@ async function getItemValue(cardId: number) {
   try {
     const res = await getCardInfo(cardId)
     const data = await res
-    data.data.cardResponseDto.image =
+    data.data.cardInfo.thumbnail =
       'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg'
-    data.data.cardResponseDto.createdAt = '2023-11-01T08:08:00'
-    return data.data.cardResponseDto
+    data.data.cardInfo.createdAt = '2023-11-01T08:08:00'
+    return data.data.cardInfo
   } catch (e) {
     console.log(e)
   }
