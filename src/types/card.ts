@@ -1,9 +1,10 @@
-import { StaticImageData } from 'next/image'
 import {
   CATEGORY,
-  PRICE_RANGE,
   TRADE_TYPE,
   CARD_TRADE_STATUS,
+  PRICE_RANGE,
+  CATEGORY_OBJS,
+  PRICE_RANGE_OBJS,
 } from '@/constants/card'
 
 interface Card {
@@ -12,7 +13,7 @@ interface Card {
   itemName: string
   createdAt: string
   modifiedAt: string
-  priceRange: PriceRange
+  priceRange: string
   thumbnail: string
   status: TradeStatus
 }
@@ -35,14 +36,14 @@ interface CardDetail extends Card {
 }
 
 interface CardImages {
-  _id: number
-  image: string | StaticImageData
+  url: string
 }
-
-type Category = (typeof CATEGORY)[number]
 type TradeStatus = (typeof CARD_TRADE_STATUS)[number]
-type PriceRange = (typeof PRICE_RANGE)[number]
 type TradeType = (typeof TRADE_TYPE)[number]
+type Category = (typeof CATEGORY)[number]
+type PriceRange = (typeof PRICE_RANGE)[number]
+type CategoryObjs = (typeof CATEGORY_OBJS)[number]
+type PriceRangeObjs = (typeof PRICE_RANGE_OBJS)[number]
 
 export type {
   Category,
@@ -52,4 +53,6 @@ export type {
   CardDetail,
   CardImages,
   TradeStatus,
+  CategoryObjs,
+  PriceRangeObjs,
 }

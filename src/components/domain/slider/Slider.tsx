@@ -1,16 +1,15 @@
 'use client'
 
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import SwiperCore from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { CardImages } from '@/types/card'
 import './index.css'
 
 type SliderProps = {
-  imageData: CardImages[]
+  imageData: { id: number; image: StaticImageData }[]
   imageAspectRatio: string
 }
 
@@ -32,7 +31,7 @@ const Slider = ({ imageData, imageAspectRatio }: SliderProps) => {
       }}
     >
       {imageData.map((v) => (
-        <SwiperSlide key={v._id}>
+        <SwiperSlide key={v.id}>
           <Image
             width={0}
             height={0}

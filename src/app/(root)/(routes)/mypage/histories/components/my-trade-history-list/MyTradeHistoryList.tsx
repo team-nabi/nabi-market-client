@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useRef, Fragment } from 'react'
+import HistoryCard from '@/components/domain/card/trade-history-card'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
-import HistoryCard from '@/components/domain/trade-history-card'
 import { useMyTradeHistoryQuery } from '@/hooks/api/queries/useMyTradeHistoriesQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { MyHistoryRes } from '@/services/history/history'

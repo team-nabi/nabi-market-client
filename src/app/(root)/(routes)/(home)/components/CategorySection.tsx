@@ -11,20 +11,24 @@ const CategorySection = () => {
   const router = useRouter()
 
   const handleClick = (name: string) => {
-    router.push(`${AppPath.cards()}?category=${name}`)
+    if (name === '전체보기') {
+      router.push(`${AppPath.cards()}`)
+    } else {
+      router.push(`${AppPath.cards()}?category=${name}`)
+    }
   }
   return (
     <div className="grid items-center w-full grid-cols-5 gap-y-4">
       {CATEGORY_BUTTON_LIST.map((v) => (
         <Button
-          key={v.name}
+          key={v.key}
           variant={null}
           size={'icon_md'}
           className="flex flex-col gap-2 h-[61px] w-auto"
-          onClick={() => handleClick(v.name)}
+          onClick={() => handleClick(v.key)}
         >
           <Image className="w-8 h-8" alt={'category-image'} src={v.image} />
-          <p className={` w-max ${TYPOGRAPHY.description}`}>{v.name}</p>
+          <p className={` w-max ${TYPOGRAPHY.description}`}>{v.value}</p>
         </Button>
       ))}
     </div>

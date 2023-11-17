@@ -65,16 +65,24 @@ const SUGGESTION_TYPE = ['OFFER', 'POKE'] as const
 const DIRECTION_TYPE = ['RECEIVE', 'SEND'] as const
 
 const CATEGORY_BUTTON_LIST = [
-  { name: '남성의류', image: Assets.maleClothesIcon },
-  { name: '여성의류', image: Assets.femaleClothesIcon },
-  { name: '잡화ㆍ액세서리', image: Assets.goodsAccessoryIcon },
-  { name: '신발', image: Assets.shoesIcon },
-  { name: '스포츠', image: Assets.sportsIcon },
-  { name: '도서', image: Assets.booksIcon },
-  { name: '전자기기', image: Assets.electronicsIcon },
-  { name: '가구ㆍ인테리어', image: Assets.furnitureInteriorIcon },
-  { name: '가전', image: Assets.homeElectronicsIcon },
-  { name: '전체보기', image: Assets.allCardIcon },
+  { key: 'MALE_CLOTHES', value: '남성의류', image: Assets.maleClothesIcon },
+  {
+    key: 'GOODS_ACCESSORY',
+    value: '잡화ㆍ액세서리',
+    image: Assets.goodsAccessoryIcon,
+  },
+  { key: 'SHOES', value: '신발', image: Assets.shoesIcon },
+  { key: 'SPORTS', value: '스포츠', image: Assets.sportsIcon },
+  { key: 'BOOKS', value: '도서', image: Assets.booksIcon },
+  { key: 'FEMALE_CLOTHES', value: '여성의류', image: Assets.femaleClothesIcon },
+  { key: 'ELECTRONICS', value: '전자기기', image: Assets.electronicsIcon },
+  {
+    key: 'FURNITURE_INTERIOR',
+    value: '가구ㆍ인테리어',
+    image: Assets.furnitureInteriorIcon,
+  },
+  { key: 'HOME_ELECTRONICS', value: '가전', image: Assets.homeElectronicsIcon },
+  { key: 'ALL_CARD', value: '전체보기', image: Assets.allCardIcon },
 ] as const
 
 export {
