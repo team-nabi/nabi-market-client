@@ -34,10 +34,6 @@ const RouteCallback = ({ tokenResponse }: RouteCallbackProps) => {
           expires: 60 * 60 * 24 * 7,
         },
       )
-      apiClient.setDefaultHeader(
-        'Authorization',
-        tokenResponse?.data?.token?.accessToken,
-      )
       window.location.href = AppPath.home()
     } else if (tokenResponse === null) {
       router.push(AppPath.login(), { scroll: false })

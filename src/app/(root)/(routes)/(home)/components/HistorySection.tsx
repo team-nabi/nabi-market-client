@@ -12,14 +12,14 @@ const DUMMY_DATA = [
       cardId: 9,
       itemName: '아이폰13 Pro',
       thumbnail:
-        'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231108/231108190906_1_3087087.jpg',
+        'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/1f134814-6e58-4ea5-9782-a16661bac2bb-8.jpg',
       priceRange: 'PRICE_RANGE_EIGHT',
     },
     toCard: {
       cardId: 10,
       itemName: '갤럭시워치6',
       thumbnail:
-        'https://cdn.cetizen.com/CDN/market/market_large_crop/202310/20231013/231013195812_1_1493030.jpg',
+        'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/1f134814-6e58-4ea5-9782-a16661bac2bb-8.jpg',
       priceRange: 'PRICE_RANGE_THREE',
     },
     createdAt: '2023-11-10T14:42:09',

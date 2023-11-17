@@ -16,7 +16,6 @@ import {
   SelectTrigger,
 } from '@/components/ui/select'
 import Assets from '@/config/assets'
-import { CATEGORY, CATEGORY_TO_KR } from '@/constants/card'
 import { Category, PriceRange } from '@/types/card'
 
 type FilterFormDialogProps = {
@@ -40,8 +39,21 @@ const FilterFormDialog = ({
     setIsOpen(false)
   }
 
-  //  const hasNoFilter = priceRange !== '전체보기' || category !== '전체보기'
-  const hasNoFilter = true
+  const categories: Category[] = [
+    '남성의류',
+    '여성의류',
+    '잡화ㆍ액세서리',
+    '신발',
+    '스포츠',
+    '도서',
+    '전자기기',
+    '가구ㆍ인테리어',
+    '가전',
+  ]
+
+  // FIXME: 선택 안된 경우 값으로 변경
+  const hasNoFilter = priceRange !== undefined || category !== undefined
+
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -72,7 +84,7 @@ const FilterFormDialog = ({
             </DialogDescription>
           </DialogHeader>
           <DialogDescription className="mb-6">
-            <DialogDescription className="text-sm mb-2">
+            <DialogDescription className="mb-2 text-sm">
               가격대
             </DialogDescription>
             <Select
@@ -94,14 +106,14 @@ const FilterFormDialog = ({
               </SelectContent>
             </Select>
           </DialogDescription>
-          <DialogDescription className="border-t border-solid border-background-secondary-color mb-6"></DialogDescription>
+          <DialogDescription className="mb-6 border-t border-solid border-background-secondary-color"></DialogDescription>
 
           {/*TODO: 현재 SelectItem의 value와 textContent가 동일 실 API를 받을 경우, 어떤 값을 줄지 정한후 map 객체로 파싱하여 요청 */}
           <DialogDescription className="mb-6">
-            <DialogDescription className="text-sm mb-2">
+            <DialogDescription className="mb-2 text-sm">
               카테고리
             </DialogDescription>
-            {CATEGORY.map((currentCategory: Category, index) => (
+            {categories.map((currentCategory: Category, index) => (
               <button
                 key={index}
                 className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
@@ -113,13 +125,13 @@ const FilterFormDialog = ({
                   setCategory(e.currentTarget.textContent as Category)
                 }
               >
-                {CATEGORY_TO_KR[currentCategory]}
+                {currentCategory}
               </button>
             ))}
           </DialogDescription>
         </DialogContent>
       </Dialog>
-      {isOpen && <div className="fixed inset-0 bg-black opacity-60 z-40" />}
+      {isOpen && <div className="fixed inset-0 z-40 bg-black opacity-60" />}
     </>
   )
 }

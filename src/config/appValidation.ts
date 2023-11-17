@@ -1,5 +1,9 @@
 import z from 'zod'
-import { CATEGORY, PRICE_RANGE, TRADE_TYPE } from '@/constants/card'
+import {
+  CATEGORY_OBJS,
+  PRICE_RANGE_OBJS,
+  TRADE_TYPE_OBJS,
+} from '@/constants/card'
 
 export const AppValidation = {
   title: () =>
@@ -12,9 +16,14 @@ export const AppValidation = {
       .string()
       .min(1, { message: '상품명을 입력해주세요.' })
       .max(50, { message: '상품명은 50자 이내로 입력해주세요.' }),
-  priceRange: () => z.enum(PRICE_RANGE),
-  category: () => z.enum(CATEGORY),
-  tradeType: () => z.enum(TRADE_TYPE),
+  priceRange: () =>
+    z.enum(PRICE_RANGE_OBJS.map((range) => range.key) as [string, ...string[]]),
+  category: () =>
+    z.enum(
+      CATEGORY_OBJS.map((category) => category.key) as [string, ...string[]],
+    ),
+  tradeType: () =>
+    z.enum(TRADE_TYPE_OBJS.map((type) => type.key) as [string, ...string[]]),
   tradeArea: () =>
     z
       .string()
