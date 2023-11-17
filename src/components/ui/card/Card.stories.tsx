@@ -99,7 +99,6 @@ export const Trade: Story = {
             'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg',
           status: 'TRADE_AVAILABLE',
         }}
-        className={''}
       />
     )
   },
