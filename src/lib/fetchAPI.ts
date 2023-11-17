@@ -15,10 +15,7 @@ class FetchAPI {
 
   private constructor() {
     this.baseURL = Environment.apiAddress() ?? ''
-    this.headers = {
-      'Content-Type': 'application/json',
-      Credentials: 'include',
-    }
+    this.headers = {}
   }
 
   public static getInstance(): FetchAPI {
@@ -58,9 +55,10 @@ class FetchAPI {
     const response = await fetch(`${this.baseURL}${endpoint}`, {
       method: 'POST',
       headers: { ...this.headers, ...customHeaders },
-      body: JSON.stringify(body),
+      body: body instanceof FormData ? body : JSON.stringify(body),
       ...nextInit,
     })
+
     return this.responseHandler(response)
   }
 
@@ -107,6 +105,10 @@ class FetchAPI {
           throw new ApiError(response, 'An unexpected error occurred')
       }
     }
+    const clonedResponse = response.clone()
+    const body = await clonedResponse.json()
+    console.log(body)
+
     return await response.json()
   }
 }

@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { TRADE_TYPE } from '@/constants/card'
+import { TRADE_TYPE_OBJS } from '@/constants/card'
 import type { CardUploadFormValues } from '../hooks/useCardUploadForm'
 
 const TradeType = ({ form }: { form: UseFormReturn<CardUploadFormValues> }) => {
@@ -34,9 +34,9 @@ const TradeType = ({ form }: { form: UseFormReturn<CardUploadFormValues> }) => {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {TRADE_TYPE.map((tradeType) => (
-                  <SelectItem value={tradeType} key={tradeType}>
-                    {tradeType}
+                {TRADE_TYPE_OBJS.map((tradeType) => (
+                  <SelectItem value={tradeType.key} key={tradeType.key}>
+                    {tradeType.value}
                   </SelectItem>
                 ))}
               </SelectGroup>

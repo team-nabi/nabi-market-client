@@ -6,6 +6,7 @@ import Cookies from 'js-cookie'
 import { usePathname, useRouter } from 'next/navigation'
 import AppPath from '@/config/appPath'
 import { Environment } from '@/config/environment'
+import apiClient from '@/services/apiClient'
 import { getValidateUser } from '@/services/auth/auth'
 import type { User } from '@/types/user'
 
@@ -20,7 +21,8 @@ const useValidate = () => {
   const { data, isError } = useQuery({
     queryKey: ['validate', token],
     queryFn: async () => {
-      const res = await getValidateUser(token)
+      apiClient.setDefaultHeader('Authorization', `${token}`)
+      const res = await getValidateUser()
       return res
     },
     enabled: !!token,

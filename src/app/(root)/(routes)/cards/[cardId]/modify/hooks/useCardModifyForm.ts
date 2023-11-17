@@ -39,7 +39,7 @@ export const useCardModifyForm = ({
   const onSubmit = async (data: CardUploadFormValues) => {
     if (isSubmitting) return
     setIsSubmitting(() => true)
-    console.log(data)
+
     try {
       await putCard({
         cardId: cardId,
@@ -50,13 +50,14 @@ export const useCardModifyForm = ({
         title: 'Success',
         description: '게시글을 성공적으로 수정했습니다.',
       })
-    } catch (error) {
+    } catch (error: any) {
       toast({
         variant: 'destructive',
         title: 'Error',
         description: '게시글을 수정하는데 실패했습니다.',
       })
       console.log(error)
+      console.log(await error.response.json())
     } finally {
       setIsSubmitting(() => false)
     }
