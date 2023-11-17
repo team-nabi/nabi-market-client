@@ -85,6 +85,7 @@ export type PopularCardsRes = {
 const getPopularCardList = async () => {
   const response: PopularCardsRes = await apiClient.get(
     ApiEndPoint.getPopularCardList(),
+    { next: { revalidate: 6000 } },
   )
   return response
 }
