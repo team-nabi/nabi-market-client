@@ -31,14 +31,14 @@ const SuggestList = ({
           className=" data-[state=inactive]:hidden h-[402px] overflow-y-auto"
         >
           {!pokeAvailable && type === 'POKE' ? (
-            <div className="flex flex-col justify-start items-center gap-4 p-8">
+            <div className="flex flex-col items-center justify-start gap-4 p-8">
               <Image
                 width={200}
                 height={200}
                 alt="unavailable"
                 src={Assets.unavailableIcon}
               />
-              <p className="font-normal text-sm">
+              <p className="text-sm font-normal">
                 찔러보기가 허용되지 않은 물건입니다
               </p>
             </div>

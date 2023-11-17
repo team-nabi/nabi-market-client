@@ -47,7 +47,7 @@ export const useCardUploadForm = () => {
   const onSubmit = async (data: CardUploadFormValues) => {
     if (isSubmitting) return
     setIsSubmitting(() => true)
-    console.log(data)
+
     try {
       await postCard(data)
       toast({
@@ -55,13 +55,14 @@ export const useCardUploadForm = () => {
         description: '게시글을 업로드했습니다.',
       })
       router.back()
-    } catch (error) {
+    } catch (error: any) {
       toast({
         variant: 'destructive',
         title: 'Error',
         description: '게시글을 업로드하는데 실패했습니다.',
       })
       console.log(error)
+      console.log(await error.response.json())
     } finally {
       setIsSubmitting(() => false)
     }

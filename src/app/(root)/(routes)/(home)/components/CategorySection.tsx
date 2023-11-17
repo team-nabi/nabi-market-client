@@ -21,7 +21,7 @@ const CategorySection = () => {
     }
   }
   return (
-    <div className="w-full  grid grid-cols-5 items-center gap-y-4">
+    <div className="grid items-center w-full grid-cols-5 gap-y-4">
       {CATEGORY_BUTTON_LIST.map((v) => (
         <Button
           key={v.name}
