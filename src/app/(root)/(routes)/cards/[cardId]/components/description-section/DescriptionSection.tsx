@@ -27,7 +27,7 @@ const DescriptionSection = ({
     cardTitle,
     category,
     createdAt,
-    dibsCount,
+    dibCount,
     isMyDib,
     content,
     cardId,
@@ -75,7 +75,7 @@ const DescriptionSection = ({
           {formatDistanceToNow(new Date(createdAt), { locale: koLocale })} 전
         </p>
         {isLoggedIn && (
-          <Dibs cardId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
+          <Dibs cardId={cardId} dibCount={dibCount} isMyDib={isMyDib} />
         )}
       </div>
       <p>{content}</p>

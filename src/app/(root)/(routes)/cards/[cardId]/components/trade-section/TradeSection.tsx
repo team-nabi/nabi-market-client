@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { StaticImageData } from 'next/image'
 import Button from '@/components/ui/button'
 import {
   Dialog,
@@ -8,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import Assets from '@/config/assets'
 import { PRICE_RANGE_OBJS, TRADE_TYPE_OBJS } from '@/constants/card'
 import { useAuth } from '@/contexts/AuthProvider'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
@@ -30,6 +32,7 @@ type TradeInfo = {
   title: string
   content: string
   variant: 'primary' | 'information'
+  icon: StaticImageData
 }
 
 const TradeSection = ({
@@ -53,13 +56,20 @@ const TradeSection = ({
       title: '가격대',
       content: getValueByKey(PRICE_RANGE_OBJS, priceRange),
       variant: 'primary',
+      icon: Assets.moneyIcon,
     },
     {
       title: '거래 방식',
       content: getValueByKey(TRADE_TYPE_OBJS, tradeType),
       variant: 'information',
+      icon: Assets.usersIcon,
     },
-    { title: '거래 지역', content: tradeArea, variant: 'information' },
+    {
+      title: '거래 지역',
+      content: tradeArea,
+      variant: 'information',
+      icon: Assets.markerIcon,
+    },
   ]
 
   const onClickButton = async () => {
@@ -79,6 +89,7 @@ const TradeSection = ({
           title={v.title}
           content={v.content}
           variant={v.variant}
+          icon={v.icon}
         />
       ))}
       {isLoggedIn && (suggestAvailable || isMyItem) && (

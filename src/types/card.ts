@@ -29,7 +29,7 @@ interface CardDetail extends Card {
   viewCount: number
   content: string
   images: CardImages[]
-  dibsCount: number
+  dibCount: number
   isMyDib: boolean
   userId: number
   userName: string
