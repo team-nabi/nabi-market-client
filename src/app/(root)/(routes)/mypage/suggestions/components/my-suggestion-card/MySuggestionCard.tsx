@@ -60,12 +60,12 @@ const WaitingButton = () => {
 }
 
 type SuggestCheckCardProps = {
-  mySuggestionListResponseData: MySuggestionRes & { pageInfo: number }
+  mySuggestionRes: MySuggestionRes & { pageInfo: number }
   suggestionTypeState: SuggestionType
   directionTypeState: DirectionType
 }
 const MySuggestionCard = ({
-  mySuggestionListResponseData: {
+  mySuggestionRes: {
     suggestionInfo: {
       suggestionId,
       suggestionStatus,
@@ -115,7 +115,7 @@ const MySuggestionCard = ({
           <CardFlex direction={'col'} justify={'between'} className="h-full">
             <CardText type={'title'}>{cardTitle}</CardText>
             <CardText type={'description'}>{itemName}</CardText>
-            <CardText type={'description'}>{priceRange}</CardText>
+            <CardText type={'description'}>{priceRange['value']}</CardText>
             <CardFlex gap={'space'}>
               {suggestionStatus === 'WAITING' ? (
                 directionType === 'RECEIVE' ? (

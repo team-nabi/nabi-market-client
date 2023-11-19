@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react'
 import PageTitle from '@/components/domain/page-title'
 import { getCardInfo } from '@/services/card/card'
 // import MyItemSummaryCard from './components/my-item-summary-card'
-import MySuggestionList from './components/my-suggestion-list'
+import MySuggestionList from './components/my-suggestion-list-content'
 
 interface SuggestCheckListPageProps {
   params: {
