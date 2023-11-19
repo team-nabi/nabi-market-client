@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import PageTitle from '@/components/domain/page-title'
-import MyCardList from './components/my-card-list'
+import MyCardListContent from './components/my-card-list-content'
 
 interface MyCardListPageProps {}
 
@@ -8,7 +8,7 @@ const MyCardListPage: FunctionComponent<MyCardListPageProps> = ({}) => {
   return (
     <div>
       <PageTitle title="내 물건 페이지" />
-      <MyCardList />
+      <MyCardListContent />
     </div>
   )
 }
