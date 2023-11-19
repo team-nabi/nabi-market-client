@@ -1,4 +1,4 @@
-import { TradeStatus } from '@/types/card'
+import { Category, PriceRange, TradeStatus } from '@/types/card'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
 
 const ApiEndPoint = {
@@ -6,8 +6,23 @@ const ApiEndPoint = {
   test: () => '/test',
   getCardInfo: (cardId: number) => `cards/${cardId}`,
   deleteCard: (cardId: number) => `cards/${cardId}`,
-  getCardList: (cursorId: number) =>
-    `/cards/?category&priceRange&cardTitle&cursorId=${cursorId}&status&size`, // TODO: category,priceRange,cardTitle,status,size 적용
+  getCardList: (
+    category: Category['key'],
+    priceRange: PriceRange['key'],
+    cardTitle: string,
+    cursorId: number,
+  ) => {
+    const params = new URLSearchParams({
+      category: category === undefined ? '' : category,
+      priceRange: priceRange === undefined ? '' : priceRange,
+      cardTitle,
+      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
+      status: 'TRADE_AVAILABLE,RESERVED',
+      size: '5',
+    })
+
+    return `/cards/?${params.toString()}`
+  },
   getMyCardList: (status: TradeStatus, cursorId: number) =>
     `/cards/${status}/my-cards?&size&cursorId=${cursorId}`, // TODO: status 적용
   postDibs: (cardId: number) => `/dibs/${cardId}`,

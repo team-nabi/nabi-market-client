@@ -46,7 +46,8 @@ const CardListContent = () => {
 
   // TODO: 아이템이 없을시 어떤 UI를 보여줄지 차후에 결정
 
-  const isEmpty = data?.pages[0].length === 0
+  const isEmpty = data?.pages[0].cardList.length === 0
+  console.log('content', data)
 
   return (
     <MaxWidthWrapper>

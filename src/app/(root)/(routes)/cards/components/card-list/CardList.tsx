@@ -9,9 +9,9 @@ const CardList = ({
   data: InfiniteData<any, unknown> | undefined
 }) => (
   <>
-    {data?.pages.map((currentPage: any, pageIndex) => (
+    {data?.pages.map(({ cardList }: any, pageIndex) => (
       <Fragment key={pageIndex}>
-        {currentPage.map((card: Card) => (
+        {cardList.map((card: Card) => (
           <div key={card.cardId} className="mb-6">
             <TradeStatusCard card={card} />
           </div>

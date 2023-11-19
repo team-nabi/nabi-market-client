@@ -36,8 +36,10 @@ const getCardList = async ({
   cardTitle,
   cursorId,
 }: Getcards) => {
-  const response = await apiClient.get(ApiEndPoint.getCardList(cursorId))
-  return response
+  const response = await apiClient.get(
+    ApiEndPoint.getCardList(category, priceRange, cardTitle, cursorId),
+  )
+  return response.data
 }
 
 const getCardInfo = async (cardId: number) => {
