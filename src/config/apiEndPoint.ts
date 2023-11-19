@@ -40,8 +40,14 @@ const ApiEndPoint = {
     suggestionType: SuggestionType,
     cardId: string | null,
     cursorId: number,
-  ) =>
-    `/suggestions/${directionType}/${suggestionType}/${cardId}/?&size={}&cursorId=${cursorId}`, //TODO: 변수 적용
+  ) => {
+    const params = new URLSearchParams({
+      size: '5',
+      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
+    })
+    return `/suggestions/${directionType}/${suggestionType}/${cardId}/?${params.toString()}`
+  },
+
   putUserProfile: () => '/users/profile-image',
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,

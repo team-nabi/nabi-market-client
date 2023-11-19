@@ -58,7 +58,7 @@ const getMySuggestionList = async ({
   cardId,
   cursorId,
 }: GetSuggestChecksParams) => {
-  const response: MySuggestionRes[] = await apiClient.get(
+  const response = await apiClient.get(
     ApiEndPoint.getMySuggestionList(
       directionType,
       suggestionType,
@@ -66,7 +66,7 @@ const getMySuggestionList = async ({
       cursorId,
     ),
   )
-  return response
+  return response.data
 }
 
 export { getAvailableCardSuggestionList, getMySuggestionList, postSuggestion }

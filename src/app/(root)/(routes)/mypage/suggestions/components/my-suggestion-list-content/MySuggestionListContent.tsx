@@ -38,7 +38,7 @@ const MySuggestionListContent = () => {
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
   const isEmpty = data?.pages[0].length === 0
-
+  console.log('content', data)
   return (
     <MaxWidthWrapper>
       <div className="h-9 flex justify-center items-center my-12">

@@ -14,9 +14,9 @@ const MySuggestionList = ({
   directionTypeState: DirectionType
 }) => (
   <>
-    {data?.pages.map((currentPage, pageIndex) => (
+    {data?.pages.map(({ suggestionList }, pageIndex) => (
       <Fragment key={pageIndex}>
-        {currentPage.map(
+        {suggestionList.map(
           (
             mySuggestionRes: MySuggestionRes & {
               pageInfo: number

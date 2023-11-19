@@ -11,7 +11,7 @@ export const useMySuggestionsQuery = (
   return useInfiniteQuery({
     queryKey: ['my-suggestions', suggestionType, directionType, cardId],
     queryFn: async ({ pageParam = 0 }) => {
-      const data: MySuggestionRes[] = await getMySuggestionList({
+      const data = await getMySuggestionList({
         suggestionType,
         directionType,
         cardId,
@@ -33,7 +33,7 @@ export const useMySuggestionsQuery = (
       if (lastPage.length === 0) {
         return undefined
       }
-      return lastPageParam + 1
+      return lastPage.nextCursorId
     },
   })
 }
