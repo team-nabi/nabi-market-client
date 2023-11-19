@@ -23,8 +23,14 @@ const ApiEndPoint = {
 
     return `/cards/?${params.toString()}`
   },
-  getMyCardList: (status: TradeStatus, cursorId: number) =>
-    `/cards/${status}/my-cards?&size&cursorId=${cursorId}`, // TODO: status 적용
+  getMyCardList: (status: TradeStatus, cursorId: number) => {
+    const params = new URLSearchParams({
+      size: '5',
+      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
+    })
+
+    return `/cards/${status}/my-cards?${params.toString()}`
+  },
   postDibs: (cardId: number) => `/dibs/${cardId}`,
   deleteDibs: (cardId: number) => `/dibs/${cardId}`,
   getAvailableCardSuggestionList: (cardId: number) =>

@@ -30,8 +30,7 @@ const MyCardListContent = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
-  const isEmpty = data?.pages[0].length === 0
-
+  const isEmpty = data?.pages[0].cardList.length === 0
   return (
     <MaxWidthWrapper>
       <div className="h-9 flex justify-center items-center my-12">

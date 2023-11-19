@@ -57,7 +57,7 @@ const getMyCardList = async ({
   const response = await apiClient.get(
     ApiEndPoint.getMyCardList(tradeStatus, cursorId),
   )
-  return response
+  return response.data
 }
 
 const postCardDibs = async (cardId: number) => {
