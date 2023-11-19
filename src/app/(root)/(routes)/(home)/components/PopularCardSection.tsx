@@ -2,7 +2,7 @@ import PopularCardSlider from './Slider'
 
 const popularCardData = [
   {
-    cardId: 1,
+    cardId: 14,
     itemName: '아이패드 Pro 11',
     priceRange: 'PRICE_RANGE_EIGHT',
     thumbnail:

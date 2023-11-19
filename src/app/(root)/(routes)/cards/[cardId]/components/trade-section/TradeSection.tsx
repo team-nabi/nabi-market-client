@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { StaticImageData } from 'next/image'
+import { useRouter } from 'next/navigation'
+import NoData from '@/components/domain/no-data'
 import Button from '@/components/ui/button'
 import {
   Dialog,
@@ -46,6 +48,7 @@ const TradeSection = ({
 }: TradeSectionProps) => {
   const { isLoggedIn } = useAuth()
   const { currentUser } = useAuth()
+  const router = useRouter()
 
   const isMyItem = currentUser?.userId === authorId
   const suggestAvailable = status === 'TRADE_AVAILABLE'
@@ -81,6 +84,7 @@ const TradeSection = ({
   }
 
   const { data: suggestions } = useSuggestionsQuery(cardId)
+
   return (
     <section className="flex flex-col gap-2 w-full pt-4">
       {tradeInfo.map((v, i) => (
@@ -103,11 +107,19 @@ const TradeSection = ({
           <DialogHeader>
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
-          <SuggestList
-            toCardId={cardId}
-            pokeAvailable={pokeAvailable}
-            suggestionData={suggestions ?? []}
-          />
+          {!suggestions ? (
+            <NoData
+              title="제안 가능한 내 물건이 없습니다."
+              onClickButton={() => router.push('/cards/new')}
+              buttonContent="물건 등록하러 가기"
+            />
+          ) : (
+            <SuggestList
+              toCardId={cardId}
+              pokeAvailable={pokeAvailable}
+              suggestionData={suggestions}
+            />
+          )}
         </DialogContent>
       </Dialog>
     </section>
