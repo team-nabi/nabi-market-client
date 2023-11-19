@@ -13,7 +13,7 @@ export const useMyTradeHistoryQuery = () => {
       if (lastPage.length === 0) {
         return undefined
       }
-      return lastPageParam + 1
+      return lastPage.nextCursorId
     },
   })
 }

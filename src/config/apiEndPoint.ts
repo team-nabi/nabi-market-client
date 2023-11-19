@@ -52,8 +52,14 @@ const ApiEndPoint = {
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
   getMyDibsList: (cursorId: number) => `/dibs/?cursorId=${cursorId}`,
-  getMyTradeHistoryList: (cursorId: number) =>
-    `/complete-requests/user/?size&cursorId=${cursorId}`,
+  getMyTradeHistoryList: (cursorId: number) => {
+    const params = new URLSearchParams({
+      size: '5',
+      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
+    })
+
+    return `/complete-requests/user/?${params.toString()}`
+  },
   postImageFile: () => '/s3/upload/single',
   postCard: () => '/cards',
   putCard: (cardId: string) => `/cards/${cardId}`,

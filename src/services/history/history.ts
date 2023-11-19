@@ -5,10 +5,10 @@ import apiClient from '../apiClient'
 export type MyHistoryRes = TradeHistory
 
 const getMyTradeHistoryList = async ({ cursorId }: { cursorId: number }) => {
-  const response: MyHistoryRes[] = await apiClient.get(
+  const response = await apiClient.get(
     ApiEndPoint.getMyTradeHistoryList(cursorId),
   )
-  return response
+  return response.data
 }
 
 export { getMyTradeHistoryList }

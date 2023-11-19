@@ -6,12 +6,12 @@ import { MyHistoryRes } from '@/services/history/history'
 const MyTradeHistoryList = ({
   data,
 }: {
-  data: InfiniteData<MyHistoryRes[], unknown> | undefined
+  data: InfiniteData<any, unknown> | undefined
 }) => (
   <>
-    {data?.pages.map((currentPage, pageIndex) => (
+    {data?.pages.map(({ historyId }, pageIndex) => (
       <Fragment key={pageIndex}>
-        {currentPage.map((myHistory: MyHistoryRes) => (
+        {historyId.map((myHistory: MyHistoryRes) => (
           <div key={myHistory.historyId} className="mb-6">
             <TradeHistoryCard history={myHistory} />
           </div>

@@ -26,7 +26,7 @@ const MyTradeHistoryListContent = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
-  const isEmpty = data?.pages[0].length === 0
+  const isEmpty = data?.pages[0].historyList.length === 0
 
   return (
     <MaxWidthWrapper>
