@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import PageTitle from '@/components/domain/page-title'
-import MyTradeHistoryList from './components/my-trade-history-list'
+import MyTradeHistoryList from './components/my-trade-history-list-content'
 
 interface MyHistoryListPageProps {}
 
