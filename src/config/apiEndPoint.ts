@@ -1,7 +1,6 @@
 import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
 import { GetMyTradeHistoryListReq } from '@/services/history/history'
-import { Category, PriceRange, TradeStatus } from '@/types/card'
-import { DirectionType, SuggestionType } from '@/types/suggestion'
+import { GetMySuggestionListReq } from '@/services/suggestion/suggestion'
 import { getQueryParams } from '@/utils/getQueryParams'
 
 const ApiEndPoint = {
@@ -33,12 +32,12 @@ const ApiEndPoint = {
   deleteDibs: (cardId: number) => `/dibs/${cardId}`,
   getAvailableCardSuggestionList: (cardId: number) =>
     `cards/${cardId}/available-cards`,
-  getMySuggestionList: (
-    directionType: DirectionType,
-    suggestionType: SuggestionType,
-    cardId: string | null,
-    cursorId: number,
-  ) => {
+  getMySuggestionList: ({
+    directionType,
+    suggestionType,
+    cardId,
+    cursorId,
+  }: GetMySuggestionListReq) => {
     return `/suggestions/${directionType}/${suggestionType}/${cardId}/?${getQueryParams(
       {
         cursorId,

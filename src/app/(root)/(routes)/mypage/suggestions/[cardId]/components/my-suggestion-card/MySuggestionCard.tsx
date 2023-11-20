@@ -1,14 +1,15 @@
 import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Button from '@/components/ui/button'
 import { CardFlex, CardText, Card, CardImage } from '@/components/ui/card/Card'
 import Assets from '@/config/assets'
 import { useMySuggestionUpdateMutation } from '@/hooks/api/mutations/useMySuggestionUpdateMutation'
-import { MySuggestionRes } from '@/services/suggestion/suggestion'
+import { Card as CardInfo } from '@/types/card'
 import {
   DirectionType,
+  Suggestion,
   SuggestionStatus,
   SuggestionType,
 } from '@/types/suggestion'
@@ -59,13 +60,16 @@ const WaitingButton = () => {
   )
 }
 
-type SuggestCheckCardProps = {
-  mySuggestionRes: MySuggestionRes & { pageInfo: number }
+type MySuggestionCardProps = {
+  mySuggestion: {
+    suggestionInfo: Suggestion
+    cardInfo: CardInfo
+  }
   suggestionTypeState: SuggestionType
   directionTypeState: DirectionType
 }
 const MySuggestionCard = ({
-  mySuggestionRes: {
+  mySuggestion: {
     suggestionInfo: {
       suggestionId,
       suggestionStatus,
@@ -73,23 +77,22 @@ const MySuggestionCard = ({
       createdAt,
     },
     cardInfo: { cardTitle, itemName, priceRange, thumbnail },
-    pageInfo,
   },
   suggestionTypeState,
   directionTypeState,
-}: SuggestCheckCardProps) => {
-  const searchParams = useSearchParams()
+}: MySuggestionCardProps) => {
+  const { cardId } = useParams()
 
   const { mutate } = useMySuggestionUpdateMutation(
     suggestionTypeState,
     directionTypeState,
-    searchParams.get('cardId'),
+    cardId,
   )
   const handleMySuggestionUpdate = (
     suggestionId: string,
     suggestionStatus: SuggestionStatus,
   ) => {
-    mutate({ suggestionId, suggestionStatus, currentPage: pageInfo })
+    mutate({ suggestionId, suggestionStatus })
   }
 
   return (
@@ -115,7 +118,7 @@ const MySuggestionCard = ({
           <CardFlex direction={'col'} justify={'between'} className="h-full">
             <CardText type={'title'}>{cardTitle}</CardText>
             <CardText type={'description'}>{itemName}</CardText>
-            <CardText type={'description'}>{priceRange['value']}</CardText>
+            <CardText type={'description'}>{priceRange}</CardText>
             <CardFlex gap={'space'}>
               {suggestionStatus === 'WAITING' ? (
                 directionType === 'RECEIVE' ? (

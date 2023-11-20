@@ -2,13 +2,7 @@ import { FunctionComponent } from 'react'
 import PageTitle from '@/components/domain/page-title'
 import { getCardInfo } from '@/services/card/card'
 // import MyItemSummaryCard from './components/my-item-summary-card'
-import MySuggestionList from './components/my-suggestion-list-content'
-
-interface SuggestCheckListPageProps {
-  params: {
-    itemId: string
-  }
-}
+import MySuggestionListContent from './components/my-suggestion-list-content'
 
 async function getItemValue(cardId: number) {
   try {
@@ -23,17 +17,18 @@ async function getItemValue(cardId: number) {
   }
 }
 
-const SuggestCheckListPage: FunctionComponent<
-  SuggestCheckListPageProps
-> = async ({ params }: SuggestCheckListPageProps) => {
+const SuggestCheckListPage = async ({
+  params,
+}: {
+  params: { cardId: string }
+}) => {
   const data = await getItemValue(3)
 
   return (
     <div>
       <PageTitle title="제안 확인" />
-      {/* <MyItemSummaryCard item={data} params={params} /> */}
       {JSON.stringify(data)}
-      <MySuggestionList />
+      <MySuggestionListContent />
     </div>
   )
 }

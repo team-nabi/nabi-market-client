@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useMySuggestionsQuery } from '@/hooks/api/queries/useMySuggestionsQuery'
@@ -15,14 +15,10 @@ const MySuggestionListContent = () => {
     useState<SuggestionType>('OFFER')
   const [directionTypeState, setDirectionTypeState] =
     useState<DirectionType>('RECEIVE')
-  const searchParams = useSearchParams()
+  const { cardId } = useParams()
 
   const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useMySuggestionsQuery(
-      suggestionTypeState,
-      directionTypeState,
-      searchParams.get('cardId'),
-    )
+    useMySuggestionsQuery(suggestionTypeState, directionTypeState, cardId)
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
@@ -37,8 +33,7 @@ const MySuggestionListContent = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
-  const isEmpty = data?.pages[0].length === 0
-  console.log('content', data)
+  const isEmpty = data?.pages[0].data.suggestionList.length === 0
   return (
     <MaxWidthWrapper>
       <div className="h-9 flex justify-center items-center my-12">
