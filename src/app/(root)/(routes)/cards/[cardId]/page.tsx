@@ -17,27 +17,31 @@ type CardPageProps = {
 const CardPage = ({ params }: CardPageProps) => {
   const router = useRouter()
   const { data } = useCardInfoQuery(Number(params.cardId))
-  console.log(data)
+  const cardData = data?.data
+  console.log(cardData)
 
   return (
     <main className="flex-col min-h-screen bg-background-color">
-      {data ? (
+      {cardData ? (
         <>
-          <Slider imageData={data.cardInfo.images} imageAspectRatio="square" />
+          <Slider
+            imageData={cardData.cardInfo.images}
+            imageAspectRatio="square"
+          />
           <div className="p-4">
             <ProfileSection
-              profileImg={data.userInfo.imageUrl ?? null}
-              userName={data.userInfo.nickname}
+              profileImg={cardData.userInfo.imageUrl ?? null}
+              userName={cardData.userInfo.nickname}
             />
-            <DescriptionSection cardData={data.cardInfo} />
+            <DescriptionSection cardData={cardData.cardInfo} />
             <TradeSection
-              priceRange={data.cardInfo.priceRange}
-              tradeType={data.cardInfo.tradeType}
-              tradeArea={data.cardInfo.tradeArea}
-              authorId={data.userInfo.userId}
-              cardId={data.cardInfo.cardId}
-              pokeAvailable={data.cardInfo.pokeAvailable}
-              status={data.cardInfo.status}
+              priceRange={cardData.cardInfo.priceRange}
+              tradeType={cardData.cardInfo.tradeType}
+              tradeArea={cardData.cardInfo.tradeArea}
+              authorId={cardData.userInfo.userId}
+              cardId={cardData.cardInfo.cardId}
+              pokeAvailable={cardData.cardInfo.pokeAvailable}
+              status={cardData.cardInfo.status}
             />
           </div>
         </>

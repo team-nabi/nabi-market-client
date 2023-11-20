@@ -15,16 +15,16 @@ interface Card {
   itemName: string
   createdAt: string
   modifiedAt: string
-  priceRange: string
+  priceRange: PriceRangeObjs['key']
   thumbnail: string
-  status: string
+  status: TradeStatusObjs['key']
 }
 
 /**
  * 카드 상세정보 페이지 Response Type
  */
 interface CardDetail extends Card {
-  category: CategoryObjs
+  category: CategoryObjs['key']
   pokeAvailable: boolean
   viewCount: number
   content: string
@@ -33,7 +33,7 @@ interface CardDetail extends Card {
   isMyDib: boolean
   userId: number
   userName: string
-  tradeType: TradeTypeObjs
+  tradeType: TradeTypeObjs['key']
   tradeArea: string
 }
 

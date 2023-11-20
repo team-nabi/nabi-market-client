@@ -6,16 +6,13 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
+import { PopularCardsRes } from '@/services/card/card'
 import { TYPOGRAPHY } from '@/styles/sizes'
-import { CardDetail } from '@/types/card'
 import { getValueByKey } from '@/utils/getValueByKey'
 import './index.css'
 
 type PopularCardSliderProps = {
-  cardData: Pick<
-    CardDetail,
-    'cardId' | 'itemName' | 'priceRange' | 'thumbnail'
-  >[]
+  cardData: PopularCardsRes['data']
 }
 
 const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
@@ -32,7 +29,7 @@ const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
         slidesPerView={2}
         centeredSlides={true}
       >
-        {cardData.map((v) => (
+        {cardData.cardList.map((v) => (
           <SwiperSlide key={v.cardId}>
             <Image
               width={0}
