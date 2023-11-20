@@ -7,10 +7,10 @@ import useDibs from '@/hooks/useDibs'
 
 type DibsProps = {
   isMyDib: boolean
-  dibsCount: number
+  dibCount: number
   cardId: number
 }
-const Dibs = ({ isMyDib, dibsCount: count, cardId }: DibsProps) => {
+const Dibs = ({ isMyDib, dibCount: count, cardId }: DibsProps) => {
   const { dibsCount, isDibsActive, handleDibs } = useDibs(isMyDib, count)
   const onClickDibs = () => {
     handleDibs(cardId)

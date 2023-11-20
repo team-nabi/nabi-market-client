@@ -34,6 +34,7 @@ import HeaderLogo from '/public/images/logo-header.svg'
 import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
+import NoData from '/public/images/no-data-img.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
 import TradeComplete from '/public/images/trade-complete.svg'
@@ -82,6 +83,7 @@ const Assets = {
   homeElectronicsIcon: HomeElectronics,
   allCardIcon: AllCards,
   headerLogo: HeaderLogo,
+  noDataIcon: NoData,
 } as const
 
 export default Assets
