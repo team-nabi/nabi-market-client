@@ -14,12 +14,12 @@ const getInitialCardInfo = async (
   cardId: string,
 ): Promise<CardUploadFormValues> => {
   const res = await getCardInfo(parseInt(cardId))
-  const imagesByForm = res.data.cardInfo.images.map((image) => {
+  const imagesByForm = res.cardInfo.images.map((image) => {
     return image.url
   })
-  Object.assign(res.data.cardInfo, { images: imagesByForm })
+  Object.assign(res.cardInfo, { images: imagesByForm })
 
-  return res.data.cardInfo as unknown as CardUploadFormValues
+  return res.cardInfo as unknown as CardUploadFormValues
 }
 
 const CardModifyPage = async ({ params }: CardModifyPageProps) => {

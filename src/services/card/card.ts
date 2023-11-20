@@ -6,6 +6,7 @@ import type {
   PriceRange,
   TradeStatus,
 } from '@/types/card'
+import { User } from '@/types/user'
 import apiClient from '../apiClient'
 
 export type Getcards = {
@@ -66,12 +67,17 @@ const getCardList = async ({
   const response = await apiClient.get(ApiEndPoint.getCardList(cursorId))
   return response
 }
+export type CardInfoRes = {
+  code: string
+  message: string
+  data: { cardInfo: CardDetail; userInfo: User }
+}
 
-const getCardInfo = async (
-  cardId: number,
-): Promise<{ data: { cardInfo: CardDetail } }> => {
-  const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId))
-  return response
+const getCardInfo = async (cardId: number) => {
+  const response: CardInfoRes = await apiClient.get(
+    ApiEndPoint.getCardInfo(cardId),
+  )
+  return response.data
 }
 
 const getMyCardList = async ({
