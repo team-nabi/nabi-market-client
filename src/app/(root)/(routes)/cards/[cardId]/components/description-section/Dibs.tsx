@@ -11,7 +11,11 @@ type DibsProps = {
   cardId: number
 }
 const Dibs = ({ isMyDib, dibCount: count, cardId }: DibsProps) => {
-  const { dibsCount, isDibsActive, handleDibs } = useDibs(isMyDib, count)
+  const { dibsCount, isDibsActive, handleDibs } = useDibs(
+    isMyDib,
+    count,
+    cardId,
+  )
   const onClickDibs = () => {
     handleDibs(cardId)
   }

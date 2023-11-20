@@ -17,7 +17,7 @@ interface Card {
   modifiedAt: string
   priceRange: string
   thumbnail: string
-  status: TradeStatus
+  status: string
 }
 
 /**
@@ -33,7 +33,7 @@ interface CardDetail extends Card {
   isMyDib: boolean
   userId: number
   userName: string
-  tradeType: TradeType
+  tradeType: TradeTypeObjs
   tradeArea: string
 }
 

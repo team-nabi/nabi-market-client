@@ -1,7 +1,7 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import koLocale from 'date-fns/locale/ko'
 import Badge from '@/components/ui/badge'
-import { CATEGORY_OBJS } from '@/constants/card'
+import { CATEGORY_OBJS, TRADE_STATUS_OBJS } from '@/constants/card'
 import { useAuth } from '@/contexts/AuthProvider'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { CardDetail } from '@/types/card'
@@ -17,7 +17,6 @@ type DescriptionSectionProps = {
 type TradeStateMap = {
   [key: string]: {
     style: 'primary' | 'secondary' | 'gradation' | 'information'
-    text: '거래가능' | '예약중' | '거래성사'
   }
 }
 
@@ -42,22 +41,20 @@ const DescriptionSection = ({
   const tradeStateMap: TradeStateMap = {
     TRADE_AVAILABLE: {
       style: 'primary',
-      text: '거래가능',
     },
     RESERVED: {
       style: 'secondary',
-      text: '예약중',
     },
     TRADE_COMPLETE: {
       style: 'gradation',
-      text: '거래성사',
     },
   }
+
   return (
     <article className="flex flex-col w-full pt-4 pb-8  border-b-[1px] gap-4">
       <div className="flex flex-row items-center">
         <Badge variant={tradeStateMap[status].style}>
-          {tradeStateMap[status].text}
+          {getValueByKey(TRADE_STATUS_OBJS, status)}
         </Badge>
         <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
         {isLoggedIn && isMyItem && <MoreButton cardId={cardId} />}

@@ -15,19 +15,19 @@ import Assets from '@/config/assets'
 import { PRICE_RANGE_OBJS, TRADE_TYPE_OBJS } from '@/constants/card'
 import { useAuth } from '@/contexts/AuthProvider'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
-import { TradeStatus } from '@/types/card'
+import { TradeTypeObjs } from '@/types/card'
 import { getValueByKey } from '@/utils/getValueByKey'
 import SuggestList from './SuggestList'
 import TradeInfo from './TradeInfo'
 
 type TradeSectionProps = {
   priceRange: string
-  tradeType: string
+  tradeType: TradeTypeObjs
   tradeArea: string
   authorId: number
   cardId: number
   pokeAvailable: boolean
-  status: TradeStatus
+  status: string
 }
 
 type TradeInfo = {
@@ -103,11 +103,11 @@ const TradeSection = ({
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="p-4 pt-14 gap-6 max-h-[576px]">
+        <DialogContent className="p-4 pt-14 gap-6 h-full max-h-[576px]">
           <DialogHeader>
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
-          {!suggestions ? (
+          {suggestions?.length === 0 ? (
             <NoData
               title="제안 가능한 내 물건이 없습니다."
               onClickButton={() => router.push('/cards/new')}
