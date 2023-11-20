@@ -8,7 +8,7 @@ export const useMyTradeHistoryQuery = () => {
       await getMyTradeHistoryList({
         cursorId: pageParam,
       }),
-    initialPageParam: 0,
+    initialPageParam: undefined,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       if (lastPage.length === 0) {
         return undefined

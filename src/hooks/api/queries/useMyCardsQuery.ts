@@ -14,7 +14,7 @@ export const useMyCardsQuery = ({ tradeStatus }: UseMyCardsQueryParams) => {
         tradeStatus,
         cursorId: pageParam,
       }),
-    initialPageParam: 0,
+    initialPageParam: undefined,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       if (lastPage.length === 0) {
         return undefined

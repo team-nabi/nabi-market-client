@@ -28,7 +28,7 @@ export const useMySuggestionsQuery = (
       return dataContainingPageInfo
     },
 
-    initialPageParam: 0,
+    initialPageParam: undefined,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       if (lastPage.length === 0) {
         return undefined

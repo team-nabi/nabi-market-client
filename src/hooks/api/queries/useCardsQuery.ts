@@ -23,11 +23,12 @@ export const useCardsQuery = ({
         cardTitle,
         cursorId: pageParam,
       }),
-    initialPageParam: 0,
+    initialPageParam: undefined,
     getNextPageParam: (lastPage, allPages, lastPageParam) => {
       if (lastPage.length === 0) {
         return undefined
       }
+      // console.log('lastPage', lastPage)
       return lastPage.nextCursorId
     },
   })
