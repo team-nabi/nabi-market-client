@@ -22,7 +22,7 @@ import TradeInfo from './TradeInfo'
 
 type TradeSectionProps = {
   priceRange: string
-  tradeType: TradeTypeObjs
+  tradeType: TradeTypeObjs['key']
   tradeArea: string
   authorId: number
   cardId: number

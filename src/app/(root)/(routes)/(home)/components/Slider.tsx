@@ -12,7 +12,7 @@ import { getValueByKey } from '@/utils/getValueByKey'
 import './index.css'
 
 type PopularCardSliderProps = {
-  cardData: PopularCardsRes['data'][]
+  cardData: PopularCardsRes['data']
 }
 
 /**
@@ -32,7 +32,7 @@ const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
         slidesPerView={2}
         centeredSlides={true}
       >
-        {cardData.map((v) => (
+        {cardData.cardList.map((v) => (
           <SwiperSlide key={v.cardId}>
             <Image
               width={0}

@@ -77,7 +77,7 @@ const getCardInfo = async (cardId: number) => {
   const response: CardInfoRes = await apiClient.get(
     ApiEndPoint.getCardInfo(cardId),
   )
-  return response.data
+  return response
 }
 
 const getMyCardList = async ({
@@ -116,7 +116,12 @@ const getMyDibs = async (cursorId: number) => {
 export type PopularCardsRes = {
   code: string
   message: string
-  data: Pick<CardDetail, 'cardId' | 'itemName' | 'priceRange' | 'thumbnail'>
+  data: {
+    cardList: Pick<
+      CardDetail,
+      'cardId' | 'itemName' | 'priceRange' | 'thumbnail'
+    >[]
+  }
 }
 const getPopularCardList = async () => {
   const response: PopularCardsRes = await apiClient.get(
