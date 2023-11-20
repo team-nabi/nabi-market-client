@@ -3,14 +3,17 @@
 import React, { useState } from 'react'
 import AvatarEditable from '@/components/domain/avatar-editable'
 import TextEditable from '@/components/domain/text-editable'
-import { useAuth } from '@/contexts/AuthProvider'
 import { useToast } from '@/hooks/useToast'
 import { postImageFile } from '@/services/images'
 import { putUserNickname, putUserProfile } from '@/services/user/user'
+import { User } from '@/types/user'
 
-const UserInfo = () => {
+type UserInfoProps = {
+  user: User
+}
+
+const UserInfo = ({ user }: UserInfoProps) => {
   const { toast } = useToast()
-  const { currentUser } = useAuth()
   const [isProfileChanged, setIsProfileChanged] = useState(true)
   const [isNicknameChanged, setIsNicknameChanged] = useState(true)
 
@@ -19,6 +22,7 @@ const UserInfo = () => {
     try {
       const resUpload = await postImageFile(file)
       const resProfile = await putUserProfile(resUpload.data)
+      window.location.reload()
       return resProfile.data
     } catch (error) {
       setIsProfileChanged(false)
@@ -35,6 +39,7 @@ const UserInfo = () => {
     setIsNicknameChanged(true)
     try {
       const res = await putUserNickname(nickname)
+      window.location.reload()
       return res.data
     } catch (error) {
       setIsNicknameChanged(false)
@@ -53,12 +58,12 @@ const UserInfo = () => {
       <AvatarEditable
         fileChangeHandler={fileChangeHandler}
         changedSuccessfully={isProfileChanged}
-        defaultImage={currentUser?.imageUrl}
+        defaultImage={user?.imageUrl}
       />
       <TextEditable
         onChangeHandler={nicknameChangeHandler}
         changedSuccessfully={isNicknameChanged}
-        defaultText={currentUser?.nickname}
+        defaultText={user?.nickname}
       />
     </div>
   )

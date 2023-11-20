@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import Button from '@/components/ui/button'
 import {
@@ -38,6 +39,8 @@ const MenuButton = () => {
 }
 
 const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
+  const router = useRouter()
+
   const onClickLogout = () => {
     Cookies.remove(Environment.tokenName())
     apiClient.setDefaultHeader('Authorization', '')
@@ -56,6 +59,13 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(AppPath.mypage())
+            }}
+          >
+            내 정보
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={onClickLogout}>로그아웃</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

@@ -70,7 +70,9 @@ const getCardList = async ({
 const getCardInfo = async (
   cardId: number,
 ): Promise<{ data: { cardInfo: CardDetail } }> => {
-  const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId))
+  const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId), {
+    cache: 'no-store',
+  })
   return response
 }
 
