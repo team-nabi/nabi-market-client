@@ -19,7 +19,6 @@ type PopularCardSliderProps = {
 }
 
 const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
-  console.log(cardData)
   const router = useRouter()
 
   const handleClick = (cardId: number) => {
