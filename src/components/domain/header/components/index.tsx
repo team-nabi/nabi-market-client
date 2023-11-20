@@ -1,6 +1,7 @@
 import Cookies from 'js-cookie'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import Button from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -12,6 +13,7 @@ import {
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { Environment } from '@/config/environment'
+import { DEFAULT_PROFILE_IMG } from '@/constants/image'
 import apiClient from '@/services/apiClient'
 
 //TODO: 공용 아바타 컴포넌트로 변경
@@ -35,7 +37,7 @@ const MenuButton = () => {
   )
 }
 
-const Avatar = () => {
+const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
   const onClickLogout = () => {
     Cookies.remove(Environment.tokenName())
     apiClient.setDefaultHeader('Authorization', '')
@@ -45,7 +47,12 @@ const Avatar = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={'gradation'}>아바타</Button>
+        <Button variant={null}>
+          <Avatar size="md">
+            <AvatarImage imgUrl={imageUrl ?? DEFAULT_PROFILE_IMG} />
+            <AvatarFallback>profile</AvatarFallback>
+          </Avatar>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
@@ -56,4 +63,4 @@ const Avatar = () => {
   )
 }
 
-export { MenuButton, Avatar }
+export { MenuButton, AvatarWithDropdown }
