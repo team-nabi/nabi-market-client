@@ -128,7 +128,7 @@ const getPopularCardList = async () => {
     ApiEndPoint.getPopularCardList(),
     { next: { revalidate: 60 } },
   )
-  return response.data.cardList
+  return response
 }
 
 export {

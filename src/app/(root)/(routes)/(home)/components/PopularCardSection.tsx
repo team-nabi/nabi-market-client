@@ -7,7 +7,7 @@ const PopularCardSection = async () => {
   return (
     <section className="flex flex-col w-full  gap-6">
       <div className="text-[24px] font-bold px-4">오늘의 인기 물건</div>
-      <PopularCardSlider cardData={data} />
+      <PopularCardSlider cardData={data.data} />
     </section>
   )
 }
