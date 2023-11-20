@@ -1,4 +1,5 @@
 import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
+import { GetMyTradeHistoryListReq } from '@/services/history/history'
 import { Category, PriceRange, TradeStatus } from '@/types/card'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
 import { getQueryParams } from '@/utils/getQueryParams'
@@ -50,7 +51,7 @@ const ApiEndPoint = {
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
   getMyDibsList: (cursorId: number) => `/d  ibs/?cursorId=${cursorId}`,
-  getMyTradeHistoryList: (cursorId: number) => {
+  getMyTradeHistoryList: ({ cursorId }: GetMyTradeHistoryListReq) => {
     return `/complete-requests/user/?${getQueryParams({
       cursorId,
       size: '5',

@@ -3,10 +3,8 @@
 import { useEffect, useRef, Fragment } from 'react'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
-import HistoryCard from '@/components/domain/trade-history-card'
 import { useMyTradeHistoryQuery } from '@/hooks/api/queries/useMyTradeHistoriesQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import { MyHistoryRes } from '@/services/history/history'
 import MyTradeHistoryList from '../my-trade-history-list/MyTradeHistoryList'
 
 const MyTradeHistoryListContent = () => {
@@ -26,7 +24,7 @@ const MyTradeHistoryListContent = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
-  const isEmpty = data?.pages[0].historyList.length === 0
+  const isEmpty = data?.pages[0].data.historyList.length === 0
 
   return (
     <MaxWidthWrapper>
