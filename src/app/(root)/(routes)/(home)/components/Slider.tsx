@@ -6,19 +6,20 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
-import { PopularCardsRes } from '@/services/card/card'
 import { TYPOGRAPHY } from '@/styles/sizes'
+import { CardDetail } from '@/types/card'
 import { getValueByKey } from '@/utils/getValueByKey'
 import './index.css'
 
 type PopularCardSliderProps = {
-  cardData: PopularCardsRes['data'][]
+  cardData: Pick<
+    CardDetail,
+    'cardId' | 'itemName' | 'priceRange' | 'thumbnail'
+  >[]
 }
 
-/**
- * @param {ImageData} 이미지 아이디, 이미지 url을 담은 데이터
- */
 const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
+  console.log(cardData)
   const router = useRouter()
 
   const handleClick = (cardId: number) => {
