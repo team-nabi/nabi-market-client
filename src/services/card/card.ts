@@ -1,14 +1,7 @@
 import { CardUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useCardUploadForm'
 import ApiEndPoint from '@/config/apiEndPoint'
-import type { Category, PriceRange, TradeStatus } from '@/types/card'
+import type { Card, Category, PriceRange, TradeStatus } from '@/types/card'
 import apiClient from '../apiClient'
-
-export type Getcards = {
-  category: Category['key']
-  priceRange: PriceRange['key']
-  cardTitle: string
-  cursorId: number
-}
 
 type putCardReq = {
   cardId: string
@@ -29,17 +22,31 @@ const putCard = async ({ cardId, cardReq }: putCardReq) => {
   return response
 }
 
-// TODO: 현재 cardsHandler(가짜 API)는 필터에 대한 처리가 이루어져 있지 않으므로, cursorId만 넘겨주고 있음 => 실 API를 받을시 교체 작업 해주기
+export type GetCardListReq = {
+  category: Category['key']
+  priceRange: PriceRange['key']
+  cardTitle: string
+  cursorId: string | undefined
+}
+export type GetCardListRes = {
+  code: string
+  message: string
+  data: {
+    cardList: Card[]
+    nextCursorId: string
+  }
+}
+
 const getCardList = async ({
   category,
   priceRange,
   cardTitle,
   cursorId,
-}: Getcards) => {
-  const response = await apiClient.get(
-    ApiEndPoint.getCardList(category, priceRange, cardTitle, cursorId),
+}: GetCardListReq) => {
+  const response: GetCardListRes = await apiClient.get(
+    ApiEndPoint.getCardList({ category, priceRange, cardTitle, cursorId }),
   )
-  return response.data
+  return response
 }
 
 const getCardInfo = async (cardId: number) => {

@@ -1,3 +1,4 @@
+import { GetCardListReq } from '@/services/card/card'
 import { Category, PriceRange, TradeStatus } from '@/types/card'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
 import { getQueryParams } from '@/utils/getQueryParams'
@@ -7,12 +8,12 @@ const ApiEndPoint = {
   test: () => '/test',
   getCardInfo: (cardId: number) => `cards/${cardId}`,
   deleteCard: (cardId: number) => `cards/${cardId}`,
-  getCardList: (
-    category: Category['key'],
-    priceRange: PriceRange['key'],
-    cardTitle: string,
-    cursorId: number,
-  ) =>
+  getCardList: ({
+    category,
+    priceRange,
+    cardTitle,
+    cursorId,
+  }: GetCardListReq) =>
     `/cards/?${getQueryParams({
       category,
       priceRange,
