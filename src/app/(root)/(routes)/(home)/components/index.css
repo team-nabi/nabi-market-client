@@ -1,0 +1,15 @@
+.popular-card-slider {
+  .swiper {
+    @apply w-full h-full;
+  }
+
+  .swiper-wrapper {
+    @apply w-full h-full;
+  }
+  .swiper-slide {
+    @apply flex justify-center items-center w-full h-full relative;
+  }
+  .swiper-slide img {
+    @apply w-full h-full max-w-[240px] aspect-square rounded-[5px] cursor-pointer;
+  }
+}

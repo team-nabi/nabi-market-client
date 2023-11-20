@@ -56,8 +56,6 @@ export const useCardModifyForm = ({
         title: 'Error',
         description: '게시글을 수정하는데 실패했습니다.',
       })
-      console.log(error)
-      console.log(await error.response.json())
     } finally {
       setIsSubmitting(() => false)
     }

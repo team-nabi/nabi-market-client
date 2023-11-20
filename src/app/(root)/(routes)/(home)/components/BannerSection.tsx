@@ -3,9 +3,9 @@ import Assets from '@/config/assets'
 
 const BannerSection = () => {
   const bannerArr = [
-    { _id: 1, image: Assets.banner1 },
-    { _id: 2, image: Assets.banner2 },
-    { _id: 3, image: Assets.banner3 },
+    { url: Assets.banner1 },
+    { url: Assets.banner2 },
+    { url: Assets.banner3 },
   ]
   return <Slider imageData={bannerArr} imageAspectRatio="auto" />
 }

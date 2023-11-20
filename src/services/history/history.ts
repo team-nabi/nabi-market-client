@@ -23,4 +23,11 @@ const getMyTradeHistoryList = async ({
   return response
 }
 
-export { getMyTradeHistoryList }
+const getRecentTradeHistoryList = async (size: number) => {
+  const response = await apiClient.get(
+    ApiEndPoint.getRecentTradeHistoryList(size),
+  )
+  return response
+}
+
+export { getMyTradeHistoryList, getRecentTradeHistoryList }

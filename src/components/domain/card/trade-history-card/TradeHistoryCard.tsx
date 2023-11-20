@@ -1,8 +1,10 @@
 import { format } from 'date-fns'
 import { CardFlex, CardImage, CardText, Card } from '@/components/ui/card'
 import Assets from '@/config/assets'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { Card as CardInfo } from '@/types/card'
 import { TradeHistory } from '@/types/tradeHistory'
+import { getValueByKey } from '@/utils/getValueByKey'
 
 const SubCard = ({
   thumbnail,
@@ -42,7 +44,7 @@ const TradeHistoryCard = ({
         <SubCard
           thumbnail={fromCard.thumbnail}
           itemName={fromCard.itemName}
-          priceRange={fromCard.priceRange}
+          priceRange={getValueByKey(PRICE_RANGE_OBJS, fromCard.priceRange)}
         />
         <CardFlex direction={'col'} align={'center'}>
           <CardImage alt={'거래 완료 이미지'} src={Assets.tradeComplete} />
@@ -53,7 +55,7 @@ const TradeHistoryCard = ({
         <SubCard
           thumbnail={toCard.thumbnail}
           itemName={toCard.itemName}
-          priceRange={toCard.priceRange}
+          priceRange={getValueByKey(PRICE_RANGE_OBJS, toCard.priceRange)}
         />
       </CardFlex>
     </Card>

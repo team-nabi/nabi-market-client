@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { InfiniteData } from '@tanstack/react-query'
-import TradeHistoryCard from '@/components/domain/trade-history-card'
+import TradeHistoryCard from '@/components/domain/card/trade-history-card'
 import { GetMyTradeHistoryListRes } from '@/services/history/history'
 import { TradeHistory } from '@/types/tradeHistory'
 

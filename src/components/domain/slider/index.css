@@ -12,12 +12,12 @@
 }
 
 .swiper-pagination-bullet {
-  @apply w-2 h-2 bg-bullet-inactive-color opacity-100;
+  @apply w-2 h-2 bg-bullet-color opacity-30;
 }
 
 .swiper-pagination {
   @apply inline-flex justify-center;
 }
 .swiper-pagination-bullet-active {
-  @apply bg-bullet-active-color;
+  @apply bg-bullet-color opacity-70;
 }

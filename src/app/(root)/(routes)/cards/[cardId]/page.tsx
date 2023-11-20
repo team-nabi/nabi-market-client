@@ -13,7 +13,7 @@ type CardPageProps = {
 async function getCardValue(cardId: string) {
   try {
     const res = await getCardInfo(Number(cardId))
-    return res.data.cardResponseDto
+    return res.data.cardInfo
   } catch (e) {
     console.log(e)
   }
@@ -32,14 +32,17 @@ const CardPage = async ({ params }: CardPageProps) => {
     images,
     pokeAvailable,
     status,
-  } = data
+  } = data! // TODO: data가 null일 때 처리
 
   return (
     <main className="flex-col min-h-screen bg-background-color">
       <Slider imageData={images} imageAspectRatio="square" />
       <div className="p-4">
         <ProfileSection profileImg={null} userName={userName} />
-        <DescriptionSection cardData={data} />
+        <DescriptionSection cardData={data!} />
+        {
+          // TODO: data가 null일 때 처리
+        }
         <TradeSection
           priceRange={priceRange}
           tradeType={tradeType}

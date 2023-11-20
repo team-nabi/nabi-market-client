@@ -63,6 +63,9 @@ const ApiEndPoint = {
     `/users/oauth2/authorize/kakao/redirect?code=${code}`,
   getGoogleRedirect: (code: string) =>
     `/users/oauth2/authorize/google/redirect?code=${code}`,
+  getRecentTradeHistoryList: (size: number) =>
+    `/complete-requests/?size=${size}`,
+  getPopularCardList: () => '/cards/daily',
 } as const
 
 export default ApiEndPoint
