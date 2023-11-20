@@ -1,5 +1,6 @@
 import { Category, PriceRange, TradeStatus } from '@/types/card'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
+import { getQueryParams } from '@/utils/getQueryParams'
 
 const ApiEndPoint = {
   getValidateUser: () => '/users',
@@ -11,25 +12,20 @@ const ApiEndPoint = {
     priceRange: PriceRange['key'],
     cardTitle: string,
     cursorId: number,
-  ) => {
-    const params = new URLSearchParams({
-      category: category === undefined ? '' : category,
-      priceRange: priceRange === undefined ? '' : priceRange,
+  ) =>
+    `/cards/?${getQueryParams({
+      category,
+      priceRange,
       cardTitle,
-      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
+      cursorId,
       status: 'TRADE_AVAILABLE,RESERVED',
       size: '5',
-    })
-
-    return `/cards/?${params.toString()}`
-  },
+    })}`,
   getMyCardList: (status: TradeStatus, cursorId: number) => {
-    const params = new URLSearchParams({
+    return `/cards/${status}/my-cards?${getQueryParams({
+      cursorId,
       size: '5',
-      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
-    })
-
-    return `/cards/${status}/my-cards?${params.toString()}`
+    })}`
   },
   postDibs: (cardId: number) => `/dibs/${cardId}`,
   deleteDibs: (cardId: number) => `/dibs/${cardId}`,
@@ -41,24 +37,23 @@ const ApiEndPoint = {
     cardId: string | null,
     cursorId: number,
   ) => {
-    const params = new URLSearchParams({
-      size: '5',
-      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
-    })
-    return `/suggestions/${directionType}/${suggestionType}/${cardId}/?${params.toString()}`
+    return `/suggestions/${directionType}/${suggestionType}/${cardId}/?${getQueryParams(
+      {
+        cursorId,
+        size: '5',
+      },
+    )}`
   },
 
   putUserProfile: () => '/users/profile-image',
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
-  getMyDibsList: (cursorId: number) => `/dibs/?cursorId=${cursorId}`,
+  getMyDibsList: (cursorId: number) => `/d  ibs/?cursorId=${cursorId}`,
   getMyTradeHistoryList: (cursorId: number) => {
-    const params = new URLSearchParams({
+    return `/complete-requests/user/?${getQueryParams({
+      cursorId,
       size: '5',
-      cursorId: cursorId.toString() === '0' ? '' : cursorId.toString(),
-    })
-
-    return `/complete-requests/user/?${params.toString()}`
+    })}`
   },
   postImageFile: () => '/s3/upload/single',
   postCard: () => '/cards',
