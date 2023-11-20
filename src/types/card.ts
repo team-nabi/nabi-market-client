@@ -42,10 +42,13 @@ interface CardImages {
   image: string | StaticImageData
 }
 
-type Category = (typeof CATEGORY_OBJS)[number]
 type TradeStatus = (typeof CARD_TRADE_STATUS)[number]
-type PriceRange = (typeof PRICE_RANGE_OBJS)[number]
-type TradeType = (typeof TRADE_TYPE_OBJS)[number]
+type TradeType = (typeof TRADE_TYPE)[number]
+type Category = (typeof CATEGORY)[number]
+type PriceRange = (typeof PRICE_RANGE)[number]
+type CategoryObjs = (typeof CATEGORY_OBJS)[number]
+type PriceRangeObjs = (typeof PRICE_RANGE_OBJS)[number]
+type TradeTypeObjs = (typeof TRADE_TYPE_OBJS)[number]
 
 export type {
   Category,
@@ -55,4 +58,7 @@ export type {
   CardDetail,
   CardImages,
   TradeStatus,
+  CategoryObjs,
+  PriceRangeObjs,
+  TradeTypeObjs,
 }

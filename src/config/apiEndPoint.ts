@@ -1,4 +1,4 @@
-import { GetCardListReq } from '@/services/card/card'
+import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
 import { Category, PriceRange, TradeStatus } from '@/types/card'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
 import { getQueryParams } from '@/utils/getQueryParams'
@@ -22,8 +22,8 @@ const ApiEndPoint = {
       status: 'TRADE_AVAILABLE,RESERVED',
       size: '5',
     })}`,
-  getMyCardList: (status: TradeStatus, cursorId: number) => {
-    return `/cards/${status}/my-cards?${getQueryParams({
+  getMyCardList: ({ tradeStatus, cursorId }: GetMyCardListReq) => {
+    return `/cards/${tradeStatus}/my-cards?${getQueryParams({
       cursorId,
       size: '5',
     })}`

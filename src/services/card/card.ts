@@ -1,6 +1,13 @@
 import { CardUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useCardUploadForm'
 import ApiEndPoint from '@/config/apiEndPoint'
-import type { Card, Category, PriceRange, TradeStatus } from '@/types/card'
+import type {
+  Card,
+  Category,
+  CategoryObjs,
+  PriceRange,
+  PriceRangeObjs,
+  TradeStatus,
+} from '@/types/card'
 import apiClient from '../apiClient'
 
 type putCardReq = {
@@ -23,8 +30,8 @@ const putCard = async ({ cardId, cardReq }: putCardReq) => {
 }
 
 export type GetCardListReq = {
-  category: Category['key']
-  priceRange: PriceRange['key']
+  category: CategoryObjs['key']
+  priceRange: PriceRangeObjs['key']
   cardTitle: string
   cursorId: string | undefined
 }
@@ -54,17 +61,24 @@ const getCardInfo = async (cardId: number) => {
   return response
 }
 
-const getMyCardList = async ({
-  tradeStatus,
-  cursorId,
-}: {
+export type GetMyCardListReq = {
   tradeStatus: TradeStatus
-  cursorId: number
-}) => {
-  const response = await apiClient.get(
-    ApiEndPoint.getMyCardList(tradeStatus, cursorId),
+  cursorId: string | undefined
+}
+export type GetMyCardListRes = {
+  code: string
+  message: string
+  data: {
+    cardList: Card[]
+    nextCursorId: string
+  }
+}
+
+const getMyCardList = async ({ tradeStatus, cursorId }: GetMyCardListReq) => {
+  const response: GetMyCardListRes = await apiClient.get(
+    ApiEndPoint.getMyCardList({ tradeStatus, cursorId }),
   )
-  return response.data
+  return response
 }
 
 const postCardDibs = async (cardId: number) => {

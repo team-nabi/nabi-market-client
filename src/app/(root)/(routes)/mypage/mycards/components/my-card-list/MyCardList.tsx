@@ -1,18 +1,19 @@
 import { Fragment } from 'react'
 import { InfiniteData } from '@tanstack/react-query'
+import { GetMyCardListRes } from '@/services/card/card'
 import { Card } from '@/types/card'
 import MyCard from '../my-card'
 
 const MyCardList = ({
   data,
 }: {
-  data: InfiniteData<any, unknown> | undefined
+  data: InfiniteData<GetMyCardListRes, unknown> | undefined
 }) => (
   <>
-    {data?.pages.map(({ cardList }, pageIndex) => (
+    {data?.pages.map(({ data: { cardList } }: GetMyCardListRes, pageIndex) => (
       <Fragment key={pageIndex}>
-        {cardList.map((card: Card) => (
-          <MyCard key={card.cardId} card={card} />
+        {cardList.map((myCard: Card) => (
+          <MyCard key={myCard.cardId} card={myCard} />
         ))}
       </Fragment>
     ))}
