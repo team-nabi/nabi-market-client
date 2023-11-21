@@ -1,4 +1,8 @@
-const MaxWidthWrapper = ({ children }: { children: JSX.Element[] }) => {
+const MaxWidthWrapper = ({
+  children,
+}: {
+  children: JSX.Element[] | JSX.Element
+}) => {
   return <div className="max-w-[450px] mx-auto">{children}</div>
 }
 

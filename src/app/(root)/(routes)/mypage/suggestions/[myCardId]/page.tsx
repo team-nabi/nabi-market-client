@@ -1,34 +1,33 @@
-import { FunctionComponent } from 'react'
+import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import PageTitle from '@/components/domain/page-title'
 import { getCardInfo } from '@/services/card/card'
-// import MyItemSummaryCard from './components/my-item-summary-card'
+import { CardDetail } from '@/types/card'
+import MyCardDescriptionSection from './components/my-card-description-section'
 import MySuggestionListContent from './components/my-suggestion-list-content'
 
-async function getItemValue(cardId: number) {
+async function getMyCardInfo(cardId: string) {
   try {
-    const res = await getCardInfo(cardId)
-    const data = await res
-    data.data.cardInfo.thumbnail =
-      'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg'
-    data.data.cardInfo.createdAt = '2023-11-01T08:08:00'
-    return data.data.cardInfo
+    const res = await getCardInfo(Number(cardId))
+    return res.data.cardInfo
   } catch (e) {
     console.log(e)
   }
 }
 
 const SuggestCheckListPage = async ({
-  params,
+  params: { myCardId },
 }: {
-  params: { cardId: string }
+  params: { myCardId: string }
 }) => {
-  const data = await getItemValue(3)
+  const myCard = await getMyCardInfo(myCardId)
 
   return (
     <div>
-      <PageTitle title="제안 확인" />
-      {JSON.stringify(data)}
-      <MySuggestionListContent />
+      <MaxWidthWrapper>
+        <PageTitle title="제안 확인" />
+        <MyCardDescriptionSection card={myCard as CardDetail} />
+        <MySuggestionListContent />
+      </MaxWidthWrapper>
     </div>
   )
 }
