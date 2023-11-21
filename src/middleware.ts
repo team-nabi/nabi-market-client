@@ -37,5 +37,10 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/test-auth-only'],
+  matcher: [
+    '/test-auth-only',
+    '/mypage/mycards',
+    '/mypage/suggestions',
+    '/mypage/histories',
+  ],
 }
