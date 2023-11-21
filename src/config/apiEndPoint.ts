@@ -66,6 +66,7 @@ const ApiEndPoint = {
   getRecentTradeHistoryList: (size: number) =>
     `/complete-requests/?size=${size}`,
   getPopularCardList: () => '/cards/daily',
+  putCardStatus: (cardId: number) => `/cards/status/${cardId}`,
 } as const
 
 export default ApiEndPoint
