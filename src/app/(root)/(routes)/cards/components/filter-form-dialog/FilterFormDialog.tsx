@@ -16,14 +16,14 @@ import {
   SelectTrigger,
 } from '@/components/ui/select'
 import Assets from '@/config/assets'
-import { CATEGORY_OBJS, PRICE_RANGE, PRICE_RANGE_OBJS } from '@/constants/card'
-import { Category, PriceRange } from '@/types/card'
+import { CATEGORY_OBJS, PRICE_RANGE_OBJS } from '@/constants/card'
+import { CategoryObjs, PriceRangeObjs } from '@/types/card'
 
 type FilterFormDialogProps = {
-  priceRange: PriceRange['key']
-  category: Category['key']
-  setPriceRange: (priceRange: PriceRange['key']) => void
-  setCategory: (category: Category['key']) => void
+  priceRange: PriceRangeObjs['key']
+  category: CategoryObjs['key']
+  setPriceRange: (priceRange: PriceRangeObjs['key']) => void
+  setCategory: (category: CategoryObjs['key']) => void
 }
 
 const FilterFormDialog = ({
@@ -44,7 +44,7 @@ const FilterFormDialog = ({
   const hasNoFilter = priceRange !== undefined || category !== undefined
   const priceRangeValue = PRICE_RANGE_OBJS.find(({ key }) => key === priceRange)
     ?.value
-  const getCategoryValue = (categoryKey: Category['key']) =>
+  const getCategoryValue = (categoryKey: CategoryObjs['key']) =>
     CATEGORY_OBJS.find(({ key }) => key === categoryKey)?.value
 
   return (
@@ -82,7 +82,7 @@ const FilterFormDialog = ({
             </DialogDescription>
             <Select
               value={priceRange}
-              onValueChange={(value: PriceRange['key']) => {
+              onValueChange={(value: PriceRangeObjs['key']) => {
                 setPriceRange(value)
               }}
             >
@@ -91,7 +91,7 @@ const FilterFormDialog = ({
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup className="w-full">
-                  {PRICE_RANGE_OBJS.map((currentPriceRange: PriceRange) => (
+                  {PRICE_RANGE_OBJS.map((currentPriceRange: PriceRangeObjs) => (
                     <SelectItem
                       key={currentPriceRange['key']}
                       value={currentPriceRange['key']}
@@ -110,7 +110,7 @@ const FilterFormDialog = ({
             <DialogDescription className="mb-2 text-sm">
               카테고리
             </DialogDescription>
-            {CATEGORY_OBJS.map((currentCategory: Category) => (
+            {CATEGORY_OBJS.map((currentCategory: CategoryObjs) => (
               <button
                 key={currentCategory.key}
                 data-category-key={currentCategory.key}
@@ -123,7 +123,7 @@ const FilterFormDialog = ({
                   setCategory(
                     e.currentTarget.getAttribute(
                       'data-category-key',
-                    ) as Category['key'],
+                    ) as CategoryObjs['key'],
                   )
                 }
               >
