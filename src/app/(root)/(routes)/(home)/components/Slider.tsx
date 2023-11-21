@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -31,15 +32,17 @@ const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
       >
         {cardData.cardList.map((v) => (
           <SwiperSlide key={v.cardId}>
-            <Image
-              width={0}
-              height={0}
-              alt="sliderImage"
-              src={v.thumbnail}
-              sizes="100vw"
-              style={{ width: '100%' }}
-              onClick={() => handleClick(v.cardId)}
-            />
+            <Link href={`/cards/${v.cardId}`}>
+              <Image
+                width={0}
+                height={0}
+                alt="sliderImage"
+                src={v.thumbnail}
+                sizes="100vw"
+                style={{ width: '100%' }}
+                //onClick={() => handleClick(v.cardId)}
+              />
+            </Link>
             <div className="flex flex-col gap-1 items-center justify-center opacity-70 bg-black rounded-b-[5px] text-white w-full absolute inset-x-0 bottom-0 max-w-[240px] left-2/4 translate-x-[-50%] ">
               <p className={`${TYPOGRAPHY.title}`}>{v.itemName}</p>
               <p className={`${TYPOGRAPHY.description}`}>
