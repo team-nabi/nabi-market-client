@@ -89,6 +89,7 @@ const getCardInfo = async (
   const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId), {
     cache: 'no-store',
   })
+
   return response
 }
 
