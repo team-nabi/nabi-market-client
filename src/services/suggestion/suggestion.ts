@@ -75,4 +75,47 @@ const getMySuggestionList = async ({
   return response
 }
 
-export { getAvailableCardSuggestionList, getMySuggestionList, postSuggestion }
+export type PutMySuggestionStatusReq = {
+  fromCardId: number
+  toCardId: string | string[]
+  isAccepted: boolean
+}
+export type PutMySuggestionStatusRes = {
+  code: string
+  message: string
+  data: {
+    suggestionList: {
+      cardInfo: Card
+      suggestionInfo: Suggestion
+    }[]
+    nextCursorId: string
+  }
+}
+
+const putMySuggestionStatus = async ({
+  fromCardId,
+  toCardId,
+  isAccepted,
+}: PutMySuggestionStatusReq) => {
+  const response: PutMySuggestionStatusRes = await apiClient.put(
+    ApiEndPoint.putMySuggestionStatus(),
+    {
+      fromCardId,
+      toCardId,
+      isAccepted,
+    },
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
+  )
+
+  return response
+}
+
+export {
+  getAvailableCardSuggestionList,
+  getMySuggestionList,
+  postSuggestion,
+  putMySuggestionStatus,
+}
