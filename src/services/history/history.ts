@@ -2,11 +2,23 @@ import ApiEndPoint from '@/config/apiEndPoint'
 import { TradeHistory } from '@/types/tradeHistory'
 import apiClient from '../apiClient'
 
-export type MyHistoryRes = TradeHistory
+export type GetMyTradeHistoryListReq = {
+  cursorId: string | undefined
+}
+export type GetMyTradeHistoryListRes = {
+  code: string
+  message: string
+  data: {
+    historyList: TradeHistory[]
+    nextCursorId: string
+  }
+}
 
-const getMyTradeHistoryList = async ({ cursorId }: { cursorId: number }) => {
-  const response: MyHistoryRes[] = await apiClient.get(
-    ApiEndPoint.getMyTradeHistoryList(cursorId),
+const getMyTradeHistoryList = async ({
+  cursorId,
+}: GetMyTradeHistoryListReq) => {
+  const response: GetMyTradeHistoryListRes = await apiClient.get(
+    ApiEndPoint.getMyTradeHistoryList({ cursorId }),
   )
   return response
 }

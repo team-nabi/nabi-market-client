@@ -44,16 +44,22 @@ const postSuggestion = async ({
   return response
 }
 
-type GetSuggestChecksParams = {
+export type GetMySuggestionListReq = {
   suggestionType: SuggestionType
   directionType: DirectionType
-  cardId: string | null
-  cursorId: number
+  cardId: string | string[]
+  cursorId: string | undefined
 }
-
-export type MySuggestionRes = {
-  cardInfo: Card
-  suggestionInfo: Suggestion
+export type GetMySuggestionListRes = {
+  code: string
+  message: string
+  data: {
+    suggestionList: {
+      cardInfo: Card
+      suggestionInfo: Suggestion
+    }[]
+    nextCursorId: string
+  }
 }
 
 const getMySuggestionList = async ({
@@ -61,14 +67,14 @@ const getMySuggestionList = async ({
   directionType,
   cardId,
   cursorId,
-}: GetSuggestChecksParams) => {
-  const response: MySuggestionRes[] = await apiClient.get(
-    ApiEndPoint.getMySuggestionList(
+}: GetMySuggestionListReq) => {
+  const response: GetMySuggestionListRes = await apiClient.get(
+    ApiEndPoint.getMySuggestionList({
       directionType,
       suggestionType,
       cardId,
       cursorId,
-    ),
+    }),
   )
   return response
 }

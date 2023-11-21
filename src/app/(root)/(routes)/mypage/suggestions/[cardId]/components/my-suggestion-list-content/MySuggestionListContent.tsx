@@ -1,29 +1,24 @@
 'use client'
 
-import { useEffect, useRef, Fragment, useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useMySuggestionsQuery } from '@/hooks/api/queries/useMySuggestionsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
-import { MySuggestionRes } from '@/services/suggestion/suggestion'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
-import MySuggestionCard from '../my-suggestion-card'
+import MySuggestionList from '../my-suggestion-list/MySuggestionList'
 import SuggestionStatusTabs from '../suggestion-status-tabs'
 
-const MySuggestionList = () => {
+const MySuggestionListContent = () => {
   const [suggestionTypeState, setSuggestionTypeState] =
     useState<SuggestionType>('OFFER')
   const [directionTypeState, setDirectionTypeState] =
     useState<DirectionType>('RECEIVE')
-  const searchParams = useSearchParams()
+  const { cardId } = useParams()
 
   const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useMySuggestionsQuery(
-      suggestionTypeState,
-      directionTypeState,
-      searchParams.get('cardId'),
-    )
+    useMySuggestionsQuery(suggestionTypeState, directionTypeState, cardId)
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
@@ -38,8 +33,7 @@ const MySuggestionList = () => {
     }
   }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
 
-  const isEmpty = data?.pages[0].length === 0
-
+  const isEmpty = data?.pages[0].data.suggestionList.length === 0
   return (
     <MaxWidthWrapper>
       <div className="h-9 flex justify-center items-center my-12">
@@ -55,30 +49,11 @@ const MySuggestionList = () => {
           isEmpty={isEmpty}
           isFetchingNextPage={isFetchingNextPage}
         >
-          <>
-            {data?.pages.map((currentPage, pageIndex) => (
-              <Fragment key={pageIndex}>
-                {currentPage.map(
-                  (
-                    mySuggestionListResponseData: MySuggestionRes & {
-                      pageInfo: number
-                    },
-                  ) => (
-                    <MySuggestionCard
-                      key={
-                        mySuggestionListResponseData.suggestionInfo.suggestionId
-                      }
-                      mySuggestionListResponseData={
-                        mySuggestionListResponseData
-                      }
-                      suggestionTypeState={suggestionTypeState}
-                      directionTypeState={directionTypeState}
-                    />
-                  ),
-                )}
-              </Fragment>
-            ))}
-          </>
+          <MySuggestionList
+            data={data}
+            suggestionTypeState={suggestionTypeState}
+            directionTypeState={directionTypeState}
+          />
         </ExceptionBoundary>
       </div>
 
@@ -86,4 +61,4 @@ const MySuggestionList = () => {
     </MaxWidthWrapper>
   )
 }
-export default MySuggestionList
+export default MySuggestionListContent
