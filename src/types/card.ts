@@ -3,9 +3,9 @@ import {
   TRADE_TYPE,
   CARD_TRADE_STATUS,
   CATEGORY_OBJS,
-  TRADE_TYPE_OBJS,
   PRICE_RANGE,
   PRICE_RANGE_OBJS,
+  TRADE_TYPE_OBJS,
 } from '@/constants/card'
 
 interface Card {
