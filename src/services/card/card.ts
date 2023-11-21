@@ -1,20 +1,14 @@
 import { CardUploadFormValues } from '@/app/(root)/(routes)/cards/new/hooks/useCardUploadForm'
 import ApiEndPoint from '@/config/apiEndPoint'
 import type {
+  Card,
+  CategoryObjs,
   CardDetail,
-  Category,
-  PriceRange,
   TradeStatus,
+  PriceRangeObjs,
 } from '@/types/card'
 import { User } from '@/types/user'
 import apiClient from '../apiClient'
-
-export type Getcards = {
-  category: Category
-  priceRange: PriceRange
-  cardTitle: string
-  cursorId: number
-}
 
 type putCardReq = {
   cardId: string
@@ -57,14 +51,30 @@ const putCard = async ({ cardId, cardReq }: putCardReq) => {
   return response
 }
 
-// TODO: 현재 cardsHandler(가짜 API)는 필터에 대한 처리가 이루어져 있지 않으므로, cursorId만 넘겨주고 있음 => 실 API를 받을시 교체 작업 해주기
+export type GetCardListReq = {
+  category: CategoryObjs['key']
+  priceRange: PriceRangeObjs['key']
+  cardTitle: string
+  cursorId: string | undefined
+}
+export type GetCardListRes = {
+  code: string
+  message: string
+  data: {
+    cardList: Card[]
+    nextCursorId: string
+  }
+}
+
 const getCardList = async ({
   category,
   priceRange,
   cardTitle,
   cursorId,
-}: Getcards) => {
-  const response = await apiClient.get(ApiEndPoint.getCardList(cursorId))
+}: GetCardListReq) => {
+  const response: GetCardListRes = await apiClient.get(
+    ApiEndPoint.getCardList({ category, priceRange, cardTitle, cursorId }),
+  )
   return response
 }
 export type CardInfoRes = {
@@ -80,16 +90,22 @@ const getCardInfo = async (cardId: number) => {
   return response
 }
 
-const getMyCardList = async ({
-  tradeStatus,
-  cursorId,
-}: {
+export type GetMyCardListReq = {
   tradeStatus: TradeStatus
-  cursorId: number
-}) => {
-  const response = await apiClient.get(
-    ApiEndPoint.getMyCardList(tradeStatus, cursorId),
-    {},
+  cursorId: string | undefined
+}
+export type GetMyCardListRes = {
+  code: string
+  message: string
+  data: {
+    cardList: Card[]
+    nextCursorId: string
+  }
+}
+
+const getMyCardList = async ({ tradeStatus, cursorId }: GetMyCardListReq) => {
+  const response: GetMyCardListRes = await apiClient.get(
+    ApiEndPoint.getMyCardList({ tradeStatus, cursorId }),
   )
   return response
 }

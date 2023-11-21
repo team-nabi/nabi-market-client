@@ -1,10 +1,10 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { getCardList } from '@/services/card/card'
-import { Category, PriceRange } from '@/types/card'
+import { GetCardListRes, getCardList } from '@/services/card/card'
+import { CategoryObjs, PriceRangeObjs } from '@/types/card'
 
 export type UseCardsQueryParams = {
-  category: Category
-  priceRange: PriceRange
+  category: CategoryObjs['key']
+  priceRange: PriceRangeObjs['key']
   cardTitle: string
 }
 
@@ -16,19 +16,16 @@ export const useCardsQuery = ({
   return useInfiniteQuery({
     queryKey: ['cards', category, priceRange, cardTitle],
 
-    queryFn: async ({ pageParam = 0 }) =>
+    queryFn: async ({ pageParam = undefined }) =>
       await getCardList({
         category,
         priceRange,
         cardTitle,
         cursorId: pageParam,
       }),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      if (lastPage.length === 0) {
-        return undefined
-      }
-      return lastPageParam + 1
+    initialPageParam: undefined,
+    getNextPageParam: (lastPage: GetCardListRes) => {
+      return lastPage.data.nextCursorId
     },
   })
 }
