@@ -2,7 +2,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import koLocale from 'date-fns/locale/ko'
 import Link from 'next/link'
 import Badge from '@/components/ui/badge'
-import Card, { CardFlex, CardImage, CardText } from '@/components/ui/card'
+import { CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
 import { CardDetail } from '@/types/card'
 
@@ -24,16 +24,16 @@ const MyCardDescriptionSection = ({
     createdAt,
   },
 }: MyCardDescriptionSection) => (
-  <Link href={`${AppPath.cards()}/${cardId}`}>
-    <div className="h-card-lg p-1.5">
+  <Link href={`${AppPath.cards()}/${cardId}`} className="w-full">
+    <div className="flex h-card-lg p-1.5 justify-center w-full">
       <CardFlex
         direction={'row'}
         justify={'start'}
         align={'center'}
         gap={'space'}
-        className="h-full"
+        className="w-full h-full"
       >
-        <div className="relative w-32 h-full">
+        <div className="relative w-1/3 h-full">
           <CardImage
             className="rounded-lg border border-background-secondary-color"
             src={thumbnail}
@@ -43,7 +43,11 @@ const MyCardDescriptionSection = ({
           />
         </div>
 
-        <CardFlex direction={'col'} justify={'between'} className="h-full">
+        <CardFlex
+          direction={'col'}
+          justify={'between'}
+          className="w-2/3 h-full"
+        >
           <CardFlex align={'center'} gap={'space'}>
             <CardText type={'title'}>{cardTitle}</CardText>
             {status === 'TRADE_AVAILABLE' ? (
