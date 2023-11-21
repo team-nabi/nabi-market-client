@@ -5,7 +5,9 @@ import ReservedBadge from '@/components/domain/badge/reserved-badge'
 import TradeAvailableBadge from '@/components/domain/badge/trade-available-badge'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { CardDetail } from '@/types/card'
+import { getValueByKey } from '@/utils/getValueByKey'
 
 type MyCardDescriptionSection = {
   card: CardDetail
@@ -65,7 +67,9 @@ const MyCardDescriptionSection = ({
           >
             {itemName}
           </CardText>
-          <CardText type={'description'}>{priceRange}</CardText>
+          <CardText type={'description'}>
+            {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+          </CardText>
           <CardText type={'date'}>
             {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
           </CardText>

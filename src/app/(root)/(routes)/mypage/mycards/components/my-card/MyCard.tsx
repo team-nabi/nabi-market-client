@@ -8,7 +8,9 @@ import TradeCompleteBadge from '@/components/domain/badge/trade-complete-badge'
 import { Card, CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import type { Card as CardInfo } from '@/types/card'
+import { getValueByKey } from '@/utils/getValueByKey'
 
 const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
   <Link href={`${AppPath.cards()}?priceRange=${priceRange}`}>
@@ -88,7 +90,9 @@ const MyCard = ({
             >
               {itemName}
             </CardText>
-            <CardText type={'description'}>{priceRange}</CardText>
+            <CardText type={'description'}>
+              {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+            </CardText>
             <CardFlex gap={'space'}>
               {status === 'TRADE_AVAILABLE' ? (
                 <>

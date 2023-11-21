@@ -4,7 +4,9 @@ import Link from 'next/link'
 import Card from '@/components/ui/card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { Card as CardInfo } from '@/types/card'
+import { getValueByKey } from '@/utils/getValueByKey'
 import ReservedBadge from '../../badge/reserved-badge'
 import TradeAvailableBadge from '../../badge/trade-available-badge'
 
@@ -66,7 +68,9 @@ const TradeStatusCard = ({
             >
               {itemName}
             </CardText>
-            <CardText type={'description'}>{priceRange}</CardText>
+            <CardText type={'description'}>
+              {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+            </CardText>
             <CardText type={'date'}>
               {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
             </CardText>

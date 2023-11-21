@@ -27,7 +27,9 @@ const SubCard = ({
     >
       {itemName}
     </CardText>
-    <CardText type={'icon'}>{priceRange}</CardText>
+    <CardText type={'icon'}>
+      {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+    </CardText>
   </CardFlex>
 )
 
@@ -47,7 +49,7 @@ const TradeHistoryCard = ({
         <SubCard
           thumbnail={fromCard.thumbnail}
           itemName={fromCard.itemName}
-          priceRange={getValueByKey(PRICE_RANGE_OBJS, fromCard.priceRange)}
+          priceRange={fromCard.priceRange}
         />
         <CardFlex direction={'col'} align={'center'}>
           <CardImage alt={'거래 완료 이미지'} src={Assets.tradeComplete} />
@@ -58,7 +60,7 @@ const TradeHistoryCard = ({
         <SubCard
           thumbnail={toCard.thumbnail}
           itemName={toCard.itemName}
-          priceRange={getValueByKey(PRICE_RANGE_OBJS, toCard.priceRange)}
+          priceRange={toCard.priceRange}
         />
       </CardFlex>
     </Card>

@@ -5,9 +5,11 @@ import { useParams } from 'next/navigation'
 import Button from '@/components/ui/button'
 import { CardFlex, CardText, Card, CardImage } from '@/components/ui/card/Card'
 import Assets from '@/config/assets'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { useMySuggestionUpdateMutation } from '@/hooks/api/mutations/useMySuggestionUpdateMutation'
 import { Card as CardInfo } from '@/types/card'
 import { DirectionType, Suggestion, SuggestionType } from '@/types/suggestion'
+import { getValueByKey } from '@/utils/getValueByKey'
 
 const SuggestionButtons = ({
   handleMySuggestionUpdate,
@@ -123,7 +125,9 @@ const MySuggestionCard = ({
             >
               {itemName}
             </CardText>
-            <CardText type={'description'}>{priceRange}</CardText>
+            <CardText type={'description'}>
+              {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+            </CardText>
             <CardFlex gap={'space'}>
               {suggestionStatus === 'WAITING' ? (
                 directionType === 'RECEIVE' ? (
