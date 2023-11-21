@@ -86,7 +86,9 @@ const ImageUploader = ({
             isDeletable={isImageDeletable}
             isThumbnail={isThumbnail}
             onDeleteHandler={() => {
+              console.log(images)
               setImages(images.filter((_, i) => i !== index))
+              onFilesChanged(images.filter((_, i) => i !== index))
             }}
           />
         )
