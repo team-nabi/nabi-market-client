@@ -5,7 +5,7 @@ import {
   postSuggestion,
 } from '@/services/suggestion/suggestion'
 
-const useSuggestMutation = (toCardId: number, fromCardId: number) => {
+const useSuggestionUpdateMutation = (toCardId: number, fromCardId: number) => {
   const queryClient = useQueryClient()
 
   const queryKey = [toCardId, 'suggestions']
@@ -42,4 +42,4 @@ const useSuggestMutation = (toCardId: number, fromCardId: number) => {
   })
 }
 
-export default useSuggestMutation
+export default useSuggestionUpdateMutation
