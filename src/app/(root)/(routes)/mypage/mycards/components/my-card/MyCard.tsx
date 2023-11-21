@@ -2,7 +2,9 @@ import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
 import Link from 'next/link'
-import Badge from '@/components/ui/badge'
+import ReservedBadge from '@/components/domain/badge/reserved-badge'
+import TradeAvailableBadge from '@/components/domain/badge/trade-available-badge'
+import TradeCompleteBadge from '@/components/domain/badge/trade-complete-badge'
 import { Card, CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
@@ -25,10 +27,6 @@ const MoveToSuggestCheckPageButton = ({ cardId }: { cardId: number }) => (
     </CardFlex>
   </Link>
 )
-
-const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge>
-const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
-const TradeCompleteBadge = () => <Badge variant={'gradation'}>거래성사</Badge>
 
 type MyCardProps = {
   card: CardInfo
@@ -64,9 +62,18 @@ const MyCard = ({
             />
           </div>
 
-          <CardFlex direction={'col'} justify={'between'} className="h-full">
+          <CardFlex
+            direction={'col'}
+            justify={'between'}
+            className="h-full w-2/3"
+          >
             <CardFlex align={'center'} gap={'space'}>
-              <CardText type={'title'}>{cardTitle}</CardText>
+              <CardText
+                type={'title'}
+                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              >
+                {cardTitle}
+              </CardText>
               {status === 'TRADE_AVAILABLE' ? (
                 <TradeAvailableBadge />
               ) : status === 'RESERVED' ? (
@@ -75,7 +82,12 @@ const MyCard = ({
                 <TradeCompleteBadge />
               )}
             </CardFlex>
-            <CardText type={'description'}>{itemName}</CardText>
+            <CardText
+              type={'description'}
+              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+            >
+              {itemName}
+            </CardText>
             <CardText type={'description'}>{priceRange}</CardText>
             <CardFlex gap={'space'}>
               {status === 'TRADE_AVAILABLE' ? (

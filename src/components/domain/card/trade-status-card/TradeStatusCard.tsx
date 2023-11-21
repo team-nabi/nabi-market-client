@@ -1,18 +1,16 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import koLocale from 'date-fns/locale/ko'
 import Link from 'next/link'
-import Badge from '@/components/ui/badge'
 import Card from '@/components/ui/card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
 import { Card as CardInfo } from '@/types/card'
+import ReservedBadge from '../../badge/reserved-badge'
+import TradeAvailableBadge from '../../badge/trade-available-badge'
 
 type TradeStatusCardProps = {
   card: CardInfo
 }
-
-const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge>
-const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
 
 const TradeStatusCard = ({
   card: {
@@ -44,16 +42,30 @@ const TradeStatusCard = ({
             />
           </div>
 
-          <CardFlex direction={'col'} justify={'between'} className="h-full">
+          <CardFlex
+            direction={'col'}
+            justify={'between'}
+            className="h-full w-2/3"
+          >
             <CardFlex align={'center'} gap={'space'}>
-              <CardText type={'title'}>{cardTitle}</CardText>
+              <CardText
+                type={'title'}
+                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              >
+                {cardTitle}
+              </CardText>
               {status === 'TRADE_AVAILABLE' ? (
                 <TradeAvailableBadge />
               ) : (
                 <ReservedBadge />
               )}
             </CardFlex>
-            <CardText type={'description'}>{itemName}</CardText>
+            <CardText
+              type={'description'}
+              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+            >
+              {itemName}
+            </CardText>
             <CardText type={'description'}>{priceRange}</CardText>
             <CardText type={'date'}>
               {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}

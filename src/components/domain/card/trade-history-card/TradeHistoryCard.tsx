@@ -21,7 +21,10 @@ const SubCard = ({
         className="rounded"
       />
     </div>
-    <CardText type={'description'} className="font-bold">
+    <CardText
+      type={'description'}
+      className="font-bold whitespace-nowrap overflow-hidden overflow-ellipsis"
+    >
       {itemName}
     </CardText>
     <CardText type={'icon'}>{priceRange}</CardText>
