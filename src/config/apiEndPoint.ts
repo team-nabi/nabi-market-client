@@ -1,3 +1,4 @@
+import { COMMON_PAGE_SIZE } from '@/constants/pageSize'
 import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
 import { GetMyTradeHistoryListReq } from '@/services/history/history'
 import { GetMySuggestionListReq } from '@/services/suggestion/suggestion'
@@ -20,12 +21,12 @@ const ApiEndPoint = {
       cardTitle,
       cursorId,
       status: 'TRADE_AVAILABLE,RESERVED',
-      size: '5',
+      size: COMMON_PAGE_SIZE,
     })}`,
   getMyCardList: ({ tradeStatus, cursorId }: GetMyCardListReq) => {
     return `/cards/${tradeStatus}/my-cards?${getQueryParams({
       cursorId,
-      size: '5',
+      size: COMMON_PAGE_SIZE,
     })}`
   },
   postDibs: (cardId: number) => `/dibs/${cardId}`,
@@ -41,7 +42,7 @@ const ApiEndPoint = {
     return `/suggestions/${directionType}/${suggestionType}/${cardId}/?${getQueryParams(
       {
         cursorId,
-        size: '5',
+        size: COMMON_PAGE_SIZE,
       },
     )}`
   },
@@ -53,7 +54,7 @@ const ApiEndPoint = {
   getMyTradeHistoryList: ({ cursorId }: GetMyTradeHistoryListReq) => {
     return `/complete-requests/user/?${getQueryParams({
       cursorId,
-      size: '5',
+      size: COMMON_PAGE_SIZE,
     })}`
   },
   postImageFile: () => '/s3/upload/single',
