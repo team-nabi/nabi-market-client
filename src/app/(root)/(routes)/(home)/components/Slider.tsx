@@ -38,7 +38,7 @@ const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
               src={v.thumbnail}
               sizes="100vw"
               style={{ width: '100%' }}
-              //onClick={() => handleClick(v.cardId)}
+              onClick={() => handleClick(v.cardId)}
             />
             <div className="flex flex-col gap-1 items-center justify-center opacity-70 bg-black rounded-b-[5px] text-white w-full absolute inset-x-0 bottom-0 max-w-[240px] left-2/4 translate-x-[-50%] ">
               <p className={`${TYPOGRAPHY.title}`}>{v.itemName}</p>
