@@ -11,7 +11,7 @@ const CategorySection = () => {
   const router = useRouter()
 
   const handleClick = (name: string) => {
-    if (name === '전체보기') {
+    if (name === 'ALL_CARD') {
       router.push(`${AppPath.cards()}`)
     } else {
       router.push(`${AppPath.cards()}?category=${name}`)
