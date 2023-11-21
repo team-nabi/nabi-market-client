@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import {
-  DirectionType,
-  SuggestionStatus,
-  SuggestionType,
-} from '@/types/suggestion'
+  PutMySuggestionStatusReq,
+  putMySuggestionStatus,
+} from '@/services/suggestion/suggestion'
+import { DirectionType, SuggestionType } from '@/types/suggestion'
 
 export const useMySuggestionUpdateMutation = (
   suggestionType: SuggestionType,
@@ -12,46 +12,42 @@ export const useMySuggestionUpdateMutation = (
 ) => {
   const queryClient = useQueryClient()
   return useMutation({
-    onMutate: async ({
-      suggestionId,
-      suggestionStatus,
-    }: {
-      suggestionId: string
-      suggestionStatus: SuggestionStatus
-    }) => {
-      // await queryClient.cancelQueries({
-      //   queryKey: ['my-suggestions', suggestionType, directionType, cardId],
-      // })
-      // console.log(
-      //   suggestionType,
-      //   directionType,
-      //   cardId,
-      //   suggestionId,
-      // )
-      // const oldMySuggestionList = queryClient.getQueryData([
-      //   'my-suggestions',
-      //   suggestionType,
-      //   directionType,
-      //   cardId,
-      // ])
-
-      // const newMySuggestionList: any = structuredClone(oldMySuggestionList)
-      // const currentPageMySuggstionList =
-      //   // newMySuggestionList.pages[currentCursorId]
-      // const currentMySuggestionList = currentPageMySuggstionList.find(
-      //   (mySuggestion: MySuggestionRes) =>
-      //     mySuggestion.suggestionInfo.suggestionId === suggestionId,
-      // )
-      // currentMySuggestionList.suggestionInfo.suggestionStatus = suggestionStatus
-      // console.log(newMySuggestionList)
-
-      // queryClient.setQueryData(
-      //   ['my-suggestions', suggestionType, directionType, cardId],
-      //   newMySuggestionList,
-      // )
-      // return { oldMySuggestionList, newMySuggestionList }
-      console.log('점검중')
+    mutationFn: async ({
+      fromCardId,
+      toCardId,
+      isAccepted,
+    }: PutMySuggestionStatusReq) => {
+      await putMySuggestionStatus({ fromCardId, toCardId, isAccepted })
     },
-    // TODO : 에러처리 및 각 종 Optimistic Update 관련 기능 처리하기
+    onMutate: async (variables: any) => {
+      console.log('onMutate', variables)
+      //   const oldMySuggestionList = queryClient.getQueryData([
+      //     'my-suggestions',
+      //     suggestionType,
+      //     directionType,
+      //     myCardId,
+      //   ])
+      //   console.log(oldMySuggestionList)
+      // },
+      // onError: (error, variable, rollback) => {
+      //   if (rollback) rollback()
+      //   else console.log(error)
+      // },
+      // onSettled: () => {
+      //   queryClient.invalidateQueries([
+      //     'my-suggestions',
+      //     suggestionType,
+      //     directionType,
+      //     cardId,
+      //   ])
+      // },
+      // TODO : 에러처리 및 각 종 Optimistic Update 관련 기능 처리하기
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['my-suggestions', suggestionType, directionType, cardId],
+      })
+    },
   })
 }
