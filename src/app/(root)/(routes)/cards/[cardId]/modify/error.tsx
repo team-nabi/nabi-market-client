@@ -22,7 +22,7 @@ export default function Error({
       console.log('ForbiddenError')
       toast({
         title: 'Forbidden',
-        description: 'You do not have permission to access this page.',
+        description: ErrorMessages.Forbidden,
         duration: 2000,
       })
     }
@@ -30,14 +30,14 @@ export default function Error({
       router.push(AppPath.login())
       toast({
         title: 'Unauthorized',
-        description: 'Please login to access this page.',
+        description: ErrorMessages.Unauthorized,
         duration: 2000,
       })
     }
     if (error.message === ErrorMessages.NotFound) {
       toast({
         title: 'Not Found',
-        description: 'Please login to access this page.',
+        description: ErrorMessages.NotFound,
         duration: 2000,
       })
     }
