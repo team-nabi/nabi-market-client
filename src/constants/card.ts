@@ -1,5 +1,6 @@
 import Assets from '@/config/assets'
 
+//FIXME - 삭제 예정
 const PRICE_RANGE = [
   '~ 1만원',
   '1만원 ~ 5만원',
@@ -11,6 +12,7 @@ const PRICE_RANGE = [
   '50만원 이상',
 ] as const
 
+//FIXME - 삭제 예정
 const CATEGORY = [
   '남성의류',
   '여성의류',
@@ -22,6 +24,16 @@ const CATEGORY = [
   '가구ㆍ인테리어',
   '가전',
 ] as const
+
+//FIXME - 삭제 예정
+const CARD_TRADE_STATUS = [
+  'TRADE_AVAILABLE',
+  'RESERVED',
+  'TRADE_COMPLETE',
+] as const
+
+//FIXME - 삭제 예정
+const TRADE_TYPE = ['직거래', '택배거래'] as const
 
 const PRICE_RANGE_OBJS = [
   { key: 'PRICE_RANGE_ONE', value: '~ 1만원' },
@@ -46,13 +58,12 @@ const CATEGORY_OBJS = [
   { key: 'HOME_ELECTRONICS', value: '가전' },
 ] as const
 
-const CARD_TRADE_STATUS = [
-  'TRADE_AVAILABLE',
-  'RESERVED',
-  'TRADE_COMPLETE',
-] as const
+const TRADE_STATUS_OBJS = [
+  { key: 'TRADE_AVAILABLE', value: '거래가능' },
+  { key: 'RESERVED', value: '예약중' },
+  { key: 'TRADE_COMPLETE', value: '거래성사' },
+]
 
-const TRADE_TYPE = ['직거래', '택배거래'] as const
 const SUGGESTION_STATUS = [null, 'WAITING', 'REFUSED', 'ACCEPTED'] as const
 
 const TRADE_TYPE_OBJS = [
@@ -97,4 +108,5 @@ export {
   PRICE_RANGE_OBJS,
   CATEGORY_OBJS,
   TRADE_TYPE_OBJS,
+  TRADE_STATUS_OBJS,
 }

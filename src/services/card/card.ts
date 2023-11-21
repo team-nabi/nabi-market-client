@@ -67,11 +67,17 @@ const getCardList = async ({
   const response = await apiClient.get(ApiEndPoint.getCardList(cursorId))
   return response
 }
+export type CardInfoRes = {
+  code: string
+  message: string
+  data: { cardInfo: CardDetail; userInfo: User }
+}
 
 const getCardInfo = async (
   cardId: number,
 ): Promise<{ data: { cardInfo: CardDetail; userInfo: User } }> => {
   const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId))
+  
   return response
 }
 
@@ -111,7 +117,12 @@ const getMyDibs = async (cursorId: number) => {
 export type PopularCardsRes = {
   code: string
   message: string
-  data: Pick<CardDetail, 'cardId' | 'itemName' | 'priceRange' | 'thumbnail'>
+  data: {
+    cardList: Pick<
+      CardDetail,
+      'cardId' | 'itemName' | 'priceRange' | 'thumbnail'
+    >[]
+  }
 }
 const getPopularCardList = async () => {
   const response: PopularCardsRes = await apiClient.get(

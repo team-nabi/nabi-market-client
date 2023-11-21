@@ -3,9 +3,11 @@
 import Button from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card/Card'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
 import useSuggestMutation from '@/hooks/api/mutations/useSuggestMutation'
 import { SuggestionType } from '@/types/suggestion'
+import { getValueByKey } from '@/utils/getValueByKey'
 
 type SuggestCardProps = {
   thumbnail?: string
@@ -53,7 +55,9 @@ const SuggestCard = ({
         <CardFlex direction={'col'} justify={'between'} className="h-full grow">
           <CardText type={'title'}>{cardTitle}</CardText>
           <CardText type={'description'}>{itemName}</CardText>
-          <CardText type={'description'}>{priceRange}</CardText>
+          <CardText type={'description'}>
+            {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+          </CardText>
           <div className="flex justify-end">
             <Button
               variant={'gradation'}
