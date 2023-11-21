@@ -32,7 +32,7 @@ const MyCardListContent = () => {
 
   const isEmpty = data?.pages[0].data.cardList.length === 0
   return (
-    <MaxWidthWrapper>
+    <>
       <div className="h-9 flex justify-center items-center my-12">
         <TradeStatusTabs
           tradeStatus={tradeStatus}
@@ -51,7 +51,7 @@ const MyCardListContent = () => {
       </div>
 
       <div ref={lastElementRef} />
-    </MaxWidthWrapper>
+    </>
   )
 }
 export default MyCardListContent

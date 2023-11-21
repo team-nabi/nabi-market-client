@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, Fragment } from 'react'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
-import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useMyTradeHistoryQuery } from '@/hooks/api/queries/useMyTradeHistoriesQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import MyTradeHistoryList from '../my-trade-history-list/MyTradeHistoryList'
@@ -27,7 +26,7 @@ const MyTradeHistoryListContent = () => {
   const isEmpty = data?.pages[0].data.historyList.length === 0
 
   return (
-    <MaxWidthWrapper>
+    <>
       <div>
         <ExceptionBoundary
           isLoading={isLoading}
@@ -40,7 +39,7 @@ const MyTradeHistoryListContent = () => {
       </div>
 
       <div ref={lastElementRef} />
-    </MaxWidthWrapper>
+    </>
   )
 }
 export default MyTradeHistoryListContent

@@ -22,13 +22,11 @@ const SuggestCheckListPage = async ({
   const myCard = await getMyCardInfo(myCardId)
 
   return (
-    <div>
-      <MaxWidthWrapper>
-        <PageTitle title="제안 확인" />
-        <MyCardDescriptionSection card={myCard as CardDetail} />
-        <MySuggestionListContent />
-      </MaxWidthWrapper>
-    </div>
+    <MaxWidthWrapper>
+      <PageTitle title="제안 확인" />
+      <MyCardDescriptionSection card={myCard as CardDetail} />
+      <MySuggestionListContent />
+    </MaxWidthWrapper>
   )
 }
 
