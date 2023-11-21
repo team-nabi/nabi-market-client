@@ -75,7 +75,7 @@ export type CardInfoRes = {
 
 const getCardInfo = async (
   cardId: number,
-): Promise<{ data: { cardInfo: CardDetail } }> => {
+): Promise<{ data: { cardInfo: CardDetail; userInfo: User } }> => {
   const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId), {
     cache: 'no-store',
   })
