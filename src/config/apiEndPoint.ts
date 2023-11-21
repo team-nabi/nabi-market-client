@@ -6,8 +6,8 @@ import { getQueryParams } from '@/utils/getQueryParams'
 const ApiEndPoint = {
   getValidateUser: () => '/users',
   test: () => '/test',
-  getCardInfo: (cardId: number) => `cards/${cardId}`,
-  deleteCard: (cardId: number) => `cards/${cardId}`,
+  getCardInfo: (cardId: number) => `/cards/${cardId}`,
+  deleteCard: (cardId: number) => `/cards/${cardId}`,
   getCardList: ({
     category,
     priceRange,
@@ -49,7 +49,7 @@ const ApiEndPoint = {
   putUserProfile: () => '/users/profile-image',
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
-  getMyDibsList: (cursorId: number) => `/d  ibs/?cursorId=${cursorId}`,
+  getMyDibsList: (cursorId: number) => `/dibs/?cursorId=${cursorId}`,
   getMyTradeHistoryList: ({ cursorId }: GetMyTradeHistoryListReq) => {
     return `/complete-requests/user/?${getQueryParams({
       cursorId,

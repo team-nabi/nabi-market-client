@@ -3,10 +3,11 @@ import ApiEndPoint from '@/config/apiEndPoint'
 import type {
   Card,
   CategoryObjs,
-  PriceRangeObjs,
   CardDetail,
   TradeStatus,
+  PriceRangeObjs,
 } from '@/types/card'
+import { User } from '@/types/user'
 import apiClient from '../apiClient'
 
 type putCardReq = {
@@ -76,11 +77,16 @@ const getCardList = async ({
   )
   return response
 }
+export type CardInfoRes = {
+  code: string
+  message: string
+  data: { cardInfo: CardDetail; userInfo: User }
+}
 
-const getCardInfo = async (
-  cardId: number,
-): Promise<{ data: { cardInfo: CardDetail } }> => {
-  const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId))
+const getCardInfo = async (cardId: number) => {
+  const response: CardInfoRes = await apiClient.get(
+    ApiEndPoint.getCardInfo(cardId),
+  )
   return response
 }
 
@@ -126,7 +132,12 @@ const getMyDibs = async (cursorId: number) => {
 export type PopularCardsRes = {
   code: string
   message: string
-  data: Pick<CardDetail, 'cardId' | 'itemName' | 'priceRange' | 'thumbnail'>
+  data: {
+    cardList: Pick<
+      CardDetail,
+      'cardId' | 'itemName' | 'priceRange' | 'thumbnail'
+    >[]
+  }
 }
 const getPopularCardList = async () => {
   const response: PopularCardsRes = await apiClient.get(

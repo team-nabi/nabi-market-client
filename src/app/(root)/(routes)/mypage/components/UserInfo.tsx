@@ -39,7 +39,7 @@ const UserInfo = () => {
       <AvatarEditable
         fileChangeHandler={fileChangeHandler}
         changedSuccessfully={isProfileChanged}
-        defaultImage={currentUser?.profileImg}
+        defaultImage={currentUser?.imageUrl}
       />
       <TextEditable
         onChangeHandler={nicknameChangeHandler}

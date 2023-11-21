@@ -5,7 +5,7 @@ interface User {
   role: 'USER' | 'ADMIN'
   createdDate: string
   modifiedDate: string
-  profileImg?: string
+  imageUrl?: string
 }
 
 export type { User }
