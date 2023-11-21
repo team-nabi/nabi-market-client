@@ -31,7 +31,7 @@ const ApiEndPoint = {
   postDibs: (cardId: number) => `/dibs/${cardId}`,
   deleteDibs: (cardId: number) => `/dibs/${cardId}`,
   getAvailableCardSuggestionList: (cardId: number) =>
-    `cards/${cardId}/available-cards`,
+    `/cards/${cardId}/available-cards`,
   getMySuggestionList: ({
     directionType,
     suggestionType,
