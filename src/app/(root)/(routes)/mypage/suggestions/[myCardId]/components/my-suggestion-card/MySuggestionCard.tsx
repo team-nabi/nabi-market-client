@@ -5,9 +5,11 @@ import { useParams } from 'next/navigation'
 import Button from '@/components/ui/button'
 import { CardFlex, CardText, Card, CardImage } from '@/components/ui/card/Card'
 import Assets from '@/config/assets'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { useMySuggestionUpdateMutation } from '@/hooks/api/mutations/useMySuggestionUpdateMutation'
 import { Card as CardInfo } from '@/types/card'
 import { DirectionType, Suggestion, SuggestionType } from '@/types/suggestion'
+import { getValueByKey } from '@/utils/getValueByKey'
 
 const SuggestionButtons = ({
   handleMySuggestionUpdate,
@@ -106,10 +108,26 @@ const MySuggestionCard = ({
             />
           </div>
 
-          <CardFlex direction={'col'} justify={'between'} className="h-full">
-            <CardText type={'title'}>{cardTitle}</CardText>
-            <CardText type={'description'}>{itemName}</CardText>
-            <CardText type={'description'}>{priceRange}</CardText>
+          <CardFlex
+            direction={'col'}
+            justify={'between'}
+            className="h-full w-2/3"
+          >
+            <CardText
+              type={'title'}
+              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+            >
+              {cardTitle}
+            </CardText>
+            <CardText
+              type={'description'}
+              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+            >
+              {itemName}
+            </CardText>
+            <CardText type={'description'}>
+              {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+            </CardText>
             <CardFlex gap={'space'}>
               {suggestionStatus === 'WAITING' ? (
                 directionType === 'RECEIVE' ? (
