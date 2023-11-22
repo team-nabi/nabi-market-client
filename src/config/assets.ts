@@ -37,6 +37,7 @@ import VMoreIcon from '/public/images/more-vertical.svg'
 import NoData from '/public/images/no-data-img.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
+import SendIcon from '/public/images/send.svg'
 import TradeComplete from '/public/images/trade-complete.svg'
 import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
@@ -84,6 +85,7 @@ const Assets = {
   allCardIcon: AllCards,
   headerLogo: HeaderLogo,
   noDataIcon: NoData,
+  sendIcon: SendIcon,
 } as const
 
 export default Assets

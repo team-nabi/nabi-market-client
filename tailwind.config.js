@@ -24,6 +24,8 @@ module.exports = {
       height: {
         ...HEIGHT,
         nav: 'var(--nav-height)',
+        page: 'var(--page-height)',
+        chat_input: 'var(--chat-input-height)',
       },
       borderRadius: {
         ...BORDER_RADIUS,
@@ -35,6 +37,9 @@ module.exports = {
       },
       fontFamily: {
         pretendard: ['Pretendard'],
+      },
+      padding: {
+        chat_input: 'var(--chat-input-height)',
       },
     },
   },
