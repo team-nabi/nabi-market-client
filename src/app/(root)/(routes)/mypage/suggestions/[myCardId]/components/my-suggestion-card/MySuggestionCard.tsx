@@ -1,26 +1,22 @@
 import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Button from '@/components/ui/button'
 import { CardFlex, CardText, Card, CardImage } from '@/components/ui/card/Card'
 import Assets from '@/config/assets'
 import { useMySuggestionUpdateMutation } from '@/hooks/api/mutations/useMySuggestionUpdateMutation'
-import { MySuggestionRes } from '@/services/suggestion/suggestion'
-import {
-  DirectionType,
-  SuggestionStatus,
-  SuggestionType,
-} from '@/types/suggestion'
+import { Card as CardInfo } from '@/types/card'
+import { DirectionType, Suggestion, SuggestionType } from '@/types/suggestion'
 
 const SuggestionButtons = ({
   handleMySuggestionUpdate,
 }: {
-  handleMySuggestionUpdate: (suggestionStatus: SuggestionStatus) => void
+  handleMySuggestionUpdate: (isAccepted: boolean) => void
 }) => (
   <>
     <CardFlex
-      onClick={() => handleMySuggestionUpdate('ACCEPTED')}
+      onClick={() => handleMySuggestionUpdate(true)}
       className="cursor-pointer"
       align={'center'}
       gap={'space'}
@@ -29,7 +25,7 @@ const SuggestionButtons = ({
       <CardText>수락</CardText>
     </CardFlex>
     <CardFlex
-      onClick={() => handleMySuggestionUpdate('REFUSED')}
+      onClick={() => handleMySuggestionUpdate(false)}
       className="cursor-pointer"
       align={'center'}
       gap={'space'}
@@ -59,37 +55,35 @@ const WaitingButton = () => {
   )
 }
 
-type SuggestCheckCardProps = {
-  mySuggestionListResponseData: MySuggestionRes & { pageInfo: number }
+type MySuggestionCardProps = {
+  mySuggestion: {
+    suggestionInfo: Suggestion
+    cardInfo: CardInfo
+  }
   suggestionTypeState: SuggestionType
   directionTypeState: DirectionType
 }
 const MySuggestionCard = ({
-  mySuggestionListResponseData: {
-    suggestionInfo: {
-      suggestionId,
-      suggestionStatus,
-      directionType,
-      createdAt,
-    },
-    cardInfo: { cardTitle, itemName, priceRange, thumbnail },
-    pageInfo,
+  mySuggestion: {
+    suggestionInfo: { suggestionStatus, directionType, createdAt },
+    cardInfo: { cardId, cardTitle, itemName, priceRange, thumbnail },
   },
   suggestionTypeState,
   directionTypeState,
-}: SuggestCheckCardProps) => {
-  const searchParams = useSearchParams()
+}: MySuggestionCardProps) => {
+  const { myCardId } = useParams()
 
   const { mutate } = useMySuggestionUpdateMutation(
     suggestionTypeState,
     directionTypeState,
-    searchParams.get('cardId'),
+    myCardId,
   )
-  const handleMySuggestionUpdate = (
-    suggestionId: string,
-    suggestionStatus: SuggestionStatus,
-  ) => {
-    mutate({ suggestionId, suggestionStatus, currentPage: pageInfo })
+  const handleMySuggestionUpdate = (cardId: number, isAccepted: boolean) => {
+    mutate({
+      fromCardId: cardId,
+      toCardId: myCardId,
+      isAccepted,
+    })
   }
 
   return (
@@ -120,10 +114,8 @@ const MySuggestionCard = ({
               {suggestionStatus === 'WAITING' ? (
                 directionType === 'RECEIVE' ? (
                   <SuggestionButtons
-                    handleMySuggestionUpdate={(
-                      suggestionStatus: SuggestionStatus,
-                    ) =>
-                      handleMySuggestionUpdate(suggestionId, suggestionStatus)
+                    handleMySuggestionUpdate={(isAccepted: boolean) =>
+                      handleMySuggestionUpdate(cardId, isAccepted)
                     }
                   />
                 ) : (

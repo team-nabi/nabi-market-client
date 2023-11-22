@@ -1,3 +1,3 @@
-import HistoryList from './MyTradeHistoryList'
+import MyTradeHistoryList from './MyTradeHistoryList'
 
-export default HistoryList
+export default MyTradeHistoryList
