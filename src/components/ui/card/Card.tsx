@@ -12,6 +12,7 @@ const cardVariants = cva(
         lg: 'h-card-lg',
         md: 'h-card-md',
         sm: 'h-card-sm',
+        xs: 'h-card-xs',
       },
     },
     defaultVariants: {

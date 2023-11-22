@@ -35,6 +35,8 @@ import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
 import NoData from '/public/images/no-data-img.svg'
+import NotificationBell from '/public/images/notification-bell.svg'
+import NotificationDot from '/public/images/notification-dot.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
 import TradeComplete from '/public/images/trade-complete.svg'
@@ -84,6 +86,8 @@ const Assets = {
   allCardIcon: AllCards,
   headerLogo: HeaderLogo,
   noDataIcon: NoData,
+  notificationBell: NotificationBell,
+  notificationDot: NotificationDot,
 } as const
 
 export default Assets
