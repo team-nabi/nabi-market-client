@@ -18,7 +18,7 @@ const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
 )
 
 const MoveToSuggestCheckPageButton = ({ cardId }: { cardId: number }) => (
-  <Link href={`${AppPath.mySuggestions()}/${cardId}`}>
+  <Link href={`${AppPath.mySuggestions(cardId)}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.arrowCircleRight} alt="arrow-circle-right" />{' '}
       <CardText>제안 확인</CardText>
