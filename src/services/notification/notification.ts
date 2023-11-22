@@ -1,6 +1,5 @@
 import ApiEndPoint from '@/config/apiEndPoint'
 import { Notification } from '@/types/notification'
-import { TradeHistory } from '@/types/tradeHistory'
 import apiClient from '../apiClient'
 
 export type GetNotificationListReq = {

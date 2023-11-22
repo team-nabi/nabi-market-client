@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'react'
 import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import PageTitle from '@/components/domain/page-title'
-import NotificationCard from './components/notification-card'
-import NotificationListContent from './components/notification-list-content/NotificationListContent'
+import NotificationListContent from './components/notification-list-content'
 
 interface MyHistoryListPageProps {}
 
