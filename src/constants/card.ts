@@ -97,9 +97,9 @@ const CATEGORY_BUTTON_LIST = [
 ] as const
 
 const COMPLETE_REQUEST_TYPE_OBJS = [
-  { key: 'WAITING', value: '대기중' },
-  { key: 'ACCEPTED', value: '확정' },
-  { key: 'REFUSED', value: '거절됨' },
+  { key: 'WAITING', value: '거래성사 대기중' },
+  { key: 'ACCEPTED', value: '거래성사 확정' },
+  { key: 'REFUSED', value: '거래성사 거절됨' },
 ]
 
 export {

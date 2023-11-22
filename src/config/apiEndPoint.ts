@@ -71,6 +71,8 @@ const ApiEndPoint = {
   putMySuggestionStatus: () => `/suggestions/decision`,
   getCompleteRequest: (completeRequestId: number) =>
     `/complete-reqeusts/${completeRequestId}`,
+  postCompleteRequest: () => '/complete-requests',
+  putCompleteRequest: () => '/complete-requests/confirm',
 } as const
 
 export default ApiEndPoint
