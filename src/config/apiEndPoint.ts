@@ -66,6 +66,7 @@ const ApiEndPoint = {
     `/users/oauth2/authorize/google/redirect?code=${code}`,
   getRecentTradeHistoryList: (size: number) =>
     `/complete-requests/?size=${size}`,
+  putCardStatus: (cardId: number) => `/cards/status/${cardId}`,
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
 } as const

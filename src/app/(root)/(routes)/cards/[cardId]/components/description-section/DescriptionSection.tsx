@@ -57,7 +57,9 @@ const DescriptionSection = ({
           {getValueByKey(TRADE_STATUS_OBJS, status)}
         </Badge>
         <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
-        {isLoggedIn && isMyItem && <MoreButton cardId={cardId} />}
+        {isLoggedIn && isMyItem && (
+          <MoreButton cardId={cardId} status={status} />
+        )}
       </div>
       <div className="flex flex-row items-center">
         <p
