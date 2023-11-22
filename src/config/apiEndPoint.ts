@@ -1,6 +1,7 @@
 import { COMMON_PAGE_SIZE } from '@/constants/pageSize'
 import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
 import { GetMyTradeHistoryListReq } from '@/services/history/history'
+import { GetNotificationListReq } from '@/services/notification/notification'
 import { GetMySuggestionListReq } from '@/services/suggestion/suggestion'
 import { getQueryParams } from '@/utils/getQueryParams'
 
@@ -68,6 +69,14 @@ const ApiEndPoint = {
     `/complete-requests/?size=${size}`,
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
+  getNotificationList: ({ isRead, cursorId }: GetNotificationListReq) => {
+    console.log(isRead)
+    return `/notifications/?${getQueryParams({
+      'is-read': String(isRead),
+      cursorId,
+      size: COMMON_PAGE_SIZE,
+    })}`
+  },
 } as const
 
 export default ApiEndPoint
