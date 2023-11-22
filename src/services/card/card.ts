@@ -84,10 +84,13 @@ export type CardInfoRes = {
   data: { cardInfo: CardDetail; userInfo: User }
 }
 
-const getCardInfo = async (cardId: number) => {
-  const response: CardInfoRes = await apiClient.get(
-    ApiEndPoint.getCardInfo(cardId),
-  )
+const getCardInfo = async (
+  cardId: number,
+): Promise<{ data: { cardInfo: CardDetail; userInfo: User } }> => {
+  const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId), {
+    cache: 'no-store',
+  })
+
   return response
 }
 
@@ -143,7 +146,7 @@ export type PopularCardsRes = {
 const getPopularCardList = async () => {
   const response: PopularCardsRes = await apiClient.get(
     ApiEndPoint.getPopularCardList(),
-    { next: { revalidate: 6000 } },
+    { next: { revalidate: 60 } },
   )
   return response
 }

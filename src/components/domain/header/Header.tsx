@@ -8,14 +8,10 @@ import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { useAuth } from '@/contexts/AuthProvider'
 import Logo from '../logo'
-import { MenuButton, Avatar } from './components/Avatar'
-
-// type HeaderProps = {
-//   isLogin?: boolean
-// }
+import { MenuButton, AvatarWithDropdown } from './components'
 
 const Header = () => {
-  const { isLoggedIn } = useAuth()
+  const { isLoggedIn, currentUser } = useAuth()
   return (
     <header className="absolute top-0 left-0 z-10 grid items-center justify-between w-full grid-cols-3 px-2 h-nav shadow-bottom bg-background-color">
       <div className="flex items-center justify-start">
@@ -31,7 +27,7 @@ const Header = () => {
               <Image src={Assets.alarmIcon} alt="alarm" />
             </Button>
             {/** TODO: 알림 컴포넌트로 변경 */}
-            <Avatar />
+            <AvatarWithDropdown imageUrl={currentUser?.imageUrl} />
             {/** TODO: 아바타 컴포넌트로 변경 */}
           </>
         ) : (

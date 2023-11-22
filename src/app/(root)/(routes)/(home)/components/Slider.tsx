@@ -15,9 +15,6 @@ type PopularCardSliderProps = {
   cardData: PopularCardsRes['data']
 }
 
-/**
- * @param {ImageData} 이미지 아이디, 이미지 url을 담은 데이터
- */
 const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
   const router = useRouter()
 

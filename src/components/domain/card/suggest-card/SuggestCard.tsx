@@ -5,7 +5,7 @@ import Card from '@/components/ui/card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card/Card'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
-import useSuggestionUpdateMutation from '@/hooks/api/mutations/useSuggestionUpdateMutation'
+import useSuggestionCreateMutation from '@/hooks/api/mutations/useSuggestionCreateMutation'
 import { SuggestionType } from '@/types/suggestion'
 import { getValueByKey } from '@/utils/getValueByKey'
 
@@ -30,7 +30,7 @@ const SuggestCard = ({
   toCardId,
   suggestionStatus,
 }: SuggestCardProps) => {
-  const { mutate } = useSuggestionUpdateMutation(toCardId, fromCardId)
+  const { mutate } = useSuggestionCreateMutation(toCardId, fromCardId)
 
   const onClickSuggest = async (suggestionType: SuggestionType) => {
     mutate({ suggestionType, fromCardId, toCardId })

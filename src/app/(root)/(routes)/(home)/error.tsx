@@ -18,7 +18,7 @@ export default function ErrorPage({
   const { toast } = useToast()
   useEffect(() => {
     // Log the error to an error reporting service
-    console.log(error.digest, error.message, error.name)
+
     if (error.message === ErrorMessages.Forbidden) {
       console.log('ForbiddenError')
       toast({
@@ -39,6 +39,13 @@ export default function ErrorPage({
       toast({
         title: 'Not Found',
         description: 'Please login to access this page.',
+        duration: 2000,
+      })
+    }
+    if (error.message === ErrorMessages.ServerError) {
+      toast({
+        title: '서버 에러',
+        description: ErrorMessages.ServerError,
         duration: 2000,
       })
     }
