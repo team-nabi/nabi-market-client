@@ -69,6 +69,8 @@ const ApiEndPoint = {
   putCardStatus: (cardId: number) => `/cards/status/${cardId}`,
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
+  getCompleteRequest: (completeRequestId: number) =>
+    `/complete-reqeusts/${completeRequestId}`,
 } as const
 
 export default ApiEndPoint

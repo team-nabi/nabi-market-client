@@ -7,6 +7,7 @@ import type {
   TradeStatus,
   PriceRangeObjs,
   TradeStatusObjs,
+  CompleteRequestTypeObjs,
 } from '@/types/card'
 import { User } from '@/types/user'
 import apiClient from '../apiClient'
@@ -168,6 +169,22 @@ const putCardStatus = async ({ cardId, status }: PutCardStatusReq) => {
   return response
 }
 
+const getCompleteRequest = async (
+  completeRequestId: number,
+): Promise<{
+  data: {
+    fromCard: CardDetail
+    toCard: CardDetail
+    status: CompleteRequestTypeObjs['key']
+  }
+}> => {
+  const response = await apiClient.get(
+    ApiEndPoint.getCompleteRequest(completeRequestId),
+  )
+
+  return response
+}
+
 export {
   getCardList,
   getCardInfo,
@@ -180,4 +197,5 @@ export {
   putCard,
   getPopularCardList,
   putCardStatus,
+  getCompleteRequest,
 }
