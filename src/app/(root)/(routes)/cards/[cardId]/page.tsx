@@ -33,7 +33,10 @@ const CardPage = ({ params }: CardPageProps) => {
               profileImg={cardData.userInfo.imageUrl ?? null}
               userName={cardData.userInfo.nickname}
             />
-            <DescriptionSection cardData={cardData.cardInfo} />
+            <DescriptionSection
+              cardData={cardData.cardInfo}
+              authorId={cardData.userInfo.userId}
+            />
             <TradeSection
               priceRange={cardData.cardInfo.priceRange}
               tradeType={cardData.cardInfo.tradeType}

@@ -5,7 +5,7 @@ import {
   postSuggestion,
 } from '@/services/suggestion/suggestion'
 
-const useSuggestMutation = (toCardId: number, fromCardId: number) => {
+const useSuggestionCreateMutation = (toCardId: number, fromCardId: number) => {
   const queryClient = useQueryClient()
 
   const queryKey = [toCardId, 'suggestions']
@@ -21,7 +21,6 @@ const useSuggestMutation = (toCardId: number, fromCardId: number) => {
         await queryClient.cancelQueries({ queryKey })
 
         const updateSuggestions: any = structuredClone(previousSuggestions)
-        console.log(updateSuggestions)
         //낙관적 업데이트
         const indexToUpdate = updateSuggestions.findIndex(
           (card: AvailableCardSuggestionListRes) =>
@@ -43,4 +42,4 @@ const useSuggestMutation = (toCardId: number, fromCardId: number) => {
   })
 }
 
-export default useSuggestMutation
+export default useSuggestionCreateMutation

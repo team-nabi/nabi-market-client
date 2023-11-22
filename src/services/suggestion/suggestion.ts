@@ -35,6 +35,10 @@ const postSuggestion = async ({
   const response: PostSuggestionRes = await apiClient.post(
     ApiEndPoint.postSuggestion(suggestionType),
     { fromCardId, toCardId },
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
   )
   console.log(response)
   return response
