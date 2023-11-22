@@ -42,6 +42,13 @@ export default function ErrorPage({
         duration: 2000,
       })
     }
+    if (error.message === ErrorMessages.ServerError) {
+      toast({
+        title: '서버 에러',
+        description: ErrorMessages.ServerError,
+        duration: 2000,
+      })
+    }
   }, [error, router, toast])
 
   return (
