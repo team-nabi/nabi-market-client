@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
-import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useCardsQuery } from '@/hooks/api/queries/useCardsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { CategoryObjs, PriceRangeObjs } from '@/types/card'
@@ -50,7 +49,7 @@ const CardListContent = () => {
   console.log('content', data)
 
   return (
-    <MaxWidthWrapper>
+    <>
       <div className="h-9 flex justify-between items-center mb-6">
         <SearchInput setCardTitle={setCardTitle} />
         <FilterFormDialog
@@ -71,7 +70,7 @@ const CardListContent = () => {
         </ExceptionBoundary>
       </div>
       <div ref={lastElementRef} />
-    </MaxWidthWrapper>
+    </>
   )
 }
 export default CardListContent

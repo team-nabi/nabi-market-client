@@ -8,8 +8,8 @@ const AppPath = {
   newCard: () => '/cards/new' as const,
   cardDetail: (cardId: string) => `/cards/${cardId}` as const,
   mypage: () => '/mypage' as const,
-  myItems: () => '/mypage/my-items' as const,
-  suggestChecks: () => '/mypage/suggest-checks' as const,
+  myCards: () => '/mypage/mycards' as const,
+  mySuggestions: (cardId: number) => `/mypage/suggestions/${cardId}` as const,
   kakaoLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/kakao/login` as const,
   googleLogin: () =>

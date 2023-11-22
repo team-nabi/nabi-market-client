@@ -12,6 +12,7 @@ import MoreButton from './MoreButton'
 
 type DescriptionSectionProps = {
   cardData: CardDetail
+  authorId: number
 }
 
 type TradeStateMap = {
@@ -30,8 +31,8 @@ const DescriptionSection = ({
     isMyDib,
     content,
     cardId,
-    userId: authorId,
   },
+  authorId,
 }: DescriptionSectionProps) => {
   const { isLoggedIn } = useAuth()
   const { currentUser } = useAuth()
@@ -49,7 +50,6 @@ const DescriptionSection = ({
       style: 'gradation',
     },
   }
-
   return (
     <article className="flex flex-col w-full pt-4 pb-8  border-b-[1px] gap-4">
       <div className="flex flex-row items-center">

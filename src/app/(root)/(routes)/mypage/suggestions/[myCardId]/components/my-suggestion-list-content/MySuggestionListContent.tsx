@@ -1,9 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useParams, usePathname, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
-import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useMySuggestionsQuery } from '@/hooks/api/queries/useMySuggestionsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
@@ -15,10 +14,10 @@ const MySuggestionListContent = () => {
     useState<SuggestionType>('OFFER')
   const [directionTypeState, setDirectionTypeState] =
     useState<DirectionType>('RECEIVE')
-  const { cardId } = useParams()
+  const { myCardId } = useParams()
 
   const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useMySuggestionsQuery(suggestionTypeState, directionTypeState, cardId)
+    useMySuggestionsQuery(suggestionTypeState, directionTypeState, myCardId)
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
@@ -35,7 +34,7 @@ const MySuggestionListContent = () => {
 
   const isEmpty = data?.pages[0].data.suggestionList.length === 0
   return (
-    <MaxWidthWrapper>
+    <>
       <div className="h-9 flex justify-center items-center my-12">
         <SuggestionStatusTabs
           setSuggestionTypeState={setSuggestionTypeState}
@@ -58,7 +57,7 @@ const MySuggestionListContent = () => {
       </div>
 
       <div ref={lastElementRef} />
-    </MaxWidthWrapper>
+    </>
   )
 }
 export default MySuggestionListContent

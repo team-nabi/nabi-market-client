@@ -77,13 +77,12 @@ const TradeSection = ({
 
   const onClickButton = async () => {
     if (isMyItem) {
-      alert('제안확인 페이지로 이동하기')
+      router.push(`/mypage/suggestions/${cardId}`)
     } else {
       setOpen(true)
     }
   }
-
-  const { data: suggestions } = useSuggestionsQuery(cardId)
+  const { data: suggestions } = useSuggestionsQuery(cardId, isMyItem)
 
   return (
     <section className="flex flex-col gap-2 w-full pt-4">

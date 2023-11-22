@@ -31,7 +31,7 @@ const ApiEndPoint = {
   postDibs: (cardId: number) => `/dibs/${cardId}`,
   deleteDibs: (cardId: number) => `/dibs/${cardId}`,
   getAvailableCardSuggestionList: (cardId: number) =>
-    `cards/${cardId}/available-cards`,
+    `/cards/${cardId}/available-cards`,
   getMySuggestionList: ({
     directionType,
     suggestionType,
@@ -65,7 +65,8 @@ const ApiEndPoint = {
     `/users/oauth2/authorize/google/redirect?code=${code}`,
   getRecentTradeHistoryList: (size: number) =>
     `/complete-requests/?size=${size}`,
-  getPopularCardList: () => '/cards/daily',
+  getPopularCardList: () => '/cards/popular',
+  putMySuggestionStatus: () => `/suggestions/decision`,
 } as const
 
 export default ApiEndPoint

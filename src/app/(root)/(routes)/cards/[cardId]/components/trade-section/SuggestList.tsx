@@ -28,7 +28,7 @@ const SuggestList = ({
         <TabsContent
           key={type}
           value={type}
-          className=" data-[state=inactive]:hidden h-[402px] overflow-y-auto"
+          className="flex flex-col data-[state=inactive]:hidden h-[402px] overflow-y-auto"
         >
           {!pokeAvailable && type === 'POKE' ? (
             <div className="flex flex-col items-center justify-start gap-4 p-8">

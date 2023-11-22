@@ -89,6 +89,7 @@ const getCardInfo = async (
   const response = await apiClient.get(ApiEndPoint.getCardInfo(cardId), {
     cache: 'no-store',
   })
+
   return response
 }
 
@@ -144,7 +145,7 @@ export type PopularCardsRes = {
 const getPopularCardList = async () => {
   const response: PopularCardsRes = await apiClient.get(
     ApiEndPoint.getPopularCardList(),
-    { next: { revalidate: 6000 } },
+    { next: { revalidate: 60 } },
   )
   return response
 }
