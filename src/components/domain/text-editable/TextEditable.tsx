@@ -22,6 +22,7 @@ const TextEditable = ({
   const [value, setValue] = useState(defaultText)
 
   useEffect(() => {
+    console.log('이름', defaultText)
     if (!changedSuccessfully) {
       setValue(() => defaultText)
     }
