@@ -3,7 +3,7 @@ import Assets from '@/config/assets'
 
 const PageTitle = ({ title }: { title: string }) => {
   return (
-    <div className="flex grid items-center justify-between w-full h-8 grid-cols-3 my-4">
+    <div className="grid items-center justify-between w-full h-8 grid-cols-3 my-4">
       <Image
         src={Assets.arrowLeftIcon}
         alt="이전 아이콘"

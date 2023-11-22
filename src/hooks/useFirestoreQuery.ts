@@ -2,13 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Query, onSnapshot, queryEqual } from 'firebase/firestore'
-
-export interface Message {
-  text: string
-  createdAt: Date
-  sender: string
-  id: string
-}
+import { Message } from '@/types/message'
 
 const isMessageType = (arg: any): arg is Message => {
   return (
