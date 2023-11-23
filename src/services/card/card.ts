@@ -7,7 +7,6 @@ import type {
   TradeStatus,
   PriceRangeObjs,
   TradeStatusObjs,
-  CompleteRequestTypeObjs,
 } from '@/types/card'
 import { User } from '@/types/user'
 import apiClient from '../apiClient'
@@ -169,60 +168,6 @@ const putCardStatus = async ({ cardId, status }: PutCardStatusReq) => {
   return response
 }
 
-export type GetCompleteRequestRes = {
-  code: string
-  message: string
-  data: {
-    completeRequestInfo: {
-      fromCard: {
-        cardInfo: Card
-        userInfo: User
-      }
-      toCard: {
-        cardInfo: Card
-        userInfo: User
-      }
-      status: CompleteRequestTypeObjs['key']
-    }
-  }
-}
-
-const getCompleteRequest = async (completeRequestId: number) => {
-  const response = await apiClient.get(
-    ApiEndPoint.getCompleteRequest(completeRequestId),
-  )
-
-  return response
-}
-
-const postCompleteRequest = async (fromCardId: number, toCardId: number) => {
-  const response = await apiClient.post(
-    ApiEndPoint.postCompleteRequest(),
-    { fromCardId, toCardId },
-    {},
-    {
-      'Content-Type': 'application/json',
-    },
-  )
-  return response
-}
-
-const putCompleteRequest = async (
-  fromCardId: number,
-  toCardId: number,
-  isAccepted: boolean,
-) => {
-  const response = await apiClient.post(
-    ApiEndPoint.putCompleteRequest(),
-    { fromCardId, toCardId, isAccepted },
-    {},
-    {
-      'Content-Type': 'application/json',
-    },
-  )
-  return response
-}
-
 export {
   getCardList,
   getCardInfo,
@@ -235,7 +180,4 @@ export {
   putCard,
   getPopularCardList,
   putCardStatus,
-  getCompleteRequest,
-  postCompleteRequest,
-  putCompleteRequest,
 }
