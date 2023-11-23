@@ -1,17 +1,17 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import Badge from '@/components/ui/badge'
-import Assets from '@/config/assets'
 
 type TradeInfoProps = {
   title: string
   content: string
   variant: 'primary' | 'information'
+  icon: StaticImageData
 }
 
-const TradeInfo = ({ title, content, variant }: TradeInfoProps) => {
+const TradeInfo = ({ title, content, variant, icon }: TradeInfoProps) => {
   return (
     <div className="flex flex-row items-center">
-      <Image src={Assets.moneyIcon} alt="infoImg" />
+      <Image src={icon} alt="infoImg" />
       <div className="text-sm ml-2 font-normal">{title}</div>
       <Badge size={'lg'} variant={variant} className="ml-auto">
         {content}

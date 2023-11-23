@@ -1,6 +1,16 @@
+import Books from '/public/images/BOOKS.png'
 import Banner1 from '/public/images/Banner1.png'
 import Banner2 from '/public/images/Banner2.png'
 import Banner3 from '/public/images/Banner3.png'
+import Electronics from '/public/images/ELECTRONICS.png'
+import FemaleClothes from '/public/images/FEMALE_CLOTHES.png'
+import FurnitureInterior from '/public/images/FURNITURE_INTERIOR.png'
+import GoodsAccessory from '/public/images/GOODS_ACCESSORY.png'
+import HomeElectronics from '/public/images/HOME_ELECTRONICS.png'
+import MaleClothes from '/public/images/MALE_CLOTHES.png'
+import AllCards from '/public/images/SEARCH_ALL.png'
+import Shoes from '/public/images/SHOES.png'
+import Sports from '/public/images/SPORTS.png'
 import ArrowCircleRight from '/public/images/arrow-circle-right.svg'
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
@@ -20,11 +30,15 @@ import RightIcon from '/public/images/icon-right.svg'
 import UsersIcon from '/public/images/icon-users.svg'
 import XCircleIcon from '/public/images/icon-x-circle.svg'
 import KakaoIcon from '/public/images/kakao.png'
+import HeaderLogo from '/public/images/logo-header.svg'
 import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
+import NoData from '/public/images/no-data-img.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
+import SendIcon from '/public/images/send.svg'
+import TradeComplete from '/public/images/trade-complete.svg'
 import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
 
@@ -58,6 +72,20 @@ const Assets = {
   editIcon: editIcon,
   editMemoIcon: EditMemoIcon,
   unavailableIcon: UnavailableIcon,
+  tradeComplete: TradeComplete,
+  maleClothesIcon: MaleClothes,
+  femaleClothesIcon: FemaleClothes,
+  goodsAccessoryIcon: GoodsAccessory,
+  shoesIcon: Shoes,
+  sportsIcon: Sports,
+  booksIcon: Books,
+  electronicsIcon: Electronics,
+  furnitureInteriorIcon: FurnitureInterior,
+  homeElectronicsIcon: HomeElectronics,
+  allCardIcon: AllCards,
+  headerLogo: HeaderLogo,
+  noDataIcon: NoData,
+  sendIcon: SendIcon,
 } as const
 
 export default Assets

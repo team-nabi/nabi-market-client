@@ -5,55 +5,121 @@ import apiClient from '../apiClient'
 
 export type AvailableCardSuggestionListRes = {
   cardInfo: Card
-  suggestion: Suggestion
+  suggestionInfo: Suggestion
 }
 
 const getAvailableCardSuggestionList = async (cardId: number) => {
-  const response: AvailableCardSuggestionListRes[] = await apiClient.get(
+  const response = await apiClient.get(
     ApiEndPoint.getAvailableCardSuggestionList(cardId),
   )
-  return response
+  return response.data.cardList
 }
 
-export interface postSuggestionReponseData extends Suggestion {
+export interface PostSuggestionRes {
+  code: string
+  message: string
+  data: Suggestion
+}
+
+export interface PostSuggestionReq {
+  suggestionType: SuggestionType
   fromCardId: number
   toCardId: number
 }
 
-const postSuggestion = async (
-  suggestionType: SuggestionType,
-  fromCardId: number,
-  toCardId: number,
-) => {
-  const response: postSuggestionReponseData = await apiClient.post(
+const postSuggestion = async ({
+  suggestionType,
+  fromCardId,
+  toCardId,
+}: PostSuggestionReq) => {
+  const response: PostSuggestionRes = await apiClient.post(
     ApiEndPoint.postSuggestion(suggestionType),
     { fromCardId, toCardId },
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
   )
+  console.log(response)
   return response
 }
 
-type GetSuggestChecksParams = {
+export type GetMySuggestionListReq = {
   suggestionType: SuggestionType
   directionType: DirectionType
-  itemId: string | null
-  cursorId: number
+  cardId: string | string[]
+  cursorId: string | undefined
 }
-
-export type MySuggestionRes = {
-  cardInfo: Card
-  suggestion: Suggestion
+export type GetMySuggestionListRes = {
+  code: string
+  message: string
+  data: {
+    suggestionList: {
+      cardInfo: Card
+      suggestionInfo: Suggestion
+    }[]
+    nextCursorId: string
+  }
 }
 
 const getMySuggestionList = async ({
   suggestionType,
   directionType,
-  itemId,
+  cardId,
   cursorId,
-}: GetSuggestChecksParams) => {
-  const response: MySuggestionRes[] = await apiClient.get(
-    ApiEndPoint.getMySuggestionList(cursorId),
+}: GetMySuggestionListReq) => {
+  const response: GetMySuggestionListRes = await apiClient.get(
+    ApiEndPoint.getMySuggestionList({
+      directionType,
+      suggestionType,
+      cardId,
+      cursorId,
+    }),
   )
   return response
 }
 
-export { getAvailableCardSuggestionList, getMySuggestionList, postSuggestion }
+export type PutMySuggestionStatusReq = {
+  fromCardId: number
+  toCardId: string | string[]
+  isAccepted: boolean
+}
+export type PutMySuggestionStatusRes = {
+  code: string
+  message: string
+  data: {
+    suggestionList: {
+      cardInfo: Card
+      suggestionInfo: Suggestion
+    }[]
+    nextCursorId: string
+  }
+}
+
+const putMySuggestionStatus = async ({
+  fromCardId,
+  toCardId,
+  isAccepted,
+}: PutMySuggestionStatusReq) => {
+  const response: PutMySuggestionStatusRes = await apiClient.put(
+    ApiEndPoint.putMySuggestionStatus(),
+    {
+      fromCardId,
+      toCardId,
+      isAccepted,
+    },
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
+  )
+
+  return response
+}
+
+export {
+  getAvailableCardSuggestionList,
+  getMySuggestionList,
+  postSuggestion,
+  putMySuggestionStatus,
+}

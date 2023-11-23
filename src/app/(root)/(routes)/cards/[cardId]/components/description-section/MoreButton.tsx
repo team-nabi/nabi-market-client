@@ -12,15 +12,38 @@ import {
 } from '@/components/ui/dropdown-menu'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
+import useCardStatusUpdateMutation from '@/hooks/api/mutations/useCardStatusUpdateMutation'
 import { toast } from '@/hooks/useToast'
 import { handleApiError } from '@/lib/handleApiError'
 import { deleteCard } from '@/services/card/card'
+import { TradeStatusObjs } from '@/types/card'
 
 type MoreButtonProps = {
   cardId: number
+  status: TradeStatusObjs['key']
 }
-const MoreButton = ({ cardId }: MoreButtonProps) => {
+
+type CardStatusMap = {
+  [key: TradeStatusObjs['key']]: {
+    text: '예약중으로 돌리기' | '거래가능으로 돌리기'
+    statusToChange: TradeStatusObjs['key']
+  }
+}
+
+const MoreButton = ({ cardId, status }: MoreButtonProps) => {
+  const cardStatusMap: CardStatusMap = {
+    TRADE_AVAILABLE: {
+      text: '예약중으로 돌리기',
+      statusToChange: 'RESERVED',
+    },
+    RESERVED: {
+      text: '거래가능으로 돌리기',
+      statusToChange: 'TRADE_AVAILABLE',
+    },
+  }
+
   const router = useRouter()
+  const { mutate } = useCardStatusUpdateMutation(cardId, status)
 
   const onClickDelete = async () => {
     try {
@@ -44,6 +67,10 @@ const MoreButton = ({ cardId }: MoreButtonProps) => {
     }
   }
 
+  const handleChangeStatus = async (status: TradeStatusObjs['key']) => {
+    mutate({ cardId, status })
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -51,11 +78,21 @@ const MoreButton = ({ cardId }: MoreButtonProps) => {
           <Image src={Assets.vMoreIcon} alt="more" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="min-w-[10rem]">
         <DropdownMenuGroup>
-          <DropdownMenuItem>수정하기</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => router.push(AppPath.modifyCard(String(cardId)))}
+          >
+            수정하기
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={onClickDelete}>삭제하기</DropdownMenuItem>
-          <DropdownMenuItem>거래완료</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() =>
+              handleChangeStatus(cardStatusMap[status].statusToChange)
+            }
+          >
+            {cardStatusMap[status].text}
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

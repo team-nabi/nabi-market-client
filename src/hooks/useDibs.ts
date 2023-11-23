@@ -2,33 +2,43 @@
 
 import { useState } from 'react'
 import { deleteCardDibs, postCardDibs } from '@/services/card/card'
+import { toast } from './useToast'
 
 const useDibs = (isMyDib: boolean, count: number) => {
-  /**
-   * FIX: 로그인 관련 PR merge 되면 실제 currentUser 데이터 가져오기
-   * const {currentUser} = useAuth();
-   * const token = Cookies.get(Environment.tokenName())
-   */
-
   const [isDibsActive, setIsDibsActive] = useState(isMyDib)
   const [dibsCount, setDibsCount] = useState(count)
 
-  /**
-   * TODO: 실제 api 연결 + 실패처리
-   * 만약 찜 기능 실패로 답이 온다면?
-   * useMutation에서 낙관적 업데이트 먼저 하고 실패했을 경우 onError 핸들러로 이전 값 복원
-   */
   const handleDibs = async (cardId: number) => {
     if (isDibsActive) {
       setDibsCount(dibsCount - 1)
       setIsDibsActive(false)
-      const res = await deleteCardDibs(cardId)
-      console.log(res.message)
+      try {
+        const res = await deleteCardDibs(cardId)
+        console.log(res)
+      } catch (error) {
+        setDibsCount(dibsCount + 1)
+        setIsDibsActive(true)
+        toast({
+          variant: 'destructive',
+          title: 'Error',
+          description: '찜 취소를 실패했습니다.',
+        })
+      }
     } else {
       setDibsCount(dibsCount + 1)
       setIsDibsActive(true)
-      const res = await postCardDibs(cardId)
-      console.log(res.message)
+      try {
+        const res = await postCardDibs(cardId)
+        console.log(res)
+      } catch (error) {
+        setDibsCount(dibsCount - 1)
+        setIsDibsActive(false)
+        toast({
+          variant: 'destructive',
+          title: 'Error',
+          description: '찜을 실패했습니다.',
+        })
+      }
     }
   }
 

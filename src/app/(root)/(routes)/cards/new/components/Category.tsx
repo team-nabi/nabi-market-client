@@ -14,10 +14,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { CATEGORY } from '@/constants/card'
-import type { ItemUploadFormValues } from '../hooks/useItemUploadForm'
+import { CATEGORY_OBJS } from '@/constants/card'
+import type { CardUploadFormValues } from '../hooks/useCardUploadForm'
 
-const Category = ({ form }: { form: UseFormReturn<ItemUploadFormValues> }) => {
+const Category = ({ form }: { form: UseFormReturn<CardUploadFormValues> }) => {
   return (
     <FormField
       control={form.control}
@@ -34,9 +34,9 @@ const Category = ({ form }: { form: UseFormReturn<ItemUploadFormValues> }) => {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {CATEGORY.map((category) => (
-                  <SelectItem value={category} key={category}>
-                    {category}
+                {CATEGORY_OBJS.map((category) => (
+                  <SelectItem value={category.key} key={category.key}>
+                    {category.value}
                   </SelectItem>
                 ))}
               </SelectGroup>

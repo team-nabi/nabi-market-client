@@ -12,14 +12,12 @@ type SuggestListProps = {
 
 /**
  * TODO : 스크롤바 디자인 수정
- * TODO : 실제 API 연결(useMutation 사용해서)
  */
 const SuggestList = ({
   suggestionData,
   pokeAvailable,
   toCardId,
 }: SuggestListProps) => {
-  console.log(suggestionData)
   return (
     <Tabs defaultValue="OFFER">
       <TabsList>
@@ -30,34 +28,34 @@ const SuggestList = ({
         <TabsContent
           key={type}
           value={type}
-          className=" data-[state=inactive]:hidden h-[402px] overflow-y-auto"
+          className="flex flex-col data-[state=inactive]:hidden h-[402px] overflow-y-auto"
         >
           {!pokeAvailable && type === 'POKE' ? (
-            <div className="flex flex-col justify-start items-center gap-4 p-8">
+            <div className="flex flex-col items-center justify-start gap-4 p-8">
               <Image
                 width={200}
                 height={200}
                 alt="unavailable"
                 src={Assets.unavailableIcon}
               />
-              <p className="font-normal text-sm">
+              <p className="text-sm font-normal">
                 찔러보기가 허용되지 않은 물건입니다
               </p>
             </div>
           ) : (
             suggestionData
-              .filter((v) => v.suggestion.suggestionType === type)
+              .filter((v) => v.suggestionInfo.suggestionType === type)
               .map((v) => (
                 <SuggestCard
                   key={v.cardInfo.cardId}
-                  thumbNail={v.cardInfo.thumbNail}
+                  thumbnail={v.cardInfo.thumbnail}
                   cardTitle={v.cardInfo.cardTitle}
                   itemName={v.cardInfo.itemName}
                   priceRange={v.cardInfo.priceRange}
-                  suggestionType={v.suggestion.suggestionType}
-                  cardId={v.cardInfo.cardId}
+                  suggestionType={v.suggestionInfo.suggestionType}
+                  fromCardId={v.cardInfo.cardId}
                   toCardId={toCardId}
-                  suggestionStatus={v.suggestion.suggestionStatus}
+                  suggestionStatus={v.suggestionInfo.suggestionStatus}
                 />
               ))
           )}

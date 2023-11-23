@@ -16,13 +16,14 @@ import {
   SelectTrigger,
 } from '@/components/ui/select'
 import Assets from '@/config/assets'
-import { Category, PriceRange } from '@/types/card'
+import { CATEGORY_OBJS, PRICE_RANGE_OBJS } from '@/constants/card'
+import { CategoryObjs, PriceRangeObjs } from '@/types/card'
 
 type FilterFormDialogProps = {
-  priceRange: PriceRange
-  category: Category
-  setPriceRange: (priceRange: PriceRange) => void
-  setCategory: (category: Category) => void
+  priceRange: PriceRangeObjs['key']
+  category: CategoryObjs['key']
+  setPriceRange: (priceRange: PriceRangeObjs['key']) => void
+  setCategory: (category: CategoryObjs['key']) => void
 }
 
 const FilterFormDialog = ({
@@ -39,21 +40,12 @@ const FilterFormDialog = ({
     setIsOpen(false)
   }
 
-  const categories: Category[] = [
-    '전체보기',
-    '남성의류',
-    '여성의류',
-    '잡화ㆍ액세서리',
-    '신발',
-    '가전',
-    '스포츠',
-    '가구ㆍ인테리어',
-    '도서',
-    '전자기기ㆍ디지털',
-    '기타',
-  ]
-
-  const hasNoFilter = priceRange !== '전체보기' || category !== '전체보기'
+  // FIXME: 선택 안된 경우 값으로 변경
+  const hasNoFilter = priceRange !== undefined || category !== undefined
+  const priceRangeValue = PRICE_RANGE_OBJS.find(({ key }) => key === priceRange)
+    ?.value
+  const getCategoryValue = (categoryKey: CategoryObjs['key']) =>
+    CATEGORY_OBJS.find(({ key }) => key === categoryKey)?.value
 
   return (
     <>
@@ -85,54 +77,63 @@ const FilterFormDialog = ({
             </DialogDescription>
           </DialogHeader>
           <DialogDescription className="mb-6">
-            <DialogDescription className="text-sm mb-2">
+            <DialogDescription className="mb-2 text-sm">
               가격대
             </DialogDescription>
             <Select
               value={priceRange}
-              onValueChange={(value: PriceRange) => {
+              onValueChange={(value: PriceRangeObjs['key']) => {
                 setPriceRange(value)
               }}
             >
-              <SelectTrigger>{priceRange}</SelectTrigger>
+              <SelectTrigger>
+                {priceRangeValue || '가격대를 선택해주세요'}
+              </SelectTrigger>
               <SelectContent>
                 <SelectGroup className="w-full">
-                  <SelectItem value="전체보기">전체보기</SelectItem>
-                  <SelectItem value="10만원대">10만원대</SelectItem>
-                  <SelectItem value="20만원대">20만원대</SelectItem>
-                  <SelectItem value="30만원대">30만원대</SelectItem>
-                  <SelectItem value="40만원대">40만원대</SelectItem>
-                  <SelectItem value="50만원이상">50만원이상</SelectItem>
+                  {PRICE_RANGE_OBJS.map((currentPriceRange: PriceRangeObjs) => (
+                    <SelectItem
+                      key={currentPriceRange['key']}
+                      value={currentPriceRange['key']}
+                    >
+                      {currentPriceRange['value']}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
           </DialogDescription>
-          <DialogDescription className="border-t border-solid border-background-secondary-color mb-6"></DialogDescription>
+          <DialogDescription className="mb-6 border-t border-solid border-background-secondary-color"></DialogDescription>
 
           {/*TODO: 현재 SelectItem의 value와 textContent가 동일 실 API를 받을 경우, 어떤 값을 줄지 정한후 map 객체로 파싱하여 요청 */}
           <DialogDescription className="mb-6">
-            <DialogDescription className="text-sm mb-2">
+            <DialogDescription className="mb-2 text-sm">
               카테고리
             </DialogDescription>
-            {categories.map((currentCategory: Category, index) => (
+            {CATEGORY_OBJS.map((currentCategory: CategoryObjs) => (
               <button
-                key={index}
+                key={currentCategory.key}
+                data-category-key={currentCategory.key}
                 className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
-                  category === currentCategory
+                  category === currentCategory.key
                     ? 'border-primary-color text-primary-color'
                     : 'border-background-secondary-color text-background-secondary-color'
                 }`}
                 onClick={(e) =>
-                  setCategory(e.currentTarget.textContent as Category)
+                  setCategory(
+                    e.currentTarget.getAttribute(
+                      'data-category-key',
+                    ) as CategoryObjs['key'],
+                  )
                 }
               >
-                {currentCategory}
+                {getCategoryValue(currentCategory.key)}
               </button>
             ))}
           </DialogDescription>
         </DialogContent>
       </Dialog>
-      {isOpen && <div className="fixed inset-0 bg-black opacity-60 z-40" />}
+      {isOpen && <div className="fixed inset-0 z-40 bg-black opacity-60" />}
     </>
   )
 }

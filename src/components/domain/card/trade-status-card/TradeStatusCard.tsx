@@ -1,35 +1,33 @@
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import koLocale from 'date-fns/locale/ko'
 import Link from 'next/link'
-import Badge from '@/components/ui/badge'
 import Card from '@/components/ui/card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { Card as CardInfo } from '@/types/card'
+import { getValueByKey } from '@/utils/getValueByKey'
+import ReservedBadge from '../../badge/reserved-badge'
+import TradeAvailableBadge from '../../badge/trade-available-badge'
 
 type TradeStatusCardProps = {
   card: CardInfo
-  className: string
 }
-
-const TradeAvailableBadge = () => <Badge variant={'primary'}>거래가능</Badge>
-const ReservedBadge = () => <Badge variant={'secondary'}>예약중</Badge>
 
 const TradeStatusCard = ({
   card: {
     cardId,
-    thumbNail,
+    thumbnail,
     cardTitle,
     status,
     itemName,
     priceRange,
     createdAt,
   },
-  className,
 }: TradeStatusCardProps) => {
   return (
-    <Link href={`${AppPath.items()}/${cardId}`}>
-      <Card size={'sm'} className={className}>
+    <Link href={`${AppPath.cards()}/${cardId}`}>
+      <Card size={'sm'}>
         <CardFlex
           direction={'row'}
           justify={'start'}
@@ -37,26 +35,42 @@ const TradeStatusCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="h-full w-32 relative">
+          <div className="relative w-32 h-full">
             <CardImage
-              src={thumbNail}
+              src={thumbnail}
               alt="이미지가 없습니다."
               layout="fill"
               objectFit="cover"
             />
           </div>
 
-          <CardFlex direction={'col'} justify={'between'} className="h-full">
+          <CardFlex
+            direction={'col'}
+            justify={'between'}
+            className="h-full w-2/3"
+          >
             <CardFlex align={'center'} gap={'space'}>
-              <CardText type={'title'}>{cardTitle}</CardText>
+              <CardText
+                type={'title'}
+                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              >
+                {cardTitle}
+              </CardText>
               {status === 'TRADE_AVAILABLE' ? (
                 <TradeAvailableBadge />
               ) : (
                 <ReservedBadge />
               )}
             </CardFlex>
-            <CardText type={'description'}>{itemName}</CardText>
-            <CardText type={'description'}>{priceRange}</CardText>
+            <CardText
+              type={'description'}
+              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+            >
+              {itemName}
+            </CardText>
+            <CardText type={'description'}>
+              {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+            </CardText>
             <CardText type={'date'}>
               {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
             </CardText>

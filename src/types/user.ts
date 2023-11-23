@@ -2,10 +2,10 @@ interface User {
   userId: number
   accountId: string
   nickname: string
-  role: 'USER' | 'ADMIN'
+  role: 'ROLE_USER' | 'ROLE_ADMIN'
   createdDate: string
   modifiedDate: string
-  profileImg?: string
+  imageUrl?: string
 }
 
 export type { User }

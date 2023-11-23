@@ -9,12 +9,12 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import Switch from '@/components/ui/switch'
-import { ItemUploadFormValues } from '../hooks/useItemUploadForm'
+import type { CardUploadFormValues } from '../hooks/useCardUploadForm'
 
 const PokeAvailable = ({
   form,
 }: {
-  form: UseFormReturn<ItemUploadFormValues>
+  form: UseFormReturn<CardUploadFormValues>
 }) => {
   return (
     <FormField

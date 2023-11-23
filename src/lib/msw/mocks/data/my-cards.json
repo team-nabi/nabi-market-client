@@ -1,0 +1,212 @@
+[
+  {
+    "cardId": "1",
+    "cardTitle": "아이폰 16 팝니다",
+    "itemName": "아이폰 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_AVAILABLE"
+  },
+  {
+    "cardId": "2",
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  },
+  {
+    "cardId": "3",
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_COMPLETE"
+  },
+  {
+    "cardId": "4",
+    "cardTitle": "아이폰 16 팝니다",
+    "itemName": "아이폰 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_AVAILABLE"
+  },
+  {
+    "cardId": "5",
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  },
+  {
+    "cardId": "6",
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_COMPLETE"
+  },
+  {
+    "cardId": "7",
+    "cardTitle": "아이폰 16 팝니다",
+    "itemName": "아이폰 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_AVAILABLE"
+  },
+  {
+    "cardId": "8",
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_AVAILABLE"
+  },
+  {
+    "cardId": "9",
+    "cardTitle": "아이폰 16 팝니다",
+    "itemName": "아이폰 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_COMPLETE"
+  },
+  {
+    "cardId": "10",
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  },
+  {
+    "cardId": "11",
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_COMPLETE"
+  },
+  {
+    "cardId": "12",
+    "cardTitle": "아이폰 16 팝니다",
+    "itemName": "아이폰 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_AVAILABLE"
+  },
+  {
+    "cardId": "13",
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  },
+  {
+    "cardId": "14",
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_COMPLETE"
+  },
+  {
+    "cardId": "15",
+    "cardTitle": "아이폰 16 팝니다",
+    "itemName": "아이폰 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_AVAILABLE"
+  },
+  {
+    "cardId": "16",
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  },
+  {
+    "cardId": "17",
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_COMPLETE"
+  },
+  {
+    "cardId": "18",
+    "cardTitle": "아이폰 16 팝니다",
+    "itemName": "아이폰 16",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_AVAILABLE"
+  },
+  {
+    "cardId": "19",
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  },
+  {
+    "cardId": "20",
+    "cardTitle": "아이폰 18 팝니다",
+    "itemName": "아이폰 18",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "TRADE_COMPLETE"
+  },
+  {
+    "cardId": "21",
+    "cardTitle": "아이폰 17 팝니다",
+    "itemName": "아이폰 17",
+    "createdAt": "2023-11-01T08:08:00",
+    "modifiedAt": "2023-11-01T08:08:00",
+    "priceRange": "10만원대",
+    "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg",
+    "status": "RESERVED"
+  }
+]

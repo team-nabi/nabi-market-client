@@ -14,13 +14,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { PRICE_RANGE } from '@/constants/card'
-import type { ItemUploadFormValues } from '../hooks/useItemUploadForm'
+import { PRICE_RANGE_OBJS } from '@/constants/card'
+import type { CardUploadFormValues } from '../hooks/useCardUploadForm'
 
 const PriceRange = ({
   form,
 }: {
-  form: UseFormReturn<ItemUploadFormValues>
+  form: UseFormReturn<CardUploadFormValues>
 }) => {
   return (
     <FormField
@@ -38,9 +38,9 @@ const PriceRange = ({
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {PRICE_RANGE.map((priceRange) => (
-                  <SelectItem value={priceRange} key={priceRange}>
-                    {priceRange}
+                {PRICE_RANGE_OBJS.map((priceRange) => (
+                  <SelectItem value={priceRange.key} key={priceRange.key}>
+                    {priceRange.value}
                   </SelectItem>
                 ))}
               </SelectGroup>

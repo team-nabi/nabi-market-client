@@ -5,6 +5,9 @@
 @layer base {
   :root {
     --nav-height: 3.5rem;
+    --page-height: calc(100vh - var(--nav-height));
+    --chat-input-height: 4.5rem;
+
     --page-min-width: 320px;
     --page-max-width: 640px;
   }

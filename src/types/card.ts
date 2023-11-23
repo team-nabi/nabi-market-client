@@ -1,9 +1,12 @@
-import { StaticImageData } from 'next/image'
 import {
   CATEGORY,
-  PRICE_RANGE,
   TRADE_TYPE,
   CARD_TRADE_STATUS,
+  CATEGORY_OBJS,
+  PRICE_RANGE,
+  PRICE_RANGE_OBJS,
+  TRADE_STATUS_OBJS,
+  TRADE_TYPE_OBJS,
 } from '@/constants/card'
 
 interface Card {
@@ -12,37 +15,42 @@ interface Card {
   itemName: string
   createdAt: string
   modifiedAt: string
-  priceRange: PriceRange
-  thumbNail: string
-  status: TradeStatus
+  priceRange: PriceRangeObjs['key']
+  thumbnail: string
+  status: TradeStatusObjs['key']
 }
 
 /**
  * 카드 상세정보 페이지 Response Type
  */
 interface CardDetail extends Card {
-  category: Category
+  category: CategoryObjs['key']
   pokeAvailable: boolean
   viewCount: number
   content: string
   images: CardImages[]
-  dibsCount: number
+  dibCount: number
   isMyDib: boolean
   userId: number
   userName: string
-  tradeType: TradeType
+  tradeType: TradeTypeObjs['key']
   tradeArea: string
 }
 
 interface CardImages {
-  _id: number
-  image: string | StaticImageData
+  url: string
 }
 
-type Category = (typeof CATEGORY)[number]
+//FIXME - 삭제 예정
 type TradeStatus = (typeof CARD_TRADE_STATUS)[number]
-type PriceRange = (typeof PRICE_RANGE)[number]
 type TradeType = (typeof TRADE_TYPE)[number]
+type Category = (typeof CATEGORY)[number]
+type PriceRange = (typeof PRICE_RANGE)[number]
+
+type CategoryObjs = (typeof CATEGORY_OBJS)[number]
+type PriceRangeObjs = (typeof PRICE_RANGE_OBJS)[number]
+type TradeStatusObjs = (typeof TRADE_STATUS_OBJS)[number]
+type TradeTypeObjs = (typeof TRADE_TYPE_OBJS)[number]
 
 export type {
   Category,
@@ -52,4 +60,8 @@ export type {
   CardDetail,
   CardImages,
   TradeStatus,
+  CategoryObjs,
+  PriceRangeObjs,
+  TradeStatusObjs,
+  TradeTypeObjs,
 }

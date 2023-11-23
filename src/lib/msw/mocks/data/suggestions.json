@@ -1,0 +1,223 @@
+[
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 1,
+      "suggestionType": "POKE",
+      "suggestionStatus": "WAITING",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 2,
+      "suggestionType": "OFFER",
+      "suggestionStatus": "ACCEPTED",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 3,
+      "suggestionType": "POKE",
+      "suggestionStatus": "WAITING",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 4,
+      "suggestionType": "POKE",
+      "suggestionStatus": "REFUSED",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 5,
+      "suggestionType": "POKE",
+      "suggestionStatus": "WAITING",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 6,
+      "suggestionType": "POKE",
+      "suggestionStatus": "ACCEPTED",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 7,
+      "suggestionType": "POKE",
+      "suggestionStatus": "REFUSED",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 8,
+      "suggestionType": "POKE",
+      "suggestionStatus": "WAITING",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 9,
+      "suggestionType": "POKE",
+      "suggestionStatus": "ACCEPTED",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 10,
+      "suggestionType": "POKE",
+      "suggestionStatus": "REFUSED",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 11,
+      "suggestionType": "POKE",
+      "suggestionStatus": "WAITING",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "SEND"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 12,
+      "suggestionType": "POKE",
+      "suggestionStatus": "WAITING",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  },
+  {
+    "cardInfo": {
+      "cardId": 1,
+      "cardTitle": "아이폰 14 팝니다",
+      "itemName": "아이폰 14",
+      "priceRange": "10만원대",
+      "thumbnail": "https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg"
+    },
+    "suggestionInfo": {
+      "suggestionId": 13,
+      "suggestionType": "POKE",
+      "suggestionStatus": "WAITING",
+      "createdAt": "2023-11-14T00:14:48",
+      "modifiedAt": "2023-11-14T00:14:48",
+      "directionType": "RECEIVE"
+    }
+  }
+]

@@ -1,23 +1,31 @@
 import { rest } from 'msw'
 import ApiEndPoint from '@/config/apiEndPoint'
 import { Environment } from '@/config/environment'
-import items from '@/lib/msw/mocks/data/items.json'
+import cards from '@/lib/msw/mocks/data/cards.json'
+import myCards from '@/lib/msw/mocks/data/my-cards.json'
 
 const baseUrl = Environment.apiAddress()
 
-export const itemHandlers = [
-  rest.get(`${baseUrl}/items`, async (req, res, ctx) => {
+export const cardHandlers = [
+  rest.get(`${baseUrl}/cards`, async (req, res, ctx) => {
     const queryString = req.url.search
-    const cursorId = queryString.slice(10)
+    const keyValuePairs = queryString.split('&')
+    let cursorId
+    for (var i = 0; i < keyValuePairs.length; i++) {
+      if (keyValuePairs[i].startsWith('cursorId')) {
+        cursorId = keyValuePairs[i].split('=')[1]
+        break
+      }
+    }
     const currentPage = Number(cursorId)
-    const PAGE_SIZE = 5
-    const filterdItems = items.filter(
-      (item, index) =>
+    const PAGE_SIZE = 10
+    const filterdCards = cards.filter(
+      (card, index) =>
         index >= currentPage * PAGE_SIZE &&
         index < (currentPage + 1) * PAGE_SIZE,
     )
 
-    return res(ctx.status(200), ctx.json(filterdItems))
+    return res(ctx.status(200), ctx.json(filterdCards))
   }),
   rest.get(
     `${baseUrl}${ApiEndPoint.getCardInfo(3)}`,
@@ -92,4 +100,94 @@ export const itemHandlers = [
       )
     },
   ),
+  rest.post(`${baseUrl}${ApiEndPoint.postCard()}`, async (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        code: 'C001',
+        message: '업로드를 성공했습니다.',
+        data: {
+          cardInfo: {
+            cardId: 1,
+            cardTitle: '아이폰 16 팝니다',
+            thumbNailImage: 'xxx',
+            itemName: '아이폰 16',
+            priceRange: 'PRICE_RANGE_ONE',
+            tradeType: 'DIRECT_DEALING',
+            category: 'ELECTRONICS',
+            tradeArea: '서울시 성동구',
+            pokeAvailable: true,
+            content: '이거 진짜 쩔어요',
+            createdAt: '2023-10-23-20:08',
+            modifiedAt: '2023-10-23-20:08',
+            viewCount: 0,
+            dibsCount: 0,
+            images: [
+              {
+                url: 'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
+              },
+              {
+                url: 'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
+              },
+            ],
+          },
+        },
+      }),
+    )
+  }),
+  rest.put(`${baseUrl}${ApiEndPoint.putCard('1')}`, async (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        code: 'C001',
+        message: '수정을 성공했습니다.',
+        data: {
+          cardInfo: {
+            cardId: 1,
+            cardTitle: '아이폰 16 팝니다',
+            thumbNailImage: 'xxx',
+            itemName: '아이폰 16',
+            priceRange: 'PRICE_RANGE_ONE',
+            tradeType: 'DIRECT_DEALING',
+            category: 'ELECTRONICS',
+            tradeArea: '서울시 성동구',
+            pokeAvailable: true,
+            content: '이거 진짜 쩔어요',
+            createdAt: '2023-10-23-20:08',
+            modifiedAt: '2023-10-23-20:08',
+            viewCount: 0,
+            dibsCount: 0,
+            images: [
+              {
+                url: 'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
+              },
+              {
+                url: 'https://cdn.cetizen.com/CDN/market/market_large_crop/202311/20231109/231109182111_4_2797370.jpg',
+              },
+            ],
+          },
+        },
+      }),
+    )
+  }),
+  rest.get(`${baseUrl}/cards/:status/my-cards`, async (req, res, ctx) => {
+    const queryString = req.url.search
+    const keyValuePairs = queryString.split('&')
+    let cursorId
+    for (var i = 0; i < keyValuePairs.length; i++) {
+      if (keyValuePairs[i].startsWith('cursorId')) {
+        cursorId = keyValuePairs[i].split('=')[1]
+        break
+      }
+    }
+    const currentPage = Number(cursorId)
+    const PAGE_SIZE = 10
+    const filterdMyCards = myCards.filter(
+      (myCard, index) =>
+        index >= currentPage * PAGE_SIZE &&
+        index < (currentPage + 1) * PAGE_SIZE,
+    )
+
+    return res(ctx.status(200), ctx.json(filterdMyCards))
+  }),
 ]

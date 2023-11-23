@@ -3,33 +3,52 @@
 import React, { useState } from 'react'
 import AvatarEditable from '@/components/domain/avatar-editable'
 import TextEditable from '@/components/domain/text-editable'
-import { useAuth } from '@/contexts/AuthProvider'
+import { useToast } from '@/hooks/useToast'
+import { postImageFile } from '@/services/images'
 import { putUserNickname, putUserProfile } from '@/services/user/user'
+import { User } from '@/types/user'
 
-const UserInfo = () => {
-  const { currentUser } = useAuth()
+type UserInfoProps = {
+  user: User
+}
+
+const UserInfo = ({ user }: UserInfoProps) => {
+  const { toast } = useToast()
   const [isProfileChanged, setIsProfileChanged] = useState(true)
   const [isNicknameChanged, setIsNicknameChanged] = useState(true)
 
   const fileChangeHandler = async (file: File) => {
     setIsProfileChanged(true)
     try {
-      const _data = await putUserProfile({ file: file })
+      const resUpload = await postImageFile(file)
+      const resProfile = await putUserProfile(resUpload.data)
+      window.location.reload()
+      return resProfile.data
     } catch (error) {
       setIsProfileChanged(false)
       console.log(error)
-      // TODO: toast error message 추가
+      toast({
+        title: '프로필 이미지 변경 실패',
+        description: '프로필 이미지 변경에 실패했습니다.',
+        variant: 'destructive',
+      })
     }
   }
 
   const nicknameChangeHandler = async (nickname: string) => {
     setIsNicknameChanged(true)
     try {
-      const _data = await putUserNickname(nickname)
+      const res = await putUserNickname(nickname)
+      window.location.reload()
+      return res.data
     } catch (error) {
       setIsNicknameChanged(false)
       console.log(error)
-      //TODO: toast error message 추가
+      toast({
+        title: '닉네임 변경 실패',
+        description: '닉네임 변경에 실패했습니다.',
+        variant: 'destructive',
+      })
     }
   }
 
@@ -39,12 +58,12 @@ const UserInfo = () => {
       <AvatarEditable
         fileChangeHandler={fileChangeHandler}
         changedSuccessfully={isProfileChanged}
-        defaultImage={currentUser?.profileImg}
+        defaultImage={user?.imageUrl}
       />
       <TextEditable
         onChangeHandler={nicknameChangeHandler}
         changedSuccessfully={isNicknameChanged}
-        defaultText={currentUser?.nickname}
+        defaultText={user?.nickname}
       />
     </div>
   )

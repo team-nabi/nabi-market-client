@@ -1,13 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
+import Cookies from 'js-cookie'
+import { Environment } from '@/config/environment'
 import { MAX_IMAGE_NUMBER } from '@/constants/image'
 import { useToast } from '@/hooks/useToast'
+import { postImageFile } from '@/services/images'
+import { isNotNull } from '@/utils/isNotNull'
 import ImageBlock from './components/ImageBlock'
 import UploadBlock from './components/UploadBlock'
 
 type ImageUploaderPropsType = {
-  onFilesChanged: (_files: FileList) => void
+  onFilesChanged: (_imageUrls: string[]) => void
   defaultImages?: string[]
   maxImageNumber?: number
   isImageDeletable?: boolean
@@ -21,6 +25,31 @@ const ImageUploader = ({
 }: ImageUploaderPropsType) => {
   const { toast } = useToast()
   const [images, setImages] = useState<string[]>(defaultImages)
+
+  async function uploadImages(files: FileList) {
+    const uploadPromises = Array.from(files).map(async (file) => {
+      try {
+        const res = await postImageFile(file)
+        return res.data
+      } catch (e) {
+        toast({
+          title: '이미지 업로드 실패',
+          description: '이미지 업로드에 실패했습니다. 다시 시도해주세요.',
+        })
+        return null
+      }
+    })
+
+    const uploadedImages = await Promise.all(uploadPromises)
+
+    const successfulUploads = uploadedImages
+      .filter((imageUrl) => imageUrl != null)
+      .map((imageUrl) => imageUrl)
+      .filter(isNotNull)
+
+    setImages((images) => [...images, ...successfulUploads])
+    onFilesChanged([...images, ...successfulUploads])
+  }
 
   const onUploadHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
@@ -38,15 +67,7 @@ const ImageUploader = ({
       return
     }
 
-    Array.from(files).forEach((file) => {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setImages((prevImages) => [...prevImages, reader.result as string])
-      }
-      reader.readAsDataURL(file)
-    })
-
-    onFilesChanged(files)
+    uploadImages(files)
   }
 
   return (
@@ -57,13 +78,17 @@ const ImageUploader = ({
         maxPhotoNumber={maxImageNumber}
       />
       {images.map((image, index) => {
+        const isThumbnail = index === 0
         return (
           <ImageBlock
             key={image + index}
             imageSrc={image}
             isDeletable={isImageDeletable}
+            isThumbnail={isThumbnail}
             onDeleteHandler={() => {
+              console.log(images)
               setImages(images.filter((_, i) => i !== index))
+              onFilesChanged(images.filter((_, i) => i !== index))
             }}
           />
         )

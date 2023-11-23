@@ -1,18 +1,23 @@
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+import koLocale from 'date-fns/locale/ko'
 import Badge from '@/components/ui/badge'
+import { CATEGORY_OBJS, TRADE_STATUS_OBJS } from '@/constants/card'
+import { useAuth } from '@/contexts/AuthProvider'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { CardDetail } from '@/types/card'
 import { cn } from '@/utils'
+import { getValueByKey } from '@/utils/getValueByKey'
 import Dibs from './Dibs'
 import MoreButton from './MoreButton'
 
 type DescriptionSectionProps = {
   cardData: CardDetail
+  authorId: number
 }
 
 type TradeStateMap = {
   [key: string]: {
     style: 'primary' | 'secondary' | 'gradation' | 'information'
-    text: '거래가능' | '예약중' | '거래성사'
   }
 }
 
@@ -22,47 +27,39 @@ const DescriptionSection = ({
     cardTitle,
     category,
     createdAt,
-    dibsCount,
+    dibCount,
     isMyDib,
     content,
     cardId,
-    userId: authorId,
   },
+  authorId,
 }: DescriptionSectionProps) => {
-  // FIX : 로그인 관련 완성되면 실제 데이터로 수정
-  // const { isLoggedIn } = useAuth()
-  // const {currentUser} = useAuth();
+  const { isLoggedIn } = useAuth()
+  const { currentUser } = useAuth()
 
-  const currentUser = {
-    imageUrl: 'http://asdf~',
-    nickname: '병원에 간 미어캣',
-    userId: 3,
-  }
-  const isLoggedIn = true
-  const isMyItem = currentUser.userId === authorId
+  const isMyItem = currentUser?.userId === authorId
 
   const tradeStateMap: TradeStateMap = {
     TRADE_AVAILABLE: {
       style: 'primary',
-      text: '거래가능',
     },
     RESERVED: {
       style: 'secondary',
-      text: '예약중',
     },
     TRADE_COMPLETE: {
       style: 'gradation',
-      text: '거래성사',
     },
   }
   return (
     <article className="flex flex-col w-full pt-4 pb-8  border-b-[1px] gap-4">
       <div className="flex flex-row items-center">
         <Badge variant={tradeStateMap[status].style}>
-          {tradeStateMap[status].text}
+          {getValueByKey(TRADE_STATUS_OBJS, status)}
         </Badge>
         <h3 className={cn('ml-2', TYPOGRAPHY.title)}>{cardTitle}</h3>
-        {isLoggedIn && isMyItem && <MoreButton cardId={cardId} />}
+        {isLoggedIn && isMyItem && (
+          <MoreButton cardId={cardId} status={status} />
+        )}
       </div>
       <div className="flex flex-row items-center">
         <p
@@ -71,13 +68,13 @@ const DescriptionSection = ({
             TYPOGRAPHY.description,
           )}
         >
-          <u>{category}</u>
+          <u>{getValueByKey(CATEGORY_OBJS, category)}</u>
         </p>
         <p className={cn('text-text-secondary-color', TYPOGRAPHY.description)}>
-          {createdAt}
+          {formatDistanceToNow(new Date(createdAt), { locale: koLocale })} 전
         </p>
         {isLoggedIn && (
-          <Dibs cardId={cardId} dibsCount={dibsCount} isMyDib={isMyDib} />
+          <Dibs cardId={cardId} dibCount={dibCount} isMyDib={isMyDib} />
         )}
       </div>
       <p>{content}</p>

@@ -1,27 +1,19 @@
 import ApiEndPoint from '@/config/apiEndPoint'
 import apiClient from '../apiClient'
 
-const getKakaoLogin = async () => {
-  const response = await apiClient.get(ApiEndPoint.kakaoLogin())
-
+const getKakaoRedirect = async (code: string) => {
+  const response = await apiClient.get(ApiEndPoint.getKakaoRedirect(code))
   return response
 }
 
-const getGoogleLogin = async () => {
-  const response = await apiClient.get(ApiEndPoint.googleLogin())
-
+const getGoogleRedirect = async (code: string) => {
+  const response = await apiClient.get(ApiEndPoint.getGoogleRedirect(code))
   return response
 }
 
-const getValidateUser = async (token: string | undefined) => {
-  const response = await apiClient.get(
-    ApiEndPoint.getValidateUser(),
-    {},
-    {
-      Authorization: `Bearer ${token}`,
-    },
-  )
+const getValidateUser = async () => {
+  const response = await apiClient.get(ApiEndPoint.getValidateUser())
   return response
 }
 
-export { getKakaoLogin, getGoogleLogin, getValidateUser }
+export { getValidateUser, getKakaoRedirect, getGoogleRedirect }

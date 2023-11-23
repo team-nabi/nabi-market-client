@@ -13,7 +13,8 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
-    const res = await getValidateUser(token)
+    const res = await getValidateUser()
+
     if (res?.status === 401) {
       request.cookies.delete(Environment.tokenName())
       return NextResponse.redirect(new URL(AppPath.login(), request.url))
@@ -36,5 +37,5 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/test-auth-only'],
+  matcher: ['/mypage', '/cards/:path/modify', '/cards/new'],
 }

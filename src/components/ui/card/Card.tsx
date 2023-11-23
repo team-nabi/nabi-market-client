@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'
 import Image from 'next/image'
-import COLORS from '@/styles/colors'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { cn } from '@/utils'
 

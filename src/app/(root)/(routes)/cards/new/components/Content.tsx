@@ -8,9 +8,9 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import Textarea from '@/components/ui/textarea'
-import type { ItemUploadFormValues } from '../hooks/useItemUploadForm'
+import type { CardUploadFormValues } from '../hooks/useCardUploadForm'
 
-const Content = ({ form }: { form: UseFormReturn<ItemUploadFormValues> }) => {
+const Content = ({ form }: { form: UseFormReturn<CardUploadFormValues> }) => {
   return (
     <FormField
       control={form.control}
