@@ -70,7 +70,7 @@ const ApiEndPoint = {
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
   getCompleteRequest: (completeRequestId: number) =>
-    `/complete-reqeusts/${completeRequestId}`,
+    `/complete-requests/${completeRequestId}`,
   postCompleteRequest: () => '/complete-requests',
   putCompleteRequest: () => '/complete-requests/confirm',
 } as const

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Button from '@/components/ui/button'
 import { Card, CardFlex, CardImage, CardText } from '@/components/ui/card/Card'
 import Assets from '@/config/assets'
+import { GetCompleteRequestRes } from '@/services/card/card'
 import { Card as CardType } from '@/types/card'
 
 const CardItem = ({
@@ -24,16 +25,20 @@ const CardItem = ({
   </CardFlex>
 )
 
-const CompleteRequestCard = () => {
+type CompleteRequestCardProps = {
+  completeRequestInfo: GetCompleteRequestRes['data']['completeRequestInfo']
+}
+
+const CompleteRequestCard = ({
+  completeRequestInfo: { fromCard, toCard },
+}: CompleteRequestCardProps) => {
   return (
     <div>
       <Card className="p-2 flex items-center border-0" size={'sm'}>
         <CardFlex justify={'between'} className="gap-4">
           <CardItem
-            thumbnail={
-              'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/633faaee-0210-4ffb-8085-569374a26d70-214e000d15fc5a3a.jpeg'
-            }
-            itemName={'조세호 짤'}
+            thumbnail={fromCard.cardInfo.thumbnail}
+            itemName={fromCard.cardInfo.itemName}
           />
           <CardFlex direction={'col'} align={'center'} justify={'center'}>
             <CardText
@@ -52,10 +57,8 @@ const CompleteRequestCard = () => {
             </CardFlex>
           </CardFlex>
           <CardItem
-            thumbnail={
-              'https://team-01-bucket.s3.ap-northeast-2.amazonaws.com/fdd01120-4443-4643-9d6b-6140b75d0b98-230222112308_1_3034298.jpeg'
-            }
-            itemName={'갤럭시23'}
+            thumbnail={toCard.cardInfo.thumbnail}
+            itemName={toCard.cardInfo.thumbnail}
           />
         </CardFlex>
       </Card>

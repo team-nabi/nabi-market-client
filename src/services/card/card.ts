@@ -169,15 +169,25 @@ const putCardStatus = async ({ cardId, status }: PutCardStatusReq) => {
   return response
 }
 
-const getCompleteRequest = async (
-  completeRequestId: number,
-): Promise<{
+export type GetCompleteRequestRes = {
+  code: string
+  message: string
   data: {
-    fromCard: CardDetail
-    toCard: CardDetail
-    status: CompleteRequestTypeObjs['key']
+    completeRequestInfo: {
+      fromCard: {
+        cardInfo: Card
+        userInfo: User
+      }
+      toCard: {
+        cardInfo: Card
+        userInfo: User
+      }
+      status: CompleteRequestTypeObjs['key']
+    }
   }
-}> => {
+}
+
+const getCompleteRequest = async (completeRequestId: number) => {
   const response = await apiClient.get(
     ApiEndPoint.getCompleteRequest(completeRequestId),
   )
