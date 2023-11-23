@@ -15,7 +15,7 @@ const ChatPage = () => {
   const { currentUser } = useAuth()
   const { toast } = useToast()
 
-  const messageRef = getMessageRef('room2') // TODO: room id를 받아서 처리
+  const messageRef = getMessageRef('FROM00000037TO00000039') // TODO: room id를 받아서 처리
   const messages = useFirestoreQuery(
     query(messageRef, orderBy('createdAt', 'asc'), limit(CHAT_LIMIT)),
   )
@@ -34,7 +34,7 @@ const ChatPage = () => {
     try {
       await addDoc(messageRef, {
         text: message,
-        sender: currentUser?.nickname ?? '익명',
+        sender: currentUser?.userId.toString(),
         createdAt: new Date(),
       })
     } catch (e) {
@@ -49,10 +49,10 @@ const ChatPage = () => {
   return (
     <main className="relative flex flex-col items-center w-full gap-10 h-page pb-chat_input">
       <PageTitle title="채팅방" />
-      <section className="flex flex-col items-center px-2 overflow-scroll overflow-x-hidden">
+      <section className="flex flex-col items-center w-full h-full px-2 overflow-scroll overflow-x-hidden">
         <ChatList
           messages={messages}
-          currentUserNickname={currentUser?.nickname}
+          currentUserId={currentUser?.userId}
           ref={chatBottomRef}
         />
       </section>
