@@ -9,6 +9,7 @@ const HEIGHT = {
   'card-lg': '161px',
   'card-md': '118px',
   'card-sm': '106px',
+  'card-xs': '65px',
 }
 const BORDER_RADIUS = {
   card: '6px',

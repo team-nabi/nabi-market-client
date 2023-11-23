@@ -8,9 +8,22 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import Assets from '@/config/assets'
+import { toast } from '@/hooks/useToast'
+import { postCompleteRequest } from '@/services/card/card'
 
 interface CompleteRequestButtonProps {
-  onClickButton: () => Promise<void>
+  onClickButton?: () => Promise<void>
+}
+const handleRequestButton = async () => {
+  try {
+    await postCompleteRequest(45, 46) //FIXME - api 나오면 실제 cardId로 변경 예정
+  } catch (error) {
+    toast({
+      title: '거래성사 요청이 실패했습니다.',
+      variant: 'destructive',
+      duration: 2000,
+    })
+  }
 }
 
 const CompleteRequestButton = ({
@@ -25,7 +38,7 @@ const CompleteRequestButton = ({
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[8rem]">
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={onClickButton}>
+          <DropdownMenuItem onClick={handleRequestButton}>
             거래성사 요청
           </DropdownMenuItem>
         </DropdownMenuGroup>

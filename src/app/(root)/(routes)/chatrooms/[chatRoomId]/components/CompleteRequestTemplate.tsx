@@ -1,13 +1,13 @@
 import useCompleteRequestQuery from '@/hooks/api/queries/useCompleteRequestQuery'
-import CompleteRequestCard from './complete-request-card/CompleteRequestCard'
+import CompleteRequestCard from './CompleteRequestCard'
 
-type CompleteReqeustSectionProps = {
+type CompleteReqeustTemplateProps = {
   completeRequestId: number
 }
 
-const CompleteReqeustSection = ({
+const CompleteReqeustTemplate = ({
   completeRequestId,
-}: CompleteReqeustSectionProps) => {
+}: CompleteReqeustTemplateProps) => {
   const { data } = useCompleteRequestQuery(completeRequestId)
   console.log(data)
   const completeRequestData = data?.data?.completeRequestInfo
@@ -20,4 +20,4 @@ const CompleteReqeustSection = ({
   return <CompleteRequestCard completeRequestInfo={completeRequestData} />
 }
 
-export default CompleteReqeustSection
+export default CompleteReqeustTemplate
