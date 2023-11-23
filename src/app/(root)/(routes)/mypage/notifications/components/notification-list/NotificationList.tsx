@@ -14,7 +14,7 @@ const NotificationList = ({
       ({ data: { notificationList } }: GetNotificationListRes, pageIndex) => (
         <Fragment key={pageIndex}>
           {notificationList.map((notification: Notification) => (
-            <div key={notification.notificatoinId} className="mb-6">
+            <div key={notification.notificationId} className="mb-6">
               <NotificationCard notification={notification} />
             </div>
           ))}

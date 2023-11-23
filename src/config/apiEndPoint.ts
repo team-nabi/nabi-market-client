@@ -70,13 +70,13 @@ const ApiEndPoint = {
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
   getNotificationList: ({ isRead, cursorId }: GetNotificationListReq) => {
-    console.log(isRead)
     return `/notifications/?${getQueryParams({
       'is-read': String(isRead),
       cursorId,
       size: COMMON_PAGE_SIZE,
     })}`
   },
+  putNotificationList: () => `/notifications/read`,
 } as const
 
 export default ApiEndPoint

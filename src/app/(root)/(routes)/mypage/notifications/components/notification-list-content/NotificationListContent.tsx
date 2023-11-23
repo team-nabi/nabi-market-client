@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useRef, Fragment, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useNotificationsQuery } from '@/hooks/api/queries/useNotificationsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import NotificationList from '../notification-list'
+import NotificationReadButton from '../notification-read-button'
 import NotificationStatusTabs from '../notification-status-tabs'
 
 const NotificationListContent = () => {
@@ -30,21 +31,16 @@ const NotificationListContent = () => {
 
   return (
     <>
-      <div>
-        <NotificationStatusTabs setIsRead={setIsRead} />
-      </div>
-
-      <div>
-        <ExceptionBoundary
-          isLoading={isLoading}
-          isError={isError}
-          isEmpty={isEmpty}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <NotificationList data={data} />
-        </ExceptionBoundary>
-      </div>
-
+      <NotificationReadButton />
+      <NotificationStatusTabs setIsRead={setIsRead} />
+      <ExceptionBoundary
+        isLoading={isLoading}
+        isError={isError}
+        isEmpty={isEmpty}
+        isFetchingNextPage={isFetchingNextPage}
+      >
+        <NotificationList data={data} />
+      </ExceptionBoundary>
       <div ref={lastElementRef} />
     </>
   )

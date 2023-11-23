@@ -1,5 +1,5 @@
 export interface Notification {
-  notificatoinId: number
+  notificationId: number
   isRead: boolean
   content: string
   cardId: number

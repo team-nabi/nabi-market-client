@@ -25,4 +25,29 @@ const getNotificationList = async ({
   return response
 }
 
-export { getNotificationList }
+export type PutNotificationListReq = {
+  notificationIds: number[] | undefined
+}
+export type PutNotificationListRes = {
+  code: string
+  message: string
+}
+
+const putNotificationList = async ({
+  notificationIds,
+}: PutNotificationListReq) => {
+  const response: GetNotificationListRes = await apiClient.put(
+    ApiEndPoint.putNotificationList(),
+    {
+      notificationIds,
+    },
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
+  )
+
+  return response
+}
+
+export { getNotificationList, putNotificationList }
