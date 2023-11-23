@@ -39,6 +39,7 @@ import NotificationBell from '/public/images/notification-bell.svg'
 import NotificationDot from '/public/images/notification-dot.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
+import SendIcon from '/public/images/send.svg'
 import TradeComplete from '/public/images/trade-complete.svg'
 import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
@@ -88,6 +89,7 @@ const Assets = {
   noDataIcon: NoData,
   notificationBell: NotificationBell,
   notificationDot: NotificationDot,
+  sendIcon: SendIcon,
 } as const
 
 export default Assets

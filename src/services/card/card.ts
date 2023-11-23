@@ -6,6 +6,7 @@ import type {
   CardDetail,
   TradeStatus,
   PriceRangeObjs,
+  TradeStatusObjs,
 } from '@/types/card'
 import { User } from '@/types/user'
 import apiClient from '../apiClient'
@@ -150,6 +151,23 @@ const getPopularCardList = async () => {
   return response
 }
 
+export type PutCardStatusReq = {
+  cardId: number
+  status: TradeStatusObjs['key']
+}
+
+const putCardStatus = async ({ cardId, status }: PutCardStatusReq) => {
+  const response = await apiClient.put(
+    ApiEndPoint.putCardStatus(cardId),
+    { status },
+    {},
+    {
+      'Content-Type': 'application/json',
+    },
+  )
+  return response
+}
+
 export {
   getCardList,
   getCardInfo,
@@ -161,4 +179,5 @@ export {
   postCard,
   putCard,
   getPopularCardList,
+  putCardStatus,
 }

@@ -17,6 +17,7 @@ const NewCardButton = () => {
     if (isLoggedIn) router.push(AppPath.newCard())
   }
 
+  // TODO: 챗 페이지에서는 안보이게 처리
   if (!isLoggedIn || path === AppPath.newCard()) return <></>
 
   return (
