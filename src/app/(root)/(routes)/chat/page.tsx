@@ -1,61 +1,64 @@
 'use client'
 
-import React from 'react'
-import { collection, limit, orderBy, query, addDoc } from 'firebase/firestore'
-import useFirestoreQuery, { Message } from '@/hooks/useFirestoreQuery'
-import { db, getMessageRef } from '@/lib/firebase'
+import React, { useEffect, useRef } from 'react'
+import { limit, orderBy, query, addDoc } from 'firebase/firestore'
+import PageTitle from '@/components/domain/page-title'
+import { CHAT_LIMIT } from '@/config/firebaseConfig'
+import { useAuth } from '@/contexts/AuthProvider'
+import useFirestoreQuery from '@/hooks/useFirestoreQuery'
+import { useToast } from '@/hooks/useToast'
+import { getMessageRef } from '@/lib/firebase'
+import ChatInput from './components/ChatInput'
+import ChatList from './components/ChatList'
 
 const ChatPage = () => {
-  const messageRef = getMessageRef('room2')
+  const { currentUser } = useAuth()
+  const { toast } = useToast()
+
+  const messageRef = getMessageRef('room2') // TODO: room id를 받아서 처리
   const messages = useFirestoreQuery(
-    query(messageRef, orderBy('createdAt', 'asc'), limit(200)),
+    query(messageRef, orderBy('createdAt', 'asc'), limit(CHAT_LIMIT)),
   )
 
-  const [newMessage, setNewMessage] = React.useState<string>('')
+  const chatBottomRef = useRef<HTMLDivElement>(null)
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    setNewMessage(e.target.value)
+  useEffect(() => {
+    if (chatBottomRef.current) {
+      chatBottomRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [messageRef])
+
+  const onSubmitMessage = async (message: string) => {
+    chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+
+    try {
+      await addDoc(messageRef, {
+        text: message,
+        sender: currentUser?.nickname ?? '익명',
+        createdAt: new Date(),
+      })
+    } catch (e) {
+      toast({
+        title: '메세지 전송에 실패했습니다.',
+        variant: 'destructive',
+        duration: 3000,
+      })
+    }
   }
 
   return (
-    <div className="flex flex-col items-center w-full gap-10">
-      <h1 className="text-4xl">chat</h1>
-      <h1>new message</h1>
-      <form
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
-          e.preventDefault()
-          console.log(newMessage)
-          addDoc(collection(db, 'chats', 'room2', 'messages'), {
-            text: newMessage,
-            sender: 'me',
-            createdAt: new Date().toISOString(),
-          }).then(() => {
-            setNewMessage('')
-          })
-        }}
-      >
-        <input
-          onChange={onChange}
-          value={newMessage}
-          type="text"
-          placeholder="메세지를 입력하세요."
+    <main className="relative flex flex-col items-center w-full gap-10 h-page pb-chat_input">
+      <PageTitle title="채팅방" />
+      <section className="flex flex-col items-center px-2 overflow-scroll overflow-x-hidden">
+        <ChatList
+          messages={messages}
+          currentUserNickname={currentUser?.nickname}
+          ref={chatBottomRef}
         />
-        <button type="submit">send</button>
-      </form>
-      <div className="flex flex-col items-center w-full">
-        {messages.map((item: Message, idx: number) => {
-          console.log(item)
-          return (
-            <div key={idx} className="flex flex-row gap-2">
-              <h2>{`${item.sender}:`} </h2>
-              <h2>{item.text}</h2>
-            </div>
-          )
-        })}
-        {messages.length === 0 && <h1 className="text-red-500">no data</h1>}
-      </div>
-    </div>
+      </section>
+      <ChatInput onSubmit={onSubmitMessage} />
+      <div className="w-full h-0 border border-t-background-secondary-color" />
+    </main>
   )
 }
 
