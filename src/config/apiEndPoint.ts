@@ -1,5 +1,6 @@
 import { COMMON_PAGE_SIZE } from '@/constants/pageSize'
 import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
+import { GetChatRoomListReq } from '@/services/chat-room/chatRoom'
 import { GetMyTradeHistoryListReq } from '@/services/history/history'
 import { GetNotificationListReq } from '@/services/notification/notification'
 import { GetMySuggestionListReq } from '@/services/suggestion/suggestion'
@@ -78,6 +79,12 @@ const ApiEndPoint = {
     })}`
   },
   putNotificationList: () => `/notifications/read`,
+  getChatRoomList: ({ cursorId }: GetChatRoomListReq) => {
+    return `/chats/?${getQueryParams({
+      cursorId,
+      size: COMMON_PAGE_SIZE,
+    })}`
+  },
 } as const
 
 export default ApiEndPoint
