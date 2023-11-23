@@ -40,6 +40,7 @@ import NotificationDot from '/public/images/notification-dot.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
 import Search from '/public/images/search.svg'
 import SendIcon from '/public/images/send.svg'
+import SwitchHorizontal from '/public/images/switch-horizontal.svg'
 import TradeComplete from '/public/images/trade-complete.svg'
 import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
@@ -90,6 +91,7 @@ const Assets = {
   notificationBell: NotificationBell,
   notificationDot: NotificationDot,
   sendIcon: SendIcon,
+  switchHorizontal: SwitchHorizontal,
 } as const
 
 export default Assets

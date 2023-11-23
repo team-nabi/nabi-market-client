@@ -15,6 +15,7 @@ const AppPath = {
   googleLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/google/login` as const,
   modifyCard: (cardId: string) => `/cards/${cardId}/modify` as const,
+  chatRoom: (chatRoomId: string) => `/chatrooms/${chatRoomId}`,
 } as const
 
 type AppPathReturnType = {
