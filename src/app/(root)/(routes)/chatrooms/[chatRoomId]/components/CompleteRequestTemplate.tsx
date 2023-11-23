@@ -1,7 +1,9 @@
 import useCompleteRequestQuery from '@/hooks/api/queries/useCompleteRequestQuery'
+import { User } from '@/types/user'
 import CompleteRequestCard from './CompleteRequestCard'
 
 type CompleteReqeustTemplateProps = {
+  currentUser: User
   completeRequestId: number
 }
 
