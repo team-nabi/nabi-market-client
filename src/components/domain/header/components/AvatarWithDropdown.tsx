@@ -33,7 +33,7 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="absolute -right-5">
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={() => {
