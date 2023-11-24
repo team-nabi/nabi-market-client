@@ -12,6 +12,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(AppPath.login(), request.url))
   }
 
+  // if (request.nextUrl.pathname.startsWith('/chatrooms')) {
+  //   const chatRoomId = request.nextUrl.pathname.split('/')[2]
+  //   if (!chatRoomId) return
+  //   console.log(chatRoomId)
+
+  //   return NextResponse.rewrite(new URL('/chatrooms', request.url))
+  // }
+
   try {
     const res = await getValidateUser()
 
