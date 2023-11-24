@@ -128,9 +128,21 @@ const deleteCard = async (cardId: number) => {
   const response = await apiClient.delete(ApiEndPoint.deleteCard(cardId))
   return response
 }
-
-const getMyDibs = async (cursorId: number) => {
-  const response = await apiClient.get(ApiEndPoint.getMyDibsList(cursorId))
+export type GetMyDibsReq = {
+  cursorId: string | undefined
+}
+export type GetMyDibsRes = {
+  code: string
+  message: string
+  data: {
+    dibList: Card[]
+    nextCursorId: string
+  }
+}
+const getMyDibs = async ({ cursorId }: GetMyDibsReq) => {
+  const response: GetMyDibsRes = await apiClient.get(
+    ApiEndPoint.getMyDibsList({ cursorId }),
+  )
   return response
 }
 export type PopularCardsRes = {
