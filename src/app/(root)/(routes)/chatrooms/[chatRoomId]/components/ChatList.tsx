@@ -5,7 +5,7 @@ import { cn } from '@/utils'
 
 type ChatListProps = {
   messages: Message[]
-  currentUserNickname?: string
+  currentUserId?: number
 }
 
 type ChatProps = {
@@ -14,7 +14,7 @@ type ChatProps = {
 }
 
 const ChatList = forwardRef<HTMLDivElement, ChatListProps>(
-  ({ messages, currentUserNickname }, ref) => {
+  ({ messages, currentUserId }, ref) => {
     return (
       <ul className="flex flex-col w-full h-full gap-1">
         {messages.map((message: Message) => {
@@ -22,7 +22,7 @@ const ChatList = forwardRef<HTMLDivElement, ChatListProps>(
             <Chat
               key={message.id}
               message={message}
-              isMyMessage={message.sender === currentUserNickname}
+              isMyMessage={message.sender === currentUserId?.toString()}
             />
           )
         })}

@@ -24,7 +24,6 @@ const getInitialUser = async () => {
 }
 
 const getInitialChatRoom = async (chatRoomId: string) => {
-  console.log(chatRoomId)
   const token = getServerCookie()
   const res = await apiClient.get(
     ApiEndPoint.getChatRoom(chatRoomId),

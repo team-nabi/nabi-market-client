@@ -40,7 +40,7 @@ const ChatRoomTemplate = ({
     try {
       await addDoc(messageRef, {
         text: message,
-        sender: currentUser?.nickname ?? '익명',
+        sender: currentUser?.userId.toString(),
         createdAt: new Date(),
       })
     } catch (e) {
@@ -54,10 +54,10 @@ const ChatRoomTemplate = ({
 
   return (
     <>
-      <section className="flex flex-col items-center px-2 overflow-scroll overflow-x-hidden">
+      <section className="flex flex-col items-center w-full h-full px-2 overflow-scroll overflow-x-hidden">
         <ChatList
           messages={messages}
-          currentUserNickname={currentUser?.nickname}
+          currentUserId={currentUser?.userId}
           ref={chatBottomRef}
         />
       </section>
