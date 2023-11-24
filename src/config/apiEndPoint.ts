@@ -1,14 +1,10 @@
 import { COMMON_PAGE_SIZE } from '@/constants/pageSize'
-<<<<<<< HEAD
-import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
 import { GetChatRoomListReq } from '@/services/chat-room/chatRoom'
-=======
 import {
   GetCardListReq,
   GetMyCardListReq,
   GetMyDibsReq,
 } from '@/services/card/card'
->>>>>>> develop
 import { GetMyTradeHistoryListReq } from '@/services/history/history'
 import { GetNotificationListReq } from '@/services/notification/notification'
 import { GetMySuggestionListReq } from '@/services/suggestion/suggestion'
