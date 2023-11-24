@@ -1,15 +1,17 @@
-import React from 'react'
-import Link from 'next/link'
+import { FunctionComponent } from 'react'
+import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
+import PageTitle from '@/components/domain/page-title'
+import ChatRoomListContent from './components/chat-room-list-content'
 
-const page = () => {
-  const a = '5'
+interface ChatRoomListPageProps {}
+
+const ChatRoomListPage: FunctionComponent<ChatRoomListPageProps> = ({}) => {
   return (
-    <div>
-      <Link as={`/chatroomsa`} href={`/chatrooms?id=${a}`}>
-        ccc
-      </Link>
-    </div>
+    <MaxWidthWrapper>
+      <PageTitle title="채팅 목록" />
+      <ChatRoomListContent />
+    </MaxWidthWrapper>
   )
 }
 
-export default page
+export default ChatRoomListPage
