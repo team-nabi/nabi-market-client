@@ -78,6 +78,7 @@ const ApiEndPoint = {
     })}`
   },
   putNotificationList: () => `/notifications/read`,
+  getChatRoom: (chatRoomId: string) => `/chats/${chatRoomId}`,
 } as const
 
 export default ApiEndPoint
