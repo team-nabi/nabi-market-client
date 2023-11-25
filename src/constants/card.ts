@@ -96,12 +96,6 @@ const CATEGORY_BUTTON_LIST = [
   { key: 'ALL_CARD', value: '전체보기', image: Assets.allCardIcon },
 ] as const
 
-const COMPLETE_REQUEST_TYPE_OBJS = [
-  { key: 'WAITING', value: '거래성사 대기중' },
-  { key: 'ACCEPTED', value: '거래성사 확정' },
-  { key: 'REFUSED', value: '거래성사 거절됨' },
-]
-
 export {
   PRICE_RANGE,
   CATEGORY,
@@ -115,5 +109,4 @@ export {
   CATEGORY_OBJS,
   TRADE_TYPE_OBJS,
   TRADE_STATUS_OBJS,
-  COMPLETE_REQUEST_TYPE_OBJS,
 }

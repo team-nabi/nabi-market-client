@@ -79,10 +79,6 @@ const ApiEndPoint = {
   putCardStatus: (cardId: number) => `/cards/status/${cardId}`,
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
-  getCompleteRequest: (completeRequestId: number) =>
-    `/complete-requests/${completeRequestId}`,
-  postCompleteRequest: () => '/complete-requests',
-  putCompleteRequest: () => '/complete-requests/confirm',
   getNotificationList: ({ isRead, cursorId }: GetNotificationListReq) => {
     return `/notifications/?${getQueryParams({
       'is-read': String(isRead),

@@ -7,7 +7,6 @@ import {
   PRICE_RANGE_OBJS,
   TRADE_STATUS_OBJS,
   TRADE_TYPE_OBJS,
-  COMPLETE_REQUEST_TYPE_OBJS,
 } from '@/constants/card'
 
 interface Card {
@@ -52,7 +51,6 @@ type CategoryObjs = (typeof CATEGORY_OBJS)[number]
 type PriceRangeObjs = (typeof PRICE_RANGE_OBJS)[number]
 type TradeStatusObjs = (typeof TRADE_STATUS_OBJS)[number]
 type TradeTypeObjs = (typeof TRADE_TYPE_OBJS)[number]
-type CompleteRequestTypeObjs = (typeof COMPLETE_REQUEST_TYPE_OBJS)[number]
 
 export type {
   Category,
@@ -66,5 +64,4 @@ export type {
   PriceRangeObjs,
   TradeStatusObjs,
   TradeTypeObjs,
-  CompleteRequestTypeObjs,
 }
