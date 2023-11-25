@@ -71,7 +71,10 @@ const DescriptionSection = ({
           <u>{getValueByKey(CATEGORY_OBJS, category)}</u>
         </p>
         <p className={cn('text-text-secondary-color', TYPOGRAPHY.description)}>
-          {formatDistanceToNow(new Date(createdAt), { locale: koLocale })} 전
+          {formatDistanceToNow(new Date(createdAt), {
+            addSuffix: true,
+            locale: koLocale,
+          })}
         </p>
         {isLoggedIn && (
           <Dibs cardId={cardId} dibCount={dibCount} isMyDib={isMyDib} />
