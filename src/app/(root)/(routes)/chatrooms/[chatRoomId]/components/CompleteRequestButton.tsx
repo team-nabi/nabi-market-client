@@ -12,36 +12,17 @@ import {
 import Assets from '@/config/assets'
 import { toast } from '@/hooks/useToast'
 import { postCompleteRequest } from '@/services/complete-request/completeRequest'
-import { Card } from '@/types/card'
-import { User } from '@/types/user'
 
 type CompleteRequestButtonProps = {
-  currentUser: User
-  fromCardData: {
-    cardInfo: Pick<Card, 'cardId' | 'thumbnail' | 'itemName'>
-    userInfo: Pick<User, 'userId'>
-  }
-  toCardData: {
-    cardInfo: Pick<Card, 'cardId' | 'thumbnail' | 'itemName'>
-    userInfo: Pick<User, 'userId'>
-  }
+  myCardId: number
+  otherCardId: number
 }
 
 const CompleteRequestButton = ({
-  currentUser,
-  fromCardData,
-  toCardData,
+  myCardId,
+  otherCardId,
 }: CompleteRequestButtonProps) => {
   const handleRequestButton = async () => {
-    //NOTE - 현재 로그인한 사람의 아이디로 내 카드 id찾기 -> 삼항연산자 vs find함수 중 어떤 것이 더 나은 방법인지 모르겠음
-    const suggestionDataArray = [fromCardData, toCardData]
-    const myCardId = suggestionDataArray.find(
-      (obj) => obj.userInfo.userId === currentUser.userId,
-    )?.cardInfo.cardId as number
-    const otherCardId = suggestionDataArray.find(
-      (obj) => obj.userInfo.userId !== currentUser.userId,
-    )?.cardInfo.cardId as number
-
     try {
       await postCompleteRequest(myCardId, otherCardId)
       toast({

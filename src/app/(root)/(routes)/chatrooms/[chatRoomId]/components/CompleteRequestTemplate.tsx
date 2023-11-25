@@ -27,7 +27,7 @@ const CompleteReqeustTemplate = ({
       otherCardData={toCard.cardInfo}
     />
   ) : (
-    <Badge variant={'gradation'} size={'lg'}>
+    <Badge variant={'gradation'} size={'lg'} className="self-end mr-4">
       {getValueByKey(COMPLETE_REQUEST_TYPE_OBJS, status)}
     </Badge>
   )

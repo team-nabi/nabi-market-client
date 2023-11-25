@@ -34,7 +34,7 @@ const getInitialChatRoom = async (chatRoomId: string) => {
       Authorization: `${token}`,
     },
   )
-  return res.data.chatRoomInfo //NOTE - .fireStoreChatRoomId지움. chatRoomInfo필요
+  return res.data.chatRoomInfo
 }
 
 const getCompleteRequestInfo = async (completeRequestId: number) => {
@@ -53,13 +53,24 @@ const ChatPage = async ({ params }: ChatPageProps) => {
   const initialUserInfo = await getInitialUser()
   const initialChatRoom = await getInitialChatRoom(params.chatRoomId)
 
-  //NOTE - completeRequestId가 -1이 아닐때만 호출해야하는데 어떻게? -1로 호출하면 서버 500에러남.
-  const completeRequestInfo = await getCompleteRequestInfo(
-    initialChatRoom.completeRequestId,
-  )
-
   //NOTE - 둘 중 아무라도 거래성사 요청을 했을 경우
   const isCompleteRequested = initialChatRoom.completeRequestId !== -1
+  const completeRequestInfo = isCompleteRequested
+    ? await getCompleteRequestInfo(initialChatRoom.completeRequestId)
+    : null
+
+  const suggestionDataArray = [
+    initialChatRoom.fromCardInfo,
+    initialChatRoom.toCardInfo,
+  ]
+  console.log(suggestionDataArray)
+  const myCardId = suggestionDataArray.find(
+    (obj) => obj.userInfo.userId === initialUserInfo.userId,
+  ).cardInfo.cardId
+
+  const otherCardId = suggestionDataArray.find(
+    (obj) => obj.userInfo.userId !== initialUserInfo.userId,
+  ).cardInfo.cardId
 
   return (
     <main className="relative flex flex-col items-center w-full gap-10 h-page pb-chat_input">
@@ -67,9 +78,8 @@ const ChatPage = async ({ params }: ChatPageProps) => {
         <PageTitle title="채팅방" />
         {!isCompleteRequested && (
           <CompleteRequestButton
-            currentUser={initialUserInfo}
-            fromCardData={initialChatRoom.fromCadInfo}
-            toCardData={initialChatRoom.toCardInfo}
+            myCardId={myCardId}
+            otherCardId={otherCardId}
           />
         )}
       </header>
