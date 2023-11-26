@@ -8,13 +8,18 @@ const AppPath = {
   newCard: () => '/cards/new' as const,
   cardDetail: (cardId: string) => `/cards/${cardId}` as const,
   mypage: () => '/mypage' as const,
+  myDibs: () => '/mypage/mydibs',
   myCards: () => '/mypage/mycards' as const,
   mySuggestions: (cardId: number) => `/mypage/suggestions/${cardId}` as const,
+  histories: () => '/mypage/histories' as const,
+  notifications: () => '/mypage/notifications' as const,
   kakaoLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/kakao/login` as const,
   googleLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/google/login` as const,
   modifyCard: (cardId: string) => `/cards/${cardId}/modify` as const,
+  chatRoom: (chatRoomId: string) => `/chatrooms/${chatRoomId}` as const,
+  chatRoomList: () => '/chatrooms' as const,
   chatRooms: (chatRoomId?: string) => `/chatrooms/${chatRoomId}`,
 } as const
 

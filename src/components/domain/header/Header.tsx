@@ -28,7 +28,6 @@ const Header = () => {
             </Button>
             {/** TODO: 알림 컴포넌트로 변경 */}
             <AvatarWithDropdown imageUrl={currentUser?.imageUrl} />
-            {/** TODO: 아바타 컴포넌트로 변경 */}
           </>
         ) : (
           <Button variant={'gradation'}>
