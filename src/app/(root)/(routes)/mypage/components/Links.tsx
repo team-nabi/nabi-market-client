@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
-import { TYPOGRAPHY } from '@/styles/sizes'
 
 const pages = [
   {

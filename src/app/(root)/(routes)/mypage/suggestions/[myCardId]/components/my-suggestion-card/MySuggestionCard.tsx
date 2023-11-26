@@ -95,7 +95,7 @@ const MySuggestionCard = ({
   }
 
   return (
-    <Link href={AppPath.cards(String(cardId))}>
+    <Link href={AppPath.cardDetail(String(cardId))}>
       <div className="mb-6">
         <Card size={'lg'}>
           <CardFlex
@@ -105,7 +105,7 @@ const MySuggestionCard = ({
             gap={'space'}
             className="h-full"
           >
-            <div className="h-full w-36 relative">
+            <div className="relative h-full w-36">
               <CardImage
                 className="rounded-lg"
                 src={thumbnail}
@@ -118,17 +118,17 @@ const MySuggestionCard = ({
             <CardFlex
               direction={'col'}
               justify={'between'}
-              className="h-full w-2/3"
+              className="w-2/3 h-full"
             >
               <CardText
                 type={'title'}
-                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
               >
                 {cardTitle}
               </CardText>
               <CardText
                 type={'description'}
-                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
               >
                 {itemName}
               </CardText>

@@ -13,7 +13,7 @@ import type { Card as CardInfo } from '@/types/card'
 import { getValueByKey } from '@/utils/getValueByKey'
 
 const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
-  <Link href={`${AppPath.cards('')}?priceRange=${priceRange}`}>
+  <Link href={`${AppPath.cards()}?priceRange=${priceRange}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.checkCircle} alt="check-circle" />
       <CardText>제안 하러가기</CardText>
@@ -67,12 +67,12 @@ const MyCard = ({
           <CardFlex
             direction={'col'}
             justify={'between'}
-            className="h-full w-2/3"
+            className="w-2/3 h-full"
           >
             <CardFlex align={'center'} gap={'space'}>
               <CardText
                 type={'title'}
-                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
               >
                 {cardTitle}
               </CardText>
@@ -86,7 +86,7 @@ const MyCard = ({
             </CardFlex>
             <CardText
               type={'description'}
-              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
             >
               {itemName}
             </CardText>

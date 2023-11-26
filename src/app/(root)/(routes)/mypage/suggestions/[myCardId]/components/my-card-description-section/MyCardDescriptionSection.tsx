@@ -24,7 +24,7 @@ const MyCardDescriptionSection = ({
     createdAt,
   },
 }: MyCardDescriptionSection) => (
-  <Link href={`${AppPath.cards(String(cardId))}`} className="w-full">
+  <Link href={`${AppPath.cardDetail(String(cardId))}`} className="w-full">
     <div className="flex h-card-lg p-1.5 justify-center w-full">
       <CardFlex
         direction={'row'}
@@ -35,7 +35,7 @@ const MyCardDescriptionSection = ({
       >
         <div className="relative w-1/3 h-full">
           <CardImage
-            className="rounded-lg border border-background-secondary-color"
+            className="border rounded-lg border-background-secondary-color"
             src={thumbnail}
             alt="이미지가 없습니다."
             layout="fill"
@@ -51,7 +51,7 @@ const MyCardDescriptionSection = ({
           <CardFlex align={'center'} gap={'space'}>
             <CardText
               type={'title'}
-              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
             >
               {cardTitle}
             </CardText>
@@ -63,7 +63,7 @@ const MyCardDescriptionSection = ({
           </CardFlex>
           <CardText
             type={'description'}
-            className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+            className="overflow-hidden whitespace-nowrap overflow-ellipsis"
           >
             {itemName}
           </CardText>

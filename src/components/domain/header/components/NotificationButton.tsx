@@ -8,6 +8,8 @@ import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { cn } from '@/utils'
 
+const MAX_NOTIFICATION_COUNT = 99
+
 const NotificationButton = ({
   notificationCounts = 0,
 }: {
@@ -32,7 +34,9 @@ const NotificationButton = ({
           { invisible: notificationCounts === 0 },
         )}
       >
-        {notificationCounts > 99 ? '99+' : notificationCounts}
+        {notificationCounts > MAX_NOTIFICATION_COUNT
+          ? '99+'
+          : notificationCounts}
       </span>
 
       <Image src={Assets.alarmIcon} alt="alarm" />
