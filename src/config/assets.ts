@@ -1,7 +1,7 @@
 import Books from '/public/images/BOOKS.png'
-import Banner1 from '/public/images/Banner1.png'
-import Banner2 from '/public/images/Banner2.png'
-import Banner3 from '/public/images/Banner3.png'
+import Banner1 from '/public/images/Banner1.svg'
+import Banner2 from '/public/images/Banner2.svg'
+import Banner3 from '/public/images/Banner3.svg'
 import Electronics from '/public/images/ELECTRONICS.png'
 import FemaleClothes from '/public/images/FEMALE_CLOTHES.png'
 import FurnitureInterior from '/public/images/FURNITURE_INTERIOR.png'
@@ -21,8 +21,7 @@ import FilterActiveIcon from '/public/images/filter-active.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
 import HeartIcon from '/public/images/heart.svg'
-import EditMemoIcon from '/public/images/icon-edit-memo.svg'
-import editIcon from '/public/images/icon-edit.svg'
+import EditIcon from '/public/images/icon-edit.svg'
 import ActiveHeartIcon from '/public/images/icon-heart-active.svg'
 import InActiveHeartIcon from '/public/images/icon-heart-inactive.svg'
 import LeftIcon from '/public/images/icon-left.svg'
@@ -77,8 +76,7 @@ const Assets = {
   banner3: Banner3,
   xCircleIcon: XCircleIcon,
   plusIcon: PlusIcon,
-  editIcon: editIcon,
-  editMemoIcon: EditMemoIcon,
+  editIcon: EditIcon,
   unavailableIcon: UnavailableIcon,
   tradeComplete: TradeComplete,
   maleClothesIcon: MaleClothes,

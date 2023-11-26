@@ -2,8 +2,10 @@
 
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import SwiperCore from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import { Navigation, Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { PopularCardsRes } from '@/services/card/card'
@@ -17,6 +19,7 @@ type PopularCardSliderProps = {
 
 const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
   const router = useRouter()
+  SwiperCore.use([Navigation, Autoplay])
 
   const handleClick = (cardId: number) => {
     router.push(`/cards/${cardId}`)
@@ -24,6 +27,7 @@ const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
   return (
     <div className="popular-card-slider">
       <Swiper
+        navigation
         loop={true}
         spaceBetween={24}
         slidesPerView={2}

@@ -1,6 +1,6 @@
 .popular-card-slider {
   .swiper {
-    @apply w-full h-full;
+    @apply w-full h-full relative;
   }
 
   .swiper-wrapper {
@@ -11,5 +11,17 @@
   }
   .swiper-slide img {
     @apply w-full h-full max-w-[240px] aspect-square rounded-[5px] cursor-pointer;
+  }
+
+  .swiper-button-prev {
+    background: url('../../../../../../public/images/chevron-left.svg') center
+      no-repeat;
+    @apply w-6 h-6 absolute top-1/2 bg-white z-10 cursor-pointer rounded-full;
+  }
+
+  .swiper-button-next {
+    background: url('../../../../../../public/images/chevron-right.svg') center
+      no-repeat;
+    @apply w-6 h-6 absolute top-1/2 right-0 bg-white z-10 cursor-pointer rounded-full;
   }
 }
