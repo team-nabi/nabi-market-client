@@ -95,7 +95,7 @@ const MySuggestionCard = ({
   }
 
   return (
-    <Link href={AppPath.cards(String(cardId))}>
+    <Link href={AppPath.cardDetail(String(cardId))}>
       <div className="mb-6">
         <Card size={'lg'}>
           <CardFlex
@@ -153,7 +153,10 @@ const MySuggestionCard = ({
                 )}
               </CardFlex>
               <CardText type={'date'}>
-                {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
+                {formatDistanceToNow(new Date(createdAt), {
+                  addSuffix: true,
+                  locale: koLocale,
+                })}
               </CardText>
             </CardFlex>
           </CardFlex>

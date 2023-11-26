@@ -1,6 +1,8 @@
+'use client'
+
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import Button from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -29,18 +31,17 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
         <Button variant={null}>
           <Avatar size="md">
             <AvatarImage imgUrl={imageUrl ?? DEFAULT_PROFILE_IMG} />
-            <AvatarFallback>profile</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="absolute -right-5">
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={() => {
               router.push(AppPath.mypage())
             }}
           >
-            내 정보
+            프로필
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onClickLogout}>로그아웃</DropdownMenuItem>
         </DropdownMenuGroup>

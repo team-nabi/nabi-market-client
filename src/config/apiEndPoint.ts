@@ -1,10 +1,10 @@
 import { COMMON_PAGE_SIZE } from '@/constants/pageSize'
-import { GetChatRoomListReq } from '@/services/chat-room/chatRoom'
 import {
   GetCardListReq,
   GetMyCardListReq,
   GetMyDibsReq,
 } from '@/services/card/card'
+import { GetChatRoomListReq } from '@/services/chat-room/chatRoom'
 import { GetMyTradeHistoryListReq } from '@/services/history/history'
 import { GetNotificationListReq } from '@/services/notification/notification'
 import { GetMySuggestionListReq } from '@/services/suggestion/suggestion'
@@ -79,6 +79,10 @@ const ApiEndPoint = {
   putCardStatus: (cardId: number) => `/cards/status/${cardId}`,
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
+  getCompleteRequest: (completeRequestId: number) =>
+    `/complete-requests/${completeRequestId}`,
+  postCompleteRequest: () => '/complete-requests',
+  putCompleteRequest: () => '/complete-requests/confirm',
   getNotificationList: ({ isRead, cursorId }: GetNotificationListReq) => {
     return `/notifications/?${getQueryParams({
       'is-read': String(isRead),
@@ -94,6 +98,7 @@ const ApiEndPoint = {
     })}`
   },
   getChatRoom: (chatRoomId: string) => `/chats/${chatRoomId}`,
+  getNotificationCount: () => '/notifications/unread-count',
 } as const
 
 export default ApiEndPoint

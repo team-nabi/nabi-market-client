@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { KeyboardEventHandler, useState } from 'react'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Input from '@/components/ui/input'
@@ -20,9 +20,16 @@ const SearchInput = () => {
     router.push('/cards' + '?' + createQueryString('cardTitle', cardTitleValue))
   }
 
+  const handleEnterDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter') {
+      handleChangeCardTitle()
+    }
+  }
+
   return (
     <div className="relative w-4/5">
       <Input
+        onKeyDown={handleEnterDown}
         value={cardTitleValue}
         onChange={(e) => setCardTitleValue(e.currentTarget.value)}
         placeholder="찾으시는 물건을 입력해주세요."
