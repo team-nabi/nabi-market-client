@@ -14,10 +14,13 @@ import Sports from '/public/images/SPORTS.png'
 import ArrowCircleRight from '/public/images/arrow-circle-right.svg'
 import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
+import ChatIcon from '/public/images/chat.svg'
 import CheckCircle from '/public/images/check-circle.svg'
+import ArrowRightIcon from '/public/images/chevron-right.svg'
 import FilterActiveIcon from '/public/images/filter-active.svg'
 import FilterIcon from '/public/images/filter.svg'
 import GoogleIcon from '/public/images/google.png'
+import HeartIcon from '/public/images/heart.svg'
 import EditMemoIcon from '/public/images/icon-edit-memo.svg'
 import editIcon from '/public/images/icon-edit.svg'
 import ActiveHeartIcon from '/public/images/icon-heart-active.svg'
@@ -35,9 +38,14 @@ import Logo from '/public/images/logo.svg'
 import MenuIcon from '/public/images/menu-icon.svg'
 import VMoreIcon from '/public/images/more-vertical.svg'
 import NoData from '/public/images/no-data-img.svg'
+import NotificationBell from '/public/images/notification-bell.svg'
+import NotificationDot from '/public/images/notification-dot.svg'
 import QuitCircle from '/public/images/quit-circle.svg'
+import RefreshIcon from '/public/images/refresh-ccw.svg'
 import Search from '/public/images/search.svg'
 import SendIcon from '/public/images/send.svg'
+import ShoppingIcon from '/public/images/shopping-bag.svg'
+import SwitchHorizontal from '/public/images/switch-horizontal.svg'
 import TradeComplete from '/public/images/trade-complete.svg'
 import UnavailableIcon from '/public/images/unavailable.png'
 import XIcon from '/public/images/x-icon.svg'
@@ -85,7 +93,15 @@ const Assets = {
   allCardIcon: AllCards,
   headerLogo: HeaderLogo,
   noDataIcon: NoData,
+  notificationBell: NotificationBell,
+  notificationDot: NotificationDot,
   sendIcon: SendIcon,
+  switchHorizontal: SwitchHorizontal,
+  chatIcon: ChatIcon,
+  refreshIcon: RefreshIcon,
+  heartIcon: HeartIcon,
+  shoppingIcon: ShoppingIcon,
+  arrowRightIcon: ArrowRightIcon,
 } as const
 
 export default Assets

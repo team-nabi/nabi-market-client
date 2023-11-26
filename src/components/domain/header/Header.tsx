@@ -1,43 +1,42 @@
-'use client'
-
 import React from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import Button from '@/components/ui/button'
-import AppPath from '@/config/appPath'
-import Assets from '@/config/assets'
-import { useAuth } from '@/contexts/AuthProvider'
+import ApiEndPoint from '@/config/apiEndPoint'
+import apiClient from '@/services/apiClient'
+import { User } from '@/types/user'
+import { getServerCookie } from '@/utils/getServerCookie'
 import Logo from '../logo'
-import { MenuButton, AvatarWithDropdown } from './components'
+import { MenuButton } from './components'
+import RightSide from './sections/RightSide'
 
-const Header = () => {
-  const { isLoggedIn, currentUser } = useAuth()
+const getUserInfo = async (): Promise<User | null> => {
+  try {
+    const token = getServerCookie()
+    const res = await apiClient.get(
+      ApiEndPoint.getValidateUser(),
+      {},
+      {
+        Authorization: `${token}`,
+      },
+    )
+    return res?.data?.userInfo
+  } catch (e) {
+    return null
+  }
+}
+
+const Header = async () => {
+  const userInfo = await getUserInfo()
+
   return (
     <header className="absolute top-0 left-0 z-10 grid items-center justify-between w-full grid-cols-3 px-2 h-nav shadow-bottom bg-background-color">
-      <div className="flex items-center justify-start">
+      <section className="flex items-center justify-start">
         <MenuButton />
-      </div>
-      <div className="flex items-center justify-center">
+      </section>
+      <section className="flex items-center justify-center">
         <Logo />
-      </div>
-      <div className="flex items-center justify-end gap-2">
-        {isLoggedIn ? (
-          <>
-            <Button className="dark:bg-white" variant={null} size="icon">
-              <Image src={Assets.alarmIcon} alt="alarm" />
-            </Button>
-            {/** TODO: 알림 컴포넌트로 변경 */}
-            <AvatarWithDropdown imageUrl={currentUser?.imageUrl} />
-            {/** TODO: 아바타 컴포넌트로 변경 */}
-          </>
-        ) : (
-          <Button variant={'gradation'}>
-            <Link href={AppPath.login()} scroll={false}>
-              로그인
-            </Link>
-          </Button>
-        )}
-      </div>
+      </section>
+      <section className="flex items-center justify-end gap-2">
+        <RightSide isLoggedIn={!!userInfo} currentUser={userInfo} />
+      </section>
     </header>
   )
 }

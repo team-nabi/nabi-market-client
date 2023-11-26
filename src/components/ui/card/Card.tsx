@@ -4,21 +4,25 @@ import Image from 'next/image'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { cn } from '@/utils'
 
-const cardVariants = cva(
-  'rounded-card border border-background-secondary-color p-1.5',
-  {
-    variants: {
-      size: {
-        lg: 'h-card-lg',
-        md: 'h-card-md',
-        sm: 'h-card-sm',
-      },
+const cardVariants = cva('p-1.5', {
+  variants: {
+    size: {
+      lg: 'h-card-lg',
+      md: 'h-card-md',
+      sm: 'h-card-sm',
+      xs: 'h-card-xs',
     },
-    defaultVariants: {
-      size: 'lg',
+    type: {
+      default: 'rounded-card border border-background-secondary-color',
+      line: 'border-b border-background-secondary-color',
     },
   },
-)
+
+  defaultVariants: {
+    size: 'lg',
+    type: 'default',
+  },
+})
 
 export type CardProps = React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof cardVariants> & {
@@ -26,10 +30,10 @@ export type CardProps = React.HTMLAttributes<HTMLDivElement> &
   }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ size, className, ...props }, ref) => (
+  ({ size, type, className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn(cardVariants({ size, className }))}
+      className={cn(cardVariants({ size, type, className }))}
       {...props}
     />
   ),

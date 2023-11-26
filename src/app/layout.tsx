@@ -28,7 +28,7 @@ export default async function RootLayout({
   authModal: React.ReactNode
 }>) {
   return (
-    <html lang="ko">
+    <html className="light" lang="ko">
       <body>
         <TanstackQueryContext>
           <ThemeProviderContext>

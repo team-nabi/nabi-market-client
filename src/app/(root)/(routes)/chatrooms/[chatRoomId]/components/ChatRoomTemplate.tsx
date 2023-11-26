@@ -2,20 +2,26 @@
 
 import React, { useEffect, useRef } from 'react'
 import { limit, orderBy, query, addDoc } from 'firebase/firestore'
-import PageTitle from '@/components/domain/page-title'
 import { CHAT_LIMIT } from '@/config/firebaseConfig'
-import { useAuth } from '@/contexts/AuthProvider'
 import useFirestoreQuery from '@/hooks/useFirestoreQuery'
 import { useToast } from '@/hooks/useToast'
 import { getMessageRef } from '@/lib/firebase'
-import ChatInput from './components/ChatInput'
-import ChatList from './components/ChatList'
+import type { User } from '@/types/user'
+import ChatInput from './ChatInput'
+import ChatList from './ChatList'
 
-const ChatPage = () => {
-  const { currentUser } = useAuth()
+type ChatRoomTemplateProps = {
+  currentUser: User
+  fireStoreId: string
+}
+
+const ChatRoomTemplate = ({
+  currentUser,
+  fireStoreId,
+}: ChatRoomTemplateProps) => {
   const { toast } = useToast()
 
-  const messageRef = getMessageRef('room2') // TODO: room id를 받아서 처리
+  const messageRef = getMessageRef(fireStoreId)
   const messages = useFirestoreQuery(
     query(messageRef, orderBy('createdAt', 'asc'), limit(CHAT_LIMIT)),
   )
@@ -34,7 +40,7 @@ const ChatPage = () => {
     try {
       await addDoc(messageRef, {
         text: message,
-        sender: currentUser?.nickname ?? '익명',
+        sender: currentUser?.userId.toString(),
         createdAt: new Date(),
       })
     } catch (e) {
@@ -47,19 +53,17 @@ const ChatPage = () => {
   }
 
   return (
-    <main className="relative flex flex-col items-center w-full gap-10 h-page pb-chat_input">
-      <PageTitle title="채팅방" />
-      <section className="flex flex-col items-center px-2 overflow-scroll overflow-x-hidden">
+    <>
+      <section className="flex flex-col items-center w-full h-full px-2 overflow-scroll overflow-x-hidden">
         <ChatList
           messages={messages}
-          currentUserNickname={currentUser?.nickname}
+          currentUserId={currentUser?.userId}
           ref={chatBottomRef}
         />
       </section>
       <ChatInput onSubmit={onSubmitMessage} />
-      <div className="w-full h-0 border border-t-background-secondary-color" />
-    </main>
+    </>
   )
 }
 
-export default ChatPage
+export default ChatRoomTemplate

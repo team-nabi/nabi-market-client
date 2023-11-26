@@ -1,6 +1,12 @@
 import { COMMON_PAGE_SIZE } from '@/constants/pageSize'
-import { GetCardListReq, GetMyCardListReq } from '@/services/card/card'
+import {
+  GetCardListReq,
+  GetMyCardListReq,
+  GetMyDibsReq,
+} from '@/services/card/card'
+import { GetChatRoomListReq } from '@/services/chat-room/chatRoom'
 import { GetMyTradeHistoryListReq } from '@/services/history/history'
+import { GetNotificationListReq } from '@/services/notification/notification'
 import { GetMySuggestionListReq } from '@/services/suggestion/suggestion'
 import { getQueryParams } from '@/utils/getQueryParams'
 
@@ -50,7 +56,11 @@ const ApiEndPoint = {
   putUserProfile: () => '/users/profile-image',
   putUserNickname: () => '/users/nickname',
   postSuggestion: (suggestionType: string) => `/suggestions/${suggestionType}`,
-  getMyDibsList: (cursorId: number) => `/dibs/?cursorId=${cursorId}`,
+  getMyDibsList: ({ cursorId }: GetMyDibsReq) =>
+    `/dibs/?${getQueryParams({
+      cursorId,
+      size: COMMON_PAGE_SIZE,
+    })}`,
   getMyTradeHistoryList: ({ cursorId }: GetMyTradeHistoryListReq) => {
     return `/complete-requests/user/?${getQueryParams({
       cursorId,
@@ -69,6 +79,26 @@ const ApiEndPoint = {
   putCardStatus: (cardId: number) => `/cards/status/${cardId}`,
   getPopularCardList: () => '/cards/popular',
   putMySuggestionStatus: () => `/suggestions/decision`,
+  getCompleteRequest: (completeRequestId: number) =>
+    `/complete-requests/${completeRequestId}`,
+  postCompleteRequest: () => '/complete-requests',
+  putCompleteRequest: () => '/complete-requests/confirm',
+  getNotificationList: ({ isRead, cursorId }: GetNotificationListReq) => {
+    return `/notifications/?${getQueryParams({
+      'is-read': String(isRead),
+      cursorId,
+      size: COMMON_PAGE_SIZE,
+    })}`
+  },
+  putNotificationList: () => `/notifications/read`,
+  getChatRoomList: ({ cursorId }: GetChatRoomListReq) => {
+    return `/chats/?${getQueryParams({
+      cursorId,
+      size: COMMON_PAGE_SIZE,
+    })}`
+  },
+  getChatRoom: (chatRoomId: string) => `/chats/${chatRoomId}`,
+  getNotificationCount: () => '/notifications/unread-count',
 } as const
 
 export default ApiEndPoint

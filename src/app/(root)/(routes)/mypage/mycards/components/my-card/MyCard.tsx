@@ -67,12 +67,12 @@ const MyCard = ({
           <CardFlex
             direction={'col'}
             justify={'between'}
-            className="h-full w-2/3"
+            className="w-2/3 h-full"
           >
             <CardFlex align={'center'} gap={'space'}>
               <CardText
                 type={'title'}
-                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
               >
                 {cardTitle}
               </CardText>
@@ -86,7 +86,7 @@ const MyCard = ({
             </CardFlex>
             <CardText
               type={'description'}
-              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
             >
               {itemName}
             </CardText>
@@ -104,7 +104,10 @@ const MyCard = ({
               ) : status === 'TRADE_COMPLETE' ? null : undefined}
             </CardFlex>
             <CardText type={'date'}>
-              {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
+              {formatDistanceToNow(new Date(createdAt), {
+                addSuffix: true,
+                locale: koLocale,
+              })}
             </CardText>
           </CardFlex>
         </CardFlex>

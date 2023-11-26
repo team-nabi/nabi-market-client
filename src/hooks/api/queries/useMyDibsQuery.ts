@@ -1,16 +1,14 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { getMyDibs } from '@/services/card/card'
+import { GetMyDibsRes, getMyDibs } from '@/services/card/card'
 
 export const useMyDibsQuery = () => {
   return useInfiniteQuery({
     queryKey: ['myDibs'],
-    queryFn: async ({ pageParam = 0 }) => await getMyDibs(pageParam),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage, allPages, lastPageParam) => {
-      if (lastPage.length === 0) {
-        return undefined
-      }
-      return lastPageParam + 1
+    queryFn: async ({ pageParam = undefined }) =>
+      await getMyDibs({ cursorId: pageParam }),
+    initialPageParam: undefined,
+    getNextPageParam: (lastPage: GetMyDibsRes) => {
+      return lastPage.data.nextCursorId
     },
   })
 }
