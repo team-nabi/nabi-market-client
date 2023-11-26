@@ -13,7 +13,7 @@ import type { Card as CardInfo } from '@/types/card'
 import { getValueByKey } from '@/utils/getValueByKey'
 
 const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
-  <Link href={`${AppPath.cards()}?priceRange=${priceRange}`}>
+  <Link href={`${AppPath.cards('')}?priceRange=${priceRange}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.checkCircle} alt="check-circle" />
       <CardText>제안 하러가기</CardText>

@@ -15,7 +15,7 @@ const ChatRoomCard = ({
   chatRoom: { chatRoomId, createdAt, fromCardInfo, toCardInfo },
 }: ChatRoomCardProps) => {
   return (
-    <Link href={AppPath.chatRoom(String(chatRoomId))}>
+    <Link href={AppPath.chatRooms(String(chatRoomId))}>
       <Card type={'line'} size={'xs'} className="p-2">
         <CardFlex justify={'between'} gap={'space'} className="h-full">
           <CardFlex align={'center'} gap={'space'} className="w-full">
