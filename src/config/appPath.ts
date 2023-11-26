@@ -9,6 +9,7 @@ const AppPath = {
   cardDetail: (cardId: string) => `/cards/${cardId}` as const,
   mypage: () => '/mypage' as const,
   myCards: () => '/mypage/mycards' as const,
+  notifications: () => '/mypage/notifications' as const,
   mySuggestions: (cardId: number) => `/mypage/suggestions/${cardId}` as const,
   kakaoLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/kakao/login` as const,

@@ -15,6 +15,14 @@ export type GetNotificationListRes = {
   }
 }
 
+export type GetNotificationCountRes = {
+  code: string
+  message: string
+  data: {
+    unReadCount: number
+  }
+}
+
 const getNotificationList = async ({
   isRead,
   cursorId,
@@ -50,4 +58,11 @@ const putNotificationList = async ({
   return response
 }
 
-export { getNotificationList, putNotificationList }
+const getNotificationCount = async () => {
+  const response: GetNotificationCountRes = await apiClient.get(
+    ApiEndPoint.getNotificationCount(),
+  )
+  return response
+}
+
+export { getNotificationList, putNotificationList, getNotificationCount }
