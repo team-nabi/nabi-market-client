@@ -4,13 +4,13 @@ import { Environment } from '@/config/environment'
 import apiClient from '@/services/apiClient'
 import { getCardInfo } from '@/services/card/card'
 
-const useCardInfoQuery = (cardId: number) => {
+const useCardInfoQuery = (cardId: number, isLoggedIn: boolean) => {
   const token = Cookies.get(Environment.tokenName())
 
   return useQuery({
-    queryKey: [cardId, 'cardInfo', token] as const,
+    queryKey: [cardId, 'cardInfo', token, isLoggedIn] as const,
     queryFn: () => {
-      apiClient.setDefaultHeader('Authorization', `${token}`)
+      if (isLoggedIn) apiClient.setDefaultHeader('Authorization', `${token}`)
       const res = getCardInfo(cardId)
       return res
     },

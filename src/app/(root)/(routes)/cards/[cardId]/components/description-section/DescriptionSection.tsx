@@ -77,7 +77,12 @@ const DescriptionSection = ({
           })}
         </p>
         {isLoggedIn && (
-          <Dibs cardId={cardId} dibCount={dibCount} isMyDib={isMyDib} />
+          <Dibs
+            cardId={cardId}
+            dibCount={dibCount}
+            isMyDib={isMyDib}
+            isMyCard={isMyItem}
+          />
         )}
       </div>
       <p>{content}</p>
