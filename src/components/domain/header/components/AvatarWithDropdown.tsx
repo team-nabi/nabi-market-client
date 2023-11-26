@@ -40,7 +40,7 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
               router.push(AppPath.mypage())
             }}
           >
-            내 정보
+            프로필
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onClickLogout}>로그아웃</DropdownMenuItem>
         </DropdownMenuGroup>
