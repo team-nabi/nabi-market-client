@@ -4,7 +4,7 @@ const AppPath = {
   home: () => '/' as const,
   login: () => '/login' as const,
   logout: () => '/logout' as const,
-  cards: () => '/cards' as const,
+  cards: (cardId: string) => `/cards/${cardId}` as const,
   newCard: () => '/cards/new' as const,
   cardDetail: (cardId: string) => `/cards/${cardId}` as const,
   mypage: () => '/mypage' as const,
@@ -15,7 +15,7 @@ const AppPath = {
   googleLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/google/login` as const,
   modifyCard: (cardId: string) => `/cards/${cardId}/modify` as const,
-  chatRoom: (chatRoomId: string) => `/chatrooms/${chatRoomId}`,
+  chatRooms: (chatRoomId?: string) => `/chatrooms/${chatRoomId}`,
 } as const
 
 type AppPathReturnType = {

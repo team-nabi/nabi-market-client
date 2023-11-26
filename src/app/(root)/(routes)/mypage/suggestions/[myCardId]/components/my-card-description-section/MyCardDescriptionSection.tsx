@@ -24,7 +24,7 @@ const MyCardDescriptionSection = ({
     createdAt,
   },
 }: MyCardDescriptionSection) => (
-  <Link href={`${AppPath.cards()}/${cardId}`} className="w-full">
+  <Link href={`${AppPath.cards(String(cardId))}`} className="w-full">
     <div className="flex h-card-lg p-1.5 justify-center w-full">
       <CardFlex
         direction={'row'}

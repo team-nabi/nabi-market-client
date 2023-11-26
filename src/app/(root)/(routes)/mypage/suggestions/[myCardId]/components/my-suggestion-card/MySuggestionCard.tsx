@@ -1,9 +1,11 @@
 import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import Button from '@/components/ui/button'
 import { CardFlex, CardText, Card, CardImage } from '@/components/ui/card/Card'
+import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { useMySuggestionUpdateMutation } from '@/hooks/api/mutations/useMySuggestionUpdateMutation'
@@ -40,7 +42,11 @@ const SuggestionButtons = ({
 
 // TODO : 채팅 페이지 라우팅 및 설정이 나오면 라우팅 기능 만들기
 const AcceptedButton = () => {
-  return <Button variant={'gradation'}>채팅</Button>
+  return (
+    <Link href={`${AppPath.chatRooms('')}`}>
+      <Button variant={'gradation'}>채팅</Button>
+    </Link>
+  )
 }
 const DeclinedButton = () => {
   return (
@@ -89,69 +95,71 @@ const MySuggestionCard = ({
   }
 
   return (
-    <div className="mb-6">
-      <Card size={'lg'}>
-        <CardFlex
-          direction={'row'}
-          justify={'start'}
-          align={'center'}
-          gap={'space'}
-          className="h-full"
-        >
-          <div className="h-full w-36 relative">
-            <CardImage
-              className="rounded-lg"
-              src={thumbnail}
-              alt="이미지가 없습니다."
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-
+    <Link href={AppPath.cards(String(cardId))}>
+      <div className="mb-6">
+        <Card size={'lg'}>
           <CardFlex
-            direction={'col'}
-            justify={'between'}
-            className="h-full w-2/3"
+            direction={'row'}
+            justify={'start'}
+            align={'center'}
+            gap={'space'}
+            className="h-full"
           >
-            <CardText
-              type={'title'}
-              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+            <div className="h-full w-36 relative">
+              <CardImage
+                className="rounded-lg"
+                src={thumbnail}
+                alt="제안 한 혹은 받은 물건의 이미지"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+
+            <CardFlex
+              direction={'col'}
+              justify={'between'}
+              className="h-full w-2/3"
             >
-              {cardTitle}
-            </CardText>
-            <CardText
-              type={'description'}
-              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
-            >
-              {itemName}
-            </CardText>
-            <CardText type={'description'}>
-              {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
-            </CardText>
-            <CardFlex gap={'space'}>
-              {suggestionStatus === 'WAITING' ? (
-                directionType === 'RECEIVE' ? (
-                  <SuggestionButtons
-                    handleMySuggestionUpdate={(isAccepted: boolean) =>
-                      handleMySuggestionUpdate(cardId, isAccepted)
-                    }
-                  />
+              <CardText
+                type={'title'}
+                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              >
+                {cardTitle}
+              </CardText>
+              <CardText
+                type={'description'}
+                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              >
+                {itemName}
+              </CardText>
+              <CardText type={'description'}>
+                {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+              </CardText>
+              <CardFlex gap={'space'}>
+                {suggestionStatus === 'WAITING' ? (
+                  directionType === 'RECEIVE' ? (
+                    <SuggestionButtons
+                      handleMySuggestionUpdate={(isAccepted: boolean) =>
+                        handleMySuggestionUpdate(cardId, isAccepted)
+                      }
+                    />
+                  ) : (
+                    <WaitingButton />
+                  )
+                ) : suggestionStatus === 'ACCEPTED' ? (
+                  <AcceptedButton />
                 ) : (
-                  <WaitingButton />
-                )
-              ) : suggestionStatus === 'ACCEPTED' ? (
-                <AcceptedButton />
-              ) : (
-                <DeclinedButton />
-              )}
+                  <DeclinedButton />
+                )}
+              </CardFlex>
+              <CardText type={'date'}>
+                {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
+              </CardText>
             </CardFlex>
-            <CardText type={'date'}>
-              {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
-            </CardText>
           </CardFlex>
-        </CardFlex>
-      </Card>
-    </div>
+        </Card>
+      </div>
+    </Link>
   )
 }
 
