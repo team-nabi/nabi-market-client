@@ -12,7 +12,7 @@ module.exports = {
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: ['class'],
+  darkMode: 'false',
   theme: {
     extend: {
       backgroundImage: () => ({
@@ -48,9 +48,9 @@ module.exports = {
       light: {
         ...LIGHT_THEMES,
       },
-      dark: {
-        ...DARK_THEMES,
-      },
+      // dark: {
+      //   ...DARK_THEMES,
+      // },
     }),
     function ({ addUtilities }) {
       const newUtilities = {
