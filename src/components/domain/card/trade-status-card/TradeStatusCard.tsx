@@ -26,7 +26,7 @@ const TradeStatusCard = ({
   },
 }: TradeStatusCardProps) => {
   return (
-    <Link href={`${AppPath.cards(String(cardId))}`}>
+    <Link href={`${AppPath.cardDetail(String(cardId))}`}>
       <Card size={'sm'}>
         <CardFlex
           direction={'row'}
@@ -47,12 +47,12 @@ const TradeStatusCard = ({
           <CardFlex
             direction={'col'}
             justify={'between'}
-            className="h-full w-2/3"
+            className="w-2/3 h-full"
           >
             <CardFlex align={'center'} gap={'space'}>
               <CardText
                 type={'title'}
-                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
               >
                 {cardTitle}
               </CardText>
@@ -64,7 +64,7 @@ const TradeStatusCard = ({
             </CardFlex>
             <CardText
               type={'description'}
-              className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
             >
               {itemName}
             </CardText>

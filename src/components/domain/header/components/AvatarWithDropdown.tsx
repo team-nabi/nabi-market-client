@@ -1,6 +1,8 @@
+'use client'
+
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import Button from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -29,7 +31,6 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
         <Button variant={null}>
           <Avatar size="md">
             <AvatarImage imgUrl={imageUrl ?? DEFAULT_PROFILE_IMG} />
-            <AvatarFallback>profile</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

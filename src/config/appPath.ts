@@ -4,15 +4,15 @@ const AppPath = {
   home: () => '/' as const,
   login: () => '/login' as const,
   logout: () => '/logout' as const,
-  cards: (cardId: string) => `/cards/${cardId}` as const,
+  cards: () => `/cards` as const,
   newCard: () => '/cards/new' as const,
   cardDetail: (cardId: string) => `/cards/${cardId}` as const,
   mypage: () => '/mypage' as const,
   myDibs: () => '/mypage/mydibs',
   myCards: () => '/mypage/mycards' as const,
+  notifications: () => '/mypage/notifications' as const,
   mySuggestions: (cardId: number) => `/mypage/suggestions/${cardId}` as const,
   histories: () => '/mypage/histories' as const,
-  notifications: () => '/mypage/notifications' as const,
   kakaoLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/kakao/login` as const,
   googleLogin: () =>
