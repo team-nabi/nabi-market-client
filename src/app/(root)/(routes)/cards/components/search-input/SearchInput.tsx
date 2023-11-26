@@ -1,31 +1,23 @@
-import React, {
-  ChangeEvent,
-  ChangeEventHandler,
-  MouseEventHandler,
-  useEffect,
-  useState,
-} from 'react'
-import { useFormContext } from 'react-hook-form'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Input from '@/components/ui/input'
 import Assets from '@/config/assets'
-import { useCardsQuery } from '@/hooks/api/queries/useCardsQuery'
-import { Category, PriceRange } from '@/types/card'
+import useCreateQueryString from '@/hooks/useCreateQueryString'
 
-type SearchInputProps = {
-  setCardTitle: (cardTitle: string) => void
-}
-
-const SearchInput = ({ setCardTitle }: SearchInputProps) => {
+const SearchInput = () => {
   const searchParams = useSearchParams()
+
+  const router = useRouter()
 
   const [cardTitleValue, setCardTitleValue] = useState(
     (searchParams.get('cardTitle') as string) || '',
   )
 
+  const { createQueryString } = useCreateQueryString()
+
   const handleChangeCardTitle = () => {
-    setCardTitle(cardTitleValue)
+    router.push('/cards' + '?' + createQueryString('cardTitle', cardTitleValue))
   }
 
   return (

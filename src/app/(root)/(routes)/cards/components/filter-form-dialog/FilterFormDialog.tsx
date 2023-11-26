@@ -7,6 +7,7 @@ import {
   DialogDescription,
 } from '@radix-ui/react-dialog'
 import Image from 'next/image'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { DialogHeader } from '@/components/ui/dialog'
 import {
   Select,
@@ -17,21 +18,10 @@ import {
 } from '@/components/ui/select'
 import Assets from '@/config/assets'
 import { CATEGORY_OBJS, PRICE_RANGE_OBJS } from '@/constants/card'
+import useCreateQueryString from '@/hooks/useCreateQueryString'
 import { CategoryObjs, PriceRangeObjs } from '@/types/card'
 
-type FilterFormDialogProps = {
-  priceRange: PriceRangeObjs['key']
-  category: CategoryObjs['key']
-  setPriceRange: (priceRange: PriceRangeObjs['key']) => void
-  setCategory: (category: CategoryObjs['key']) => void
-}
-
-const FilterFormDialog = ({
-  priceRange,
-  category,
-  setPriceRange,
-  setCategory,
-}: FilterFormDialogProps) => {
+const FilterFormDialog = () => {
   const [isOpen, setIsOpen] = useState(false)
   const openModal = () => {
     setIsOpen(true)
@@ -39,6 +29,12 @@ const FilterFormDialog = ({
   const closeModal = () => {
     setIsOpen(false)
   }
+  const searchParams = useSearchParams()
+  const router = useRouter()
+
+  const { createQueryString } = useCreateQueryString()
+  const priceRange = searchParams.get('priceRange') || undefined
+  const category = searchParams.get('category') || undefined
 
   // FIXME: 선택 안된 경우 값으로 변경
   const hasNoFilter = priceRange !== undefined || category !== undefined
@@ -83,7 +79,9 @@ const FilterFormDialog = ({
             <Select
               value={priceRange}
               onValueChange={(value: PriceRangeObjs['key']) => {
-                setPriceRange(value)
+                router.push(
+                  '/cards' + '?' + createQueryString('priceRange', value),
+                )
               }}
             >
               <SelectTrigger>
@@ -120,10 +118,15 @@ const FilterFormDialog = ({
                     : 'border-background-secondary-color text-background-secondary-color'
                 }`}
                 onClick={(e) =>
-                  setCategory(
-                    e.currentTarget.getAttribute(
-                      'data-category-key',
-                    ) as CategoryObjs['key'],
+                  router.push(
+                    '/cards' +
+                      '?' +
+                      createQueryString(
+                        'category',
+                        e.currentTarget.getAttribute(
+                          'data-category-key',
+                        ) as CategoryObjs['key'],
+                      ),
                   )
                 }
               >
