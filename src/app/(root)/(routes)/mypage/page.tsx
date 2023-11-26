@@ -4,6 +4,7 @@ import ApiEndPoint from '@/config/apiEndPoint'
 import apiClient from '@/services/apiClient'
 import { User } from '@/types/user'
 import { getServerCookie } from '@/utils/getServerCookie'
+import Links from './components/Links'
 import UserInfo from './components/UserInfo'
 
 const getUserInfo = async (): Promise<User> => {
@@ -27,7 +28,9 @@ const MyPage = async () => {
       <section>
         <UserInfo user={userInfo} />
       </section>
-      <section>{/* TODO: 각 내용에 대한 라우팅 추가 */}</section>
+      <section className="w-full">
+        <Links />
+      </section>
     </main>
   )
 }

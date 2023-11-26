@@ -1,6 +1,7 @@
 import React, {
   ChangeEvent,
   ChangeEventHandler,
+  KeyboardEventHandler,
   MouseEventHandler,
   useEffect,
   useState,
@@ -28,9 +29,16 @@ const SearchInput = ({ setCardTitle }: SearchInputProps) => {
     setCardTitle(cardTitleValue)
   }
 
+  const handleEnterDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter') {
+      handleChangeCardTitle()
+    }
+  }
+
   return (
     <div className="relative w-4/5">
       <Input
+        onKeyDown={handleEnterDown}
         value={cardTitleValue}
         onChange={(e) => setCardTitleValue(e.currentTarget.value)}
         placeholder="찾으시는 물건을 입력해주세요."

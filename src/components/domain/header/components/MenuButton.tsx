@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -12,6 +12,7 @@ import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 
 const MenuButton = () => {
+  const router = useRouter()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -21,8 +22,26 @@ const MenuButton = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link href={AppPath.home()}>홈으로</Link>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(AppPath.cards())
+            }}
+          >
+            전체 물건 보기
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(AppPath.newCard())
+            }}
+          >
+            상품 등록
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(AppPath.chatRoomList())
+            }}
+          >
+            채팅방 조회
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

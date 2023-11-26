@@ -8,8 +8,21 @@ type TanstackQueryContextProps = {
   children: React.ReactNode
 }
 
+const TanstackQueryGlobalConfig = {
+  defaultOptions: {
+    queries: {
+      retry: 3,
+      retryDelay: 1000,
+      staleTime: 60000,
+      cacheTime: 600000,
+    },
+  },
+}
+
 function TanstackQueryContext({ children }: TanstackQueryContextProps) {
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(
+    () => new QueryClient(TanstackQueryGlobalConfig),
+  )
 
   return (
     <QueryClientProvider client={queryClient}>

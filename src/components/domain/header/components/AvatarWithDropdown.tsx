@@ -34,14 +34,14 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="absolute -right-5">
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={() => {
               router.push(AppPath.mypage())
             }}
           >
-            내 정보
+            프로필
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onClickLogout}>로그아웃</DropdownMenuItem>
         </DropdownMenuGroup>

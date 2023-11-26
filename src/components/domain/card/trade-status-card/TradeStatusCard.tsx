@@ -26,7 +26,7 @@ const TradeStatusCard = ({
   },
 }: TradeStatusCardProps) => {
   return (
-    <Link href={`${AppPath.cards()}/${cardId}`}>
+    <Link href={`${AppPath.cards(String(cardId))}`}>
       <Card size={'sm'}>
         <CardFlex
           direction={'row'}
@@ -72,7 +72,10 @@ const TradeStatusCard = ({
               {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
             </CardText>
             <CardText type={'date'}>
-              {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
+              {formatDistanceToNow(new Date(createdAt), {
+                addSuffix: true,
+                locale: koLocale,
+              })}
             </CardText>
           </CardFlex>
         </CardFlex>
