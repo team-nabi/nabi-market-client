@@ -105,11 +105,11 @@ const MySuggestionCard = ({
             gap={'space'}
             className="h-full"
           >
-            <div className="h-full w-36 relative">
+            <div className="relative h-full w-36">
               <CardImage
                 className="rounded-lg"
                 src={thumbnail}
-                alt="이미지가 없습니다."
+                alt="제안 한 혹은 받은 물건의 이미지"
                 layout="fill"
                 objectFit="cover"
               />
@@ -118,17 +118,17 @@ const MySuggestionCard = ({
             <CardFlex
               direction={'col'}
               justify={'between'}
-              className="h-full w-2/3"
+              className="w-2/3 h-full"
             >
               <CardText
                 type={'title'}
-                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
               >
                 {cardTitle}
               </CardText>
               <CardText
                 type={'description'}
-                className="whitespace-nowrap overflow-hidden overflow-ellipsis"
+                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
               >
                 {itemName}
               </CardText>

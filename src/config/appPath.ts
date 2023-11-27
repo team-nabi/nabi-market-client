@@ -4,8 +4,7 @@ const AppPath = {
   home: () => '/' as const,
   login: () => '/login' as const,
   logout: () => '/logout' as const,
-
-  cards: (cardId: string) => `/cards/${cardId}` as const,
+  cards: () => `/cards/` as const,
   newCard: () => '/cards/new' as const,
   cardDetail: (cardId: string) => `/cards/${cardId}` as const,
   mypage: () => '/mypage' as const,
