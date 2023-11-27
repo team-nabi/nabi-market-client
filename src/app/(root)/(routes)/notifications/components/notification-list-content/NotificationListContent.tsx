@@ -31,7 +31,7 @@ const NotificationListContent = () => {
 
   return (
     <>
-      <NotificationReadButton />
+      <NotificationReadButton isEmpty={isEmpty} isRead={isRead} />
       <NotificationStatusTabs setIsRead={setIsRead} />
       <ExceptionBoundary
         isLoading={isLoading}
