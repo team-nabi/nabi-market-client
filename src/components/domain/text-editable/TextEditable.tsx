@@ -57,7 +57,7 @@ const TextEditable = ({
           <span className="break-keep">완료</span>
         ) : (
           <Image
-            src={Assets.editMemoIcon}
+            src={Assets.editIcon}
             className="bg-background-color"
             alt={'edit-text'}
           />
