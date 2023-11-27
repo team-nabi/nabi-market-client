@@ -40,7 +40,7 @@ const MenuButton = () => {
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => {
-              router.push(AppPath.chatRoomList())
+              router.push(AppPath.chatRooms())
             }}
           >
             채팅방 조회

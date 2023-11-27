@@ -15,12 +15,12 @@ const ChatRoomCard = ({
   chatRoom: { chatRoomId, createdAt, fromCardInfo, toCardInfo },
 }: ChatRoomCardProps) => {
   return (
-    <Link href={AppPath.chatRooms(String(chatRoomId))}>
+    <Link href={AppPath.chatRoom(String(chatRoomId))}>
       <Card type={'line'} size={'xs'} className="p-2">
         <CardFlex justify={'between'} gap={'space'} className="h-full">
           <CardFlex align={'center'} gap={'space'} className="w-full">
             <CardFlex>
-              <div className="h-11 w-11 relative flex-shrink-0">
+              <div className="relative flex-shrink-0 h-11 w-11">
                 <CardImage
                   alt={'내 물건 이미지'}
                   src={fromCardInfo.cardInfo.thumbnail}
@@ -29,10 +29,7 @@ const ChatRoomCard = ({
                   className="rounded-full"
                 />
               </div>
-              <div
-                className="h-11 w-11 relative flex-shrink-0 right-4
-              "
-              >
+              <div className="relative flex-shrink-0 h-11 w-11 right-4 ">
                 <CardImage
                   alt={'상대 물건 아이디'}
                   src={toCardInfo.cardInfo.thumbnail}
@@ -58,7 +55,7 @@ const ChatRoomCard = ({
                   )}
                 </CardText>
               </CardFlex>
-              <div className="h-5 w-5 relative flex-shrink-0">
+              <div className="relative flex-shrink-0 w-5 h-5">
                 <CardImage
                   alt={'교환 아이콘'}
                   src={Assets.switchHorizontal}

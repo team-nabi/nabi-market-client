@@ -22,7 +22,7 @@ const NewCardButton = () => {
 
   return (
     <Button
-      className="fixed rounded-full right-8 bottom-8 hover:brightness-90"
+      className="fixed z-50 rounded-full right-8 bottom-8 hover:brightness-90"
       onClick={onClickButton}
       variant={'primary'}
       size={'icon'}
