@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { QueryClient, useQueryClient } from '@tanstack/react-query'
+import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation'
 import AppPath from '@/config/appPath'
+import { Environment } from '@/config/environment'
+import { useAuth } from '@/contexts/AuthProvider'
 import { useToast } from '@/hooks/useToast'
 import { putCard } from '@/services/card/card'
 import {
@@ -35,7 +39,7 @@ export const useCardModifyForm = ({
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-
+  const queryClient = useQueryClient()
   const onSubmit = async (data: CardUploadFormValues) => {
     if (isSubmitting) return
     setIsSubmitting(() => true)
@@ -58,6 +62,9 @@ export const useCardModifyForm = ({
       })
     } finally {
       setIsSubmitting(() => false)
+      // queryClient.invalidateQueries({
+      //   queryKey: [cardId, 'cardInfo'],
+      // })
     }
   }
 

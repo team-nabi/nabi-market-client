@@ -13,7 +13,6 @@ async function getPopularCardValue() {
 }
 
 const PopularCardSection = async () => {
-  //const data = await getPopularCardList()
   const data = await getPopularCardValue()
 
   return (

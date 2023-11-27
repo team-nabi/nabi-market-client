@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
+import Image from 'next/image'
+import { useRouter, useSearchParams } from 'next/navigation'
+import Button from '@/components/ui/button'
 import {
   Dialog,
-  DialogTrigger,
   DialogContent,
-  DialogTitle,
   DialogDescription,
-} from '@radix-ui/react-dialog'
-import Image from 'next/image'
-import { DialogHeader } from '@/components/ui/dialog'
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import {
   Select,
   SelectContent,
@@ -15,23 +18,14 @@ import {
   SelectItem,
   SelectTrigger,
 } from '@/components/ui/select'
+import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { CATEGORY_OBJS, PRICE_RANGE_OBJS } from '@/constants/card'
+import useCreateQueryString from '@/hooks/useCreateQueryString'
 import { CategoryObjs, PriceRangeObjs } from '@/types/card'
+import { getValueByKey } from '@/utils/getValueByKey'
 
-type FilterFormDialogProps = {
-  priceRange: PriceRangeObjs['key']
-  category: CategoryObjs['key']
-  setPriceRange: (priceRange: PriceRangeObjs['key']) => void
-  setCategory: (category: CategoryObjs['key']) => void
-}
-
-const FilterFormDialog = ({
-  priceRange,
-  category,
-  setPriceRange,
-  setCategory,
-}: FilterFormDialogProps) => {
+const FilterFormDialog = () => {
   const [isOpen, setIsOpen] = useState(false)
   const openModal = () => {
     setIsOpen(true)
@@ -39,13 +33,14 @@ const FilterFormDialog = ({
   const closeModal = () => {
     setIsOpen(false)
   }
+  const searchParams = useSearchParams()
+  const router = useRouter()
 
-  // FIXME: 선택 안된 경우 값으로 변경
+  const { createQueryString } = useCreateQueryString()
+  const priceRange = searchParams.get('priceRange') || undefined
+  const category = searchParams.get('category') || undefined
+
   const hasNoFilter = priceRange !== undefined || category !== undefined
-  const priceRangeValue = PRICE_RANGE_OBJS.find(({ key }) => key === priceRange)
-    ?.value
-  const getCategoryValue = (categoryKey: CategoryObjs['key']) =>
-    CATEGORY_OBJS.find(({ key }) => key === categoryKey)?.value
 
   return (
     <>
@@ -64,16 +59,10 @@ const FilterFormDialog = ({
             </DialogDescription>
           </DialogTitle>
         </DialogTrigger>
-        <DialogContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-full max-w-[640px] h-[398px] shadow-md z-50 p-6 rounded-lg">
+        <DialogContent className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white w-full max-w-[640px] h-[450px] shadow-md z-50 p-6 rounded-lg">
           <DialogHeader>
             <DialogDescription className="flex justify-between mb-4">
               <DialogTitle className="text-xl font-bold">필터</DialogTitle>
-              <Image
-                className="cursor-pointer"
-                onClick={closeModal}
-                src={Assets.xIcon}
-                alt="검색 아이콘"
-              />
             </DialogDescription>
           </DialogHeader>
           <DialogDescription className="mb-6">
@@ -83,11 +72,14 @@ const FilterFormDialog = ({
             <Select
               value={priceRange}
               onValueChange={(value: PriceRangeObjs['key']) => {
-                setPriceRange(value)
+                router.push(
+                  '/cards' + '?' + createQueryString('priceRange', value),
+                )
               }}
             >
               <SelectTrigger>
-                {priceRangeValue || '가격대를 선택해주세요'}
+                {getValueByKey(PRICE_RANGE_OBJS, priceRange) ||
+                  '가격대를 선택해주세요'}
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup className="w-full">
@@ -114,22 +106,40 @@ const FilterFormDialog = ({
               <button
                 key={currentCategory.key}
                 data-category-key={currentCategory.key}
-                className={`border rounded-[10px] text-[10px] h-[25px] px-3 py-1 m-1 ${
+                className={`border rounded-[10px] text-[10px] h-[25px] px-3 m-1 ${
                   category === currentCategory.key
                     ? 'border-primary-color text-primary-color'
                     : 'border-background-secondary-color text-background-secondary-color'
                 }`}
                 onClick={(e) =>
-                  setCategory(
-                    e.currentTarget.getAttribute(
-                      'data-category-key',
-                    ) as CategoryObjs['key'],
+                  router.push(
+                    '/cards' +
+                      '?' +
+                      createQueryString(
+                        'category',
+                        e.currentTarget.getAttribute(
+                          'data-category-key',
+                        ) as CategoryObjs['key'],
+                      ),
                   )
                 }
               >
-                {getCategoryValue(currentCategory.key)}
+                {getValueByKey(CATEGORY_OBJS, currentCategory.key)}
               </button>
             ))}
+          </DialogDescription>
+          <DialogDescription>
+            <DialogFooter className="pb-6">
+              <Button
+                variant={'gradation'}
+                onClick={() => {
+                  router.push(AppPath.cards())
+                  closeModal()
+                }}
+              >
+                필터 초기화
+              </Button>
+            </DialogFooter>
           </DialogDescription>
         </DialogContent>
       </Dialog>

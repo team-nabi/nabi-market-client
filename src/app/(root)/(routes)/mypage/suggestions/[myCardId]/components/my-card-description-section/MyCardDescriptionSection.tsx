@@ -3,9 +3,10 @@ import koLocale from 'date-fns/locale/ko'
 import Link from 'next/link'
 import ReservedBadge from '@/components/domain/badge/reserved-badge'
 import TradeAvailableBadge from '@/components/domain/badge/trade-available-badge'
+import Badge from '@/components/ui/badge'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card'
 import AppPath from '@/config/appPath'
-import { PRICE_RANGE_OBJS } from '@/constants/card'
+import { PRICE_RANGE_OBJS, TRADE_TYPE_OBJS } from '@/constants/card'
 import { CardDetail } from '@/types/card'
 import { getValueByKey } from '@/utils/getValueByKey'
 
@@ -21,7 +22,8 @@ const MyCardDescriptionSection = ({
     status,
     itemName,
     priceRange,
-    createdAt,
+    tradeType,
+    tradeArea,
   },
 }: MyCardDescriptionSection) => (
   <Link href={`${AppPath.cardDetail(String(cardId))}`} className="w-full">
@@ -45,7 +47,8 @@ const MyCardDescriptionSection = ({
 
         <CardFlex
           direction={'col'}
-          justify={'between'}
+          // justify={'between'}
+          gap={'space'}
           className="w-2/3 h-full"
         >
           <CardFlex align={'center'} gap={'space'}>
@@ -67,15 +70,31 @@ const MyCardDescriptionSection = ({
           >
             {itemName}
           </CardText>
-          <CardText type={'description'}>
-            {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+          <hr className="my-1" />
+          <CardText type={'description'} className="flex justify-between">
+            가격대
+            <Badge size={'sm'} variant={'information'}>
+              {getValueByKey(PRICE_RANGE_OBJS, priceRange)}
+            </Badge>
           </CardText>
-          <CardText type={'date'}>
+          <CardText type={'description'} className="flex justify-between">
+            거래방식
+            <Badge size={'sm'} variant={'information'}>
+              {getValueByKey(TRADE_TYPE_OBJS, tradeType)}
+            </Badge>
+          </CardText>
+          <CardText type={'description'} className="flex justify-between">
+            거래지역
+            <Badge size={'sm'} variant={'information'}>
+              {tradeArea}
+            </Badge>
+          </CardText>
+          {/* <CardText type={'date'}>
             {formatDistanceToNow(new Date(createdAt), {
               addSuffix: true,
               locale: koLocale,
             })}
-          </CardText>
+          </CardText> */}
         </CardFlex>
       </CardFlex>
     </div>

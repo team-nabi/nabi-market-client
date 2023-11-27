@@ -11,7 +11,7 @@ const PageTitle = ({ title }: { title: string }) => {
       <Image
         src={Assets.arrowLeftIcon}
         alt="이전 아이콘"
-        className="flex items-center justify-start"
+        className="flex items-center justify-start cursor-pointer"
         onClick={() => router.back()}
       />
       <h2 className="flex items-center justify-center text-xl font-bold">

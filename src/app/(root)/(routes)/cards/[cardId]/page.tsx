@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import NoData from '@/components/domain/no-data'
 import Slider from '@/components/domain/slider'
+import { useAuth } from '@/contexts/AuthProvider'
 import useCardInfoQuery from '@/hooks/api/queries/useCardInfoQuery'
 import ProfileSection from './components/ProfileSection'
 import DescriptionSection from './components/description-section'
@@ -15,8 +16,9 @@ type CardPageProps = {
 }
 
 const CardPage = ({ params }: CardPageProps) => {
+  const { isLoggedIn } = useAuth()
   const router = useRouter()
-  const { data } = useCardInfoQuery(Number(params.cardId))
+  const { data } = useCardInfoQuery(Number(params.cardId), isLoggedIn)
   const cardData = data?.data
   console.log(cardData)
 
