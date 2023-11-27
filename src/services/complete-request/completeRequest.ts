@@ -18,7 +18,7 @@ const putCompleteRequest = async (
   toCardId: number,
   isAccepted: boolean,
 ) => {
-  const response = await apiClient.post(
+  const response = await apiClient.put(
     ApiEndPoint.putCompleteRequest(),
     { fromCardId, toCardId, isAccepted },
     {},
