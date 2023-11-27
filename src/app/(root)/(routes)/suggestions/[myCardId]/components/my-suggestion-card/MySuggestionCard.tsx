@@ -43,7 +43,7 @@ const SuggestionButtons = ({
 // TODO : 채팅 페이지 라우팅 및 설정이 나오면 라우팅 기능 만들기
 const AcceptedButton = () => {
   return (
-    <Link href={`${AppPath.chatRooms('')}`}>
+    <Link href={`${AppPath.chatRooms()}`}>
       <Button variant={'gradation'}>채팅</Button>
     </Link>
   )
@@ -95,7 +95,7 @@ const MySuggestionCard = ({
   }
 
   return (
-    <Link href={AppPath.cardDetail(String(cardId))}>
+    <Link href={AppPath.card(String(cardId))}>
       <div className="mb-6">
         <Card size={'lg'}>
           <CardFlex

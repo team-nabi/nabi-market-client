@@ -26,7 +26,7 @@ const TradeStatusCard = ({
   },
 }: TradeStatusCardProps) => {
   return (
-    <Link href={`${AppPath.cardDetail(String(cardId))}`}>
+    <Link href={`${AppPath.card(String(cardId))}`}>
       <Card size={'sm'}>
         <CardFlex
           direction={'row'}

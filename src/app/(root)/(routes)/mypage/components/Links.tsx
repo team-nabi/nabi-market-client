@@ -15,19 +15,19 @@ const pages = [
   {
     id: 3,
     text: '거래 내역',
-    path: AppPath.histories(),
+    path: AppPath.myHistory(),
     icon: Assets.refreshIcon,
   },
   {
     id: 4,
     text: '채팅방 목록',
-    path: AppPath.chatRoomList(),
+    path: AppPath.chatRooms(),
     icon: Assets.chatIcon,
   },
   {
     id: 5,
     text: '알림',
-    path: AppPath.notifications(),
+    path: AppPath.myNotifications(),
     icon: Assets.alarmIcon,
   },
 ]

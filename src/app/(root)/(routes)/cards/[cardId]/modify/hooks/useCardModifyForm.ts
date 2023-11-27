@@ -49,7 +49,7 @@ export const useCardModifyForm = ({
         cardId: cardId,
         cardReq: data,
       })
-      router.push(AppPath.cardDetail(cardId))
+      router.push(AppPath.card(cardId))
       toast({
         title: 'Success',
         description: '게시글을 성공적으로 수정했습니다.',
