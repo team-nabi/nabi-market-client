@@ -29,7 +29,6 @@ const useValidate = () => {
   })
 
   useEffect(() => {
-    console.log(currentUser)
     if (isError) {
       Cookies.remove(Environment.tokenName())
       setIsLoggedIn(() => false)

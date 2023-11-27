@@ -20,7 +20,6 @@ export default function ErrorPage({
     // Log the error to an error reporting service
 
     if (error.message === ErrorMessages.Forbidden) {
-      console.log('ForbiddenError')
       toast({
         title: 'Forbidden',
         description: 'You do not have permission to access this page.',

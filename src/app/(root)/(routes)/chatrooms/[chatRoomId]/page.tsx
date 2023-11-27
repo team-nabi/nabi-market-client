@@ -63,7 +63,6 @@ const ChatPage = async ({ params }: ChatPageProps) => {
     initialChatRoom.fromCardInfo,
     initialChatRoom.toCardInfo,
   ]
-  console.log(suggestionDataArray)
   const myCardId = suggestionDataArray.find(
     (obj) => obj.userInfo.userId === initialUserInfo.userId,
   ).cardInfo.cardId
@@ -74,7 +73,7 @@ const ChatPage = async ({ params }: ChatPageProps) => {
 
   return (
     <main className="relative flex flex-col items-center w-full gap-10 h-page pb-chat_input">
-      <header className="w-full flex flex-row items-center px-4">
+      <header className="flex flex-row items-center w-full px-4">
         <PageTitle title="채팅방" />
         {!isCompleteRequested && (
           <CompleteRequestButton

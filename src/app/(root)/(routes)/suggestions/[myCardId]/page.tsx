@@ -6,12 +6,8 @@ import MyCardDescriptionSection from './components/my-card-description-section'
 import MySuggestionListContent from './components/my-suggestion-list-content'
 
 async function getMyCardInfo(cardId: string) {
-  try {
-    const res = await getCardInfo(Number(cardId))
-    return res.data.cardInfo
-  } catch (e) {
-    console.log(e)
-  }
+  const res = await getCardInfo(Number(cardId))
+  return res.data.cardInfo
 }
 
 const SuggestCheckListPage = async ({

@@ -24,7 +24,6 @@ const TextEditable = ({
   const { toast } = useToast()
 
   useEffect(() => {
-    console.log('이름', defaultText)
     if (!changedSuccessfully) {
       setValue(() => defaultText)
     }

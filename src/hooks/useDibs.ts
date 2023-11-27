@@ -13,8 +13,7 @@ const useDibs = (isMyDib: boolean, count: number) => {
       setDibsCount(dibsCount - 1)
       setIsDibsActive(false)
       try {
-        const res = await deleteCardDibs(cardId)
-        console.log(res)
+        await deleteCardDibs(cardId)
       } catch (error) {
         setDibsCount(dibsCount + 1)
         setIsDibsActive(true)
@@ -28,8 +27,7 @@ const useDibs = (isMyDib: boolean, count: number) => {
       setDibsCount(dibsCount + 1)
       setIsDibsActive(true)
       try {
-        const res = await postCardDibs(cardId)
-        console.log(res)
+        await postCardDibs(cardId)
       } catch (error) {
         setDibsCount(dibsCount - 1)
         setIsDibsActive(false)

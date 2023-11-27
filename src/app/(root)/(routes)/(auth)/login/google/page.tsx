@@ -12,7 +12,6 @@ async function getGoogleAccessToken(code: string) {
     const response = await getGoogleRedirect(escape(code))
     return response
   } catch (e) {
-    console.log(e)
     return null
   }
 }

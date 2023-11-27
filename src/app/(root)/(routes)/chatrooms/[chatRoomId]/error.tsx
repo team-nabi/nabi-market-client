@@ -17,9 +17,7 @@ export default function Error({
   const router = useRouter()
   const { toast } = useToast()
   useEffect(() => {
-    console.log(error.digest, error.message, error.name)
     if (error.message === ErrorMessages.Forbidden) {
-      console.log('ForbiddenError')
       toast({
         title: 'Forbidden',
         description: ErrorMessages.Forbidden,

@@ -22,7 +22,6 @@ const postCard = async (cardReq: CardUploadFormValues) => {
     return { url: image }
   })
   Object.assign(cardReq, { images: imagesByForm })
-  console.log(cardReq)
   const response = await apiClient.post(
     ApiEndPoint.postCard(),
     cardReq,
