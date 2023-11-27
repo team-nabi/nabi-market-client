@@ -3,6 +3,7 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query'
+import { toast } from '@/hooks/useToast'
 import {
   GetMySuggestionListRes,
   PutMySuggestionStatusReq,
@@ -16,6 +17,7 @@ export const useMySuggestionUpdateMutation = (
   cardId: string | string[],
 ) => {
   const queryClient = useQueryClient()
+  const queryKey = ['my-suggestions', suggestionType, directionType, cardId]
   return useMutation({
     mutationFn: async ({
       fromCardId,
@@ -26,7 +28,7 @@ export const useMySuggestionUpdateMutation = (
     },
     onMutate: async ({ fromCardId, isAccepted }: PutMySuggestionStatusReq) => {
       await queryClient.cancelQueries({
-        queryKey: ['my-suggestions', suggestionType, directionType, cardId],
+        queryKey,
       })
       const oldMySuggestionList:
         | InfiniteData<GetMySuggestionListRes, unknown>
@@ -57,24 +59,28 @@ export const useMySuggestionUpdateMutation = (
           },
         })),
       }
-      queryClient.setQueryData(
-        ['my-suggestions', suggestionType, directionType, cardId],
-        newMySuggestionList,
-      )
+      queryClient.setQueryData(queryKey, newMySuggestionList)
 
       return { oldMySuggestionList }
     },
 
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ['my-suggestions', suggestionType, directionType, cardId],
+        queryKey,
       })
     },
-    onError: (error, variable, rollback) => {
-      console.log('에러', error)
-      // if (rollback) rollback()
-      // else console.log(error)
+    onSuccess: () => {
+      toast({
+        title: '해당 물건에 대한 교환 제안을 수락 하셨습니다.',
+        duration: 1000,
+      })
     },
-    // TODO : 에러처리 및 각 종 Optimistic Update 관련 기능 처리하기
+    onError: (error, _, context) => {
+      queryClient.setQueryData(queryKey, context?.oldMySuggestionList)
+      toast({
+        title: '교환 제안을 결정하던 중 문제가 생겼습니다.',
+        duration: 2000,
+      })
+    },
   })
 }
