@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { LIST_STALE_TIME } from '@/constants/staleTime'
 import {
   GetMyTradeHistoryListRes,
   getMyTradeHistoryList,
@@ -15,5 +16,6 @@ export const useMyTradeHistoryQuery = () => {
     getNextPageParam: (lastPage: GetMyTradeHistoryListRes) => {
       return lastPage.data.nextCursorId
     },
+    staleTime: LIST_STALE_TIME,
   })
 }

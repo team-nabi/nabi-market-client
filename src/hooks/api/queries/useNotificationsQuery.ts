@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { LIST_STALE_TIME } from '@/constants/staleTime'
 import {
   GetNotificationListRes,
   getNotificationList,
@@ -16,5 +17,6 @@ export const useNotificationsQuery = (isRead: boolean) => {
     getNextPageParam: (lastPage: GetNotificationListRes) => {
       return lastPage.data.nextCursorId
     },
+    staleTime: LIST_STALE_TIME,
   })
 }

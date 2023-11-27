@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { LIST_STALE_TIME } from '@/constants/staleTime'
 import { GetCardListRes, getCardList } from '@/services/card/card'
 import { CategoryObjs, PriceRangeObjs } from '@/types/card'
 
@@ -27,5 +28,6 @@ export const useCardsQuery = ({
     getNextPageParam: (lastPage: GetCardListRes) => {
       return lastPage.data.nextCursorId
     },
+    staleTime: LIST_STALE_TIME,
   })
 }
