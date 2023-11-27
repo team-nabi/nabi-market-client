@@ -78,7 +78,7 @@ const MoreButton = ({ cardId, status }: MoreButtonProps) => {
           <Image src={Assets.vMoreIcon} alt="more" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="min-w-[10rem]">
+      <DropdownMenuContent className="min-w-[10rem] -right-4">
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={() => router.push(AppPath.modifyCard(String(cardId)))}

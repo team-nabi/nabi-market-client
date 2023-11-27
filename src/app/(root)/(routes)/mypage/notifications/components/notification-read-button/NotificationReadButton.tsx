@@ -6,6 +6,7 @@ const NotificationReadButton = () => {
 
   const handleReadAllNotifications = () => {
     mutate()
+    window.location.reload()
   }
 
   return (

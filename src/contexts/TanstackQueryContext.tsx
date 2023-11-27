@@ -13,8 +13,6 @@ const TanstackQueryGlobalConfig = {
     queries: {
       retry: 3,
       retryDelay: 1000,
-      staleTime: 60000,
-      cacheTime: 600000,
     },
   },
 }
@@ -27,7 +25,7 @@ function TanstackQueryContext({ children }: TanstackQueryContextProps) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )
 }
