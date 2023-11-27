@@ -133,7 +133,7 @@ const FilterFormDialog = () => {
               <Button
                 variant={'gradation'}
                 onClick={() => {
-                  router.push(AppPath.cards(''))
+                  router.push(AppPath.cards())
                   closeModal()
                 }}
               >

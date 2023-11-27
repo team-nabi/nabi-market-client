@@ -26,7 +26,7 @@ const MenuButton = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={() => {
-              router.push(AppPath.cards(''))
+              router.push(AppPath.cards())
             }}
           >
             전체 물건 보기

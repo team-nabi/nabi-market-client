@@ -12,9 +12,9 @@ const CategorySection = () => {
 
   const handleClick = (name: string) => {
     if (name === 'ALL_CARD') {
-      router.push(`${AppPath.cards('')}`)
+      router.push(`${AppPath.cards()}`)
     } else {
-      router.push(`${AppPath.cards('')}?category=${name}`)
+      router.push(`${AppPath.cards()}?category=${name}`)
     }
   }
   return (
