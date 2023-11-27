@@ -13,6 +13,7 @@ const TanstackQueryGlobalConfig = {
     queries: {
       retry: 3,
       retryDelay: 1000,
+      suspense: true,
     },
   },
 }

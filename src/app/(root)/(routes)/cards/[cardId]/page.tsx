@@ -1,7 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import NoData from '@/components/domain/no-data'
 import Slider from '@/components/domain/slider'
 import { useAuth } from '@/contexts/AuthProvider'
 import useCardInfoQuery from '@/hooks/api/queries/useCardInfoQuery'
@@ -17,14 +15,12 @@ type CardPageProps = {
 
 const CardPage = ({ params }: CardPageProps) => {
   const { isLoggedIn } = useAuth()
-  const router = useRouter()
   const { data } = useCardInfoQuery(Number(params.cardId), isLoggedIn)
   const cardData = data?.data
-  console.log(cardData)
 
   return (
     <main className="flex-col min-h-screen bg-background-color">
-      {cardData ? (
+      {cardData && (
         <>
           <Slider
             imageData={cardData.cardInfo.images}
@@ -50,12 +46,6 @@ const CardPage = ({ params }: CardPageProps) => {
             />
           </div>
         </>
-      ) : (
-        <NoData
-          title="물건 정보가 없습니다."
-          buttonContent="뒤로가기"
-          onClickButton={() => router.back()}
-        />
       )}
     </main>
   )
