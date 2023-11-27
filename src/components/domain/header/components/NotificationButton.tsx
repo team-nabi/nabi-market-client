@@ -18,7 +18,7 @@ const NotificationButton = ({
   const router = useRouter()
 
   const onClickButton = () => {
-    router.push(AppPath.notifications())
+    router.push(AppPath.myNotifications())
   }
 
   return (

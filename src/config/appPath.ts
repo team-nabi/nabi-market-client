@@ -4,23 +4,22 @@ const AppPath = {
   home: () => '/' as const,
   login: () => '/login' as const,
   logout: () => '/logout' as const,
-  cards: () => `/cards/` as const,
+  cards: () => `/cards` as const,
+  card: (cardId: string) => `/cards/${cardId}` as const,
   newCard: () => '/cards/new' as const,
-  cardDetail: (cardId: string) => `/cards/${cardId}` as const,
+  modifyCard: (cardId: string) => `/cards/${cardId}/modify` as const,
+  myCards: () => '/cards/my' as const,
   mypage: () => '/mypage' as const,
-  myDibs: () => '/mypage/mydibs',
-  myCards: () => '/mypage/mycards' as const,
-  notifications: () => '/mypage/notifications' as const,
-  mySuggestions: (cardId: number) => `/mypage/suggestions/${cardId}` as const,
-  histories: () => '/mypage/histories' as const,
+  myDibs: () => '/dibs' as const,
+  myNotifications: () => '/notifications' as const,
+  mySuggestions: (cardId: number) => `/suggestions/${cardId}` as const,
+  myHistory: () => '/history' as const,
   kakaoLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/kakao/login` as const,
   googleLogin: () =>
     `${Environment.apiAddress()}/users/oauth2/authorize/google/login` as const,
-  modifyCard: (cardId: string) => `/cards/${cardId}/modify` as const,
+  chatRooms: () => '/chatrooms' as const,
   chatRoom: (chatRoomId: string) => `/chatrooms/${chatRoomId}` as const,
-  chatRoomList: () => '/chatrooms' as const,
-  chatRooms: (chatRoomId?: string) => `/chatrooms/${chatRoomId}`,
 } as const
 
 type AppPathReturnType = {

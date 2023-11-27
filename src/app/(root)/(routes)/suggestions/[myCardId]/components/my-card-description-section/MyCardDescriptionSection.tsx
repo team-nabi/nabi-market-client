@@ -26,7 +26,7 @@ const MyCardDescriptionSection = ({
     tradeArea,
   },
 }: MyCardDescriptionSection) => (
-  <Link href={`${AppPath.cardDetail(String(cardId))}`} className="w-full">
+  <Link href={`${AppPath.card(String(cardId))}`} className="w-full">
     <div className="flex h-card-lg p-1.5 justify-center w-full">
       <CardFlex
         direction={'row'}
