@@ -3,6 +3,7 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query'
+import { toast } from '@/hooks/useToast'
 import {
   GetNotificationListRes,
   putNotificationList,
@@ -21,17 +22,21 @@ export const useNotificationListUpdateMutation = () => {
       )
       await putNotificationList({ notificationIds })
     },
-    onMutate: async () => {
-      console.log('onMutate')
-      // TODO : 에러처리 및 각 종 Optimistic Update 관련 기능 처리하기
-    },
-
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ['notifications', true],
-      })
-      queryClient.invalidateQueries({
         queryKey: ['notifications', false],
+      })
+    },
+    onSuccess: () => {
+      toast({
+        title: '모두 읽음 처리가 완료되었습니다.',
+        duration: 1000,
+      })
+    },
+    onError: () => {
+      toast({
+        title: '알림 모두 읽음 처리 중 문제가 발생하였습니다.',
+        duration: 2000,
       })
     },
   })
