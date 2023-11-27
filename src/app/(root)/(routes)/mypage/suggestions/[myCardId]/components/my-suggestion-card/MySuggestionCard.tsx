@@ -153,16 +153,12 @@ const MySuggestionCard = ({
                 )}
               </CardFlex>
               <CardText type={'date'}>
-                {formatDistanceToNow(new Date(createdAt), { locale: koLocale })}
+                {formatDistanceToNow(new Date(createdAt), {
+                  addSuffix: true,
+                  locale: koLocale,
+                })}
               </CardText>
             </CardFlex>
-
-            <CardText type={'date'}>
-              {formatDistanceToNow(new Date(createdAt), {
-                addSuffix: true,
-                locale: koLocale,
-              })}
-            </CardText>
           </CardFlex>
         </Card>
       </div>
