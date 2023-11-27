@@ -28,7 +28,7 @@ const SuggestionButtons = ({
       gap={'space'}
     >
       <Image src={Assets.checkCircle} alt="check-circle" />
-      <CardText>수락</CardText>
+      <CardText className="break-keep">수락</CardText>
     </CardFlex>
     <CardFlex
       onClick={(e) => {
@@ -40,7 +40,7 @@ const SuggestionButtons = ({
       gap={'space'}
     >
       <Image src={Assets.quitCircle} alt="check-circle" />
-      <CardText>거절</CardText>
+      <CardText className="break-keep">거절</CardText>
     </CardFlex>
   </>
 )
@@ -122,7 +122,7 @@ const MySuggestionCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="relative h-full w-36">
+          <div className="relative h-full min-w-[128px]">
             <CardImage
               className="rounded-lg"
               src={thumbnail}
@@ -135,18 +135,12 @@ const MySuggestionCard = ({
           <CardFlex
             direction={'col'}
             justify={'between'}
-            className="w-2/3 h-full"
+            className="w-full h-full"
           >
-            <CardText
-              type={'title'}
-              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-            >
+            <CardText type={'title'} className="line-clamp-1">
               {cardTitle}
             </CardText>
-            <CardText
-              type={'description'}
-              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-            >
+            <CardText type={'description'} className="line-clamp-1">
               {itemName}
             </CardText>
             <CardText type={'description'}>
