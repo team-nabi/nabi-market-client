@@ -19,7 +19,7 @@ const SuggestionStatusTabs = ({
   }
 
   return (
-    <Tabs defaultValue="OFFER_RECEIVE">
+    <Tabs defaultValue="OFFER_RECEIVE" className="my-12">
       <TabsList>
         <TabsTrigger
           value="OFFER_RECEIVE"

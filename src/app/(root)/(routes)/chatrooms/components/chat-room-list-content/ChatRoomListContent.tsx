@@ -27,16 +27,14 @@ const ChatRoomListContent = () => {
 
   return (
     <>
-      <div>
-        <ExceptionBoundary
-          isLoading={isLoading}
-          isError={isError}
-          isEmpty={isEmpty}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <ChatRoomList data={data} />
-        </ExceptionBoundary>
-      </div>
+      <ExceptionBoundary
+        isLoading={isLoading}
+        isError={isError}
+        isEmpty={isEmpty}
+        isFetchingNextPage={isFetchingNextPage}
+      >
+        <ChatRoomList data={data} />
+      </ExceptionBoundary>
 
       <div ref={lastElementRef} />
     </>

@@ -32,22 +32,19 @@ const MyCardListContent = () => {
   const isEmpty = data?.pages[0].data.cardList.length === 0
   return (
     <>
-      <div className="flex items-center justify-center my-12 h-9">
-        <TradeStatusTabs
-          tradeStatus={tradeStatus}
-          setTradeStatus={setTradeStatus}
-        />
-      </div>
-      <div>
-        <ExceptionBoundary
-          isLoading={isLoading}
-          isError={isError}
-          isEmpty={isEmpty}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <MyCardList data={data} />
-        </ExceptionBoundary>
-      </div>
+      <TradeStatusTabs
+        tradeStatus={tradeStatus}
+        setTradeStatus={setTradeStatus}
+      />
+      <ExceptionBoundary
+        isLoading={isLoading}
+        isError={isError}
+        isEmpty={isEmpty}
+        isFetchingNextPage={isFetchingNextPage}
+      >
+        <MyCardList data={data} />
+      </ExceptionBoundary>
+
 
       <div ref={lastElementRef} />
     </>

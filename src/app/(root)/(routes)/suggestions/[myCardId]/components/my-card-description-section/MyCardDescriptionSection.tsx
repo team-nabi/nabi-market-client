@@ -33,7 +33,7 @@ const MyCardDescriptionSection = ({
         gap={'space'}
         className="w-full h-full"
       >
-        <div className="relative w-1/3 h-full">
+        <div className="relative h-full min-w-[128px]">
           <CardImage
             className="border rounded-lg border-background-secondary-color"
             src={thumbnail}
@@ -47,13 +47,10 @@ const MyCardDescriptionSection = ({
           direction={'col'}
           // justify={'between'}
           gap={'space'}
-          className="w-2/3 h-full"
+          className="w-full h-full"
         >
           <CardFlex align={'center'} gap={'space'}>
-            <CardText
-              type={'title'}
-              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-            >
+            <CardText type={'title'} className="line-clamp-1">
               {cardTitle}
             </CardText>
             {status === 'TRADE_AVAILABLE' ? (
@@ -62,10 +59,7 @@ const MyCardDescriptionSection = ({
               <ReservedBadge />
             )}
           </CardFlex>
-          <CardText
-            type={'description'}
-            className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-          >
+          <CardText type={'description'} className="line-clamp-1">
             {itemName}
           </CardText>
           <hr className="my-1" />

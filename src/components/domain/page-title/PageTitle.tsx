@@ -14,7 +14,7 @@ const PageTitle = ({ title }: { title: string }) => {
         className="flex items-center justify-start cursor-pointer"
         onClick={() => router.back()}
       />
-      <h2 className="flex items-center justify-center text-xl font-bold">
+      <h2 className="flex items-center justify-center text-xl font-bold whitespace-nowrap">
         {title}
       </h2>
       <div></div>

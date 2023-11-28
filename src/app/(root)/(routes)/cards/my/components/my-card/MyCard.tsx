@@ -16,7 +16,7 @@ const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
   <Link href={`${AppPath.cards()}?priceRange=${priceRange}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.checkCircle} alt="check-circle" />
-      <CardText>제안 하러가기</CardText>
+      <CardText className="break-keep">제안 하러가기</CardText>
     </CardFlex>
   </Link>
 )
@@ -25,7 +25,7 @@ const MoveToSuggestCheckPageButton = ({ cardId }: { cardId: number }) => (
   <Link href={`${AppPath.mySuggestions(cardId)}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.arrowCircleRight} alt="arrow-circle-right" />{' '}
-      <CardText>제안 확인</CardText>
+      <CardText className="break-keep">제안 확인</CardText>
     </CardFlex>
   </Link>
 )
@@ -54,7 +54,7 @@ const MyCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="relative h-full w-36">
+          <div className="relative h-full min-w-[128px]">
             <CardImage
               className="rounded-lg"
               src={thumbnail}
@@ -67,13 +67,10 @@ const MyCard = ({
           <CardFlex
             direction={'col'}
             justify={'between'}
-            className="w-2/3 h-full"
+            className="w-full h-full"
           >
             <CardFlex align={'center'} gap={'space'}>
-              <CardText
-                type={'title'}
-                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-              >
+              <CardText type={'title'} className="line-clamp-1">
                 {cardTitle}
               </CardText>
               {status === 'TRADE_AVAILABLE' ? (
@@ -84,10 +81,7 @@ const MyCard = ({
                 <TradeCompleteBadge />
               )}
             </CardFlex>
-            <CardText
-              type={'description'}
-              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-            >
+            <CardText type={'description'} className="line-clamp-1">
               {itemName}
             </CardText>
             <CardText type={'description'}>

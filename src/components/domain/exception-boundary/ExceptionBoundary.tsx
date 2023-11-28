@@ -1,4 +1,6 @@
+import router from 'next/router'
 import Loading from '@/app/loading'
+import NoData from '../no-data'
 
 type ExceptionBoundaryProps = {
   isLoading: boolean
@@ -24,7 +26,13 @@ const ExceptionBoundary: React.FC<ExceptionBoundaryProps> = ({
   }
 
   if (isEmpty) {
-    return <div>데이터 없음!</div>
+    return (
+      <NoData
+        title="해당 물건이 존재 하지 않습니다."
+        onClickButton={() => router.push('/cards/new')}
+        buttonContent="물건 등록하러 가기"
+      />
+    )
   }
 
   return (
