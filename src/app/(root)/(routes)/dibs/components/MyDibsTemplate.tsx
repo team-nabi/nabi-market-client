@@ -9,7 +9,6 @@ import MyDibsList from './MyDibsList'
 const MyDibsTemplate = () => {
   const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
     useMyDibsQuery()
-  console.log(data)
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })

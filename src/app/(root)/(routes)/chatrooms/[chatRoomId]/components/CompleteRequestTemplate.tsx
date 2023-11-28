@@ -18,13 +18,12 @@ const CompleteReqeustTemplate = ({
   currentUser,
   completeRequestData: { fromCard, toCard, status },
 }: CompleteReqeustTemplateProps) => {
-  //NOTE -  현재 로그인한 사람이 거래성사 요청 받은 사람인경우 + 요청 상태가 waiting인 경우 - 거래성사요청 카드가 보인다.
   const isRequestedUser =
     toCard.userInfo.userId === currentUser.userId && status === 'WAITING'
   return isRequestedUser ? (
     <CompleteRequestCard
-      myCardData={fromCard.cardInfo}
-      otherCardData={toCard.cardInfo}
+      myCardData={toCard.cardInfo}
+      otherCardData={fromCard.cardInfo}
     />
   ) : (
     <Badge variant={'gradation'} size={'lg'} className="self-end mr-4">

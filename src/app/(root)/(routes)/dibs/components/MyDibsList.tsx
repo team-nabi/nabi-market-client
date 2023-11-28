@@ -9,7 +9,6 @@ const MyDibsList = ({
 }: {
   data: InfiniteData<GetMyDibsRes, unknown> | undefined
 }) => {
-  console.log(data?.pages)
   return (
     <>
       {data?.pages.map(({ data: { dibList } }: GetMyDibsRes, pageIndex) => (

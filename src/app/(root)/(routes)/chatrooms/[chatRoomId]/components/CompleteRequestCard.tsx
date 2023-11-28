@@ -1,4 +1,8 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
+import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import { Card, CardFlex, CardImage, CardText } from '@/components/ui/card/Card'
 import Assets from '@/config/assets'
@@ -35,6 +39,7 @@ const CompleteRequestCard = ({
   myCardData,
   otherCardData,
 }: CompleteRequestCardProps) => {
+  const [completeRequestStatus, setCompleteRequestStatus] = useState('')
   const handleCompleteRequestUpdate = async (isAccepted: boolean) => {
     try {
       await putCompleteRequest(
@@ -42,7 +47,7 @@ const CompleteRequestCard = ({
         myCardData.cardId,
         isAccepted,
       )
-      window.location.reload()
+      setCompleteRequestStatus(isAccepted ? '거래성사 확정' : '거래성사 거절')
       toast({
         title: `거래성사 요청을 ${isAccepted ? '수락' : '거절'}하였습니다.`,
         variant: 'default',
@@ -71,24 +76,30 @@ const CompleteRequestCard = ({
             >
               거래성사 요청이 왔습니다. 거래를 하셨나요?
             </CardText>
-            <CardFlex direction={'row'} gap={'space'}>
-              <Button
-                className="ml-auto"
-                size="icon_sm"
-                variant={null}
-                onClick={() => handleCompleteRequestUpdate(true)}
-              >
-                <Image src={Assets.checkCircle} alt="accept" />
-              </Button>
-              <Button
-                className="ml-auto"
-                size="icon_sm"
-                variant={null}
-                onClick={() => handleCompleteRequestUpdate(false)}
-              >
-                <Image src={Assets.quitCircle} alt="refuse" />
-              </Button>
-            </CardFlex>
+            {completeRequestStatus === '' ? (
+              <CardFlex direction={'row'} gap={'space'}>
+                <Button
+                  className="ml-auto"
+                  size="icon_sm"
+                  variant={null}
+                  onClick={() => handleCompleteRequestUpdate(true)}
+                >
+                  <Image src={Assets.checkCircle} alt="accept" />
+                </Button>
+                <Button
+                  className="ml-auto"
+                  size="icon_sm"
+                  variant={null}
+                  onClick={() => handleCompleteRequestUpdate(false)}
+                >
+                  <Image src={Assets.quitCircle} alt="refuse" />
+                </Button>
+              </CardFlex>
+            ) : (
+              <Badge variant={'gradation'} size={'sm'}>
+                {completeRequestStatus}
+              </Badge>
+            )}
           </CardFlex>
           <CardItem
             thumbnail={otherCardData.thumbnail}

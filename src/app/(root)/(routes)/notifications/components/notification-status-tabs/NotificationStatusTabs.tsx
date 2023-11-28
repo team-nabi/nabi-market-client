@@ -1,7 +1,7 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 type NotificationStatusTabsProps = {
-  setIsRead: (isRead: boolean) => void
+  setIsRead: (_isRead: boolean) => void
 }
 
 const NotificationStatusTabs = ({ setIsRead }: NotificationStatusTabsProps) => {
@@ -12,7 +12,7 @@ const NotificationStatusTabs = ({ setIsRead }: NotificationStatusTabsProps) => {
   return (
     <Tabs
       defaultValue="isRead_true"
-      className="h-9 flex justify-center items-center my-12"
+      className="flex items-center justify-center my-12 h-9"
     >
       <TabsList>
         <TabsTrigger

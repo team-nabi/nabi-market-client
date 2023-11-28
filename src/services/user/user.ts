@@ -1,4 +1,3 @@
-import { revalidateTag } from 'next/cache'
 import ApiEndPoint from '@/config/apiEndPoint'
 import apiClient from '../apiClient'
 

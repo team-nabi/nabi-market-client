@@ -1,8 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import Cookies from 'js-cookie'
-import { Environment } from '@/config/environment'
 import { MAX_IMAGE_NUMBER } from '@/constants/image'
 import { useToast } from '@/hooks/useToast'
 import { postImageFile } from '@/services/images'
@@ -86,7 +84,6 @@ const ImageUploader = ({
             isDeletable={isImageDeletable}
             isThumbnail={isThumbnail}
             onDeleteHandler={() => {
-              console.log(images)
               setImages(images.filter((_, i) => i !== index))
               onFilesChanged(images.filter((_, i) => i !== index))
             }}

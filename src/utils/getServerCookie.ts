@@ -15,7 +15,7 @@ const setServerCookie = ({
   key: string
   value: string | undefined
 }) => {
-  if (!value) return console.log('No value to set')
+  if (!value) return
   const cookieStore = cookies()
   cookieStore.set(key, value)
 }

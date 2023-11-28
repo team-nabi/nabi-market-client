@@ -3,7 +3,7 @@ import { TradeStatus } from '@/types/card'
 
 type TradeStatusTabsProps = {
   tradeStatus: TradeStatus
-  setTradeStatus: (tradeStatus: TradeStatus) => void
+  setTradeStatus: (_tradeStatus: TradeStatus) => void
 }
 
 const TradeStatusTabs = ({
