@@ -16,7 +16,11 @@ const ThemeProviderContext = ({ children }: ThemeProviderContextProps) => {
 
   if (!mounted) return null
 
-  return <ThemeProvider attribute="data-theme">{children}</ThemeProvider>
+  return (
+    <ThemeProvider attribute="light" enableSystem={false}>
+      {children}
+    </ThemeProvider>
+  )
 }
 
 export default ThemeProviderContext

@@ -1,5 +1,5 @@
 const { createThemes } = require('tw-colors')
-const { LIGHT_THEMES, DARK_THEMES } = require('./src/styles/colors')
+const { LIGHT_THEMES } = require('./src/styles/colors')
 const { HEIGHT, BORDER_RADIUS } = require('./src/styles/sizes')
 
 /** @type {import('tailwindcss').Config} */
@@ -12,7 +12,7 @@ module.exports = {
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  darkMode: 'false',
+  darkMode: ['class'],
   theme: {
     extend: {
       backgroundImage: () => ({
