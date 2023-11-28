@@ -30,7 +30,7 @@ const NotificationButton = ({
     >
       <span
         className={cn(
-          'absolute flex items-center justify-center w-5 h-5 text-xs text-white bg-red-500 rounded-full -top-1 -right-1 transition-all duration-200',
+          'absolute flex items-center justify-center w-5 h-5 text-xs  text-white bg-red-500 rounded-full -top-1 -right-1 ',
           { invisible: notificationCounts === 0 },
         )}
       >
