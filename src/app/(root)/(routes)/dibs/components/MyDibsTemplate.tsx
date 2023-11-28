@@ -27,16 +27,14 @@ const MyDibsTemplate = () => {
 
   return (
     <>
-      <div>
-        <ExceptionBoundary
-          isLoading={isLoading}
-          isError={isError}
-          isEmpty={isEmpty}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <MyDibsList data={data} />
-        </ExceptionBoundary>
-      </div>
+      <ExceptionBoundary
+        isLoading={isLoading}
+        isError={isError}
+        isEmpty={isEmpty}
+        isFetchingNextPage={isFetchingNextPage}
+      >
+        <MyDibsList data={data} />
+      </ExceptionBoundary>
 
       <div ref={lastElementRef} />
     </>

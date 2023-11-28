@@ -9,7 +9,7 @@ type NotificationCardProps = {
 }
 
 const NotificationCard = ({
-  notification: { content, cardId },
+  notification: { content, cardId, read },
 }: NotificationCardProps) => {
   return (
     <Link href={`${AppPath.mySuggestions(cardId)}`}>
@@ -28,13 +28,15 @@ const NotificationCard = ({
           </CardFlex>
           <CardFlex className="w-12" justify={'center'}>
             <div className="w-2.5 h-2.5 relative">
-              <CardImage
-                alt={'점 아이콘'}
-                src={Assets.notificationDot}
-                layout="fill"
-                objectFit="cover"
-                className="rounded"
-              />
+              {read || (
+                <CardImage
+                  alt={'점 아이콘'}
+                  src={Assets.notificationDot}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded"
+                />
+              )}
             </div>
           </CardFlex>
         </CardFlex>

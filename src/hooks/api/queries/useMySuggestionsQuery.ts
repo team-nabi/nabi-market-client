@@ -1,4 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { LIST_STALE_TIME } from '@/constants/staleTime'
 import { getMySuggestionList } from '@/services/suggestion/suggestion'
 import { DirectionType, SuggestionType } from '@/types/suggestion'
 
@@ -20,5 +21,6 @@ export const useMySuggestionsQuery = (
     getNextPageParam: (lastPage: any) => {
       return lastPage.data.nextCursorId
     },
+    staleTime: LIST_STALE_TIME,
   })
 }
