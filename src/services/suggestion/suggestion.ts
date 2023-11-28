@@ -41,7 +41,6 @@ const postSuggestion = async ({
       'Content-Type': 'application/json',
     },
   )
-  console.log(response)
   return response
 }
 

@@ -1,8 +1,9 @@
-import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import SuggestCard from '@/components/domain/card/suggest-card'
+import NoData from '@/components/domain/no-data'
 import { Tabs, TabsTrigger, TabsList, TabsContent } from '@/components/ui/tabs'
-import Assets from '@/config/assets'
 import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
+import PokeUnavailableInfo from './PokeUnavailableInfo'
 
 type SuggestListProps = {
   pokeAvailable: boolean
@@ -11,6 +12,38 @@ type SuggestListProps = {
 
 const SuggestList = ({ pokeAvailable, toCardId }: SuggestListProps) => {
   const { data: suggestions } = useSuggestionsQuery(toCardId)
+  const router = useRouter()
+  const filterData = (type: string) => {
+    const filteredData = suggestions?.filter(
+      (v) => v.suggestionInfo.suggestionType === type,
+    )
+
+    if (filteredData?.length === 0) {
+      return (
+        <div className="h-full relative">
+          <NoData
+            title="제안 가능한 내 물건이 없습니다."
+            onClickButton={() => router.push('/cards/new')}
+            buttonContent="물건 등록하러 가기"
+          />
+        </div>
+      )
+    } else {
+      return filteredData?.map((v) => (
+        <SuggestCard
+          key={v.cardInfo.cardId}
+          thumbnail={v.cardInfo.thumbnail}
+          cardTitle={v.cardInfo.cardTitle}
+          itemName={v.cardInfo.itemName}
+          priceRange={v.cardInfo.priceRange}
+          suggestionType={v.suggestionInfo.suggestionType}
+          fromCardId={v.cardInfo.cardId}
+          toCardId={toCardId}
+          suggestionStatus={v.suggestionInfo.suggestionStatus}
+        />
+      ))
+    }
+  }
 
   return (
     <Tabs defaultValue="OFFER">
@@ -25,33 +58,9 @@ const SuggestList = ({ pokeAvailable, toCardId }: SuggestListProps) => {
           className="flex flex-col data-[state=inactive]:hidden h-[402px] overflow-y-auto pr-2"
         >
           {!pokeAvailable && type === 'POKE' ? (
-            <div className="flex flex-col items-center justify-start gap-4 p-8">
-              <Image
-                width={200}
-                height={200}
-                alt="unavailable"
-                src={Assets.unavailableIcon}
-              />
-              <p className="text-sm font-normal">
-                찔러보기가 허용되지 않은 물건입니다
-              </p>
-            </div>
+            <PokeUnavailableInfo />
           ) : (
-            suggestions
-              ?.filter((v) => v.suggestionInfo.suggestionType === type)
-              .map((v) => (
-                <SuggestCard
-                  key={v.cardInfo.cardId}
-                  thumbnail={v.cardInfo.thumbnail}
-                  cardTitle={v.cardInfo.cardTitle}
-                  itemName={v.cardInfo.itemName}
-                  priceRange={v.cardInfo.priceRange}
-                  suggestionType={v.suggestionInfo.suggestionType}
-                  fromCardId={v.cardInfo.cardId}
-                  toCardId={toCardId}
-                  suggestionStatus={v.suggestionInfo.suggestionStatus}
-                />
-              ))
+            filterData(type)
           )}
         </TabsContent>
       ))}
