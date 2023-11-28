@@ -20,7 +20,6 @@ const CardPage = ({ params }: CardPageProps) => {
   const router = useRouter()
   const { data } = useCardInfoQuery(Number(params.cardId), isLoggedIn)
   const cardData = data?.data
-  console.log(cardData)
 
   return (
     <main className="flex-col min-h-screen bg-background-color">

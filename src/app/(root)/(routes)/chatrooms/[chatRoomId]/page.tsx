@@ -75,7 +75,6 @@ const ChatPage = async ({ params }: ChatPageProps) => {
     initialChatRoom.fromCardInfo,
     initialChatRoom.toCardInfo,
   ]
-  console.log(suggestionDataArray)
   const myCardId = suggestionDataArray.find(
     (obj) => obj.userInfo.userId === initialUserInfo.userId,
   ).cardInfo.cardId

@@ -20,12 +20,9 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(new URL(AppPath.login(), request.url))
     }
     if (res?.status === 200) {
-      const data = await res?.json()
-      console.log(data)
       return NextResponse.next()
     }
     if (res?.status === 404) {
-      console.log('잘못된 요청입니다.')
       return NextResponse.redirect(new URL(AppPath.home(), request.url))
     }
   } catch (e) {
@@ -35,7 +32,6 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next()
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: [
     '/mypage',

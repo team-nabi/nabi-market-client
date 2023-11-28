@@ -26,7 +26,6 @@ const UserInfo = ({ user }: UserInfoProps) => {
       return resProfile.data
     } catch (error) {
       setIsProfileChanged(false)
-      console.log(error)
       toast({
         title: '프로필 이미지 변경 실패',
         description: '프로필 이미지 변경에 실패했습니다.',
@@ -43,7 +42,6 @@ const UserInfo = ({ user }: UserInfoProps) => {
       return res.data
     } catch (error) {
       setIsNicknameChanged(false)
-      console.log(error)
       toast({
         title: '닉네임 변경 실패',
         description: '닉네임 변경에 실패했습니다.',

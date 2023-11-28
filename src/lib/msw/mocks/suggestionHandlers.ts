@@ -145,7 +145,7 @@ export const suggestionHandlers = [
           break
         }
       }
-      console.log(cursorId)
+
       const currentPage = Number(cursorId)
       const PAGE_SIZE = 10
       const filterdSuggestions = suggestions.filter(
