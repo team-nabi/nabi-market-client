@@ -11,8 +11,15 @@ type NotificationCardProps = {
 const NotificationCard = ({
   notification: { content, cardId, read },
 }: NotificationCardProps) => {
+  const isCompleteRequestNotification = content.includes('성사')
   return (
-    <Link href={`${AppPath.mySuggestions(cardId)}`}>
+    <Link
+      href={
+        isCompleteRequestNotification
+          ? `${AppPath.chatRooms()}`
+          : `${AppPath.mySuggestions(cardId)}`
+      }
+    >
       <Card size={'xs'} className="p-4">
         <CardFlex justify={'between'} align={'center'} className="h-full">
           <CardFlex gap={'space'} align={'center'} className="h-full w-2/3">

@@ -1,10 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { deleteCardDibs, postCardDibs } from '@/services/card/card'
 import { toast } from './useToast'
 
 const useDibs = (isMyDib: boolean, count: number) => {
+  useEffect(() => {
+    setIsDibsActive(isMyDib)
+    setDibsCount(count)
+  }, [count, isMyDib])
+
   const [isDibsActive, setIsDibsActive] = useState(isMyDib)
   const [dibsCount, setDibsCount] = useState(count)
 
