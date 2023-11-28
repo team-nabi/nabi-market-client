@@ -6,9 +6,8 @@ import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useCardsQuery } from '@/hooks/api/queries/useCardsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { CategoryObjs, PriceRangeObjs } from '@/types/card'
+import CardFilterSection from '../card-filter-section'
 import CardList from '../card-list/CardList'
-import FilterFormDialog from '../filter-form-dialog'
-import SearchInput from '../search-input'
 
 const CardListContent = () => {
   const searchParams = useSearchParams()
@@ -42,20 +41,15 @@ const CardListContent = () => {
 
   return (
     <>
-      <div className="h-9 flex justify-between items-center mb-6">
-        <SearchInput />
-        <FilterFormDialog />
-      </div>
-      <div>
-        <ExceptionBoundary
-          isLoading={isLoading}
-          isError={isError}
-          isEmpty={isEmpty}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <CardList />
-        </ExceptionBoundary>
-      </div>
+      <CardFilterSection />
+      <ExceptionBoundary
+        isLoading={isLoading}
+        isError={isError}
+        isEmpty={isEmpty}
+        isFetchingNextPage={isFetchingNextPage}
+      >
+        <CardList />
+      </ExceptionBoundary>
       <div ref={lastElementRef} />
     </>
   )
