@@ -58,7 +58,6 @@ const MoreButton = ({ cardId, status }: MoreButtonProps) => {
       if (shouldRedirect) {
         router.push(shouldRedirect)
       } else {
-        console.log(shouldRedirect, error)
         toast({
           title: '삭제를 실패했습니다',
           duration: 2000,

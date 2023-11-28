@@ -16,7 +16,7 @@ import { getValueByKey } from '@/utils/getValueByKey'
 const SuggestionButtons = ({
   handleMySuggestionUpdate,
 }: {
-  handleMySuggestionUpdate: (isAccepted: boolean) => void
+  handleMySuggestionUpdate: (_isAccepted: boolean) => void
 }) => (
   <>
     <CardFlex

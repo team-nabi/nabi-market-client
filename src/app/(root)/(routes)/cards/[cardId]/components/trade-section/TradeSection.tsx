@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/navigation'
-import NoData from '@/components/domain/no-data'
 import Button from '@/components/ui/button'
 import {
   Dialog,
@@ -11,10 +10,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { PRICE_RANGE_OBJS, TRADE_TYPE_OBJS } from '@/constants/card'
 import { useAuth } from '@/contexts/AuthProvider'
-import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
 import { TradeTypeObjs } from '@/types/card'
 import { getValueByKey } from '@/utils/getValueByKey'
 import SuggestList from './SuggestList'
@@ -77,12 +76,11 @@ const TradeSection = ({
 
   const onClickButton = async () => {
     if (isMyItem) {
-      router.push(`/mypage/suggestions/${cardId}`)
+      router.push(AppPath.mySuggestions(cardId))
     } else {
       setOpen(true)
     }
   }
-  const { data: suggestions } = useSuggestionsQuery(cardId, isMyItem)
 
   return (
     <section className="flex flex-col gap-2 w-full pt-4">
@@ -106,19 +104,7 @@ const TradeSection = ({
           <DialogHeader>
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
-          {suggestions?.length === 0 ? (
-            <NoData
-              title="제안 가능한 내 물건이 없습니다."
-              onClickButton={() => router.push('/cards/new')}
-              buttonContent="물건 등록하러 가기"
-            />
-          ) : (
-            <SuggestList
-              toCardId={cardId}
-              pokeAvailable={pokeAvailable}
-              suggestionData={suggestions}
-            />
-          )}
+          <SuggestList toCardId={cardId} pokeAvailable={pokeAvailable} />
         </DialogContent>
       </Dialog>
     </section>

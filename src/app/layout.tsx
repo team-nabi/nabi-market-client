@@ -11,8 +11,14 @@ import { initMockApi } from '@/lib/msw/initMockApi'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: '나비장터',
-  description: '물물교환 플랫폼 나비장터입니다.',
+  metadataBase: new URL(Environment.currentAddress()),
+  openGraph: {
+    title: '물물교환 플랫폼, 나비장터',
+    description:
+      '나비장터를 통해서 필요없는 물건을 비슷한 가치의 물건과 교환해보세요.',
+    url: Environment.currentAddress(),
+    type: 'website',
+  },
 }
 
 if (Environment.apiMocking() === 'enabled') {

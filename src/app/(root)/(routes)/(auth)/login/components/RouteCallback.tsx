@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation'
 import AppPath from '@/config/appPath'
 import { Environment } from '@/config/environment'
 import { useToast } from '@/hooks/useToast'
-import apiClient from '@/services/apiClient'
 import { User } from '@/types/user'
 
 type RouteCallbackProps = {

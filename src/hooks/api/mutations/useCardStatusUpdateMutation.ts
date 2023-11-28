@@ -1,6 +1,4 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import Cookies from 'js-cookie'
-import { Environment } from '@/config/environment'
 import { toast } from '@/hooks/useToast'
 import { putCardStatus } from '@/services/card/card'
 import { TradeStatusObjs } from '@/types/card'
@@ -10,9 +8,8 @@ const useCardStatusUpdateMutation = (
   status: TradeStatusObjs['key'],
 ) => {
   const queryClient = useQueryClient()
-  const token = Cookies.get(Environment.tokenName())
 
-  const queryKey = [cardId, 'cardInfo', token]
+  const queryKey = [cardId, 'cardInfo']
   return useMutation({
     mutationFn: putCardStatus,
     onMutate: async () => {

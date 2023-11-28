@@ -4,12 +4,13 @@ import { DirectionType, Suggestion, SuggestionType } from '@/types/suggestion'
 import apiClient from '../apiClient'
 
 export type AvailableCardSuggestionListRes = {
-  cardInfo: Card
-  suggestionInfo: Suggestion
+  code: string
+  message: string
+  data: { cardList: { cardInfo: Card; suggestionInfo: Suggestion }[] }
 }
 
 const getAvailableCardSuggestionList = async (cardId: number) => {
-  const response = await apiClient.get(
+  const response: AvailableCardSuggestionListRes = await apiClient.get(
     ApiEndPoint.getAvailableCardSuggestionList(cardId),
   )
   return response.data.cardList
@@ -40,7 +41,6 @@ const postSuggestion = async ({
       'Content-Type': 'application/json',
     },
   )
-  console.log(response)
   return response
 }
 

@@ -61,8 +61,6 @@ export const useCardUploadForm = () => {
         title: 'Error',
         description: '게시글을 업로드하는데 실패했습니다.',
       })
-      console.log(error)
-      console.log(await error.response.json())
     } finally {
       setIsSubmitting(() => false)
     }

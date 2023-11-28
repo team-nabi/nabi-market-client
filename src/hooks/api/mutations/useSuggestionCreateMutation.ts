@@ -1,9 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from '@/hooks/useToast'
-import {
-  AvailableCardSuggestionListRes,
-  postSuggestion,
-} from '@/services/suggestion/suggestion'
+import { postSuggestion } from '@/services/suggestion/suggestion'
+import { Card } from '@/types/card'
+import { Suggestion } from '@/types/suggestion'
 
 const useSuggestionCreateMutation = (toCardId: number, fromCardId: number) => {
   const queryClient = useQueryClient()
@@ -21,10 +20,11 @@ const useSuggestionCreateMutation = (toCardId: number, fromCardId: number) => {
         await queryClient.cancelQueries({ queryKey })
 
         const updateSuggestions: any = structuredClone(previousSuggestions)
+        console.log(updateSuggestions)
         //낙관적 업데이트
         const indexToUpdate = updateSuggestions.findIndex(
-          (card: AvailableCardSuggestionListRes) =>
-            card.cardInfo.cardId === fromCardId,
+          (cardValue: { cardInfo: Card; suggestionInfo: Suggestion }) =>
+            cardValue.cardInfo.cardId === fromCardId,
         )
         updateSuggestions[indexToUpdate].suggestionInfo.suggestionStatus =
           'WAITING'
