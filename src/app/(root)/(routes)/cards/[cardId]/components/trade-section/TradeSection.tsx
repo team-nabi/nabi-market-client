@@ -11,6 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { PRICE_RANGE_OBJS, TRADE_TYPE_OBJS } from '@/constants/card'
 import { useAuth } from '@/contexts/AuthProvider'
@@ -77,7 +78,7 @@ const TradeSection = ({
 
   const onClickButton = async () => {
     if (isMyItem) {
-      router.push(`/mypage/suggestions/${cardId}`)
+      router.push(AppPath.mySuggestions(cardId))
     } else {
       setOpen(true)
     }
