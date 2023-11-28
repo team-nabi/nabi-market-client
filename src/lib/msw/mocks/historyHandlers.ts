@@ -15,7 +15,7 @@ export const historyHandlers = [
         break
       }
     }
-    console.log(cursorId)
+
     const currentPage = Number(cursorId)
     const PAGE_SIZE = 10
     const filterdHistories = histories.filter(

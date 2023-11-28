@@ -1,6 +1,9 @@
 import React from 'react'
 import PageTitle from '@/components/domain/page-title'
 import ApiEndPoint from '@/config/apiEndPoint'
+import errorCodes from '@/config/errorCodes'
+import ErrorMessages from '@/config/errorMessages'
+import { ForbiddenError } from '@/lib/errors'
 import apiClient from '@/services/apiClient'
 import { getServerCookie } from '@/utils/getServerCookie'
 import ChatRoomTemplate from './components/ChatRoomTemplate'
@@ -26,15 +29,24 @@ const getInitialUser = async () => {
 }
 
 const getInitialChatRoom = async (chatRoomId: string) => {
-  const token = getServerCookie()
-  const res = await apiClient.get(
-    ApiEndPoint.getChatRoom(chatRoomId),
-    {},
-    {
-      Authorization: `${token}`,
-    },
-  )
-  return res.data.chatRoomInfo
+  try {
+    const token = getServerCookie()
+    const res = await apiClient.get(
+      ApiEndPoint.getChatRoom(chatRoomId),
+      {},
+      {
+        Authorization: `${token}`,
+      },
+    )
+    return res.data.chatRoomInfo
+  } catch (e: any) {
+    const log = await e.response.json()
+    if (log.code === errorCodes.forbidden.code) {
+      throw new ForbiddenError(new Response(ErrorMessages.Forbidden))
+    }
+
+    throw new Error(e)
+  }
 }
 
 const getCompleteRequestInfo = async (completeRequestId: number) => {
@@ -63,7 +75,6 @@ const ChatPage = async ({ params }: ChatPageProps) => {
     initialChatRoom.fromCardInfo,
     initialChatRoom.toCardInfo,
   ]
-
   const myCardId = suggestionDataArray.find(
     (obj) => obj.userInfo.userId === initialUserInfo.userId,
   ).cardInfo.cardId
@@ -74,7 +85,7 @@ const ChatPage = async ({ params }: ChatPageProps) => {
 
   return (
     <main className="relative flex flex-col items-center w-full gap-10 h-page pb-chat_input">
-      <header className="w-full flex flex-row items-center px-4">
+      <header className="flex flex-row items-center w-full px-4">
         <PageTitle title="채팅방" />
         {!isCompleteRequested && (
           <CompleteRequestButton
