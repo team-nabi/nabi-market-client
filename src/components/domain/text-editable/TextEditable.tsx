@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Button from '@/components/ui/button'
 import Input from '@/components/ui/input'
 import Assets from '@/config/assets'
+import { useToast } from '@/hooks/useToast'
 import { cn } from '@/utils'
 
 type TextEditablePropsType = {
@@ -20,9 +21,9 @@ const TextEditable = ({
 }: TextEditablePropsType) => {
   const [isEditing, setIsEditing] = useState(false)
   const [value, setValue] = useState(defaultText)
+  const { toast } = useToast()
 
   useEffect(() => {
-    console.log('이름', defaultText)
     if (!changedSuccessfully) {
       setValue(() => defaultText)
     }
@@ -30,6 +31,29 @@ const TextEditable = ({
 
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value)
+  }
+
+  const onSubmit = () => {
+    if (isEditing) {
+      if (value.length < 2) {
+        toast({
+          title: '닉네임 변경 실패',
+          description: '닉네임은 2자 이상 입력해주세요.',
+          variant: 'destructive',
+        })
+        return
+      }
+      if (value.length > 20) {
+        toast({
+          title: '닉네임 변경 실패',
+          description: '닉네임은 20자까지 입력해주세요.',
+          variant: 'destructive',
+        })
+        return
+      }
+      onChangeHandler(value)
+    }
+    setIsEditing((prev) => !prev)
   }
 
   return (
@@ -42,12 +66,7 @@ const TextEditable = ({
         onChange={onChangeInput}
       />
       <Button
-        onClick={() => {
-          if (isEditing) {
-            onChangeHandler(value)
-          }
-          setIsEditing((prev) => !prev)
-        }}
+        onClick={onSubmit}
         variant={isEditing ? 'primary' : null}
         size={isEditing ? 'sm' : 'icon_sm'}
         className={cn(!isEditing && 'absolute right-0 cursor-pointer')}

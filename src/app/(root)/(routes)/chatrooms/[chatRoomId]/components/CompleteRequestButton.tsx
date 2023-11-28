@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Button from '@/components/ui/button'
 import {
@@ -22,9 +23,12 @@ const CompleteRequestButton = ({
   myCardId,
   otherCardId,
 }: CompleteRequestButtonProps) => {
+  const [isCompleteRequested, setIsCompleteRequested] = useState(false)
+
   const handleRequestButton = async () => {
     try {
       await postCompleteRequest(myCardId, otherCardId)
+      setIsCompleteRequested(true)
       toast({
         title: '거래성사를 요청하였습니다',
         variant: 'default',
@@ -42,9 +46,11 @@ const CompleteRequestButton = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="ml-auto" size="icon_sm" variant={null}>
-          <Image src={Assets.vMoreIcon} alt="more" />
-        </Button>
+        {!isCompleteRequested && (
+          <Button className="ml-auto" size="icon_sm" variant={null}>
+            <Image src={Assets.vMoreIcon} alt="more" />
+          </Button>
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[8rem]">
         <DropdownMenuGroup>

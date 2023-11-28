@@ -35,26 +35,22 @@ const MySuggestionListContent = () => {
   const isEmpty = data?.pages[0].data.suggestionList.length === 0
   return (
     <>
-      <div className="h-9 flex justify-center items-center my-12">
-        <SuggestionStatusTabs
-          setSuggestionTypeState={setSuggestionTypeState}
-          setDirectionTypeState={setDirectionTypeState}
+      <SuggestionStatusTabs
+        setSuggestionTypeState={setSuggestionTypeState}
+        setDirectionTypeState={setDirectionTypeState}
+      />
+      <ExceptionBoundary
+        isLoading={isLoading}
+        isError={isError}
+        isEmpty={isEmpty}
+        isFetchingNextPage={isFetchingNextPage}
+      >
+        <MySuggestionList
+          data={data}
+          suggestionTypeState={suggestionTypeState}
+          directionTypeState={directionTypeState}
         />
-      </div>
-      <div>
-        <ExceptionBoundary
-          isLoading={isLoading}
-          isError={isError}
-          isEmpty={isEmpty}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <MySuggestionList
-            data={data}
-            suggestionTypeState={suggestionTypeState}
-            directionTypeState={directionTypeState}
-          />
-        </ExceptionBoundary>
-      </div>
+      </ExceptionBoundary>
 
       <div ref={lastElementRef} />
     </>

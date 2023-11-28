@@ -3,7 +3,7 @@ import { TradeStatus } from '@/types/card'
 
 type TradeStatusTabsProps = {
   tradeStatus: TradeStatus
-  setTradeStatus: (tradeStatus: TradeStatus) => void
+  setTradeStatus: (_tradeStatus: TradeStatus) => void
 }
 
 const TradeStatusTabs = ({
@@ -15,7 +15,7 @@ const TradeStatusTabs = ({
   }
 
   return (
-    <Tabs defaultValue={tradeStatus}>
+    <Tabs defaultValue={tradeStatus} className="my-12">
       <TabsList>
         <TabsTrigger
           value="TRADE_AVAILABLE"

@@ -37,6 +37,7 @@ export const useNotificationListUpdateMutation = () => {
       toast({
         title: '알림 모두 읽음 처리 중 문제가 발생하였습니다.',
         duration: 2000,
+        variant: 'destructive',
       })
     },
   })

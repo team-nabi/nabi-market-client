@@ -1,5 +1,3 @@
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import koLocale from 'date-fns/locale/ko'
 import Link from 'next/link'
 import ReservedBadge from '@/components/domain/badge/reserved-badge'
 import TradeAvailableBadge from '@/components/domain/badge/trade-available-badge'

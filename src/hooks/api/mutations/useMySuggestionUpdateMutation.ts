@@ -32,12 +32,7 @@ export const useMySuggestionUpdateMutation = (
       })
       const oldMySuggestionList:
         | InfiniteData<GetMySuggestionListRes, unknown>
-        | undefined = queryClient.getQueryData([
-        'my-suggestions',
-        suggestionType,
-        directionType,
-        cardId,
-      ])
+        | undefined = queryClient.getQueryData(queryKey)
 
       const newMySuggestionList = {
         ...oldMySuggestionList,
@@ -80,6 +75,7 @@ export const useMySuggestionUpdateMutation = (
       toast({
         title: '교환 제안을 결정하던 중 문제가 생겼습니다.',
         duration: 2000,
+        variant: 'destructive',
       })
     },
   })

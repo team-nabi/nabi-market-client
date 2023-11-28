@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
-import MaxWidthWrapper from '@/components/domain/max-width-wrapper'
 import { useMyCardsQuery } from '@/hooks/api/queries/useMyCardsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import { TradeStatus } from '@/types/card'
@@ -33,22 +32,19 @@ const MyCardListContent = () => {
   const isEmpty = data?.pages[0].data.cardList.length === 0
   return (
     <>
-      <div className="h-9 flex justify-center items-center my-12">
-        <TradeStatusTabs
-          tradeStatus={tradeStatus}
-          setTradeStatus={setTradeStatus}
-        />
-      </div>
-      <div>
-        <ExceptionBoundary
-          isLoading={isLoading}
-          isError={isError}
-          isEmpty={isEmpty}
-          isFetchingNextPage={isFetchingNextPage}
-        >
-          <MyCardList data={data} />
-        </ExceptionBoundary>
-      </div>
+      <TradeStatusTabs
+        tradeStatus={tradeStatus}
+        setTradeStatus={setTradeStatus}
+      />
+      <ExceptionBoundary
+        isLoading={isLoading}
+        isError={isError}
+        isEmpty={isEmpty}
+        isFetchingNextPage={isFetchingNextPage}
+      >
+        <MyCardList data={data} />
+      </ExceptionBoundary>
+
 
       <div ref={lastElementRef} />
     </>

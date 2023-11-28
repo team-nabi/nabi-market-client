@@ -15,12 +15,11 @@ import { getValueByKey } from '@/utils/getValueByKey'
 const SuggestionButtons = ({
   handleMySuggestionUpdate,
 }: {
-  handleMySuggestionUpdate: (isAccepted: boolean) => void
+  handleMySuggestionUpdate: (_isAccepted: boolean) => void
 }) => (
   <>
     <CardFlex
-      onClick={(e) => {
-        e.stopPropagation()
+      onClick={() => {
         handleMySuggestionUpdate(true)
       }}
       className="cursor-pointer"
@@ -31,8 +30,7 @@ const SuggestionButtons = ({
       <CardText className="break-keep">수락</CardText>
     </CardFlex>
     <CardFlex
-      onClick={(e) => {
-        e.stopPropagation()
+      onClick={() => {
         handleMySuggestionUpdate(false)
       }}
       className="cursor-pointer"
@@ -50,8 +48,7 @@ const AcceptedButton = () => {
   const router = useRouter()
   return (
     <Button
-      onClick={(e) => {
-        e.stopPropagation()
+      onClick={() => {
         router.push(AppPath.chatRooms())
       }}
       variant={'gradation'}
@@ -108,12 +105,7 @@ const MySuggestionCard = ({
   const router = useRouter()
 
   return (
-    <div
-      onClick={() => {
-        router.push(AppPath.card(String(cardId)))
-      }}
-      className="mb-6 cursor-pointer"
-    >
+    <div className="mb-6">
       <Card size={'lg'}>
         <CardFlex
           direction={'row'}
@@ -122,7 +114,12 @@ const MySuggestionCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="relative h-full min-w-[128px]">
+          <div
+            className="relative h-full min-w-[128px] cursor-pointer"
+            onClick={() => {
+              router.push(AppPath.card(String(cardId)))
+            }}
+          >
             <CardImage
               className="rounded-lg"
               src={thumbnail}
@@ -137,7 +134,7 @@ const MySuggestionCard = ({
             justify={'between'}
             className="w-full h-full"
           >
-            <CardText type={'title'} className="line-clamp-1">
+            <CardText type={'title'} className="line-clmap-1">
               {cardTitle}
             </CardText>
             <CardText type={'description'} className="line-clamp-1">
