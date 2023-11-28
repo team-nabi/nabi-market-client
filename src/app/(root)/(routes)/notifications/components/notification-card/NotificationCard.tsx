@@ -24,7 +24,9 @@ const NotificationCard = ({
                 objectFit="cover"
               />
             </div>
-            <CardText type={'description'}>{content}</CardText>
+            <CardText type={'description'} className="line-clamp-3">
+              {content}
+            </CardText>
           </CardFlex>
           <CardFlex className="w-12" justify={'center'}>
             <div className="w-2.5 h-2.5 relative">

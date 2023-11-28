@@ -35,10 +35,10 @@ const TradeStatusCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="relative w-32 h-full">
+          <div className="relative min-w-[128px] h-full">
             <CardImage
               src={thumbnail}
-              alt="이미지가 없습니다."
+              alt="물건 이미지"
               layout="fill"
               objectFit="cover"
             />
@@ -47,13 +47,10 @@ const TradeStatusCard = ({
           <CardFlex
             direction={'col'}
             justify={'between'}
-            className="w-2/3 h-full"
+            className="w-full h-full"
           >
             <CardFlex align={'center'} gap={'space'}>
-              <CardText
-                type={'title'}
-                className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-              >
+              <CardText type={'title'} className="line-clamp-1">
                 {cardTitle}
               </CardText>
               {status === 'TRADE_AVAILABLE' ? (
@@ -62,10 +59,7 @@ const TradeStatusCard = ({
                 <ReservedBadge />
               )}
             </CardFlex>
-            <CardText
-              type={'description'}
-              className="overflow-hidden whitespace-nowrap overflow-ellipsis"
-            >
+            <CardText type={'description'} className="line-clamp-1">
               {itemName}
             </CardText>
             <CardText type={'description'}>

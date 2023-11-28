@@ -27,7 +27,7 @@ const SuggestionButtons = ({
       gap={'space'}
     >
       <Image src={Assets.checkCircle} alt="check-circle" />
-      <CardText>수락</CardText>
+      <CardText className="break-keep">수락</CardText>
     </CardFlex>
     <CardFlex
       onClick={() => {
@@ -38,7 +38,7 @@ const SuggestionButtons = ({
       gap={'space'}
     >
       <Image src={Assets.quitCircle} alt="check-circle" />
-      <CardText>거절</CardText>
+      <CardText className="break-keep">거절</CardText>
     </CardFlex>
   </>
 )
@@ -115,7 +115,7 @@ const MySuggestionCard = ({
           className="h-full"
         >
           <div
-            className="relative h-full w-36 cursor-pointer"
+            className="relative h-full min-w-[128px] cursor-pointer"
             onClick={() => {
               router.push(AppPath.card(String(cardId)))
             }}
@@ -132,7 +132,7 @@ const MySuggestionCard = ({
           <CardFlex
             direction={'col'}
             justify={'between'}
-            className="w-2/3 h-full"
+            className="w-full h-full"
           >
             <CardText type={'title'} className="line-clmap-1">
               {cardTitle}
