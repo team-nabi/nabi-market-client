@@ -16,6 +16,7 @@ import ArrowLeftIcon from '/public/images/arrow-left.svg'
 import AlarmIcon from '/public/images/bell.svg'
 import ChatIcon from '/public/images/chat.svg'
 import CheckCircle from '/public/images/check-circle.svg'
+import ChevronLeftGray from '/public/images/chevron-left-gray.svg'
 import ArrowRightIcon from '/public/images/chevron-right.svg'
 import FilterActiveIcon from '/public/images/filter-active.svg'
 import FilterIcon from '/public/images/filter.svg'
@@ -100,6 +101,7 @@ const Assets = {
   heartIcon: HeartIcon,
   shoppingIcon: ShoppingIcon,
   arrowRightIcon: ArrowRightIcon,
+  chevronLeftGray: ChevronLeftGray,
 } as const
 
 export default Assets
