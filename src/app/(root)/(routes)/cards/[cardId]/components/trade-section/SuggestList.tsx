@@ -18,9 +18,35 @@ const SuggestList = ({
 }: SuggestListProps) => {
   const router = useRouter()
   const filterData = (type: string) => {
-    return suggestionData.filter(
+    const filteredData = suggestionData.filter(
       (v) => v.suggestionInfo.suggestionType === type,
     )
+
+    if (filteredData.length === 0) {
+      return (
+        <div className="h-full relative">
+          <NoData
+            title="제안 가능한 내 물건이 없습니다."
+            onClickButton={() => router.push('/cards/new')}
+            buttonContent="물건 등록하러 가기"
+          />
+        </div>
+      )
+    } else {
+      return filteredData.map((v) => (
+        <SuggestCard
+          key={v.cardInfo.cardId}
+          thumbnail={v.cardInfo.thumbnail}
+          cardTitle={v.cardInfo.cardTitle}
+          itemName={v.cardInfo.itemName}
+          priceRange={v.cardInfo.priceRange}
+          suggestionType={v.suggestionInfo.suggestionType}
+          fromCardId={v.cardInfo.cardId}
+          toCardId={toCardId}
+          suggestionStatus={v.suggestionInfo.suggestionStatus}
+        />
+      ))
+    }
   }
 
   return (
@@ -37,28 +63,8 @@ const SuggestList = ({
         >
           {!pokeAvailable && type === 'POKE' ? (
             <PokeUnavailableInfo />
-          ) : filterData(type).length ? (
-            filterData(type).map((v) => (
-              <SuggestCard
-                key={v.cardInfo.cardId}
-                thumbnail={v.cardInfo.thumbnail}
-                cardTitle={v.cardInfo.cardTitle}
-                itemName={v.cardInfo.itemName}
-                priceRange={v.cardInfo.priceRange}
-                suggestionType={v.suggestionInfo.suggestionType}
-                fromCardId={v.cardInfo.cardId}
-                toCardId={toCardId}
-                suggestionStatus={v.suggestionInfo.suggestionStatus}
-              />
-            ))
           ) : (
-            <div className="h-full relative">
-              <NoData
-                title="제안 가능한 내 물건이 없습니다."
-                onClickButton={() => router.push('/cards/new')}
-                buttonContent="물건 등록하러 가기"
-              />
-            </div>
+            filterData(type)
           )}
         </TabsContent>
       ))}
