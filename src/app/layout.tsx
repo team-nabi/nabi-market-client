@@ -12,6 +12,8 @@ import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(Environment.currentAddress()),
+  viewport:
+    'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no',
   openGraph: {
     title: '물물교환 플랫폼, 나비장터',
     description:
@@ -44,7 +46,6 @@ export default async function RootLayout({
                   <Header />
                   {children}
                   {authModal}
-                  <NewCardButton />
                 </div>
                 <Toaster />
               </AuthProvider>
