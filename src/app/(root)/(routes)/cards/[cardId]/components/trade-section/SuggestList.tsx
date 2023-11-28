@@ -2,27 +2,23 @@ import { useRouter } from 'next/navigation'
 import SuggestCard from '@/components/domain/card/suggest-card'
 import NoData from '@/components/domain/no-data'
 import { Tabs, TabsTrigger, TabsList, TabsContent } from '@/components/ui/tabs'
-import { AvailableCardSuggestionListRes } from '@/services/suggestion/suggestion'
+import useSuggestionsQuery from '@/hooks/api/queries/useSuggestionsQuery'
 import PokeUnavailableInfo from './PokeUnavailableInfo'
 
 type SuggestListProps = {
-  suggestionData: AvailableCardSuggestionListRes[]
   pokeAvailable: boolean
   toCardId: number
 }
 
-const SuggestList = ({
-  suggestionData,
-  pokeAvailable,
-  toCardId,
-}: SuggestListProps) => {
+const SuggestList = ({ pokeAvailable, toCardId }: SuggestListProps) => {
+  const { data: suggestions } = useSuggestionsQuery(toCardId)
   const router = useRouter()
   const filterData = (type: string) => {
-    const filteredData = suggestionData.filter(
+    const filteredData = suggestions?.filter(
       (v) => v.suggestionInfo.suggestionType === type,
     )
 
-    if (filteredData.length === 0) {
+    if (filteredData?.length === 0) {
       return (
         <div className="h-full relative">
           <NoData
@@ -33,7 +29,7 @@ const SuggestList = ({
         </div>
       )
     } else {
-      return filteredData.map((v) => (
+      return filteredData?.map((v) => (
         <SuggestCard
           key={v.cardInfo.cardId}
           thumbnail={v.cardInfo.thumbnail}
@@ -59,7 +55,7 @@ const SuggestList = ({
         <TabsContent
           key={type}
           value={type}
-          className="flex flex-col data-[state=inactive]:hidden h-[402px] overflow-y-auto"
+          className="flex flex-col data-[state=inactive]:hidden h-[402px] overflow-y-auto pr-2"
         >
           {!pokeAvailable && type === 'POKE' ? (
             <PokeUnavailableInfo />

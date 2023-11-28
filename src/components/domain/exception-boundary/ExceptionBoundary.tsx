@@ -1,3 +1,5 @@
+import Loading from '@/app/loading'
+
 type ExceptionBoundaryProps = {
   isLoading: boolean
   isError: boolean
@@ -14,7 +16,7 @@ const ExceptionBoundary: React.FC<ExceptionBoundaryProps> = ({
   children,
 }: ExceptionBoundaryProps) => {
   if (isLoading) {
-    return <div>로딩 중...</div>
+    return <Loading />
   }
 
   if (isError) {
