@@ -10,10 +10,11 @@ import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
 import type { Card as CardInfo } from '@/types/card'
+import { getQueryParams } from '@/utils/getQueryParams'
 import { getValueByKey } from '@/utils/getValueByKey'
 
 const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
-  <Link href={`${AppPath.cards()}?priceRange=${priceRange}`}>
+  <Link href={`${AppPath.cards()}?${getQueryParams({ priceRange })}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.checkCircle} alt="check-circle" />
       <CardText className="break-keep">제안 하러가기</CardText>

@@ -6,7 +6,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -21,11 +20,17 @@ import {
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { CATEGORY_OBJS, PRICE_RANGE_OBJS } from '@/constants/card'
-import useCreateQueryString from '@/hooks/useCreateQueryString'
 import { CategoryObjs, PriceRangeObjs } from '@/types/card'
+import { getQueryParams } from '@/utils/getQueryParams'
 import { getValueByKey } from '@/utils/getValueByKey'
 
 const FilterFormDialog = () => {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const priceRange = searchParams.get('priceRange') || undefined
+  const category = searchParams.get('category') || undefined
+  const [priceRangeState, setPriceRangeState] = useState(priceRange)
+  const [categoryState, setCategoryState] = useState(category)
   const [isOpen, setIsOpen] = useState(false)
   const openModal = () => {
     setIsOpen(true)
@@ -33,12 +38,19 @@ const FilterFormDialog = () => {
   const closeModal = () => {
     setIsOpen(false)
   }
-  const searchParams = useSearchParams()
-  const router = useRouter()
-
-  const { createQueryString } = useCreateQueryString()
-  const priceRange = searchParams.get('priceRange') || undefined
-  const category = searchParams.get('category') || undefined
+  const handleApplyFilter = () => {
+    router.push(
+      `${AppPath.cards()}?${getQueryParams({
+        priceRange: priceRangeState,
+        category: categoryState,
+      })}`,
+    )
+    closeModal()
+  }
+  const handleResetFilter = () => {
+    setPriceRangeState(undefined)
+    setCategoryState(undefined)
+  }
 
   const hasNoFilter = priceRange !== undefined || category !== undefined
 
@@ -70,15 +82,13 @@ const FilterFormDialog = () => {
               가격대
             </DialogDescription>
             <Select
-              value={priceRange}
+              value={priceRangeState}
               onValueChange={(value: PriceRangeObjs['key']) => {
-                router.push(
-                  '/cards' + '?' + createQueryString('priceRange', value),
-                )
+                setPriceRangeState(value)
               }}
             >
               <SelectTrigger>
-                {getValueByKey(PRICE_RANGE_OBJS, priceRange) ||
+                {getValueByKey(PRICE_RANGE_OBJS, priceRangeState) ||
                   '가격대를 선택해주세요'}
               </SelectTrigger>
               <SelectContent>
@@ -97,7 +107,6 @@ const FilterFormDialog = () => {
           </DialogDescription>
           <DialogDescription className="mb-6 border-t border-solid border-background-secondary-color"></DialogDescription>
 
-          {/*TODO: 현재 SelectItem의 value와 textContent가 동일 실 API를 받을 경우, 어떤 값을 줄지 정한후 map 객체로 파싱하여 요청 */}
           <DialogDescription className="mb-6">
             <DialogDescription className="mb-2 text-sm">
               카테고리
@@ -107,20 +116,15 @@ const FilterFormDialog = () => {
                 key={currentCategory.key}
                 data-category-key={currentCategory.key}
                 className={`border rounded-[10px] text-[10px] h-[25px] px-3 m-1 ${
-                  category === currentCategory.key
+                  categoryState === currentCategory.key
                     ? 'border-primary-color text-primary-color'
                     : 'border-background-secondary-color text-background-secondary-color'
                 }`}
                 onClick={(e) =>
-                  router.push(
-                    '/cards' +
-                      '?' +
-                      createQueryString(
-                        'category',
-                        e.currentTarget.getAttribute(
-                          'data-category-key',
-                        ) as CategoryObjs['key'],
-                      ),
+                  setCategoryState(
+                    e.currentTarget.getAttribute(
+                      'data-category-key',
+                    ) as CategoryObjs['key'],
                   )
                 }
               >
@@ -128,18 +132,13 @@ const FilterFormDialog = () => {
               </button>
             ))}
           </DialogDescription>
-          <DialogDescription>
-            <DialogFooter className="pb-6">
-              <Button
-                variant={'gradation'}
-                onClick={() => {
-                  router.push(AppPath.cards())
-                  closeModal()
-                }}
-              >
-                필터 초기화
-              </Button>
-            </DialogFooter>
+          <DialogDescription className="flex justify-end gap-2">
+            <Button variant={'secondary'} onClick={handleResetFilter}>
+              초기화
+            </Button>
+            <Button variant={'gradation'} onClick={handleApplyFilter}>
+              적용하기
+            </Button>
           </DialogDescription>
         </DialogContent>
       </Dialog>
