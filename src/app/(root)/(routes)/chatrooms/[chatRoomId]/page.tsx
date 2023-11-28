@@ -1,6 +1,9 @@
 import React from 'react'
 import PageTitle from '@/components/domain/page-title'
 import ApiEndPoint from '@/config/apiEndPoint'
+import errorCodes from '@/config/errorCodes'
+import ErrorMessages from '@/config/errorMessages'
+import { ForbiddenError } from '@/lib/errors'
 import apiClient from '@/services/apiClient'
 import { getServerCookie } from '@/utils/getServerCookie'
 import ChatRoomTemplate from './components/ChatRoomTemplate'
@@ -26,15 +29,24 @@ const getInitialUser = async () => {
 }
 
 const getInitialChatRoom = async (chatRoomId: string) => {
-  const token = getServerCookie()
-  const res = await apiClient.get(
-    ApiEndPoint.getChatRoom(chatRoomId),
-    {},
-    {
-      Authorization: `${token}`,
-    },
-  )
-  return res.data.chatRoomInfo
+  try {
+    const token = getServerCookie()
+    const res = await apiClient.get(
+      ApiEndPoint.getChatRoom(chatRoomId),
+      {},
+      {
+        Authorization: `${token}`,
+      },
+    )
+    return res.data.chatRoomInfo
+  } catch (e: any) {
+    const log = await e.response.json()
+    if (log.code === errorCodes.forbidden.code) {
+      throw new ForbiddenError(new Response(ErrorMessages.Forbidden))
+    }
+
+    throw new Error(e)
+  }
 }
 
 const getCompleteRequestInfo = async (completeRequestId: number) => {

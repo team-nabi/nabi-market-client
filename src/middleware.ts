@@ -33,5 +33,16 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/mypage', '/cards/:path/modify', '/cards/new'],
+  matcher: [
+    '/mypage',
+    '/cards/:path/modify',
+    '/cards/new',
+    '/dibs',
+    '/cards/my',
+    '/notifications',
+    '/suggestions/:path*',
+    '/history',
+    '/chatrooms',
+    '/chatrooms/:path*',
+  ],
 }
