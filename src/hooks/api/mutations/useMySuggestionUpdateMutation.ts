@@ -32,12 +32,7 @@ export const useMySuggestionUpdateMutation = (
       })
       const oldMySuggestionList:
         | InfiniteData<GetMySuggestionListRes, unknown>
-        | undefined = queryClient.getQueryData([
-        'my-suggestions',
-        suggestionType,
-        directionType,
-        cardId,
-      ])
+        | undefined = queryClient.getQueryData(queryKey)
 
       const newMySuggestionList = {
         ...oldMySuggestionList,
