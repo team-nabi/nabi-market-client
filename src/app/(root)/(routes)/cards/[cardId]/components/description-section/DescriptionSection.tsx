@@ -8,6 +8,7 @@ import { useAuth } from '@/contexts/AuthProvider'
 import { TYPOGRAPHY } from '@/styles/sizes'
 import { CardDetail } from '@/types/card'
 import { cn } from '@/utils'
+import { getQueryParams } from '@/utils/getQueryParams'
 import { getValueByKey } from '@/utils/getValueByKey'
 import Dibs from './Dibs'
 import MoreButton from './MoreButton'
@@ -74,7 +75,7 @@ const DescriptionSection = ({
           <u
             className="cursor-pointer"
             onClick={() =>
-              router.push(`${AppPath.cards()}?category=${category}`)
+              router.push(`${AppPath.cards()}?${getQueryParams({ category })}`)
             }
           >
             {getValueByKey(CATEGORY_OBJS, category)}
