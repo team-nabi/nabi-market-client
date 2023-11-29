@@ -16,7 +16,7 @@ type ChatProps = {
 const ChatList = forwardRef<HTMLDivElement, ChatListProps>(
   ({ messages, currentUserId }, ref) => {
     return (
-      <ul className="flex flex-col w-full h-full gap-1">
+      <ul className="flex flex-col w-full h-full gap-1 ">
         {messages.map((message: Message) => {
           return (
             <Chat

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { z } from 'zod'
+import AppPath from '@/config/appPath'
 import { AppValidation } from '@/config/appValidation'
 import { useToast } from '@/hooks/useToast'
 import { postCard } from '@/services/card/card'
@@ -49,12 +50,12 @@ export const useCardUploadForm = () => {
     setIsSubmitting(() => true)
 
     try {
-      await postCard(data)
+      const res = await postCard(data)
       toast({
         title: 'Success',
         description: '게시글을 업로드했습니다.',
       })
-      router.back()
+      router.push(AppPath.card(res.data.cardInfo.cardId), { scroll: false })
     } catch (error: any) {
       toast({
         variant: 'destructive',
