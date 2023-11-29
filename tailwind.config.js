@@ -14,6 +14,10 @@ module.exports = {
   ],
   darkMode: ['class'],
   theme: {
+    screens: {
+      xs: { max: '480px' },
+      ...require('tailwindcss/defaultConfig').theme.screens,
+    },
     extend: {
       backgroundImage: () => ({
         'gradient-primary':

@@ -68,7 +68,7 @@ const CardModifyTemplate = ({ cardInfo, cardId }: CardModifyTemplateProps) => {
                 variant={'gradation'}
                 disabled={isSubmitting}
               >
-                등록하기
+                수정하기
               </Button>
             </div>
           </section>

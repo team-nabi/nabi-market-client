@@ -52,7 +52,7 @@ const CompleteRequestButton = ({
           </Button>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="min-w-[8rem]">
+      <DropdownMenuContent className="min-w-[8rem] -right-4">
         <DropdownMenuGroup>
           <DropdownMenuItem onClick={handleRequestButton}>
             거래성사 요청
