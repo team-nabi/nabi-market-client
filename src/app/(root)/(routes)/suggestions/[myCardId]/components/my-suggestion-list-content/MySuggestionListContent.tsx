@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { useParams } from 'next/navigation'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useMySuggestionsQuery } from '@/hooks/api/queries/useMySuggestionsQuery'
@@ -51,11 +52,13 @@ const MySuggestionListContent = () => {
         isEmpty={isEmpty}
         isFetchingNextPage={isFetchingNextPage}
       >
-        <MySuggestionList
-          data={data}
-          suggestionTypeState={suggestionTypeState}
-          directionTypeState={directionTypeState}
-        />
+        <ErrorBoundary fallback={<div>렌더링 중 문제가 발생했습니다.</div>}>
+          <MySuggestionList
+            data={data}
+            suggestionTypeState={suggestionTypeState}
+            directionTypeState={directionTypeState}
+          />
+        </ErrorBoundary>
       </ExceptionBoundary>
 
       <div ref={lastElementRef} />

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, Fragment } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useChatRoomsQuery } from '@/hooks/api/queries/useChatRoomsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
@@ -39,7 +40,9 @@ const ChatRoomListContent = () => {
         isEmpty={isEmpty}
         isFetchingNextPage={isFetchingNextPage}
       >
-        <ChatRoomList data={data} />
+        <ErrorBoundary fallback={<div>렌더링 중 문제가 발생했습니다.</div>}>
+          <ChatRoomList data={data} />
+        </ErrorBoundary>
       </ExceptionBoundary>
 
       <div ref={lastElementRef} />

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, Fragment } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useMyTradeHistoryQuery } from '@/hooks/api/queries/useMyTradeHistoriesQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
@@ -39,7 +40,9 @@ const MyTradeHistoryListContent = () => {
         isEmpty={isEmpty}
         isFetchingNextPage={isFetchingNextPage}
       >
-        <MyTradeHistoryList data={data} />
+        <ErrorBoundary fallback={<div>렌더링 중 문제가 발생했습니다.</div>}>
+          <MyTradeHistoryList data={data} />
+        </ErrorBoundary>
       </ExceptionBoundary>
 
       <div ref={lastElementRef} />

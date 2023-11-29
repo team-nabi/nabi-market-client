@@ -8,16 +8,20 @@ const MyCardList = ({
   data,
 }: {
   data: InfiniteData<GetMyCardListRes, unknown> | undefined
-}) => (
-  <>
-    {data?.pages.map(({ data: { cardList } }: GetMyCardListRes, pageIndex) => (
-      <Fragment key={pageIndex}>
-        {cardList.map((myCard: Card) => (
-          <MyCard key={myCard.cardId} card={myCard} />
-        ))}
-      </Fragment>
-    ))}
-  </>
-)
+}) => {
+  return (
+    <>
+      {data?.pages.map(
+        ({ data: { cardList } }: GetMyCardListRes, pageIndex) => (
+          <Fragment key={pageIndex}>
+            {cardList.map((myCard: Card) => (
+              <MyCard key={myCard.cardId} card={myCard} />
+            ))}
+          </Fragment>
+        ),
+      )}
+    </>
+  )
+}
 
 export default MyCardList
