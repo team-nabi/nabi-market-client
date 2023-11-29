@@ -29,7 +29,7 @@ const Header = async () => {
   return (
     <header className="absolute top-0 left-0 z-10 grid items-center justify-between w-full grid-cols-3 px-2 h-nav shadow-bottom bg-background-color">
       <section className="flex items-center justify-start">
-        <MenuButton />
+        <MenuButton isLoggedIn={!!userInfo} />
       </section>
       <section className="flex items-center justify-center">
         <Logo />

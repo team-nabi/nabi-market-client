@@ -2,6 +2,7 @@ import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import ReservedBadge from '@/components/domain/badge/reserved-badge'
 import TradeAvailableBadge from '@/components/domain/badge/trade-available-badge'
 import TradeCompleteBadge from '@/components/domain/badge/trade-complete-badge'
@@ -10,10 +11,11 @@ import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
 import type { Card as CardInfo } from '@/types/card'
+import { getQueryParams } from '@/utils/getQueryParams'
 import { getValueByKey } from '@/utils/getValueByKey'
 
 const MoveToItemListPageButton = ({ priceRange }: { priceRange: string }) => (
-  <Link href={`${AppPath.cards()}?priceRange=${priceRange}`}>
+  <Link href={`${AppPath.cards()}?${getQueryParams({ priceRange })}`}>
     <CardFlex align={'center'} gap={'space'}>
       <Image src={Assets.checkCircle} alt="check-circle" />
       <CardText className="break-keep">제안 하러가기</CardText>
@@ -44,6 +46,7 @@ const MyCard = ({
     status,
   },
 }: MyCardProps) => {
+  const router = useRouter()
   return (
     <div className="mb-6">
       <Card size={'lg'}>
@@ -54,7 +57,12 @@ const MyCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="relative h-full min-w-[128px]">
+          <div
+            className="relative h-full min-w-[128px] cursor-pointer"
+            onClick={() => {
+              router.push(AppPath.card(String(cardId)))
+            }}
+          >
             <CardImage
               className="rounded-lg"
               src={thumbnail}
