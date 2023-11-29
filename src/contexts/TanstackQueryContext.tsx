@@ -14,6 +14,7 @@ const TanstackQueryGlobalConfig = {
       retry: 3,
       retryDelay: 1000,
       suspense: true,
+      useErrorBoundary: true,
     },
   },
 }

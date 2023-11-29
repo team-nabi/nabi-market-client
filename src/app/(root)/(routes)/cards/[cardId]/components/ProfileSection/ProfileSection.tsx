@@ -12,7 +12,7 @@ const ProfileSection = ({ profileImg, userName }: ProfileSectionProps) => {
       <Avatar size="md">
         <AvatarImage imgUrl={profileImg} />
       </Avatar>
-      <div className={`ml-9 ${TYPOGRAPHY.profile}`}>{userName}</div>
+      <div className={`ml-4 ${TYPOGRAPHY.profile}`}>{userName}</div>
     </section>
   )
 }

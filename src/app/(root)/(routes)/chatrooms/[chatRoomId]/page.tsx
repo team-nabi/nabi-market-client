@@ -84,7 +84,7 @@ const ChatPage = async ({ params }: ChatPageProps) => {
   ).cardInfo.cardId
 
   return (
-    <main className="relative flex flex-col items-center w-full gap-10 h-page pb-chat_input">
+    <main className="relative flex flex-col items-center w-full h-page pb-chat_input">
       <header className="flex flex-row items-center w-full px-4">
         <PageTitle title="채팅방" />
         {!isCompleteRequested && (
@@ -100,6 +100,7 @@ const ChatPage = async ({ params }: ChatPageProps) => {
           completeRequestData={completeRequestInfo}
         />
       )}
+      <div className="w-full h-0 my-5 border border-b-0 opacity-50 border-background-secondary-color" />
       <ChatRoomTemplate
         currentUser={initialUserInfo}
         fireStoreId={initialChatRoom.fireStoreChatRoomId}

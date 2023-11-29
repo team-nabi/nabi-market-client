@@ -27,15 +27,14 @@ const ChatInput = ({
   return (
     <form
       onSubmit={onSubmitMessage}
-      className="absolute bottom-0 grid items-center w-full grid-cols-5 p-4 align-middle h-chat_input"
+      className="absolute bottom-0 grid items-center w-full grid-cols-7 p-4 align-middle h-chat_input"
     >
-      <div className="col-span-1" />
       <Input
         onChange={onChange}
         value={newMessage}
         type="text"
         placeholder="메세지를 입력하세요."
-        className="col-span-3"
+        className="col-span-6"
       />
       <div className="flex justify-center col-span-1">
         <Button

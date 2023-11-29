@@ -1,1 +1,1 @@
-export const LIST_STALE_TIME = 60000
+export const LIST_STALE_TIME = 1000

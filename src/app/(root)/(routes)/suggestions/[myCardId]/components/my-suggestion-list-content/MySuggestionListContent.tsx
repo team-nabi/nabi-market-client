@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { useParams } from 'next/navigation'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useMySuggestionsQuery } from '@/hooks/api/queries/useMySuggestionsQuery'
@@ -16,21 +17,27 @@ const MySuggestionListContent = () => {
     useState<DirectionType>('RECEIVE')
   const { myCardId } = useParams()
 
-  const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useMySuggestionsQuery(suggestionTypeState, directionTypeState, myCardId)
+  const {
+    data,
+    fetchNextPage,
+    isLoading,
+    isError,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useMySuggestionsQuery(suggestionTypeState, directionTypeState, myCardId)
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
 
   useEffect(() => {
-    if (isFetchingNextPage) {
+    if (isFetchingNextPage || !hasNextPage) {
       return
     }
 
     if (entry?.isIntersecting) {
       fetchNextPage()
     }
-  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
+  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage, hasNextPage])
 
   const isEmpty = data?.pages[0].data.suggestionList.length === 0
   return (
@@ -45,11 +52,13 @@ const MySuggestionListContent = () => {
         isEmpty={isEmpty}
         isFetchingNextPage={isFetchingNextPage}
       >
-        <MySuggestionList
-          data={data}
-          suggestionTypeState={suggestionTypeState}
-          directionTypeState={directionTypeState}
-        />
+        <ErrorBoundary fallback={<div>렌더링 중 문제가 발생했습니다.</div>}>
+          <MySuggestionList
+            data={data}
+            suggestionTypeState={suggestionTypeState}
+            directionTypeState={directionTypeState}
+          />
+        </ErrorBoundary>
       </ExceptionBoundary>
 
       <div ref={lastElementRef} />

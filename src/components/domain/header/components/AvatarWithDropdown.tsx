@@ -41,7 +41,14 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
               router.push(AppPath.mypage())
             }}
           >
-            프로필
+            마이페이지
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              router.push(AppPath.newCard())
+            }}
+          >
+            새 물건 등록하기
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onClickLogout}>로그아웃</DropdownMenuItem>
         </DropdownMenuGroup>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Cookies from 'js-cookie'
 import { usePathname, useRouter } from 'next/navigation'
+import AppPath from '@/config/appPath'
 import { Environment } from '@/config/environment'
 import apiClient from '@/services/apiClient'
 import { getValidateUser } from '@/services/auth/auth'
@@ -26,27 +27,27 @@ const useValidate = () => {
       const res = await getValidateUser()
       return res
     },
+    retry: 1,
     enabled: !!token,
+    throwOnError: false,
   })
 
   useEffect(() => {
     if (isError) {
-      // Cookies.remove(Environment.tokenName())
-      // setIsLoggedIn(() => false)
-      // setCurrentUser(() => null)
-      // router.push(AppPath.login(), { scroll: false })
-      // toast({
-      //   title: '인증 에러',
-      //   description: '인증에 실패하였습니다. 다시 시도하거나 로그인해주세요.',
-      //   variant: 'destructive',
-      //   duration: 3000,
-      // })
+      Cookies.remove(Environment.tokenName())
+      router.push(AppPath.login(), { scroll: false })
+      toast({
+        title: '인증 에러',
+        description: '만료되거나 잘못된 토큰입니다. 다시 로그인해주세요.',
+        variant: 'destructive',
+        duration: 3000,
+      })
     }
     if (data) {
       setIsLoggedIn(() => true)
       setCurrentUser(() => data?.data?.userInfo)
     }
-  }, [currentUser, data, isError, isLoggedIn, pathname, router, token])
+  }, [currentUser, data, isError, isLoggedIn, pathname, router, toast, token])
 
   return { isLoggedIn, currentUser }
 }
