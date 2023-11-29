@@ -27,19 +27,18 @@ const useValidate = () => {
       const res = await getValidateUser()
       return res
     },
-    retry: 3,
+    retry: 1,
     enabled: !!token,
+    throwOnError: false,
   })
 
   useEffect(() => {
     if (isError) {
       Cookies.remove(Environment.tokenName())
-      setIsLoggedIn(() => false)
-      setCurrentUser(() => null)
       router.push(AppPath.login(), { scroll: false })
       toast({
         title: '인증 에러',
-        description: '인증에 실패하였습니다. 다시 시도하거나 로그인해주세요.',
+        description: '만료되거나 잘못된 토큰입니다. 다시 로그인해주세요.',
         variant: 'destructive',
         duration: 3000,
       })

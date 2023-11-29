@@ -1,11 +1,11 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import Button from '@/components/ui/button'
-import ApiEndPoint from '@/config/apiEndPoint'
 import AppPath from '@/config/appPath'
-import apiClient from '@/services/apiClient'
+import useNotificationCountQuery from '@/hooks/api/queries/useNotificationCountQuery'
 import { User } from '@/types/user'
-import { getServerCookie } from '@/utils/getServerCookie'
 import { AvatarWithDropdown, NotificationButton } from '../components'
 
 type RightSideProps = {
@@ -13,30 +13,30 @@ type RightSideProps = {
   currentUser: User | null
 }
 
-const getUserNotificationCount = async () => {
-  try {
-    const token = getServerCookie()
-    const res = await apiClient.get(
-      ApiEndPoint.getNotificationCount(),
-      {
-        next: { revalidate: 60 },
-      },
-      {
-        Authorization: `${token}`,
-      },
-    )
-    return res.data.unReadCount
-  } catch (e) {
-    return 0
-  }
-}
+// const getUserNotificationCount = async () => {
+//   try {
+//     const token = getServerCookie()
+//     const res = await apiClient.get(
+//       ApiEndPoint.getNotificationCount(),
+//       {
+//         cache: 'no-store',
+//       },
+//       {
+//         Authorization: `${token}`,
+//       },
+//     )
+//     return res.data.unReadCount
+//   } catch (e) {
+//     return 0
+//   }
+// }
 
-const RightSide = async ({ isLoggedIn, currentUser }: RightSideProps) => {
-  const count = await getUserNotificationCount()
+const RightSide = ({ isLoggedIn, currentUser }: RightSideProps) => {
+  const { data } = useNotificationCountQuery({ isLoggedIn })
 
   return isLoggedIn ? (
     <>
-      <NotificationButton notificationCounts={count} />
+      <NotificationButton notificationCounts={data?.data.unReadCount ?? 0} />
       <AvatarWithDropdown imageUrl={currentUser?.imageUrl} />
     </>
   ) : (
