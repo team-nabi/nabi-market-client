@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { useSearchParams } from 'next/navigation'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useCardsQuery } from '@/hooks/api/queries/useCardsQuery'
@@ -54,7 +55,9 @@ const CardListContent = () => {
         isEmpty={isEmpty}
         isFetchingNextPage={isFetchingNextPage}
       >
-        <CardList />
+        <ErrorBoundary fallback={<div>렌더링 중 문제가 발생했습니다.</div>}>
+          <CardList />
+        </ErrorBoundary>
       </ExceptionBoundary>
       <div ref={lastElementRef} />
     </>

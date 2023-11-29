@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import ExceptionBoundary from '@/components/domain/exception-boundary'
 import { useMyCardsQuery } from '@/hooks/api/queries/useMyCardsQuery'
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
@@ -48,7 +49,9 @@ const MyCardListContent = () => {
         isEmpty={isEmpty}
         isFetchingNextPage={isFetchingNextPage}
       >
-        <MyCardList data={data} />
+        <ErrorBoundary fallback={<div>렌더링 중 문제가 발생했습니다.</div>}>
+          <MyCardList data={data} />
+        </ErrorBoundary>
       </ExceptionBoundary>
 
       <div ref={lastElementRef} />

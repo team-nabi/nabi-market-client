@@ -18,7 +18,7 @@ const ExceptionBoundary: React.FC<ExceptionBoundaryProps> = ({
   children,
 }: ExceptionBoundaryProps) => {
   if (isLoading) {
-    return <Loading />
+    return <div>데이터 없음</div>
   }
 
   if (isError) {
@@ -26,19 +26,12 @@ const ExceptionBoundary: React.FC<ExceptionBoundaryProps> = ({
   }
 
   if (isEmpty) {
-    return (
-      <NoData
-        title="해당 물건이 존재 하지 않습니다."
-        onClickButton={() => router.push('/cards/new')}
-        buttonContent="물건 등록하러 가기"
-      />
-    )
+    return <div>데이터가 존재하지 않습니다.</div>
   }
-
   return (
     <>
       {children}
-      {isFetchingNextPage && <div>다음 페이지 불러오는중...</div>}
+      {isFetchingNextPage && <Loading />}
     </>
   )
 }
