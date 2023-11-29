@@ -11,23 +11,29 @@ import TradeStatusTabs from '../trade-status-tabs'
 const MyCardListContent = () => {
   const [tradeStatus, setTradeStatus] = useState<TradeStatus>('TRADE_AVAILABLE')
 
-  const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useMyCardsQuery({
-      tradeStatus,
-    })
+  const {
+    data,
+    fetchNextPage,
+    isLoading,
+    isError,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useMyCardsQuery({
+    tradeStatus,
+  })
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
 
   useEffect(() => {
-    if (isFetchingNextPage) {
+    if (isFetchingNextPage || !hasNextPage) {
       return
     }
 
     if (entry?.isIntersecting) {
       fetchNextPage()
     }
-  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
+  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage, hasNextPage])
 
   const isEmpty = data?.pages[0].data.cardList.length === 0
   return (
@@ -44,7 +50,6 @@ const MyCardListContent = () => {
       >
         <MyCardList data={data} />
       </ExceptionBoundary>
-
 
       <div ref={lastElementRef} />
     </>

@@ -7,21 +7,28 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import MyDibsList from './MyDibsList'
 
 const MyDibsTemplate = () => {
-  const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useMyDibsQuery()
+  const {
+    data,
+    fetchNextPage,
+    isLoading,
+    isError,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useMyDibsQuery()
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
 
   useEffect(() => {
-    if (isFetchingNextPage) {
+    console.log(hasNextPage)
+    if (isFetchingNextPage || !hasNextPage) {
       return
     }
 
     if (entry?.isIntersecting) {
       fetchNextPage()
     }
-  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
+  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage, hasNextPage])
 
   const isEmpty = data?.pages[0].data.dibList.length === 0
 

@@ -16,21 +16,27 @@ const MySuggestionListContent = () => {
     useState<DirectionType>('RECEIVE')
   const { myCardId } = useParams()
 
-  const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useMySuggestionsQuery(suggestionTypeState, directionTypeState, myCardId)
+  const {
+    data,
+    fetchNextPage,
+    isLoading,
+    isError,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useMySuggestionsQuery(suggestionTypeState, directionTypeState, myCardId)
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
 
   useEffect(() => {
-    if (isFetchingNextPage) {
+    if (isFetchingNextPage || !hasNextPage) {
       return
     }
 
     if (entry?.isIntersecting) {
       fetchNextPage()
     }
-  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
+  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage, hasNextPage])
 
   const isEmpty = data?.pages[0].data.suggestionList.length === 0
   return (
