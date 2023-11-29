@@ -11,21 +11,27 @@ import NotificationStatusTabs from '../notification-status-tabs'
 const NotificationListContent = () => {
   const [isRead, setIsRead] = useState(false)
 
-  const { data, fetchNextPage, isLoading, isError, isFetchingNextPage } =
-    useNotificationsQuery(isRead)
+  const {
+    data,
+    fetchNextPage,
+    isLoading,
+    isError,
+    isFetchingNextPage,
+    hasNextPage,
+  } = useNotificationsQuery(isRead)
 
   const lastElementRef = useRef<HTMLDivElement | null>(null)
   const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
 
   useEffect(() => {
-    if (isFetchingNextPage) {
+    if (isFetchingNextPage || !hasNextPage) {
       return
     }
 
     if (entry?.isIntersecting) {
       fetchNextPage()
     }
-  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage])
+  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage, hasNextPage])
 
   const isEmpty = data?.pages[0].data.notificationList.length === 0
 
