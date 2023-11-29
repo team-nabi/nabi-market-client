@@ -50,13 +50,6 @@ const MenuButton = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => {
-                  router.push(AppPath.myHistory())
-                }}
-              >
-                거래 내역 보기
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={() => {
                   router.push(AppPath.chatRooms())
                 }}
               >
