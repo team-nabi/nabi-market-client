@@ -1,6 +1,10 @@
 'use client'
 
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import Slider from '@/components/domain/slider'
+import Button from '@/components/ui/button'
+import Assets from '@/config/assets'
 import { useAuth } from '@/contexts/AuthProvider'
 import useCardInfoQuery from '@/hooks/api/queries/useCardInfoQuery'
 import ProfileSection from './components/ProfileSection'
@@ -15,6 +19,7 @@ type CardPageProps = {
 
 const CardPage = ({ params }: CardPageProps) => {
   const { isLoggedIn } = useAuth()
+  const router = useRouter()
   const { data } = useCardInfoQuery(Number(params.cardId), isLoggedIn)
   const cardData = data?.data
 
@@ -22,6 +27,18 @@ const CardPage = ({ params }: CardPageProps) => {
     <main className="flex-col min-h-screen bg-background-color">
       {cardData && (
         <>
+          <Button
+            className="absolute top-[66px] z-10"
+            variant={null}
+            size={'icon'}
+            onClick={() => router.back()}
+          >
+            <Image
+              className="w-10 h-10"
+              alt={'arrow-button'}
+              src={Assets.chevronLeftGray}
+            />
+          </Button>
           <Slider
             imageData={cardData.cardInfo.images}
             imageAspectRatio="square"
