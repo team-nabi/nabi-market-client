@@ -13,13 +13,14 @@ import {
 import AppPath from '@/config/appPath'
 import Assets from '@/config/assets'
 
-const MenuButton = () => {
+const MenuButton = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   const router = useRouter()
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="dark:bg-white" size="icon" variant={null}>
-          <Image src={Assets.menuIcon} alt="menu" />
+        <Button className="dark:bg-white" variant={null}>
+          <Image className="w-7 h-7" src={Assets.menuIcon} alt="menu" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -31,20 +32,38 @@ const MenuButton = () => {
           >
             전체 물건 보기
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              router.push(AppPath.newCard())
-            }}
-          >
-            상품 등록
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() => {
-              router.push(AppPath.chatRooms())
-            }}
-          >
-            채팅방 조회
-          </DropdownMenuItem>
+          {isLoggedIn && (
+            <>
+              <DropdownMenuItem
+                onClick={() => {
+                  router.push(AppPath.myCards())
+                }}
+              >
+                내 물건 목록
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  router.push(AppPath.myDibs())
+                }}
+              >
+                내 찜 목록
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  router.push(AppPath.myHistory())
+                }}
+              >
+                거래 내역 보기
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  router.push(AppPath.chatRooms())
+                }}
+              >
+                채팅 목록
+              </DropdownMenuItem>
+            </>
+          )}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
