@@ -26,7 +26,8 @@ const RouteCallback = ({ tokenResponse }: RouteCallbackProps) => {
 
   useEffect(() => {
     if (tokenResponse?.data) {
-      let inHour = new Date(new Date().getTime() + 60 * 60 * 1000)
+      let inHour = new Date()
+      inHour.setHours(inHour.getHours() + 1)
       Cookies.set(
         Environment.tokenName(),
         tokenResponse?.data?.token?.accessToken,
