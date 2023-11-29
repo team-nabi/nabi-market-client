@@ -1,7 +1,7 @@
 'use client'
 
 import Lottie from 'react-lottie-player'
-import lottieJson from '../../public/loading.json'
+import lottieJson from '../../../../../../public/loading.json'
 
 const Loading = () => {
   return (
@@ -16,7 +16,7 @@ const Loading = () => {
             height: '100%',
           }}
         />
-        <p className="font- text-[20px]">잠시만 기다려 주세요.</p>
+        <p className="font- text-[20px]">채팅방을 불러오는 중입니다.</p>
       </div>
     </div>
   )

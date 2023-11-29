@@ -1,8 +1,10 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/button'
 import Card from '@/components/ui/card'
 import { CardFlex, CardImage, CardText } from '@/components/ui/card/Card'
+import AppPath from '@/config/appPath'
 import { PRICE_RANGE_OBJS } from '@/constants/card'
 import { DEFAULT_ITEM_THUMBNAIL_IMG } from '@/constants/image'
 import useSuggestionCreateMutation from '@/hooks/api/mutations/useSuggestionCreateMutation'
@@ -31,7 +33,7 @@ const SuggestCard = ({
   suggestionStatus,
 }: SuggestCardProps) => {
   const { mutate } = useSuggestionCreateMutation(toCardId, fromCardId)
-
+  const router = useRouter()
   const onClickSuggest = async (suggestionType: SuggestionType) => {
     mutate({ suggestionType, fromCardId, toCardId })
   }
@@ -44,12 +46,13 @@ const SuggestCard = ({
         gap={'space'}
         className="h-full"
       >
-        <div className="h-full w-36 relative">
+        <div className="h-full w-36 relative cursor-pointer">
           <CardImage
             src={thumbnail}
             alt="thumbnail"
             layout="fill"
             objectFit="cover"
+            onClick={() => router.push(AppPath.card(String(fromCardId)))}
           />
         </div>
         <CardFlex direction={'col'} justify={'between'} className="h-full grow">

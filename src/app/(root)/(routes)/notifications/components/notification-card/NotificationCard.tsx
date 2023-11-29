@@ -14,9 +14,13 @@ const NotificationCard = ({
 }: NotificationCardProps) => {
   const router = useRouter()
   const { mutate } = useNotificationUpdateMutation()
+  const isCompleteRequestNotification = content.includes('성사')
+
   const handleReadNotification = async () => {
     if (!read) {
       mutate({ notificationId, cardId })
+    } else if (isCompleteRequestNotification) {
+      router.push(AppPath.chatRooms())
     } else {
       router.push(AppPath.mySuggestions(cardId))
     }
