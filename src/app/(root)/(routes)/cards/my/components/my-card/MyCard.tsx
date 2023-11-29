@@ -2,6 +2,7 @@ import { formatDistanceToNow } from 'date-fns'
 import koLocale from 'date-fns/locale/ko'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import ReservedBadge from '@/components/domain/badge/reserved-badge'
 import TradeAvailableBadge from '@/components/domain/badge/trade-available-badge'
 import TradeCompleteBadge from '@/components/domain/badge/trade-complete-badge'
@@ -45,6 +46,7 @@ const MyCard = ({
     status,
   },
 }: MyCardProps) => {
+  const router = useRouter()
   return (
     <div className="mb-6">
       <Card size={'lg'}>
@@ -55,7 +57,12 @@ const MyCard = ({
           gap={'space'}
           className="h-full"
         >
-          <div className="relative h-full min-w-[128px]">
+          <div
+            className="relative h-full min-w-[128px] cursor-pointer"
+            onClick={() => {
+              router.push(AppPath.card(String(cardId)))
+            }}
+          >
             <CardImage
               className="rounded-lg"
               src={thumbnail}
