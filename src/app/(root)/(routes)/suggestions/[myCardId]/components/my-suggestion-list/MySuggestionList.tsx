@@ -51,6 +51,7 @@ const MySuggestionList = ({
           title={'제안이 없습니다.'}
           buttonContent={'제안 하러가기'}
           onClickButton={() => router.push(AppPath.cards())}
+          position={false}
         />
       }
     >

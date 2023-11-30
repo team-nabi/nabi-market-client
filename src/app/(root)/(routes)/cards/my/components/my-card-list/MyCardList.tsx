@@ -38,6 +38,7 @@ const MyCardList = ({ tradeStatus }: { tradeStatus: any }) => {
             title={'내 물건이 없습니다.'}
             buttonContent={'물건 등록하기'}
             onClickButton={() => router.push(AppPath.newCard())}
+            position={false}
           />
         )
       }

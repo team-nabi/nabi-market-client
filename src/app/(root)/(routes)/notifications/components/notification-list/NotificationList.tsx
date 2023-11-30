@@ -39,8 +39,9 @@ const NotificationList = ({ isRead }: NotificationListProps) => {
         isRead || (
           <NoData
             title={'현재 알림이 없습니다.'}
-            buttonContent={'홈으로 이동하기'}
-            onClickButton={() => router.push(AppPath.home())}
+            buttonContent={'물건 등록하기'}
+            onClickButton={() => router.push(AppPath.newCard())}
+            position={false}
           />
         )
       }
