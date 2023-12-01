@@ -46,12 +46,12 @@ const SuggestCard = ({
         gap={'space'}
         className="h-full"
       >
-        <div className="h-full w-36 relative cursor-pointer">
+        <div className="relative h-full cursor-pointer w-36">
           <CardImage
             src={thumbnail}
             alt="thumbnail"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
             onClick={() => router.push(AppPath.card(String(fromCardId)))}
           />
         </div>

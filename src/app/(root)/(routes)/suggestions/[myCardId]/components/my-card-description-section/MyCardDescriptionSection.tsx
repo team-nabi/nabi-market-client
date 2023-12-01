@@ -38,8 +38,8 @@ const MyCardDescriptionSection = ({
             className="border rounded-lg border-background-secondary-color"
             src={thumbnail}
             alt="이미지가 없습니다."
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
           />
         </div>
 

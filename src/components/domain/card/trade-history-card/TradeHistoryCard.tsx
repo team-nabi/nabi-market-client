@@ -16,8 +16,8 @@ const SubCard = ({
       <CardImage
         alt={'물건 이미지'}
         src={thumbnail}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
         className="rounded"
       />
     </div>

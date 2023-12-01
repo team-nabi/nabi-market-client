@@ -24,8 +24,8 @@ const ChatRoomCard = ({
                 <CardImage
                   alt={'내 물건 이미지'}
                   src={fromCardInfo.cardInfo.thumbnail}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="rounded-full"
                 />
               </div>
@@ -33,8 +33,8 @@ const ChatRoomCard = ({
                 <CardImage
                   alt={'상대 물건 아이디'}
                   src={toCardInfo.cardInfo.thumbnail}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="rounded-full"
                 />
               </div>
@@ -59,8 +59,8 @@ const ChatRoomCard = ({
                 <CardImage
                   alt={'교환 아이콘'}
                   src={Assets.switchHorizontal}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: 'cover' }}
                 />
               </div>
               <CardFlex direction={'col'}>
