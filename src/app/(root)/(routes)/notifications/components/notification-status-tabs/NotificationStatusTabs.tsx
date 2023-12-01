@@ -10,10 +10,7 @@ const NotificationStatusTabs = ({ setIsRead }: NotificationStatusTabsProps) => {
   }
 
   return (
-    <Tabs
-      defaultValue="isRead_true"
-      className="flex items-center justify-center my-12 h-9"
-    >
+    <Tabs defaultValue="isRead_true" className="my-12">
       <TabsList>
         <TabsTrigger
           value="isRead_true"

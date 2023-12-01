@@ -1,52 +1,23 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import ExceptionBoundary from '@/components/domain/exception-boundary'
-import { useMyDibsQuery } from '@/hooks/api/queries/useMyDibsQuery'
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
+import Loading from '@/app/loading'
+import DefaultErrorTemplate from '@/components/domain/errors/DefaultErrorTemplate'
 import MyDibsList from './MyDibsList'
 
 const MyDibsTemplate = () => {
-  const {
-    data,
-    fetchNextPage,
-    isLoading,
-    isError,
-    isFetchingNextPage,
-    hasNextPage,
-  } = useMyDibsQuery()
-
-  const lastElementRef = useRef<HTMLDivElement | null>(null)
-  const entry = useIntersectionObserver(lastElementRef, { threshold: 1.0 })
-
-  useEffect(() => {
-    console.log(hasNextPage)
-    if (isFetchingNextPage || !hasNextPage) {
-      return
-    }
-
-    if (entry?.isIntersecting) {
-      fetchNextPage()
-    }
-  }, [entry?.isIntersecting, fetchNextPage, isFetchingNextPage, hasNextPage])
-
-  const isEmpty = data?.pages[0].data.dibList.length === 0
-
   return (
     <>
-      <ExceptionBoundary
-        isLoading={isLoading}
-        isError={isError}
-        isEmpty={isEmpty}
-        isFetchingNextPage={isFetchingNextPage}
+      <ErrorBoundary
+        fallback={
+          <DefaultErrorTemplate onClickButton={() => console.log('재시도')} />
+        }
       >
-        <ErrorBoundary fallback={<div>렌더링 중 문제가 발생했습니다.</div>}>
-          <MyDibsList data={data} />
-        </ErrorBoundary>
-      </ExceptionBoundary>
-
-      <div ref={lastElementRef} />
+        <Suspense fallback={<Loading />}>
+          <MyDibsList />
+        </Suspense>
+      </ErrorBoundary>
     </>
   )
 }
