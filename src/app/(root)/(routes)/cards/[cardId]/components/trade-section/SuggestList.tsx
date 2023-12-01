@@ -53,21 +53,19 @@ const SuggestList = ({ pokeAvailable, toCardId }: SuggestListProps) => {
         <TabsTrigger value="OFFER">오퍼하기</TabsTrigger>
         <TabsTrigger value="POKE">찔러보기</TabsTrigger>
       </TabsList>
-      <Suspense fallback={<Loading />}>
-        {['OFFER', 'POKE'].map((type) => (
-          <TabsContent
-            key={type}
-            value={type}
-            className="flex flex-col data-[state=inactive]:hidden h-[402px] overflow-y-auto pr-2"
-          >
-            {!pokeAvailable && type === 'POKE' ? (
-              <PokeUnavailableInfo />
-            ) : (
-              filterData(type)
-            )}
-          </TabsContent>
-        ))}
-      </Suspense>
+      {['OFFER', 'POKE'].map((type) => (
+        <TabsContent
+          key={type}
+          value={type}
+          className="flex flex-col data-[state=inactive]:hidden h-[402px] overflow-y-auto pr-2"
+        >
+          {!pokeAvailable && type === 'POKE' ? (
+            <PokeUnavailableInfo />
+          ) : (
+            filterData(type)
+          )}
+        </TabsContent>
+      ))}
     </Tabs>
   )
 }

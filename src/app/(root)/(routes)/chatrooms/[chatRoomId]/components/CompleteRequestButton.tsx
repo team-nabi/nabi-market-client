@@ -34,9 +34,11 @@ const CompleteRequestButton = ({
         variant: 'default',
         duration: 2000,
       })
-    } catch (error) {
+    } catch (error: any) {
+      const log = await error.response.json()
       toast({
         title: '거래성사 요청이 실패했습니다.',
+        description: log.message,
         variant: 'destructive',
         duration: 2000,
       })
