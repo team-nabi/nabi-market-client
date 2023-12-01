@@ -8,5 +8,6 @@ export const Environment = {
   apiMocking: () =>
     process.env.NEXT_PUBLIC_API_MOCKING === 'enabled' ? 'enabled' : 'disabled',
   tokenName: () => process.env.NEXT_PUBLIC_API_TOKEN_NAME ?? '',
+  refreshTokenName: () => process.env.NEXT_PUBLIC_API_REFRESH_TOKEN_NAME ?? '',
   currentAddress: () => process.env.NEXT_PUBLIC_CURRENT_ADDRESS ?? '',
 }

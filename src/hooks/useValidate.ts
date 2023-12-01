@@ -7,47 +7,94 @@ import { usePathname, useRouter } from 'next/navigation'
 import AppPath from '@/config/appPath'
 import { Environment } from '@/config/environment'
 import apiClient from '@/services/apiClient'
-import { getValidateUser } from '@/services/auth/auth'
+import { getValidateUser, reissueAccessToken } from '@/services/auth/auth'
 import type { User } from '@/types/user'
 import { useToast } from './useToast'
 
 const useValidate = () => {
-  const token = Cookies.get(Environment.tokenName())
   const router = useRouter()
-  const pathname = usePathname()
   const { toast } = useToast()
+  const pathname = usePathname()
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(!!token)
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
+  const getToken = () => Cookies.get(Environment.tokenName())
+  const getRefreshToken = () => Cookies.get(Environment.refreshTokenName())
 
-  const { data, isError } = useQuery({
-    queryKey: ['validate', token],
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => !!getToken())
+  const [currentUser, setCurrentUser] = useState<User | null>(() => null)
+
+  const handleTokenRefresh = ({
+    token,
+    expiresInHours = 1,
+  }: {
+    token: string
+    expiresInHours?: number
+  }) => {
+    let expiry = new Date()
+    expiry.setHours(expiry.getHours() + expiresInHours)
+    Cookies.set(Environment.tokenName(), token, { expires: expiry })
+  }
+
+  const validateUserQuery = useQuery({
+    queryKey: ['validate', getToken()],
     queryFn: async () => {
-      apiClient.setDefaultHeader('Authorization', `${token}`)
-      const res = await getValidateUser()
-      return res
+      const token = getToken()
+      if (token) {
+        apiClient.setDefaultHeader('Authorization', token)
+        return getValidateUser()
+      }
+      throw new Error('No token found')
     },
-    retry: 1,
-    enabled: !!token,
+    enabled: !!getToken(),
     throwOnError: false,
   })
 
+  const reissueTokenQuery = useQuery({
+    queryKey: ['reissueAccessToken', getRefreshToken()],
+    queryFn: async () => {
+      const refreshToken = getRefreshToken()
+      if (refreshToken) {
+        return reissueAccessToken({ refreshToken })
+      }
+      throw new Error('No refresh token found')
+    },
+    enabled: !!getRefreshToken() && (validateUserQuery.isError || !getToken()),
+    throwOnError: false,
+  })
+
+  const updateLoginState = (userInfo: User) => {
+    setCurrentUser(() => userInfo)
+    setIsLoggedIn(() => !!userInfo)
+    window.location.reload()
+  }
+
   useEffect(() => {
-    if (isError) {
+    if (validateUserQuery.isError) {
       Cookies.remove(Environment.tokenName())
-      router.push(AppPath.login(), { scroll: false })
-      toast({
-        title: '인증 에러',
-        description: '만료되거나 잘못된 토큰입니다. 다시 로그인해주세요.',
-        variant: 'destructive',
-        duration: 3000,
-      })
+      if (!getRefreshToken() || reissueTokenQuery.isError) {
+        router.push(AppPath.login(), { scroll: false })
+        toast({
+          title: '인증 에러',
+          description: '만료되거나 잘못된 토큰입니다. 다시 로그인해주세요.',
+          variant: 'destructive',
+          duration: 3000,
+        })
+      } else if (reissueTokenQuery.data?.data?.accessToken) {
+        handleTokenRefresh({
+          token: reissueTokenQuery.data.data.accessToken,
+        })
+        updateLoginState(validateUserQuery.data?.data?.userInfo)
+      }
     }
-    if (data) {
-      setIsLoggedIn(() => true)
-      setCurrentUser(() => data?.data?.userInfo)
+
+    if (!getToken() && !!getRefreshToken()) {
+      if (reissueTokenQuery.data?.data?.accessToken) {
+        handleTokenRefresh({
+          token: reissueTokenQuery.data.data.accessToken,
+        })
+        updateLoginState(validateUserQuery.data?.data?.userInfo)
+      }
     }
-  }, [currentUser, data, isError, isLoggedIn, pathname, router, toast, token])
+  }, [validateUserQuery, reissueTokenQuery, router, pathname, toast])
 
   return { isLoggedIn, currentUser }
 }

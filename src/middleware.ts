@@ -5,7 +5,7 @@ import { Environment } from './config/environment'
 import { getValidateUser } from './services/auth/auth'
 
 export async function middleware(request: NextRequest) {
-  const cookie = request.cookies.get(Environment.tokenName())
+  const cookie = request.cookies.get(Environment.refreshTokenName())
   const token = cookie?.value
 
   if (!token) {

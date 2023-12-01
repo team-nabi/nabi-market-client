@@ -91,6 +91,8 @@ class FetchAPI {
   }
 
   private async responseHandler(response: Response): Promise<any> {
+    // const clone = response.clone()
+    // console.log(await clone.json())
     if (!response.ok) {
       switch (response.status) {
         case 401:
