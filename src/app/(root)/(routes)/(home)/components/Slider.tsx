@@ -40,11 +40,11 @@ const PopularCardSlider = ({ cardData }: PopularCardSliderProps) => {
               height={0}
               alt="sliderImage"
               src={v.thumbnail}
-              sizes="100vw"
-              style={{ width: '100%' }}
+              sizes="80vw"
+              style={{ width: '80%' }}
               onClick={() => handleClick(v.cardId)}
             />
-            <div className="flex flex-col gap-1 items-center justify-center opacity-70 bg-black rounded-b-[5px] text-white w-full absolute inset-x-0 bottom-0 max-w-[240px] left-2/4 translate-x-[-50%] ">
+            <div className="flex flex-col items-start p-2 justify-center opacity-40 bg-black rounded-b-[5px] text-white w-full absolute inset-x-0 bottom-0 max-w-[240px] left-2/4 translate-x-[-50%] ">
               <p className={`${TYPOGRAPHY.title}`}>{v.itemName}</p>
               <p className={`${TYPOGRAPHY.description}`}>
                 {getValueByKey(PRICE_RANGE_OBJS, v.priceRange)}

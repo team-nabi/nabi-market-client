@@ -13,7 +13,8 @@ const cardVariants = cva('p-1.5', {
       xs: 'h-card-xs',
     },
     type: {
-      default: 'rounded-card border border-background-secondary-color',
+      default:
+        'rounded-card border border-background-secondary-color border-opacity-50',
       line: 'border-b border-background-secondary-color',
     },
   },
