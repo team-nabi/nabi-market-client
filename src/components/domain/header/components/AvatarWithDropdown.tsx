@@ -21,6 +21,7 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
 
   const onClickLogout = () => {
     Cookies.remove(Environment.tokenName())
+    Cookies.remove(Environment.refreshTokenName())
     apiClient.setDefaultHeader('Authorization', '')
     location.reload()
   }

@@ -1,12 +1,12 @@
 'use client'
 
 import Lottie from 'react-lottie-player'
-import lottieJson from '../../public/loading.json'
+import lottieJson from '/public/loading.json'
 
 const Loading = () => {
   return (
-    <div className="w-full h-full text-center flex-1">
-      <div className="flex flex-col items-center w-[320px] h-[360px] absolute top-0 left-1/2 translate-y-[50%] translate-x-[-50%] ">
+    <div className="flex-1 w-full h-full text-center z-[100]">
+      <div className="flex z-[100] flex-col items-center w-[320px] h-[360px] absolute top-0 left-1/2 translate-y-[50%] translate-x-[-50%] ">
         <Lottie
           loop
           animationData={lottieJson}
