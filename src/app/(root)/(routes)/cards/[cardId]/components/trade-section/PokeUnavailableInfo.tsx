@@ -9,6 +9,7 @@ const PokeUnavailableInfo = () => {
         height={200}
         alt="unavailable"
         src={Assets.unavailableIcon}
+        sizes="200px"
       />
       <p className="text-sm font-normal">찔러보기가 허용되지 않은 물건입니다</p>
     </div>

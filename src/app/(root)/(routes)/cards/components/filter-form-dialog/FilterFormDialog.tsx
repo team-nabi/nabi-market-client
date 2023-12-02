@@ -62,7 +62,9 @@ const FilterFormDialog = () => {
             <Image
               src={hasNoFilter ? Assets.filterActiveIcon : Assets.filterIcon}
               alt="필터 아이콘"
-            />{' '}
+              sizes="22px"
+              quality={50}
+            />
             <DialogDescription
               className={hasNoFilter ? 'text-primary-color' : ''}
               onClick={openModal}

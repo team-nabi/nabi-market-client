@@ -20,7 +20,14 @@ const ImageBlock = ({
   return (
     <figure className="relative w-20 h-20 border rounded-lg border-1">
       <DeleteButton onClickButton={onDeleteHandler} visible={isDeletable} />
-      <Image src={imageSrc} alt={'image'} fill className="rounded-lg" />
+      <Image
+        src={imageSrc}
+        alt={'image'}
+        fill
+        className="rounded-lg"
+        quality={50}
+        sizes="(max-width: 480px) 20vw, 78px"
+      />
       {isThumbnail && (
         <figcaption className="absolute bottom-0 right-0 w-full p-1 text-xs text-center text-white rounded-b-lg bg-black/50">
           대표 사진
