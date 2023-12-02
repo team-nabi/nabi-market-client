@@ -92,7 +92,14 @@ const CardImage = React.forwardRef<
   React.ElementRef<typeof Image>,
   React.ComponentPropsWithoutRef<typeof Image>
 >(({ className, alt, ...props }, ref) => (
-  <Image alt={alt} ref={ref} className={cn('', className)} {...props} />
+  <Image
+    alt={alt}
+    ref={ref}
+    className={cn('', className)}
+    {...props}
+    quality={50}
+    sizes="128px"
+  />
 ))
 CardImage.displayName = 'CardImage'
 

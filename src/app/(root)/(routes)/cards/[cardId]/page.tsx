@@ -37,6 +37,7 @@ const CardPage = ({ params }: CardPageProps) => {
               className="w-10 h-10"
               alt={'arrow-button'}
               src={Assets.chevronLeftGray}
+              sizes="(max-width: 640px) 100vw, 640px"
             />
           </Button>
           <Slider

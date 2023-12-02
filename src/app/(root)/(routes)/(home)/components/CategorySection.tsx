@@ -17,7 +17,14 @@ const CategorySection = () => {
               : `${AppPath.cards()}?category=${v.key}`
           }
         >
-          <Image className="w-8 h-8" alt={`category-${v.key}`} src={v.image} />
+          <Image
+            className="w-8 h-8"
+            alt={`category-${v.key}`}
+            src={v.image}
+            quality={50}
+            sizes="32px"
+            loading="eager"
+          />
           <p className={` w-max ${TYPOGRAPHY.description}`}>{v.value}</p>
         </Link>
       ))}

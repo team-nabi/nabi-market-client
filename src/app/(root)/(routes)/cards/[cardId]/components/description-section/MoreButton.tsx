@@ -74,7 +74,7 @@ const MoreButton = ({ cardId, status }: MoreButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className="ml-auto" size="icon_sm" variant={null}>
-          <Image src={Assets.vMoreIcon} alt="more" />
+          <Image src={Assets.vMoreIcon} alt="more" quality={50} sizes="32px" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[10rem] -right-4">
