@@ -8,7 +8,12 @@ const BannerSection = () => {
     { url: Assets.banner3 },
   ]
   return (
-    <Slider loading="eager" imageData={bannerArr} imageAspectRatio="auto" />
+    <Slider
+      loading="eager"
+      priority={true}
+      imageData={bannerArr}
+      imageAspectRatio="auto"
+    />
   )
 }
 

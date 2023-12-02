@@ -12,6 +12,7 @@ type SliderProps = {
   imageData: { url: string | StaticImageData }[]
   imageAspectRatio: string
   loading?: 'lazy' | 'eager'
+  priority?: boolean
 }
 
 /**
@@ -22,6 +23,7 @@ const Slider = ({
   imageData,
   imageAspectRatio,
   loading = 'lazy',
+  priority = false,
 }: SliderProps) => {
   SwiperCore.use([Pagination, Autoplay])
   return (
@@ -46,6 +48,7 @@ const Slider = ({
             quality={50}
             style={{ width: '100%' }}
             loading={loading}
+            priority={priority}
           />
         </SwiperSlide>
       ))}

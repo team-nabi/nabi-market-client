@@ -31,7 +31,10 @@ const AvatarWithDropdown = ({ imageUrl }: { imageUrl?: string }) => {
       <DropdownMenuTrigger asChild>
         <Button variant={null}>
           <Avatar size="md">
-            <AvatarImage imgUrl={imageUrl ?? DEFAULT_PROFILE_IMG} />
+            <AvatarImage
+              alt="profile"
+              imgUrl={imageUrl ?? DEFAULT_PROFILE_IMG}
+            />
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
