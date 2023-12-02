@@ -26,9 +26,6 @@ const ChatList = forwardRef<HTMLDivElement, ChatListProps>(
             />
           )
         })}
-        {messages.length === 0 && (
-          <h1 className="text-red-500">채팅을 시작해보세요!</h1>
-        )}
         <div className="invisible" ref={ref} />
       </ul>
     )

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Button from '@/components/ui/button'
 import AppPath from '@/config/appPath'
 import useNotificationCountQuery from '@/hooks/api/queries/useNotificationCountQuery'
@@ -33,6 +34,7 @@ type RightSideProps = {
 
 const RightSide = ({ isLoggedIn, currentUser }: RightSideProps) => {
   const { data } = useNotificationCountQuery({ isLoggedIn })
+  const router = useRouter()
 
   return isLoggedIn ? (
     <>
@@ -40,10 +42,13 @@ const RightSide = ({ isLoggedIn, currentUser }: RightSideProps) => {
       <AvatarWithDropdown imageUrl={currentUser?.imageUrl} />
     </>
   ) : (
-    <Button variant={'gradation'}>
-      <Link href={AppPath.login()} scroll={false}>
-        로그인
-      </Link>
+    <Button
+      variant={'gradation'}
+      onClick={() => {
+        router.push(AppPath.login(), { scroll: false })
+      }}
+    >
+      로그인
     </Button>
   )
 }
