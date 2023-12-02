@@ -13,7 +13,8 @@ const cardVariants = cva('p-1.5', {
       xs: 'h-card-xs',
     },
     type: {
-      default: 'rounded-card border border-background-secondary-color',
+      default:
+        'rounded-card border border-background-secondary-color border-opacity-50',
       line: 'border-b border-background-secondary-color',
     },
   },
@@ -91,7 +92,14 @@ const CardImage = React.forwardRef<
   React.ElementRef<typeof Image>,
   React.ComponentPropsWithoutRef<typeof Image>
 >(({ className, alt, ...props }, ref) => (
-  <Image alt={alt} ref={ref} className={cn('', className)} {...props} />
+  <Image
+    alt={alt}
+    ref={ref}
+    className={cn('', className)}
+    {...props}
+    quality={50}
+    sizes="128px"
+  />
 ))
 CardImage.displayName = 'CardImage'
 

@@ -12,19 +12,19 @@ const SubCard = ({
   priceRange,
 }: Pick<CardInfo, 'thumbnail' | 'itemName' | 'priceRange'>) => (
   <CardFlex direction={'col'} justify={'center'} align={'center'}>
-    <div className="h-11 w-20 relative">
+    <div className="relative w-20 h-11">
       <CardImage
         alt={'물건 이미지'}
         src={thumbnail}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
         className="rounded"
       />
     </div>
     <CardText
       title={itemName}
       type={'description'}
-      className="w-20 font-bold text-center whitespace-nowrap overflow-hidden overflow-ellipsis"
+      className="w-20 overflow-hidden font-bold text-center whitespace-nowrap overflow-ellipsis"
     >
       {itemName}
     </CardText>

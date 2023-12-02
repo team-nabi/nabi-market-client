@@ -99,6 +99,7 @@ const ApiEndPoint = {
   },
   getChatRoom: (chatRoomId: string) => `/chats/${chatRoomId}`,
   getNotificationCount: () => '/notifications/unread-count',
+  reissueAccessToken: () => '/users/re-issue',
 } as const
 
 export default ApiEndPoint

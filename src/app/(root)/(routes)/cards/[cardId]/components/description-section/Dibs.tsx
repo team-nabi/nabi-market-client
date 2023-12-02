@@ -26,11 +26,14 @@ const Dibs = ({ isMyDib, dibCount: count, cardId, isMyCard }: DibsProps) => {
     }
   }
   return (
-    <div className="flex flex-row gap-0 items-center ml-auto">
+    <div className="flex flex-row items-center gap-0 ml-auto">
       <Button size="icon_sm" variant={null} onClick={onClickDibs}>
         <Image
           src={isDibsActive ? Assets.activeHeartIcon : Assets.inactiveHeartIcon}
           alt="dibs"
+          loading="eager"
+          quality={50}
+          sizes="24px"
         />
       </Button>
       <p className="ml-1">{dibsCount}</p>

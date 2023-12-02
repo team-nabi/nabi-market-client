@@ -29,6 +29,5 @@ export const useCardsQuery = ({
       return lastPage.data.nextCursorId
     },
     staleTime: LIST_STALE_TIME,
-    gcTime: 0,
   })
 }

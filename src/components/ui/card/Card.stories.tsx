@@ -25,14 +25,14 @@ export const Small: Story = {
           gap={'space'}
           className="h-full"
         >
-          <div className="h-full w-32 relative">
+          <div className="relative w-32 h-full">
             <CardImage
               src={
                 'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg'
               }
               alt="Picture of the author"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
             />
           </div>
 
@@ -60,14 +60,14 @@ export const Large: Story = {
           align={'center'}
           gap={'space'}
         >
-          <div className="h-full w-36 relative">
+          <div className="relative h-full w-36">
             <CardImage
               src={
                 'https://cdn.cetizen.com/CDN/market/market_large_crop/202203/20220318/220318152808_1_2913635.jpg'
               }
               alt="Picture of the author"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
             />
           </div>
 

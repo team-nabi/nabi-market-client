@@ -124,8 +124,8 @@ const MySuggestionCard = ({
               className="rounded-lg"
               src={thumbnail}
               alt="제안 한 혹은 받은 물건의 이미지"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
             />
           </div>
 

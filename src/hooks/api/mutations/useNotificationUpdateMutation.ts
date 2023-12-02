@@ -49,7 +49,7 @@ export const useNotificationUpdateMutation = () => {
         duration: 1000,
       })
     },
-    onError: (error, _, context) => {
+    onError: (_error, _, _context) => {
       toast({
         title: '알림 읽음 처리 중 문제가 발생하였습니다.',
         duration: 2000,

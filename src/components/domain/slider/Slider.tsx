@@ -37,7 +37,8 @@ const Slider = ({ imageData, imageAspectRatio }: SliderProps) => {
             height={0}
             alt="sliderImage"
             src={v.url}
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, 640px"
+            quality={50}
             style={{ width: '100%' }}
           />
         </SwiperSlide>
