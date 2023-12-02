@@ -16,10 +16,10 @@ const useValidate = () => {
   const { toast } = useToast()
   const pathname = usePathname()
 
-  const getToken = () => Cookies.get(Environment.tokenName())
-  const getRefreshToken = () => Cookies.get(Environment.refreshTokenName())
+  const accessToken = Cookies.get(Environment.tokenName())
+  const refreshToken = Cookies.get(Environment.refreshTokenName())
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => !!getToken())
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => !!accessToken)
   const [currentUser, setCurrentUser] = useState<User | null>(() => null)
 
   const handleTokenRefresh = ({
@@ -32,32 +32,32 @@ const useValidate = () => {
     let expiry = new Date()
     expiry.setHours(expiry.getHours() + expiresInHours)
     Cookies.set(Environment.tokenName(), token, { expires: expiry })
+    return token
   }
 
   const validateUserQuery = useQuery({
-    queryKey: ['validate', getToken()],
+    queryKey: ['validate', accessToken],
     queryFn: async () => {
-      const token = getToken()
+      const token = accessToken
       if (token) {
         apiClient.setDefaultHeader('Authorization', token)
         return getValidateUser()
       }
       throw new Error('No token found')
     },
-    enabled: !!getToken(),
+    enabled: !!accessToken,
     throwOnError: false,
   })
 
   const reissueTokenQuery = useQuery({
-    queryKey: ['reissueAccessToken', getRefreshToken()],
+    queryKey: ['reissueAccessToken', refreshToken],
     queryFn: async () => {
-      const refreshToken = getRefreshToken()
       if (refreshToken) {
         return reissueAccessToken({ refreshToken })
       }
       throw new Error('No refresh token found')
     },
-    enabled: !!getRefreshToken() && (validateUserQuery.isError || !getToken()),
+    enabled: !!refreshToken && (validateUserQuery.isError || !accessToken),
     throwOnError: false,
   })
 
@@ -70,7 +70,7 @@ const useValidate = () => {
   useEffect(() => {
     if (validateUserQuery.isError) {
       Cookies.remove(Environment.tokenName())
-      if (!getRefreshToken() || reissueTokenQuery.isError) {
+      if (!refreshToken || reissueTokenQuery.isError) {
         router.push(AppPath.login(), { scroll: false })
         toast({
           title: '인증 에러',
@@ -86,7 +86,7 @@ const useValidate = () => {
       }
     }
 
-    if (!getToken() && !!getRefreshToken()) {
+    if (!accessToken && !!refreshToken) {
       if (reissueTokenQuery.data?.data?.accessToken) {
         handleTokenRefresh({
           token: reissueTokenQuery.data.data.accessToken,
@@ -94,7 +94,23 @@ const useValidate = () => {
         updateLoginState(validateUserQuery.data?.data?.userInfo)
       }
     }
-  }, [validateUserQuery, reissueTokenQuery, router, pathname, toast])
+
+    if (validateUserQuery.data?.data?.userInfo) {
+      const userInfo = validateUserQuery.data.data.userInfo
+      setCurrentUser(() => userInfo)
+      setIsLoggedIn(() => !!userInfo)
+    }
+  }, [
+    validateUserQuery.data?.data?.userInfo,
+    reissueTokenQuery.data?.data.accessToken,
+    router,
+    pathname,
+    toast,
+    validateUserQuery.isError,
+    accessToken,
+    refreshToken,
+    reissueTokenQuery.isError,
+  ])
 
   return { isLoggedIn, currentUser }
 }

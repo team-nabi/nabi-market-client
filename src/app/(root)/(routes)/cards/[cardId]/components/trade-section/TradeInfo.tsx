@@ -11,8 +11,8 @@ type TradeInfoProps = {
 const TradeInfo = ({ title, content, variant, icon }: TradeInfoProps) => {
   return (
     <div className="flex flex-row items-center">
-      <Image src={icon} alt="infoImg" />
-      <div className="text-sm ml-2 font-normal">{title}</div>
+      <Image src={icon} alt="infoImg" sizes="24px" />
+      <div className="ml-2 text-sm font-normal">{title}</div>
       <Badge size={'lg'} variant={variant} className="ml-auto">
         {content === '' ? '미입력' : content}
       </Badge>
