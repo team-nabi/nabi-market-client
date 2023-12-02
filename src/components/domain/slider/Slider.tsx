@@ -11,13 +11,20 @@ import './index.css'
 type SliderProps = {
   imageData: { url: string | StaticImageData }[]
   imageAspectRatio: string
+  loading?: 'lazy' | 'eager'
+  priority?: boolean
 }
 
 /**
  * @param {ImageData} 이미지 아이디, 이미지 url을 담은 데이터
  * @param {imageAspectRatio} swiper 크기 지정을 위한 변수
  */
-const Slider = ({ imageData, imageAspectRatio }: SliderProps) => {
+const Slider = ({
+  imageData,
+  imageAspectRatio,
+  loading = 'lazy',
+  priority = false,
+}: SliderProps) => {
   SwiperCore.use([Pagination, Autoplay])
   return (
     <Swiper
@@ -40,6 +47,8 @@ const Slider = ({ imageData, imageAspectRatio }: SliderProps) => {
             sizes="(max-width: 640px) 100vw, 640px"
             quality={50}
             style={{ width: '100%' }}
+            loading={loading}
+            priority={priority}
           />
         </SwiperSlide>
       ))}

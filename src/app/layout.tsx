@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import localFont from 'next/font/local'
 import Header from '@/components/domain/header'
 import { Toaster } from '@/components/ui/toast/Toaster'
 import { Environment } from '@/config/environment'
@@ -9,8 +10,28 @@ import ThemeProviderContext from '@/contexts/ThemeProviderContext'
 import { initMockApi } from '@/lib/msw/initMockApi'
 import '@/styles/globals.css'
 
+const pretendard = localFont({
+  src: [
+    {
+      path: '../../public/font/Pretendard-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/font/Pretendard-Bold.woff',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-pretendard',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(Environment.currentAddress()),
+  title: '물물교환 플랫폼, 나비장터',
+  description:
+    '나비장터를 통해서 필요없는 물건을 비슷한 가치의 물건과 교환해보세요.',
   openGraph: {
     title: '물물교환 플랫폼, 나비장터',
     description:
@@ -42,7 +63,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html className="light" lang="ko">
-      <body>
+      <body className={pretendard.className}>
         <TanstackQueryContext>
           <ThemeProviderContext>
             <MSWWrapper>
