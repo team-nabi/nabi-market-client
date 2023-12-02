@@ -45,6 +45,9 @@ module.exports = {
       padding: {
         chat_input: 'var(--chat-input-height)',
       },
+      fontFamily: {
+        pretendard: ['var(--font-pretendard)'],
+      },
     },
   },
   plugins: [
