@@ -70,12 +70,15 @@ const MoreButton = ({ cardId, status }: MoreButtonProps) => {
     mutate({ cardId, status })
   }
 
+  const isCardCompleted = status === 'TRADE_COMPLETE'
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
+        {!isCardCompleted && (
         <Button className="ml-auto" size="icon_sm" variant={null}>
-          <Image src={Assets.vMoreIcon} alt="more" />
+          <Image src={Assets.vMoreIcon} alt="more" quality={50} sizes="32px" />
         </Button>
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[10rem] -right-4">
         <DropdownMenuGroup>
@@ -90,7 +93,7 @@ const MoreButton = ({ cardId, status }: MoreButtonProps) => {
               handleChangeStatus(cardStatusMap[status].statusToChange)
             }
           >
-            {cardStatusMap[status].text}
+            {cardStatusMap[status]?.text}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

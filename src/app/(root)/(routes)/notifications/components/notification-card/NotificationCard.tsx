@@ -33,13 +33,13 @@ const NotificationCard = ({
         align={'center'}
         className="h-full cursor-pointer"
       >
-        <CardFlex gap={'space'} align={'center'} className="h-full w-2/3">
-          <div className="h-6 w-6 relative flex-shrink-0">
+        <CardFlex gap={'space'} align={'center'} className="w-2/3 h-full">
+          <div className="relative flex-shrink-0 w-6 h-6">
             <CardImage
               alt={'벨 아이콘'}
               src={Assets.notificationBell}
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
             />
           </div>
           <CardText type={'description'} className="line-clamp-3">
@@ -52,8 +52,8 @@ const NotificationCard = ({
               <CardImage
                 alt={'점 아이콘'}
                 src={Assets.notificationDot}
-                layout="fill"
-                objectFit="cover"
+                fill
+                style={{ objectFit: 'cover' }}
                 className="rounded"
               />
             )}

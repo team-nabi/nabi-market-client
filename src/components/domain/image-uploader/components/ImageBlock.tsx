@@ -23,8 +23,10 @@ const ImageBlock = ({
       <Image
         src={imageSrc}
         alt={'image'}
-        layout="fill"
+        fill
         className="rounded-lg"
+        quality={50}
+        sizes="(max-width: 480px) 20vw, 78px"
       />
       {isThumbnail && (
         <figcaption className="absolute bottom-0 right-0 w-full p-1 text-xs text-center text-white rounded-b-lg bg-black/50">

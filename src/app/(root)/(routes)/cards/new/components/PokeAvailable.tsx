@@ -32,7 +32,7 @@ const PokeAvailable = ({
           <FormControl>
             <Card className="flex flex-row items-center p-3 h-fit">
               <span className={'font-normal'}>
-                등록할 상품보다 낮은 금액의 상품 거래 제안을 허용합니다.
+                등록할 물건보다 낮은 금액의 물건 거래 제안을 허용합니다.
               </span>
               <Switch
                 id="pokeAvailable"

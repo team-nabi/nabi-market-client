@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { StaticImageData } from 'next/image'
 import { useRouter } from 'next/navigation'
+import Loading from '@/app/loading'
 import Button from '@/components/ui/button'
 import {
   Dialog,
@@ -100,11 +101,13 @@ const TradeSection = ({
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="p-4 pt-14 gap-6 h-full max-h-[576px]">
-          <DialogHeader>
+        <DialogContent className="flex flex-col p-4 pt-14 gap-6 h-full max-h-[576px]">
+          <DialogHeader className="h-fit">
             <DialogTitle>제안 가능한 내 물건 보기</DialogTitle>
           </DialogHeader>
-          <SuggestList toCardId={cardId} pokeAvailable={pokeAvailable} />
+          <Suspense fallback={<Loading />}>
+            <SuggestList toCardId={cardId} pokeAvailable={pokeAvailable} />
+          </Suspense>
         </DialogContent>
       </Dialog>
     </section>

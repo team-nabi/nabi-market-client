@@ -15,12 +15,12 @@ const CardItem = ({
   itemName,
 }: Pick<CardType, 'thumbnail' | 'itemName'>) => (
   <CardFlex direction={'col'} justify={'center'} align={'center'} gap={'space'}>
-    <div className="h-11 w-20 relative">
+    <div className="relative w-20 h-11">
       <CardImage
         alt="card-thumbnail"
         src={thumbnail}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
         className="rounded"
       />
     </div>
@@ -63,7 +63,7 @@ const CompleteRequestCard = ({
   }
   return (
     <div>
-      <Card className="p-2 flex items-center border-0" size={'sm'}>
+      <Card className="flex items-center p-2 border-0" size={'sm'}>
         <CardFlex justify={'between'} className="gap-4">
           <CardItem
             thumbnail={myCardData.thumbnail}

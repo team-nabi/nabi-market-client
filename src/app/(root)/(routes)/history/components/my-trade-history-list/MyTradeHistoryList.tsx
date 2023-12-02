@@ -1,5 +1,4 @@
 import { Fragment, useEffect, useRef } from 'react'
-import { InfiniteData } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import TradeHistoryCard from '@/components/domain/card/trade-history-card'
 import EmptyDataWrapper from '@/components/domain/empty-data-wrapper'

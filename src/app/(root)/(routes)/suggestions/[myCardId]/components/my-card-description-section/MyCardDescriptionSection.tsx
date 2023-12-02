@@ -38,17 +38,12 @@ const MyCardDescriptionSection = ({
             className="border rounded-lg border-background-secondary-color"
             src={thumbnail}
             alt="이미지가 없습니다."
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
           />
         </div>
 
-        <CardFlex
-          direction={'col'}
-          // justify={'between'}
-          gap={'space'}
-          className="w-full h-full"
-        >
+        <CardFlex direction={'col'} gap={'space'} className="w-full h-full">
           <CardFlex align={'center'} gap={'space'}>
             <CardText type={'title'} className="line-clamp-1">
               {cardTitle}
@@ -78,15 +73,9 @@ const MyCardDescriptionSection = ({
           <CardText type={'description'} className="flex justify-between">
             거래지역
             <Badge size={'sm'} variant={'information'}>
-              {tradeArea}
+              {tradeArea === '' ? '미입력' : tradeArea}
             </Badge>
           </CardText>
-          {/* <CardText type={'date'}>
-            {formatDistanceToNow(new Date(createdAt), {
-              addSuffix: true,
-              locale: koLocale,
-            })}
-          </CardText> */}
         </CardFlex>
       </CardFlex>
     </div>

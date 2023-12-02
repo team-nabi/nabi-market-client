@@ -1,6 +1,12 @@
 import ApiEndPoint from '@/config/apiEndPoint'
 import apiClient from '../apiClient'
 
+type ReissueAccessTokenRes = {
+  data: {
+    accessToken: string
+  }
+}
+
 const getKakaoRedirect = async (code: string) => {
   const response = await apiClient.get(ApiEndPoint.getKakaoRedirect(code))
   return response
@@ -16,4 +22,24 @@ const getValidateUser = async () => {
   return response
 }
 
-export { getValidateUser, getKakaoRedirect, getGoogleRedirect }
+const reissueAccessToken = async ({
+  refreshToken,
+}: {
+  refreshToken: string
+}) => {
+  const response: ReissueAccessTokenRes = await apiClient.get(
+    ApiEndPoint.reissueAccessToken(),
+    {},
+    {
+      Authorization: refreshToken,
+    },
+  )
+  return response
+}
+
+export {
+  getValidateUser,
+  getKakaoRedirect,
+  getGoogleRedirect,
+  reissueAccessToken,
+}

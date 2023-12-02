@@ -39,8 +39,8 @@ const TradeStatusCard = ({
             <CardImage
               src={thumbnail}
               alt="물건 이미지"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover' }}
             />
           </div>
 

@@ -100,6 +100,7 @@ const COMPLETE_REQUEST_TYPE_OBJS = [
   { key: 'WAITING', value: '거래성사 대기중' },
   { key: 'ACCEPTED', value: '거래성사 확정' },
   { key: 'REFUSED', value: '거래성사 거절됨' },
+  { key: 'DELETED', value: '거래상대의 물건이 삭제되었습니다' },
 ]
 
 export {

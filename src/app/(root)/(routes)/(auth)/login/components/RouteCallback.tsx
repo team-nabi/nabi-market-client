@@ -28,11 +28,20 @@ const RouteCallback = ({ tokenResponse }: RouteCallbackProps) => {
     if (tokenResponse?.data) {
       let inHour = new Date()
       inHour.setHours(inHour.getHours() + 1)
+      let inTwoMonth = new Date()
+      inTwoMonth.setMonth(inTwoMonth.getMonth() + 2)
       Cookies.set(
         Environment.tokenName(),
         tokenResponse?.data?.token?.accessToken,
         {
           expires: inHour,
+        },
+      )
+      Cookies.set(
+        Environment.refreshTokenName(),
+        tokenResponse?.data?.token?.refreshToken,
+        {
+          expires: inTwoMonth,
         },
       )
       window.location.href = AppPath.home()
