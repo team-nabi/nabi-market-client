@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "test": "vitest --run",
+    "test": "vitest --run --typecheck",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "bash ./scripts/chromatic_publish.sh"
@@ -82,7 +82,7 @@
     "storybook": "7.5.0",
     "storybook-dark-mode": "^3.0.1",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.6"
+    "vitest": "^1.0.4"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
