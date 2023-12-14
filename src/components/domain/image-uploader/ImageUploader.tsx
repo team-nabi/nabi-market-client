@@ -43,7 +43,7 @@ const ImageUploader = ({
     const successfulUploads = uploadedImages
       .filter((imageUrl) => imageUrl != null)
       .map((imageUrl) => imageUrl)
-      .filter(isNotNull)
+      .filter(isNotNull<string>)
 
     setImages((images) => [...images, ...successfulUploads])
     onFilesChanged([...images, ...successfulUploads])

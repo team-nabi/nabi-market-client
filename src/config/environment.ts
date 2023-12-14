@@ -1,5 +1,3 @@
-// import { assertValue } from '@/utils'
-
 export const Environment = {
   apiAddress: () =>
     process.env.NEXT_PUBLIC_API_MOCKING === 'disabled'
