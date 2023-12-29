@@ -17,7 +17,7 @@ const ThemeProviderContext = ({ children }: ThemeProviderContextProps) => {
   if (!mounted) return null
 
   return (
-    <ThemeProvider attribute="light" enableSystem={false}>
+    <ThemeProvider forcedTheme="light" enableSystem={false}>
       {children}
     </ThemeProvider>
   )
