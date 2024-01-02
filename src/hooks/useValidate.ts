@@ -3,7 +3,7 @@
 import { useCallback, useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Cookies from 'js-cookie'
-import { usePathname, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import AppPath from '@/config/appPath'
 import { Environment } from '@/config/environment'
 import apiClient from '@/services/apiClient'
@@ -12,7 +12,6 @@ import { useToast } from './useToast'
 
 const useValidate = () => {
   const router = useRouter()
-  const pathname = usePathname()
   const { toast } = useToast()
 
   const accessToken = Cookies.get(Environment.tokenName())
@@ -76,6 +75,7 @@ const useValidate = () => {
    */
   const handleSessionExpiration = useCallback(() => {
     Cookies.remove(Environment.tokenName())
+    Cookies.remove(Environment.refreshTokenName())
     router.push(AppPath.login(), { scroll: false })
     showAuthErrorToast()
   }, [router, showAuthErrorToast])
@@ -99,20 +99,15 @@ const useValidate = () => {
   ])
 
   useEffect(() => {
-    if (validateUserQuery.isError) {
+    if ((!accessToken && refreshToken) || validateUserQuery.isError) {
       refreshTokenIfNeeded()
-    }
-  }, [validateUserQuery.isError, refreshTokenIfNeeded])
-
-  useEffect(() => {
-    if (!accessToken && refreshToken) {
-      handleTokenRefresh({ token: reissueTokenQuery?.data?.data.accessToken })
     }
   }, [
     accessToken,
     refreshToken,
     reissueTokenQuery?.data?.data.accessToken,
-    pathname,
+    validateUserQuery.isError,
+    refreshTokenIfNeeded,
   ])
 
   return {
