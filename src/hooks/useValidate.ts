@@ -21,12 +21,11 @@ const useValidate = () => {
   const validateUserQuery = useQuery({
     queryKey: ['validate', accessToken],
     queryFn: async () => {
-      const token = accessToken
-      if (token) {
-        apiClient.setDefaultHeader('Authorization', token)
-        return getValidateUser()
+      if (!accessToken) {
+        throw new Error('No token found')
       }
-      throw new Error('No token found')
+      apiClient.setDefaultHeader('Authorization', accessToken)
+      return getValidateUser()
     },
     enabled: !!accessToken,
     throwOnError: false,
@@ -35,10 +34,10 @@ const useValidate = () => {
   const reissueTokenQuery = useQuery({
     queryKey: ['reissueAccessToken', refreshToken],
     queryFn: async () => {
-      if (refreshToken) {
-        return reissueAccessToken({ refreshToken })
+      if (!refreshToken) {
+        throw new Error('No refresh token found')
       }
-      throw new Error('No refresh token found')
+      return reissueAccessToken({ refreshToken })
     },
     enabled: !!refreshToken && (validateUserQuery.isError || !accessToken),
     throwOnError: false,
