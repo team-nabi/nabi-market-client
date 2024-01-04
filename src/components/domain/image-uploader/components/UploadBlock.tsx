@@ -9,12 +9,14 @@ type UploadBlockType = {
   onUploadHandler: (_e: React.ChangeEvent<HTMLInputElement>) => void
   currentPhotoNumber: number
   maxPhotoNumber: number
+  isUploading: boolean
 }
 
 const UploadBlock = ({
   onUploadHandler,
   currentPhotoNumber = 0,
   maxPhotoNumber,
+  isUploading,
 }: UploadBlockType) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -35,7 +37,11 @@ const UploadBlock = ({
             TYPOGRAPHY.description,
             'text-text-secondary-color',
           )}
-        >{`${currentPhotoNumber}/${maxPhotoNumber}`}</span>
+        >
+          {isUploading
+            ? `업로드 중`
+            : `${currentPhotoNumber}/${maxPhotoNumber}`}
+        </span>
       </div>
       <Input
         ref={inputRef}

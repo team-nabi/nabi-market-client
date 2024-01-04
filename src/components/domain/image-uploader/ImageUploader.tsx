@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
 import { MAX_IMAGE_NUMBER } from '@/constants/image'
 import { useToast } from '@/hooks/useToast'
 import { postImageFile } from '@/services/images'
-import { isNotNull } from '@/utils/isNotNull'
 import ImageBlock from './components/ImageBlock'
 import UploadBlock from './components/UploadBlock'
 
@@ -24,29 +24,25 @@ const ImageUploader = ({
   const { toast } = useToast()
   const [images, setImages] = useState<string[]>(defaultImages)
 
-  async function uploadImages(files: FileList) {
-    const uploadPromises = Array.from(files).map(async (file) => {
-      try {
-        const res = await postImageFile(file)
-        return res.data
-      } catch (e) {
-        toast({
-          title: '이미지 업로드 실패',
-          description: '이미지 업로드에 실패했습니다. 다시 시도해주세요.',
-        })
-        return null
-      }
+  const uploadImageMutation = useMutation({
+    mutationFn: postImageFile,
+    mutationKey: ['postImage'],
+    onSuccess: (data) => {
+      setImages((currentImages) => [...currentImages, data.data])
+      onFilesChanged([...images, data.data])
+    },
+    onError: () => {
+      toast({
+        title: '이미지 업로드 실패',
+        description: '이미지 업로드에 실패했습니다. 다시 시도해주세요.',
+      })
+    },
+  })
+
+  const uploadImages = (files: FileList) => {
+    Array.from(files).forEach((file) => {
+      uploadImageMutation.mutate(file)
     })
-
-    const uploadedImages = await Promise.all(uploadPromises)
-
-    const successfulUploads = uploadedImages
-      .filter((imageUrl) => imageUrl != null)
-      .map((imageUrl) => imageUrl)
-      .filter(isNotNull)
-
-    setImages((images) => [...images, ...successfulUploads])
-    onFilesChanged([...images, ...successfulUploads])
   }
 
   const onUploadHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,6 +70,7 @@ const ImageUploader = ({
         onUploadHandler={onUploadHandler}
         currentPhotoNumber={images.length}
         maxPhotoNumber={maxImageNumber}
+        isUploading={uploadImageMutation.isPending}
       />
       {images.map((image, index) => {
         const isThumbnail = index === 0
